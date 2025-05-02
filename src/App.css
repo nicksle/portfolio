@@ -29,12 +29,6 @@ header p {
   transition: all 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  border-color: var(--active);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -86,4 +80,37 @@ button:hover {
   .content-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.app {
+  min-height: 100vh;
+  padding: 2rem;
+  background: var(--base);
+}
+
+/* Update tab styling */
+.tab-nav button {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--hover);
+  border: 1px solid var(--inactive);
+  color: var(--secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-nav button:hover {
+  border-color: var(--active);
+  color: var(--active);
+}
+
+/* Content styling */
+.content h1 {
+  color: var(--active);
+  margin-bottom: 1rem;
+}
+
+.content p {
+  color: var(--secondary);
+  margin-bottom: 1rem;
 }
