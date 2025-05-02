@@ -1,0 +1,37 @@
+.head {
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--base);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.head-top, .head-bottom {
+  height: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.head-title {
+  height: 48px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 16px;
+}
+
+.head-title span {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
