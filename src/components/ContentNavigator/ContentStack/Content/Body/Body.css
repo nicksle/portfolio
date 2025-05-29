@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding-bottom: 300px;
 }
 
 .body-loading-bar {
@@ -60,4 +61,16 @@
 
 .body::-webkit-scrollbar-thumb:hover {
   background: var(--tertiary);
+}
+
+.body-overscroll-indicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  color: var(--active);
 }

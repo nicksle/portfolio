@@ -1,7 +1,7 @@
 :root {
   /* Colors */
   --inactive: #30302A;
-  --active: #FFFFE3;
+  --active: #ffffe3;
   --secondary: #CCCCB6;
   --tertiary: #999988;
   --base: #0E0E10;
@@ -89,4 +89,63 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* === Global Font Text Styles === */
+
+/* Headings */
+.H1 {
+  font-family: 'Satoshi', Arial, Helvetica, sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: var(--active);
+}
+
+.H2 {
+  font-family: 'Satoshi', Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: var(--active);
+}
+
+.H3 {
+  font-family: 'Satoshi', Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--active);
+}
+
+/* Body */
+.B1 {
+  font-family: 'Satoshi', Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--secondary);
+}
+
+.B2 {
+  font-family: 'Satoshi', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--secondary);
+}
+
+/* Small */
+.S1 {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  color: var(--secondary);
 }

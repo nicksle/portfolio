@@ -1,0 +1,19 @@
+.header-frame {
+  width: 300px;
+  height: 158px;
+  display: flex;
+  flex-direction: column;
+  gap: -1px;
+  border: 1px solid var(--color-inactive);
+  margin: 0 auto;
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.header-frame.expanded {
+  width: 1200px;
+}
+
+.header-frame.height-expanded {
+  height: 600px;
+} 

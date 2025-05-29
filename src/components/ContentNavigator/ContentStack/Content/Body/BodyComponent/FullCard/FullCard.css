@@ -67,7 +67,7 @@
   width: 72px;
   height: auto;
   padding-bottom: 24px;
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+  color: var(--active);
 }
 
 .full-card-content h3 {
@@ -94,13 +94,13 @@
 }
 
 .full-card-cta:hover .full-card-cta-icon {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+  color: var(--active);
 }
 
 .full-card-cta-icon {
   width: 24px;
   height: 24px;
-  filter: invert(39%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+  color: var(--tertiary);
   transition: all 0.3s ease;
 }
 

@@ -1,0 +1,101 @@
+:root {
+  --active: #ffffe3;
+}
+
+.work-item-root {
+  width: 100%;         /* Fill the width of the parent container */
+  min-width: 0;        /* Allow shrinking in a flex or grid container */
+  max-width: 100%;     /* Prevent overflow */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 32px;
+}
+
+.work-item-index {
+  min-width: 40px;
+  text-align: left;
+  margin-right: 0;
+  margin-bottom: 8px;
+  color: var(--secondary);
+  /* Use the global S1 class for font style */
+}
+
+.work-item-indent {
+  padding-left: 12px;
+  flex: 1;
+}
+
+.work-item-card-frame {
+  border: 1px solid var(--inactive);
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--base);
+  display: flex;
+  flex-direction: column;
+}
+
+.work-item-card-head {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+}
+
+.work-item-image {
+  width: 100%;
+  min-height: 300px;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.work-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.work-item-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.work-item-title {
+  color: var(--active);
+}
+
+.work-item-description {
+  color: var(--secondary);
+}
+
+.work-item-cta {
+  border-top: 1px solid var(--inactive);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: #1a1a1e;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.work-item-cta:hover {
+  background: var(--inactive);
+}
+
+.work-item-cta-text {
+  /* S1 style is applied via class */
+}
+
+.work-item-cta-arrow {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+  color: #fff;
+} 

@@ -15,30 +15,54 @@
 }
 
 .content.active {
-  min-height: 700px;
-  max-height: 800px;
+  min-height: 500px;
+  max-height: 640px;
   z-index: 10;
   opacity: 1;
-  overflow-y: auto; /* Enable scrolling on content */
+  overflow: hidden; /* Changed from overflow-y: auto to overflow: hidden */
 }
 
-/* Content items animation */
-.content > * {
-  width: 100%;
+.content.active.scrollable {
+  overflow-y: auto; /* Enable scrolling only when scrollable class is present */
+}
+
+/* Head animation */
+.content .head {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(20px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.content.active > * {
+.content.active .head {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Fade out content when becoming inactive */
-.content:not(.active) > * {
+/* Body components animation */
+.content .body-component {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger body components with increasing delays */
+.content.active .body-component:nth-child(1) { transition-delay: 0.2s; }
+.content.active .body-component:nth-child(2) { transition-delay: 0.3s; }
+.content.active .body-component:nth-child(3) { transition-delay: 0.4s; }
+.content.active .body-component:nth-child(4) { transition-delay: 0.5s; }
+.content.active .body-component:nth-child(5) { transition-delay: 0.6s; }
+.content.active .body-component:nth-child(6) { transition-delay: 0.7s; }
+
+.content.active .body-component {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade out animations */
+.content:not(.active) .head,
+.content:not(.active) .body-component {
+  opacity: 0;
+  transform: translateY(20px);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

@@ -83,17 +83,27 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, period, c
     const opacity = Math.max(0, Math.min(1, 1 - (scrollTop / 74)));
     setHeadOpacity(opacity);
 
-    // Calculate scroll progress for the loading bar
-    const { scrollTop: currentScrollTop, scrollHeight, clientHeight } = e.target;
-    const distanceFromBottom = scrollHeight - clientHeight - currentScrollTop;
-    const triggerDistance = 100; // Distance in pixels to start showing progress
+    // Calculate overscroll progress
+    const overscrollAmount = Math.abs(Math.min(0, scrollTop));
+    const maxOverscroll = 24; // Maximum overscroll distance in pixels
     
-    if (distanceFromBottom < triggerDistance) {
-      const progress = Math.max(0, Math.min(100, ((triggerDistance - distanceFromBottom) / triggerDistance) * 100));
+    console.log('Overscroll Amount:', overscrollAmount);
+    console.log('Scroll Top:', scrollTop);
+    
+    if (overscrollAmount >= maxOverscroll) {
+      console.log('Reached max overscroll!');
+      setScrollProgress(1);
+    } else if (overscrollAmount > 0) {
+      const progress = Math.min(1, overscrollAmount / maxOverscroll);
+      console.log('Progress:', progress);
       setScrollProgress(progress);
     } else {
       setScrollProgress(0);
     }
+
+    // Calculate distance from bottom for next content trigger
+    const { scrollTop: currentScrollTop, scrollHeight, clientHeight } = e.target;
+    const distanceFromBottom = scrollHeight - clientHeight - currentScrollTop;
 
     if (distanceFromBottom < 1 && !isScrolling && onNext) {
       setIsScrolling(true);

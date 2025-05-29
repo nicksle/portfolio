@@ -1,0 +1,137 @@
+.intro1 {
+  border: 1px solid;
+  border-color: var(--color-inactive);
+  height: 669px;
+  width: 1170px;
+}
+
+.intro1 .overlap-group {
+  height: 669px;
+  position: relative;
+}
+
+.intro1 .section {
+  align-items: center;
+  border: 1px solid;
+  border-color: var(--color-inactive);
+  display: inline-flex;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.intro1 .element {
+  background-color: var(--color-active);
+  border: 1px solid;
+  border-color: var(--color-inactive);
+  height: 168px;
+  position: relative;
+  width: 502px;
+}
+
+.intro1 .vector {
+  height: 88px;
+  left: 181px;
+  position: absolute;
+  top: 38px;
+  width: 139px;
+}
+
+.intro1 .div-wrapper {
+  border: 1px solid;
+  border-color: var(--color-inactive);
+  height: 168px;
+  margin-left: -1px;
+  position: relative;
+  width: 669px;
+}
+
+.intro1 .text-wrapper {
+  color: var(--color-active);
+  font-family: "Satoshi-Medium", Helvetica;
+  font-size: 64px;
+  font-weight: 500;
+  left: 64px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 60px;
+  white-space: nowrap;
+}
+
+.intro1 .div {
+  align-items: center;
+  display: inline-flex;
+  left: 0;
+  position: absolute;
+  top: 167px;
+}
+
+.intro1 .element-2 {
+  border: 1px solid;
+  border-color: var(--color-inactive);
+  height: 168px;
+  position: relative;
+  width: 502px;
+}
+
+.intro1 .element-3 {
+  border: 1px solid;
+  border-color: var(--color-inactive);
+  height: 168px;
+  margin-left: -1px;
+  position: relative;
+  width: 168px;
+}
+
+.intro1 .section-2 {
+  align-items: center;
+  display: inline-flex;
+  left: 0;
+  position: absolute;
+  top: 501px;
+}
+
+.intro1 .element-4 {
+  border: 1px solid;
+  border-color: var(--color-inactive);
+  height: 168px;
+  position: relative;
+  width: 836px;
+}
+
+.intro1 .element-5 {
+  background-color: var(--color-active);
+  border: 1px solid;
+  border-color: var(--color-inactive);
+  height: 168px;
+  margin-left: -1px;
+  position: relative;
+  width: 168px;
+}
+
+.intro1 .section-3 {
+  align-items: center;
+  display: inline-flex;
+  left: 0;
+  position: absolute;
+  top: 334px;
+}
+
+.intro1 .element-6 {
+  border: 1px solid;
+  border-color: var(--color-inactive);
+  height: 168px;
+  position: relative;
+  width: 168px;
+}
+
+.intro1 .section-4 {
+  border: 1px solid;
+  border-color: var(--color-inactive);
+  height: 335px;
+  left: 835px;
+  position: absolute;
+  top: 167px;
+  width: 335px;
+} 
