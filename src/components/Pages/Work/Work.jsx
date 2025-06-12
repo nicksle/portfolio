@@ -10,6 +10,9 @@ import BodyComponent from "../../ContentNavigator/ContentStack/Content/Body/Body
 import Text from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/Text/Text";
 import SelectedWorks from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/SelectedWorks";
 import WorkItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/WorkItems/WorkItem";
+import TandaThumbnail1 from "../../../assets/TANDA/Thumbnail/Thumbnail1.svg";
+import TandaThumbnail2 from "../../../assets/TANDA/Thumbnail/Thumbnail2.svg";
+import './Work.css';
 
 const Work = () => {
   const [activeContentId, setActiveContentId] = useState('tanda');
@@ -108,11 +111,21 @@ const Work = () => {
               Product designer with 5+ years experience building and growing products for startups in the fintech and influencer advertising spaces.
             </h2>
           </div>
-          <div className="work-carousel" style={{ display: 'flex', gap: '16px', overflowX: 'auto', paddingBottom: '8px', justifyContent: 'center' }}>
-            <img src="https://via.placeholder.com/200x120" alt="Work 1" style={{ borderRadius: '8px', flex: '0 0 auto' }} />
-            <img src="https://via.placeholder.com/200x120" alt="Work 2" style={{ borderRadius: '8px', flex: '0 0 auto' }} />
-            <img src="https://via.placeholder.com/200x120" alt="Work 3" style={{ borderRadius: '8px', flex: '0 0 auto' }} />
-            <img src="https://via.placeholder.com/200x120" alt="Work 4" style={{ borderRadius: '8px', flex: '0 0 auto' }} />
+          <div className="work-carousel">
+            <div className="work-carousel-scroll">
+              <div className="work-carousel-item">
+                <img src={TandaThumbnail1} alt="Tanda App Interface 1" />
+              </div>
+              <div className="work-carousel-item">
+                <img src={TandaThumbnail2} alt="Tanda App Interface 2" />
+              </div>
+              <div className="work-carousel-item">
+                <img src="https://via.placeholder.com/300x200" alt="Work 3" />
+              </div>
+              <div className="work-carousel-item">
+                <img src="https://via.placeholder.com/300x200" alt="Work 4" />
+              </div>
+            </div>
           </div>
         </motion.div>
         <div ref={contentNavRef} style={{ zIndex: 2, position: 'relative', marginTop: '100vh' }}>
@@ -139,13 +152,13 @@ const Work = () => {
                     </Text>
                   </div>
                   <div style={{ flex: 1 }}>
-                    <img src="https://via.placeholder.com/400x300" alt="Tanda Image" style={{ width: '100%', height: 'auto' }} />
+                    <img src="https://via.placeholder.com/400x300" alt="Tanda Image" style={{ width: '100%', height: 'auto', borderRadius: '8px' }} />
                   </div>
                 </BodyComponent>
                 <BodyComponent>
                   <SelectedWorks title="Selected Works" description="A collection of my work">
                     <WorkItem index="01" title="Improving our NUX to Increase User Activation Rates" description="Delightful sign-up flow that increased user retention and reduced drop off" />
-                    <WorkItem index="02" title="TANDA: Core Product" description="Description for Tanda Project 2" />
+                    <WorkItem index="02" title="TANDA: Core Product" description="Improved core product experience to increase user activation, retention and growth" />
                   </SelectedWorks>
                 </BodyComponent>
               </Content>
