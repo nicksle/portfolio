@@ -55,17 +55,30 @@ const STYLES = {
 
 const Text = ({ 
   children, 
-  style = 'B1' 
+  style = 'B1',
+  subtitle,
+  subtitleStyle = 'S1'
 }) => {
   const textStyle = typeof style === 'string' ? STYLES[style] || STYLES.B1 : style;
+  const subStyle = typeof subtitleStyle === 'string' ? STYLES[subtitleStyle] || STYLES.S1 : subtitleStyle;
 
   return (
-    <p 
-      className="text-component" 
-      style={textStyle}
-    >
-      {children}
-    </p>
+    <div className="text-component-wrapper">
+      {subtitle && (
+        <p 
+          className="text-subtitle" 
+          style={subStyle}
+        >
+          {subtitle}
+        </p>
+      )}
+      <p 
+        className="text-component" 
+        style={textStyle}
+      >
+        {children}
+      </p>
+    </div>
   );
 };
 

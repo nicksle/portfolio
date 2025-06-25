@@ -21,6 +21,8 @@ const Work = () => {
   const workContentRef = useRef(null);
   const contentNavRef = useRef(null);
   const scrollLockRef = useRef(false);
+  const lastScrollY = useRef(0);
+  const contentRef = useRef(null);
 
   const handleTabChange = (id) => {
     setActiveContentId(id);
@@ -35,7 +37,9 @@ const Work = () => {
   };
 
   useEffect(() => {
-    const handleResize = () => setViewportHeight(window.innerHeight);
+    const handleResize = () => {
+      setViewportHeight(window.innerHeight);
+    };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -43,40 +47,77 @@ const Work = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (!workContentRef.current || !contentNavRef.current) return;
+      
       const headerHeight = 64;
-      const targetY = 24;
+      const targetY = 64; // Changed to 64px to match ContentNavigator trigger point
       const navRect = contentNavRef.current.getBoundingClientRect();
       const navTop = navRect.top;
+      const currentScrollY = window.scrollY;
       
-      // Calculate progress: 1 when navTop == targetY, 0 when navTop is just below workContent
+      // Calculate progress for animations
       const workRect = workContentRef.current.getBoundingClientRect();
-      const startY = workRect.bottom; // nav just below work content
+      const startY = workRect.bottom;
       const endY = targetY;
       const progress = Math.min(Math.max((startY - navTop) / (startY - endY), 0), 1);
       setScrollProgress(progress);
 
-      // Add/remove scrollable class based on navTop position
+      // Scroll locking logic
       const activeContent = document.querySelector('.content.active');
       if (activeContent) {
-        if (navTop <= targetY) {
-          activeContent.classList.add('scrollable');
-          const scrollOffset = window.scrollY + navTop - targetY;
-          window.scrollTo({ top: scrollOffset, behavior: 'auto' });
-          scrollLockRef.current = true;
+        const isScrollingDown = currentScrollY > lastScrollY.current;
+        const shouldLock = navTop <= targetY;
+
+        if (shouldLock) {
+          if (isScrollingDown) {
+            if (!scrollLockRef.current) {
+              activeContent.classList.add('scrollable');
+              scrollLockRef.current = true;
+              // Store the scroll position when locking
+              lastScrollY.current = currentScrollY;
+            }
+            
+            // Calculate scroll delta and apply it to content
+            const scrollDelta = currentScrollY - lastScrollY.current;
+            const currentScroll = activeContent.scrollTop;
+            const maxScroll = activeContent.scrollHeight - activeContent.clientHeight;
+            
+            // Only scroll if we haven't reached the bottom
+            if (currentScroll < maxScroll) {
+              activeContent.scrollTop = Math.min(currentScroll + scrollDelta, maxScroll);
+              window.scrollTo({
+                top: lastScrollY.current,
+                behavior: 'auto'
+              });
+            } else if (currentScroll >= maxScroll && scrollDelta > 0) {
+              // If we're at the bottom and still scrolling down, unlock
+              activeContent.classList.remove('scrollable');
+              scrollLockRef.current = false;
+            }
+          } else if (!isScrollingDown && navTop > targetY) {
+            // Unlock when scrolling up and above the target position
+            if (scrollLockRef.current) {
+              activeContent.classList.remove('scrollable');
+              scrollLockRef.current = false;
+            }
+          }
         } else {
-          activeContent.classList.remove('scrollable');
-          scrollLockRef.current = false;
+          if (scrollLockRef.current) {
+            activeContent.classList.remove('scrollable');
+            scrollLockRef.current = false;
+          }
         }
       }
+      
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: false });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Framer Motion values
-  const minY = 24; // Changed from 88 to 24
-  const maxY = viewportHeight * 0.8; // Reduce the maximum scroll distance to 80% of viewport height
+  // Framer Motion values for animations
+  const minY = 64; // Updated to match the new target Y position
+  const maxY = viewportHeight * 0.8;
   const translateY = (1 - scrollProgress) * (maxY - minY) + minY;
   const opacity = 1 - scrollProgress;
   const scale = 1 - scrollProgress * 0.2;

@@ -14,8 +14,8 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, period, c
   const [headOpacity, setHeadOpacity] = useState(1);
   const contentRef = useRef(null);
   const bodyRef = useRef(null);
-  const [isScrolling, setIsScrolling] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isAtBottom, setIsAtBottom] = useState(false);
 
   // Reset all states when content becomes inactive
   useEffect(() => {
@@ -28,7 +28,7 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, period, c
       // Reset all states
       setScrollProgress(0);
       setHeadOpacity(1);
-      setIsScrolling(false);
+      setIsAtBottom(false);
 
       // Reset any expanded cards
       const expandedCards = document.querySelectorAll('.card-frame.expanded');
@@ -87,31 +87,23 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, period, c
     const overscrollAmount = Math.abs(Math.min(0, scrollTop));
     const maxOverscroll = 24; // Maximum overscroll distance in pixels
     
-    console.log('Overscroll Amount:', overscrollAmount);
-    console.log('Scroll Top:', scrollTop);
-    
     if (overscrollAmount >= maxOverscroll) {
-      console.log('Reached max overscroll!');
       setScrollProgress(1);
     } else if (overscrollAmount > 0) {
       const progress = Math.min(1, overscrollAmount / maxOverscroll);
-      console.log('Progress:', progress);
       setScrollProgress(progress);
     } else {
       setScrollProgress(0);
     }
 
-    // Calculate distance from bottom for next content trigger
+    // Check if user has reached the bottom
     const { scrollTop: currentScrollTop, scrollHeight, clientHeight } = e.target;
     const distanceFromBottom = scrollHeight - clientHeight - currentScrollTop;
-
-    if (distanceFromBottom < 1 && !isScrolling && onNext) {
-      setIsScrolling(true);
-      // Add a small delay before triggering the next content
-      setTimeout(() => {
-        onNext();
-        setIsScrolling(false);
-      }, 500);
+    
+    if (distanceFromBottom < 10) {
+      setIsAtBottom(true);
+    } else {
+      setIsAtBottom(false);
     }
   };
 
@@ -129,12 +121,41 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, period, c
         period={period}
         style={{ 
           opacity: headOpacity,
-          transition: 'opacity 0.1s linear' // Add smooth transition
+          transition: 'opacity 0.1s linear'
         }}
       />
       <Body ref={bodyRef} onScrollProgress={scrollProgress}>
         {children}
       </Body>
+      {onNext && (
+        <div 
+          className="content-next-button"
+          style={{
+            transform: isAtBottom ? 'translateY(0px)' : 'translateY(64px)',
+            transition: 'transform 0.3s ease',
+            position: 'sticky',
+            bottom: '0',
+            left: '0',
+            right: '0',
+            height: '64px',
+            background: 'linear-gradient(transparent, var(--base) 20%)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: '10'
+          }}
+        >
+          <button 
+            onClick={onNext} 
+            className="next-button"
+            style={{
+              transform: 'none'
+            }}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };

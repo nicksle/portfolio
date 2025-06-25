@@ -25,7 +25,6 @@ const CaseStudy = () => {
   const [viewportHeight, setViewportHeight] = useState(typeof window !== 'undefined' ? window.innerHeight : 800);
   const caseStudyContentRef = useRef(null);
   const contentNavRef = useRef(null);
-  const scrollLockRef = useRef(false);
   const carouselScrollRef = useRef(null);
 
   const handleTabChange = (id) => {
@@ -33,7 +32,7 @@ const CaseStudy = () => {
   };
 
   const handleNextContent = () => {
-    const contentIds = ['problem', 'goals', 'research', 'insights', 'solutions', 'retrospective'];
+    const contentIds = ['problem', 'research', 'insights', 'solutions', 'retrospective'];
     const currentIndex = contentIds.indexOf(activeContentId);
     if (currentIndex < contentIds.length - 1) {
       setActiveContentId(contentIds[currentIndex + 1]);
@@ -49,31 +48,17 @@ const CaseStudy = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (!caseStudyContentRef.current || !contentNavRef.current) return;
-      const headerHeight = 64;
-      const targetY = 24;
+      
+      const targetY = 64; // Match the ContentNavigator trigger point
       const navRect = contentNavRef.current.getBoundingClientRect();
       const navTop = navRect.top;
       
-      // Calculate progress: 1 when navTop == targetY, 0 when navTop is just below caseStudyContent
+      // Calculate progress for animations
       const caseStudyRect = caseStudyContentRef.current.getBoundingClientRect();
-      const startY = caseStudyRect.bottom; // nav just below case study content
+      const startY = caseStudyRect.bottom;
       const endY = targetY;
       const progress = Math.min(Math.max((startY - navTop) / (startY - endY), 0), 1);
       setScrollProgress(progress);
-
-      // Add/remove scrollable class based on navTop position
-      const activeContent = document.querySelector('.content.active');
-      if (activeContent) {
-        if (navTop <= targetY) {
-          activeContent.classList.add('scrollable');
-          const scrollOffset = window.scrollY + navTop - targetY;
-          window.scrollTo({ top: scrollOffset, behavior: 'auto' });
-          scrollLockRef.current = true;
-        } else {
-          activeContent.classList.remove('scrollable');
-          scrollLockRef.current = false;
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: false });
@@ -166,7 +151,7 @@ const CaseStudy = () => {
               </div>
               <div className="casestudy-divider"></div>
               <p className="casestudy-description">
-              Through this project, we streamlined the sign-up and onboarding experience to reduce drop-off and improve user activation. By simplifying the account creation flow and clearly highlighting our product’s value propositions, we lowered barriers to entry and encouraged more users to complete the process. Updating our new user experience with a late-binding onboarding approach allowed us to guide users more effectively, educate them on key features, and build trust from the start.
+              Through this project, we streamlined the sign-up and onboarding experience to reduce drop-off and improve user activation. By simplifying the account creation flow and clearly highlighting our product's value propositions, we lowered barriers to entry and encouraged more users to complete the process. Updating our new user experience with a late-binding onboarding approach allowed us to guide users more effectively, educate them on key features, and build trust from the start.
               </p>
             </div>
             <div className="casestudy-image">
@@ -237,11 +222,10 @@ const CaseStudy = () => {
           <ContentNavigator>
             <TabNav activeId={activeContentId} onTabChange={handleTabChange}>
               <NavTabItem id="problem" index="01" title="Problem" />
-              <NavTabItem id="goals" index="02" title="Goals" />
-              <NavTabItem id="research" index="03" title="Research" />
-              <NavTabItem id="insights" index="04" title="Insights" />
-              <NavTabItem id="solutions" index="05" title="Solutions" />
-              <NavTabItem id="retrospective" index="06" title="Retrospective" />
+              <NavTabItem id="research" index="02" title="Research" />
+              <NavTabItem id="insights" index="03" title="Insights" />
+              <NavTabItem id="solutions" index="04" title="Solutions" />
+              <NavTabItem id="retrospective" index="05" title="Retrospective" />
             </TabNav>
             <ContentStack activeId={activeContentId}>
               <Content
@@ -249,15 +233,18 @@ const CaseStudy = () => {
                 isActive={activeContentId === "problem"}
                 index="01"
                 subtitle="Understanding the Challenge"
-                title="Problem"
+                title="The Challenge"
                 icon="problem"
                 period="2023"
                 onNext={handleNextContent}
               >
                 <BodyComponent style={{ gridTemplateColumns: '1fr 1fr' }}>
-                  <Text>
-                    Despite strong app download numbers, we faced a critical challenge: users weren't completing the sign-up process. Our analytics revealed a significant drop-off between app installation and account creation.
-                  </Text>
+                <Text 
+                subtitle="The Problem"
+                style="B1"
+              >
+                Our analytics showed a major drop-off between installation and account creation..Despite high app downloads, many users didn't complete sign-up.  <br /> <br /> Of those who did sign up, many failed to activate — stalling during onboarding and missing key product actions. This pointed to deeper issues in how we introduced the product and guided users early on.
+                </Text>
                   <Image src="https://picsum.photos/800/600" alt="Tanda mobile app problem illustration" />
                 </BodyComponent>
                 <BodyComponent style={{ gridTemplateColumns: '1fr 1fr 1fr', gap: '24px' }}>
@@ -283,43 +270,24 @@ const CaseStudy = () => {
                     body="Technical issues during sign-up and verification created additional friction points for users."
                   />
                 </BodyComponent>
-              </Content>
-
-              <Content
-                isActive={activeContentId === 'goals'}
-                id="goals"
-                index="02"
-                subtitle="Defining Success"
-                title="Goals"
-                icon={IconSvg}
-                period="2024"
-                onNext={handleNextContent}
-              >
+                <div className="break-line" />
+                
                 <BodyComponent>
-                  <Text>
-                    Our primary goals were to improve user experience, increase efficiency, and create a more scalable solution. We established clear metrics to measure success and ensure we were meeting user needs effectively.
-                  </Text>
-                </BodyComponent>
-                <BodyComponent rows={1}>
-                  <FullCard
-                    index="02"
-                    icon={IconSvg}
-                    title="Project Goals"
-                    description="Setting clear objectives and success metrics for the project."
-                    ctaText="View Details"
-                    ctaIcon={IconSvg}
-                  >
-                    <img src="https://picsum.photos/400/540" alt="Goals visualization 1" />
-                    <img src="https://picsum.photos/400/540" alt="Goals visualization 2" />
-                    <img src="https://picsum.photos/400/540" alt="Goals visualization 3" />
-                  </FullCard>
+                <Text 
+                subtitle="The Challenge"
+                style="B1"
+              >
+                Our primary goal was to improve the NUX so we could grow our active user base and learn from their behavior. <br /><br />By increasing activation, we'd not only retain more users, but also gather richer insights to guide product decisions and drive long-term growth.
+
+                </Text>
+                
                 </BodyComponent>
               </Content>
 
               <Content
                 isActive={activeContentId === 'research'}
                 id="research"
-                index="03"
+                index="02"
                 subtitle="Gathering Insights"
                 title="Research"
                 icon={IconSvg}
@@ -336,16 +304,16 @@ const CaseStudy = () => {
                     firstCard={{
                       index: "01",
                       icon: IconSvg,
-                      title: "User Interviews",
-                      description: "Conducted 15 in-depth interviews with current users to understand their workflow and pain points.",
+                      title: "User Flow Audit",
+                      description: "A comprehensive review of the existing sign-up process, supported by internal team feedback. We identified structural friction, unclear microinteractions, and moments where users were likely to stall.",
                       ctaText: "View Details",
                       ctaIcon: IconSvg
                     }}
                     lastCard={{
                       index: "02",
                       icon: IconSvg,
-                      title: "Usability Testing",
-                      description: "Observed 20 users completing common tasks to identify friction points in the current interface.",
+                      title: "UX Session Recordings",
+                      description: "By analyzing real user sessions, we identified patterns of confusion and drop-off. Common friction points included verification flows, unclear instructions, and failed form validations.",
                       ctaText: "View Details",
                       ctaIcon: IconSvg
                     }}
@@ -356,8 +324,8 @@ const CaseStudy = () => {
                     firstCard={{
                       index: "03",
                       icon: IconSvg,
-                      title: "Analytics Review",
-                      description: "Analyzed usage patterns and drop-off points from 3 months of user data.",
+                      title: "User Interviews",
+                      description: "We were able to conduct live on boarding sessions with users to directly view them completing our NUX.  During these sessions we just observed the users and were able to ask probing questions after.",
                       ctaText: "View Details",
                       ctaIcon: IconSvg
                     }}
@@ -365,7 +333,55 @@ const CaseStudy = () => {
                       index: "04",
                       icon: IconSvg,
                       title: "Competitive Analysis",
-                      description: "Evaluated 5 competing products to identify industry best practices and opportunities.",
+                      description: "We benchmarked onboarding flows from similar fintech apps. Key takeaways included how other apps sequence sensitive steps (like KYC), onboard with visual tours, and promote early product value.",
+                      ctaText: "View Details",
+                      ctaIcon: IconSvg
+                    }}
+                  />
+                </BodyComponent>
+
+                <div className="break-line" />
+
+                <BodyComponent>
+                  <Text>
+                    Through our research, we identified several key insights that would guide our design decisions and help us create a more effective and user-friendly platform.
+                  </Text>
+                </BodyComponent>
+
+                <BodyComponent>
+                  <CardGroup
+                    firstCard={{
+                      index: "01",
+                      icon: IconSvg,
+                      title: "Technical Friction Was Causing Early Exits",
+                      description: "Session timeouts, Firebase auth failures, and confusing error states created trust-breaking moments before users could even see the product.",
+                      ctaText: "View Details",
+                      ctaIcon: IconSvg
+                    }}
+                    lastCard={{
+                      index: "02",
+                      icon: IconSvg,
+                      title: "The Sign-Up Flow Asked Too Much, Too Soon",
+                      description: "Email-only sign-up, unclear profile picture requirements, and early KYC requests created unnecessary friction. Users hadn't yet seen the product's value, so the asks felt premature.",
+                      ctaText: "View Details",
+                      ctaIcon: IconSvg
+                    }}
+                  />
+                </BodyComponent>
+                <BodyComponent>
+                  <CardGroup
+                    firstCard={{
+                      index: "03",
+                      icon: IconSvg,
+                      title: "Users Didn't Know What to Do After Signing Up",
+                      description: "Once in the app, many users were unsure how to proceed. There was no clear guidance, orientation, or milestone structure to show what success looked like.",
+                      ctaIcon: IconSvg
+                    }}
+                    lastCard={{
+                      index: "04",
+                      icon: IconSvg,
+                      title: "Competitive Analysis",
+                      description: "We benchmarked onboarding flows from similar fintech apps. Key takeaways included how other apps sequence sensitive steps (like KYC), onboard with visual tours, and promote early product value.",
                       ctaText: "View Details",
                       ctaIcon: IconSvg
                     }}
@@ -375,11 +391,12 @@ const CaseStudy = () => {
 
               <Content
                 id="insights"
-                index="04"
+                index="03"
                 subtitle="Key Insights"
                 title="Understanding User Needs"
                 icon={IconSvg}
                 period="2023"
+                onNext={handleNextContent}
               >
                 <BodyComponent>
                   <Text>
@@ -484,7 +501,7 @@ const CaseStudy = () => {
               <Content
                 isActive={activeContentId === 'solutions'}
                 id="solutions"
-                index="05"
+                index="04"
                 subtitle="Our Approach"
                 title="Solutions"
                 icon={IconSvg}
@@ -571,7 +588,7 @@ const CaseStudy = () => {
               <Content
                 isActive={activeContentId === 'retrospective'}
                 id="retrospective"
-                index="06"
+                index="05"
                 subtitle="Looking Back"
                 title="Retrospective"
                 icon={IconSvg}
