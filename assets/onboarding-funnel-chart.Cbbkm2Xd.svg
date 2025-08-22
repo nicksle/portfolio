@@ -1,0 +1,104 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="barGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="#0a0a0a"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" fill="#ffffff" font-family="Satoshi, sans-serif" font-size="24" font-weight="500">
+    On Board Funnel Drop Off
+  </text>
+  
+  <!-- Chart container -->
+  <g transform="translate(100, 80)">
+    
+    <!-- First bar: App Downloaded (100%) -->
+    <g transform="translate(0, 0)">
+      <!-- Bar -->
+      <rect x="0" y="200" width="120" height="120" fill="url(#barGradient)" stroke="#ffffff" stroke-width="2" rx="4"/>
+      <!-- 3D effect -->
+      <rect x="4" y="196" width="120" height="4" fill="#3a3a3a"/>
+      <rect x="120" y="200" width="4" height="120" fill="#3a3a3a"/>
+      
+      <!-- Percentage label -->
+      <text x="60" y="190" text-anchor="middle" fill="#ffffff" font-family="Satoshi, sans-serif" font-size="18" font-weight="600">
+        100%
+      </text>
+      
+      <!-- Flag label -->
+      <g transform="translate(60, 350)">
+        <rect x="-40" y="0" width="80" height="25" fill="#ffffff" rx="2"/>
+        <polygon points="0,25 -5,35 5,35" fill="#ffffff"/>
+        <text x="0" y="17" text-anchor="middle" fill="#000000" font-family="Satoshi, sans-serif" font-size="12" font-weight="500">
+          App Downloaded
+        </text>
+      </g>
+    </g>
+    
+    <!-- Second bar: Account Created (30%) -->
+    <g transform="translate(200, 0)">
+      <!-- Bar -->
+      <rect x="0" y="280" width="120" height="40" fill="url(#barGradient)" stroke="#ffffff" stroke-width="2" rx="4"/>
+      <!-- 3D effect -->
+      <rect x="4" y="276" width="120" height="4" fill="#3a3a3a"/>
+      <rect x="120" y="280" width="4" height="40" fill="#3a3a3a"/>
+      
+      <!-- Percentage label -->
+      <text x="60" y="270" text-anchor="middle" fill="#ffffff" font-family="Satoshi, sans-serif" font-size="18" font-weight="600">
+        30%
+      </text>
+      
+      <!-- Flag label -->
+      <g transform="translate(60, 350)">
+        <rect x="-40" y="0" width="80" height="25" fill="#ffffff" rx="2"/>
+        <polygon points="0,25 -5,35 5,35" fill="#ffffff"/>
+        <text x="0" y="17" text-anchor="middle" fill="#000000" font-family="Satoshi, sans-serif" font-size="12" font-weight="500">
+          Account Created
+        </text>
+      </g>
+    </g>
+    
+    <!-- Third bar: Activated User (25%) -->
+    <g transform="translate(400, 0)">
+      <!-- Bar -->
+      <rect x="0" y="290" width="120" height="30" fill="url(#barGradient)" stroke="#ffffff" stroke-width="2" rx="4"/>
+      <!-- 3D effect -->
+      <rect x="4" y="286" width="120" height="4" fill="#3a3a3a"/>
+      <rect x="120" y="290" width="4" height="30" fill="#3a3a3a"/>
+      
+      <!-- Percentage label -->
+      <text x="60" y="280" text-anchor="middle" fill="#ffffff" font-family="Satoshi, sans-serif" font-size="18" font-weight="600">
+        25%
+      </text>
+      
+      <!-- Flag label -->
+      <g transform="translate(60, 350)">
+        <rect x="-40" y="0" width="80" height="25" fill="#ffffff" rx="2"/>
+        <polygon points="0,25 -5,35 5,35" fill="#ffffff"/>
+        <text x="0" y="17" text-anchor="middle" fill="#000000" font-family="Satoshi, sans-serif" font-size="12" font-weight="500">
+          Activated User
+        </text>
+      </g>
+    </g>
+    
+    <!-- Drop-off arrows -->
+    <g stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6">
+      <!-- Arrow from App Downloaded to Account Created -->
+      <path d="M 140 260 Q 170 260 200 300" marker-end="url(#arrowhead)"/>
+      <!-- Arrow from Account Created to Activated User -->
+      <path d="M 340 300 Q 370 300 400 305" marker-end="url(#arrowhead)"/>
+    </g>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff"/>
+      </marker>
+    </defs>
+  </g>
+</svg> 
