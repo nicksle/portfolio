@@ -276,12 +276,22 @@ const CaseStudy = () => {
                     bottomLeft={<span className="S1">High Drop-Off</span>}
                     bottomRight={null}
                     body="Only 30% of users who downloaded the app completed sign-up. <br /><br />Friction from our email-only flow and unclear verification may have caused early abandonment."
+                    icon={
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M2 8H4V10H6V12H8V14H10V12H12V10H14V12H16V14H18V16H14V18H20H22V16V10H20V14H18V12H16V10H14V8H12V10H10V12H8V10H6V8H4V6H2V8Z" fill="currentColor"/>
+                      </svg>
+                    }
                   />
                   <Tile
                     index="02"
                     title="Activation Rate"
                     bottomLeft={<span className="S1">High Drop Off</span>}
                     body="Of the users who signed up, only 25% of those users completed on boarding to be an activated user <br /><br />This metrics shows that users may have a difficult time interacting with our product."
+                    icon={
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M2 8H4V10H6V12H8V14H10V12H12V10H14V12H16V14H18V16H14V18H20H22V16V10H20V14H18V12H16V10H14V8H12V10H10V12H8V10H6V8H4V6H2V8Z" fill="currentColor"/>
+                      </svg>
+                    }
                   />
                   <Tile
                     index="03"
@@ -289,6 +299,11 @@ const CaseStudy = () => {
                     bottomLeft={<span className="S1">Long Completion Time</span>}
                     bottomRight={null}
                     body="Average time to complete on boarding was over 24 hours. <br /><br />There are issues within our on boarding flow causing the process to take longer than desired"
+                    icon={
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M2 8H4V10H6V12H8V14H10V12H12V10H14V12H16V14H18V16H14V18H20H22V16V10H20V14H18V12H16V10H14V8H12V10H10V12H8V10H6V8H4V6H2V8Z" fill="currentColor"/>
+                      </svg>
+                    }
                   />
                 </BodyComponent>
                 <div className="break-line" />
@@ -311,6 +326,18 @@ const CaseStudy = () => {
                       bottomLeft={<span className="S1">KPI: % of Downloads that Complete Sign Up</span>}
                       bottomRight={null}
                       body="Target: +50% Increase <br /><br />We want to get more users to complete the account creation flow successfully."
+                      icon={
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                          <g clipPath="url(#clip0_43_267)">
+                            <path fillRule="evenodd" clipRule="evenodd" d="M13 0H11V4H13V0ZM0 11V13H4V11H0ZM24 11V13H20V11H24ZM13 24H11V20H13V24ZM8 6H16V8H18V16H16V18H8V16H6V8H8V6ZM20 2H22V4H20V2ZM20 4V6H18V4H20ZM22 22H20V20H22V22ZM20 20H18V18H20V20ZM4 2H2V4H4V6H6V4H4V2ZM2 22H4V20H6V18H4V20H2V22Z" fill="currentColor"/>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_43_267">
+                              <rect width="24" height="24" fill="white"/>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      }
                     />
                     <Tile
                       index="02"
@@ -318,6 +345,11 @@ const CaseStudy = () => {
                       bottomLeft={<span className="S1">KPI: % of users completing onboarding milestones</span>}
                       bottomRight={null}
                       body="Target: +50% Increase <br /><br />We want to drive more users to complete onboarding and engage with key features."
+                      icon={
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                          <path fillRule="evenodd" clipRule="evenodd" d="M8 6H16V8H8V6ZM4 10V8H8V10H4ZM2 12V10H4V12H2ZM2 14V12H0V14H2ZM4 16H2V14H4V16ZM8 18H4V16H8V18ZM16 18V20H8V18H16ZM20 16V18H16V16H20ZM22 14V16H20V14H22ZM22 12H24V14H22V12ZM20 10H22V12H20V10ZM20 10V8H16V10H20ZM10 11H14V15H10V11Z" fill="currentColor"/>
+                        </svg>
+                      }
                     />
                     <Tile
                       index="03"
@@ -325,6 +357,11 @@ const CaseStudy = () => {
                       bottomLeft={<span className="S1">KPI: % of support tickets related to NUX</span>}
                       bottomRight={null}
                       body="Target: -50% Decrease <br /><br />We want to lower the volume of onboarding-related support requests as an indicator of increased product understanding."
+                      icon={
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                          <path fillRule="evenodd" clipRule="evenodd" d="M0 7H2V9H0V7ZM4 11H2V9H4V11ZM8 13V11H4V13H2V15H4V13H8ZM16 13H8V15H6V17H8V15H16V17H18V15H16V13ZM20 11H16V13H20V15H22V13H20V11ZM22 9V11H20V9H22ZM22 9V7H24V9H22Z" fill="currentColor"/>
+                        </svg>
+                      }
                     />
                   </TileColumn>
                   
