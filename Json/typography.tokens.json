@@ -1,0 +1,101 @@
+{
+  "typography": {
+    "title-1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.title}",
+        "fontSize": "64px",
+        "fontWeight": "{font.weight.medium}",
+        "letterSpacing": "0%",
+        "lineHeight": "normal",
+        "textTransform": "none",
+        "textDecoration": "none"
+      },
+      "$description": "Main page titles and hero sections"
+    },
+    "heading": {
+      "lg": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.title}",
+          "fontSize": "{font.size.title.lg}",
+          "fontWeight": "{font.weight.bold}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        },
+        "$description": "Large headings for major sections"
+      },
+      "base": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.title}",
+          "fontSize": "{font.size.title.base}",
+          "fontWeight": "{font.weight.medium}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        },
+        "$description": "Base heading size for standard sections"
+      },
+      "h3": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.title}",
+          "fontSize": "{font.size.title.sm}",
+          "fontWeight": "{font.weight.bold}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        },
+        "$description": "Small headings for subsections and card titles"
+      }
+    },
+    "body": {
+      "base": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.title}",
+          "fontSize": "{font.size.body.base}",
+          "fontWeight": "{font.weight.regular}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        },
+        "$description": "Large body text for introductions and main content"
+      },
+      "sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.body}",
+          "fontSize": "{font.size.body.sm}",
+          "fontWeight": "{font.weight.regular}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        },
+        "$description": "Small body text for descriptions and secondary content"
+      }
+    },
+    "other": {
+      "s1": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.sub-title}",
+          "fontSize": "{font.size.sub-title}",
+          "fontWeight": "{font.weight.regular}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        },
+        "$description": "Monospace text for code, labels, and small elements"
+      }
+    }
+  }
+}

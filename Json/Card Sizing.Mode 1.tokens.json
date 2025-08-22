@@ -1,0 +1,22 @@
+{
+  "head": {
+    "default": {
+      "$type": "dimension",
+      "$value": "540px"
+    },
+    "expanded": {
+      "$type": "dimension",
+      "$value": "340px"
+    }
+  },
+  "body": {
+    "default": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "expanded": {
+      "$type": "dimension",
+      "$value": "768px"
+    }
+  }
+}

@@ -4,9 +4,9 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1200px;
-  height: 64px;
-  background: var(--base);
+  max-width: var(--header-max-width, 1200px);
+  height: var(--header-height, 64px);
+  background: var(--color-base, #0e0e10);
   z-index: 100;
 }
 
@@ -23,25 +23,25 @@
   height: 100%;
   display: flex;
   align-items: center;
-  border: 1px solid var(--inactive);
-  padding: 0 32px;
-  transition: all 0.3s ease;
+  border: 1px solid var(--color-inactive, #30302a);
+  padding: 0 var(--spacing-xl, 32px);
+  transition: var(--transition-fast, all 0.3s ease);
   position: relative;
   z-index: 1;
-  background: var(--base);
+  background: var(--color-base, #0e0e10);
   flex: 1;
 }
 
 .header-logo:hover {
-  border-color: var(--active);
+  border-color: var(--color-primary, #ffffe3);
   z-index: 2;
 }
 
 .header-title {
-  font-family: 'Satoshi', Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--base);
+  font-family: var(--font-family-title, 'Satoshi, Helvetica, Arial, sans-serif');
+  font-size: var(--font-size-heading-sm, 20px);
+  font-weight: var(--font-weight-medium, 500);
+  color: var(--color-base, #0e0e10);
   margin: 0;
   padding-left: 0;
 }
@@ -56,18 +56,18 @@
 }
 
 .nav-link {
-  width: 124px;
-  font-family: 'SF Mono', monospace;
-  font-size: 14px;
-  color: var(--tertiary);
+  width: var(--nav-link-width, 124px);
+  font-family: var(--font-family-subtitle, 'SF Mono, Menlo, Monaco, Consolas, monospace');
+  font-size: var(--font-size-subtitle, 14px);
+  color: var(--color-tertiary, #999988);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast, all 0.3s ease);
   text-align: center;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--inactive);
+  border: 1px solid var(--color-inactive, #30302a);
   position: relative;
   z-index: 1;
   margin-left: -1px;
@@ -78,12 +78,12 @@
 }
 
 .nav-link:last-child {
-  border-right: 1px solid var(--inactive);
+  border-right: 1px solid var(--color-inactive, #30302a);
 }
 
 .nav-link:hover {
-  color: var(--active);
-  border-color: var(--active);
+  color: var(--color-primary, #ffffe3);
+  border-color: var(--color-primary, #ffffe3);
   z-index: 2;
 }
 

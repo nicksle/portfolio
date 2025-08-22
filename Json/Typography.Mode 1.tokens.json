@@ -1,0 +1,68 @@
+{
+  "font": {
+    "family": {
+      "title": {
+        "$type": "string",
+        "$value": "Satoshi"
+      },
+      "body": {
+        "$type": "string",
+        "$value": "Satoshi"
+      },
+      "sub-title": {
+        "$type": "string",
+        "$value": "SF Mono"
+      }
+    },
+    "size": {
+      "sub-title": {
+        "$type": "string",
+        "$value": "String value"
+      },
+      "title": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "base": {
+          "$type": "dimension",
+          "$value": "36px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "64px"
+        }
+      },
+      "body": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "20px"
+        },
+        "base": {
+          "$type": "dimension",
+          "$value": "32px"
+        }
+      }
+    },
+    "weight": {
+      "regular": {
+        "$type": "string",
+        "$value": "String value"
+      },
+      "medium": {
+        "$type": "string",
+        "$value": "String value"
+      },
+      "bold": {
+        "$type": "string",
+        "$value": "String value"
+      }
+    }
+  },
+  "size": {
+    "sub-title": {
+      "$type": "dimension",
+      "$value": "14px"
+    }
+  }
+}

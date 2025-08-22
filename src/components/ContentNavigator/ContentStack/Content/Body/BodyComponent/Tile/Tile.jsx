@@ -30,14 +30,17 @@ const Tile = ({
   bottomRight,
   body,
   className = '',
-  style = {}
+  style = {},
+  icon
 }) => {
   return (
     <div className={`tile ${className}`} style={style}>
       <div className="tile-head">
         <div className="tile-head-top">
           <span style={S1_STYLE}>{index}</span>
-          <span style={S1_STYLE}>{index}</span>
+          <div className="tile-head-icon">
+            {icon || <div className="tile-icon-placeholder" />}
+          </div>
         </div>
         <div className="tile-head-title">
           <Text style="H3">{title}</Text>
@@ -49,7 +52,11 @@ const Tile = ({
       </div>
       <div className="tile-divider" />
       <div className="tile-body">
-        <Text style="B3">{body}</Text>
+        <div 
+          className="tile-body-text"
+          style={B3_STYLE}
+          dangerouslySetInnerHTML={{ __html: body }}
+        />
       </div>
     </div>
   );

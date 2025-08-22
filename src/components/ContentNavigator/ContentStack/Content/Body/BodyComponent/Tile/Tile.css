@@ -21,6 +21,14 @@
   align-items: center;
 }
 
+.tile-head-icon {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .tile-head-title {
   width: 100%;
   height: 32px;
@@ -48,4 +56,11 @@
   width: 100%;
   height: fit-content;
   padding: 16px;
+}
+
+.tile-icon-placeholder {
+  width: 8px;
+  height: 8px;
+  background-color: var(--inactive);
+  border-radius: 50%;
 }

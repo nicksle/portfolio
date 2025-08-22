@@ -1,0 +1,64 @@
+{
+  "name": "Design Tokens",
+  "collections": {
+    "Master": {
+      "modes": {
+        "Mode 1": [
+          "master.tokens.json"
+        ]
+      }
+    },
+    "Color": {
+      "modes": {
+        "Mode 3": [
+          "Color.Mode 3.tokens.json"
+        ]
+      }
+    },
+    "Spacing": {
+      "modes": {
+        "Mode 1": [
+          "Spacing.Mode 1.tokens.json"
+        ]
+      }
+    },
+    "Typography": {
+      "modes": {
+        "Mode 1": [
+          "typography.tokens.json"
+        ]
+      }
+    },
+    "Font": {
+      "modes": {
+        "Mode 1": [
+          "font-family.tokens.json",
+          "font-size.tokens.json",
+          "font-weight.tokens.json"
+        ]
+      }
+    },
+    "Icon": {
+      "modes": {
+        "Mode 1": [
+          "Icon.Mode 1.tokens.json"
+        ]
+      }
+    },
+    "Card Sizing": {
+      "modes": {
+        "Mode 1": [
+          "Card Sizing.Mode 1.tokens.json"
+        ]
+      }
+    }
+  },
+  "styles": {
+    "text": [
+      "text.styles.tokens.json"
+    ],
+    "color": [
+      "color.styles.tokens.json"
+    ]
+  }
+}

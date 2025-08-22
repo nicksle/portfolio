@@ -18,19 +18,21 @@ const CardGroup = ({
   };
 
   return (
-    <div className="card-group" style={style}>
+    <div className="card-group fade-in-item" style={style}>
       <Card 
         {...firstCard} 
         onExpand={(isExpanded) => handleCardExpand(isExpanded, true)}
         isExpanded={expandedCard === 'first'}
         className={`${expandedCard === 'first' ? 'expanded' : ''} ${expandedCard === 'last' ? 'unexpanded' : ''}`}
       />
-      <Card 
-        {...lastCard} 
-        onExpand={(isExpanded) => handleCardExpand(isExpanded, false)}
-        isExpanded={expandedCard === 'last'}
-        className={`${expandedCard === 'last' ? 'expanded' : ''} ${expandedCard === 'first' ? 'unexpanded' : ''}`}
-      />
+      {lastCard && (
+        <Card 
+          {...lastCard} 
+          onExpand={(isExpanded) => handleCardExpand(isExpanded, false)}
+          isExpanded={expandedCard === 'last'}
+          className={`${expandedCard === 'last' ? 'expanded' : ''} ${expandedCard === 'first' ? 'unexpanded' : ''}`}
+        />
+      )}
     </div>
   );
 };

@@ -1,0 +1,45 @@
+{
+  "colors": {
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "#30302a",
+        "$description": "Default border color for cards and sections"
+      },
+      "active": {
+        "$type": "color",
+        "$value": "#ffffe3",
+        "$description": "Active border color for hover and expanded states"
+      }
+    },
+    "background": {
+      "base": {
+        "$type": "color",
+        "$value": "#0e0e10",
+        "$description": "Main background color"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "#1e1e1e",
+        "$description": "Hover background color for interactive elements"
+      }
+    },
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "#ffffe3",
+        "$description": "Primary text color for headings and important content"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "#ccccb6",
+        "$description": "Secondary text color for body content"
+      },
+      "tertiary": {
+        "$type": "color",
+        "$value": "#999988",
+        "$description": "Tertiary text color for subtle elements and captions"
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "spacing": {
+    "none": {
+      "$type": "dimension",
+      "$value": "0px",
+      "$description": "No spacing"
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "Extra small spacing"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$description": "Small spacing - card index margin, list items"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$description": "Medium spacing - card indent, component gaps"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$description": "Large spacing - content gaps, margins"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$description": "Extra large spacing - content padding, icon margins"
+    },
+    "xxl": {
+      "$type": "dimension",
+      "$value": "32px",
+      "$description": "2x large spacing - card padding, major gaps"
+    },
+    "xxxl": {
+      "$type": "dimension",
+      "$value": "64px",
+      "$description": "3x large spacing - CTA height, major sections"
+    }
+  }
+}

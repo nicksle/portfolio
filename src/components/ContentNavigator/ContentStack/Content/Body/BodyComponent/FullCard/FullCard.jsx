@@ -1,6 +1,18 @@
 import React from 'react';
 import './FullCard.css';
 
+// Helper function to render icons
+const renderIcon = (icon, className) => {
+  if (!icon) return null;
+  if (React.isValidElement(icon)) {
+    // For React SVG components, clone with className
+    return React.cloneElement(icon, { className });
+  } else {
+    // For image files, use img tag
+    return <img src={icon} alt="icon" className={className} />;
+  }
+};
+
 const S1_STYLE = {
   fontFamily: 'SF Mono, monospace',
   fontSize: '14px',
@@ -30,22 +42,23 @@ const FullCard = ({
   ctaText,
   ctaIcon,
   children,
-  style = {} 
+  style = {},
+  className = ''
 }) => {
   return (
-    <div className="full-card">
+    <div className={`full-card ${className}`.trim()}>
       <span className="full-card-index" style={S1_STYLE}>{index}</span>
       <div className="full-card-indent">
         <div className="full-card-frame">
           <div className="full-card-head">
             <div className="full-card-content">
-              {icon && <img src={icon} alt="icon" className="full-card-icon" />}
+              {renderIcon(icon, "full-card-icon")}
               <h3 style={H3_STYLE}>{title}</h3>
               <p style={B2_STYLE}>{description}</p>
             </div>
             <div className="full-card-cta">
               <span style={S1_STYLE}>{ctaText}</span>
-              <img src={ctaIcon} alt="cta" className="full-card-cta-icon" />
+              {renderIcon(ctaIcon, "full-card-cta-icon")}
             </div>
           </div>
           <div className="full-card-body">

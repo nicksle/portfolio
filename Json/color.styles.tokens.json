@@ -1,0 +1,34 @@
+{
+  "colors": {
+    "primary": {
+      "$type": "color",
+      "$value": "#ffffe3",
+      "$description": "Primary text and active elements"
+    },
+    "secondary": {
+      "$type": "color",
+      "$value": "#ccccb6",
+      "$description": "Secondary text and body content"
+    },
+    "tertiary": {
+      "$type": "color",
+      "$value": "#999988",
+      "$description": "Tertiary text and subtle elements"
+    },
+    "base": {
+      "$type": "color",
+      "$value": "#0e0e10",
+      "$description": "Main background color"
+    },
+    "hover": {
+      "$type": "color",
+      "$value": "#1e1e1e",
+      "$description": "Card backgrounds and hover states"
+    },
+    "inactive": {
+      "$type": "color",
+      "$value": "#30302a",
+      "$description": "Borders and inactive elements"
+    }
+  }
+}

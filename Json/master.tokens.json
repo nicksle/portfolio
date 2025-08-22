@@ -1,0 +1,154 @@
+{
+  "colors": {
+    "primary": {
+      "$type": "color",
+      "$value": "#ffffe3",
+      "$description": "Primary text and active elements"
+    },
+    "secondary": {
+      "$type": "color",
+      "$value": "#ccccb6",
+      "$description": "Secondary text and body content"
+    },
+    "tertiary": {
+      "$type": "color",
+      "$value": "#999988",
+      "$description": "Tertiary text and subtle elements"
+    },
+    "base": {
+      "$type": "color",
+      "$value": "#0e0e10",
+      "$description": "Main background color"
+    },
+    "hover": {
+      "$type": "color",
+      "$value": "#1e1e1e",
+      "$description": "Card backgrounds and hover states"
+    },
+    "inactive": {
+      "$type": "color",
+      "$value": "#30302a",
+      "$description": "Borders and inactive elements"
+    }
+  },
+  "spacing": {
+    "none": "0px",
+    "xs": "4px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "24px",
+    "xxl": "32px",
+    "xxxl": "64px"
+  },
+  "sizing": {
+    "card": {
+      "default": "540px",
+      "expanded": "1136px",
+      "head-expanded": "352px",
+      "body-expanded": "784px"
+    },
+    "icon": {
+      "default": "72px",
+      "small": "24px"
+    },
+    "button": {
+      "height": "64px"
+    }
+  },
+  "typography": {
+    "title-1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Satoshi, Helvetica, Arial, sans-serif",
+        "fontSize": "64px",
+        "fontWeight": "500",
+        "lineHeight": "normal",
+        "letterSpacing": "0%"
+      }
+    },
+    "heading": {
+      "lg": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Satoshi, Helvetica, Arial, sans-serif",
+          "fontSize": "36px",
+          "fontWeight": "700",
+          "lineHeight": "normal",
+          "letterSpacing": "0%"
+        }
+      },
+      "base": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Satoshi, Helvetica, Arial, sans-serif",
+          "fontSize": "24px",
+          "fontWeight": "500",
+          "lineHeight": "normal",
+          "letterSpacing": "0%"
+        }
+      },
+      "h3": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Satoshi, Helvetica, Arial, sans-serif",
+          "fontSize": "24px",
+          "fontWeight": "700",
+          "lineHeight": "normal",
+          "letterSpacing": "0%"
+        }
+      }
+    },
+    "body": {
+      "base": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Satoshi, Helvetica, Arial, sans-serif",
+          "fontSize": "32px",
+          "fontWeight": "400",
+          "lineHeight": "1.4",
+          "letterSpacing": "0%"
+        }
+      },
+      "sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Satoshi, Helvetica, Arial, sans-serif",
+          "fontSize": "20px",
+          "fontWeight": "400",
+          "lineHeight": "1.5",
+          "letterSpacing": "0%"
+        }
+      }
+    },
+    "other": {
+      "s1": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "SF Mono, Menlo, Monaco, Consolas, monospace",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "0%"
+        }
+      }
+    }
+  },
+  "transitions": {
+    "fast": "0.3s ease",
+    "medium": "0.5s ease",
+    "slow": "0.8s ease"
+  },
+  "borders": {
+    "default": {
+      "width": "1px",
+      "style": "solid",
+      "color": "#30302a"
+    },
+    "active": {
+      "width": "1px",
+      "style": "solid",
+      "color": "#ffffe3"
+    }
+  }
+}

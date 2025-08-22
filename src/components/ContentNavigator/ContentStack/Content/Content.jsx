@@ -8,7 +8,7 @@ import Image from './Body/BodyComponent/Image/Image';
 import Card from './Body/BodyComponent/CardGroup/Card/Card';
 import CardGroup from './Body/BodyComponent/CardGroup/CardGroup';
 import FullCard from './Body/BodyComponent/FullCard/FullCard';
-import IconSvg from '../../../../assets/icons/eye.svg';
+import EyeIcon from '../../../../assets/icons/EyeIcon';
 
 const Content = ({ isActive = false, id, index, subtitle, title, icon, period, children, onNext }) => {
   const [headOpacity, setHeadOpacity] = useState(1);
@@ -16,6 +16,71 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, period, c
   const bodyRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isAtBottom, setIsAtBottom] = useState(false);
+
+  // Intersection Observer for fade-in animations
+  useEffect(() => {
+    if (!isActive) return;
+
+    const observerOptions = {
+      threshold: 0.1, // Trigger when 10% of element is visible
+      rootMargin: '0px 0px -50px 0px' // Start animation slightly before element enters viewport
+    };
+
+    const fadeInObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        console.log('Intersection observed:', entry.target.className, 'isIntersecting:', entry.isIntersecting);
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-visible');
+          console.log('Added fade-in-visible to:', entry.target.className);
+          // Once animation is complete, unobserve to improve performance
+          setTimeout(() => {
+            fadeInObserver.unobserve(entry.target);
+          }, 1000);
+        }
+      });
+    }, observerOptions);
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      // Observe all content items that should fade in
+      const contentItems = contentRef.current?.querySelectorAll('.fade-in-item:not(.fade-in-visible)');
+      if (contentItems && contentItems.length > 0) {
+        contentItems.forEach(item => {
+          fadeInObserver.observe(item);
+          console.log('Observing item:', item.className, 'opacity:', window.getComputedStyle(item).opacity);
+        });
+        console.log(`Observing ${contentItems.length} fade-in items`);
+        
+        // Log specific types for debugging
+        const cardItems = contentRef.current?.querySelectorAll('.fade-in-item.card');
+        const tileItems = contentRef.current?.querySelectorAll('.fade-in-item.tile');
+        const textItems = contentRef.current?.querySelectorAll('.fade-in-item.text');
+        const fullCardItems = contentRef.current?.querySelectorAll('.fade-in-item.full-card');
+        
+        if (cardItems) console.log(`Found ${cardItems.length} card items`);
+        if (tileItems) console.log(`Found ${tileItems.length} tile items`);
+        if (textItems) console.log(`Found ${textItems.length} text items`);
+        if (fullCardItems) console.log(`Found ${fullCardItems.length} full-card items`);
+      } else {
+        console.log('No fade-in items found to observe');
+        // Debug what's actually in the DOM
+        const allItems = contentRef.current?.querySelectorAll('*');
+        if (allItems) {
+          console.log('All elements in content:', allItems.length);
+          Array.from(allItems).forEach(item => {
+            if (item.className && item.className.includes('fade-in')) {
+              console.log('Found fade-in element:', item.className);
+            }
+          });
+        }
+      }
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      fadeInObserver.disconnect();
+    };
+  }, [isActive]);
 
   // Reset all states when content becomes inactive
   useEffect(() => {
@@ -29,6 +94,14 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, period, c
       setScrollProgress(0);
       setHeadOpacity(1);
       setIsAtBottom(false);
+
+      // Reset fade-in animations
+      const fadeInItems = contentRef.current?.querySelectorAll('.fade-in-item');
+      if (fadeInItems) {
+        fadeInItems.forEach(item => {
+          item.classList.remove('fade-in-visible');
+        });
+      }
 
       // Reset any expanded cards
       const expandedCards = document.querySelectorAll('.card-frame.expanded');
@@ -138,7 +211,7 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, period, c
             left: '0',
             right: '0',
             height: '64px',
-            background: 'linear-gradient(transparent, var(--base) 20%)',
+            background: 'linear-gradient(transparent, var(--color-base) 20%)',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',

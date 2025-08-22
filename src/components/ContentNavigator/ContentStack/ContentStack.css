@@ -1,6 +1,6 @@
 .content-stack {
   width: 100%;
-  height: 800px;
+  height: calc(100vh - 132px); /* Optimized for 14-inch MacBook (~900px viewport) */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -50,4 +50,17 @@
 .content-stack-item > * {
   width: 100%;
   height: 100%;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .content-stack {
+    height: calc(100vh - 100px); /* Slightly less space on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .content-stack {
+    height: calc(100vh - 80px); /* Even less space on mobile */
+  }
 } 

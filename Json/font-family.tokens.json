@@ -1,0 +1,19 @@
+{
+  "font-family": {
+    "title": {
+      "$type": "fontFamily",
+      "$value": "Satoshi, Helvetica, Arial, sans-serif",
+      "$description": "Primary brand font for headings and titles"
+    },
+    "body": {
+      "$type": "fontFamily",
+      "$value": "Satoshi, Helvetica, Arial, sans-serif",
+      "$description": "Primary font for body text and content"
+    },
+    "sub-title": {
+      "$type": "fontFamily",
+      "$value": "SF Mono, Menlo, Monaco, Consolas, monospace",
+      "$description": "Monospace font for code, labels, and small text"
+    }
+  }
+}

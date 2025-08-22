@@ -9,32 +9,32 @@
 
 .card-index {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: var(--spacing-sm, 8px);
   width: fit-content;
 }
 
 .card-indent {
-  padding-left: 12px;
+  padding-left: var(--spacing-md, 12px);
   width: fit-content;
 }
 
 .card-frame {
   display: flex;
   gap: 0;
-  width: 540px;
+  width: var(--card-width-default, 540px);
   padding: 0;
   margin: 0;
-  transition: all 0.3s ease;
-  border: 1px solid var(--inactive);
+  transition: var(--transition-fast, all 0.3s ease);
+  border: 1px solid var(--color-inactive, #30302a);
   overflow: hidden;
 }
 
 .card-frame:hover {
-  border-color: var(--active);
+  border-color: var(--color-primary, #ffffe3);
 }
 
 .card-frame.expanded {
-  width: 1136px;
+  width: var(--card-width-expanded, 1136px);
 }
 
 .card-frame.expanded .card-body {
@@ -42,14 +42,14 @@
 }
 
 .card-frame.expanded .card-head {
-  width: 352px;
-  min-width: 352px;
-  border-right: 1px solid var(--inactive);
-  transition: all 0.3s ease;
+  width: var(--card-head-expanded, 352px);
+  min-width: var(--card-head-expanded, 352px);
+  border-right: 1px solid var(--color-inactive, #30302a);
+  transition: var(--transition-fast, all 0.3s ease);
 }
 
 .card-frame:hover .card-head {
-  border-right-color: var(--active);
+  border-right-color: var(--color-primary, #ffffe3);
 }
 
 .card-frame.expanded .body-scroll {
@@ -58,23 +58,23 @@
 }
 
 .card-head {
-  min-width: 540px;
-  width: 540px;
-  height: 540px;
+  min-width: var(--card-width-default, 540px);
+  width: var(--card-width-default, 540px);
+  height: var(--card-height-default, 540px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-shrink: 0;
   padding: 0;
   margin: 0;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast, all 0.3s ease);
 }
 
 .card-body {
   width: 0;
-  height: 540px;
+  height: var(--card-height-default, 540px);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast, all 0.3s ease);
   background: none;
   padding: 0;
   margin: 0;
@@ -82,84 +82,147 @@
 }
 
 .card-content {
-  padding: 24px;
+  padding: var(--spacing-xl, 24px);
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
 .card-icon-wrapper {
-  width: 72px;
-  height: 72px;
-  padding-bottom: 24px;
+  width: var(--icon-size-default, 72px);
+  height: var(--icon-size-default, 72px);
+  padding-bottom: var(--spacing-xl, 24px);
 }
 
 .card-icon {
   width: 100%;
   height: 100%;
-  color: var(--active);
-  transition: all 0.3s ease;
+  color: var(--color-primary, #ffffe3);
+  transition: var(--transition-fast, all 0.3s ease);
+  display: block;
+  flex-shrink: 0;
+  animation: cardIconPulse 3s ease-in-out infinite;
+}
+
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .card-frame:hover .card-icon {
-  color: var(--active);
+  color: var(--color-primary, #ffffe3);
+}
+
+.card-frame:hover .card-icon svg {
+  fill: var(--color-primary, #ffffe3);
 }
 
 .card-content h3 {
-  padding-bottom: 12px;
+  padding-bottom: var(--spacing-md, 12px);
 }
 
 .card-cta {
   width: 100%;
-  height: 64px;
+  height: var(--button-height, 64px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  padding: 0 24px;
-  border-top: 1px solid var(--inactive);
-  transition: all 0.3s ease;
+  padding: 0 var(--spacing-xl, 24px);
+  border-top: 1px solid var(--color-inactive, #30302a);
+  transition: var(--transition-fast, all 0.3s ease);
 }
 
 .card-cta:hover {
-  background-color: var(--hover);
-  border-top-color: var(--active);
+  background-color: var(--color-hover, #1e1e1e);
+  border-top-color: var(--color-primary, #ffffe3);
 }
 
 .card-cta:hover span {
-  color: var(--active);
+  color: var(--color-primary, #ffffe3) !important;
+}
+
+.card-cta:hover .cta-text {
+  color: var(--color-primary, #ffffe3) !important;
 }
 
 .cta-icon-wrapper {
-  width: 24px;
-  height: 24px;
+  width: var(--icon-size-small, 24px);
+  height: var(--icon-size-small, 24px);
+}
+
+/* Bounce animation for CTA icon */
+@keyframes ctaIconBounce {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
 }
 
 .cta-icon {
   width: 100%;
   height: 100%;
-  color: var(--tertiary);
-  transition: all 0.3s ease;
+  color: var(--color-tertiary, #999988);
+  transition: var(--transition-fast, all 0.3s ease);
+  display: block;
+  flex-shrink: 0;
+  animation: ctaIconBounce 2s ease-in-out infinite;
+}
+
+.cta-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .card-cta:hover .cta-icon {
-  color: var(--active);
+  color: var(--color-primary, #ffffe3);
+}
+
+.card-cta:hover .cta-icon svg {
+  fill: var(--color-primary, #ffffe3);
 }
 
 .body-scroll {
   height: 100%;
   min-width: 100%;
   display: flex;
-  gap: 24px;
+  gap: var(--spacing-xl, 24px);
   padding: 0;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast, all 0.3s ease);
 }
 
 .body-scroll img {
-  height: 540px;
+  height: var(--card-height-default, 540px);
   width: auto;
   object-fit: cover;
   flex-shrink: 0;
+}
+
+.card-content p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.card-content p ul {
+  margin: var(--spacing-lg, 16px) 0 0 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.card-content p li {
+  margin-bottom: var(--spacing-sm, 8px);
+  line-height: 1.4;
+}
+
+.card-content p li:last-child {
+  margin-bottom: 0;
 } 

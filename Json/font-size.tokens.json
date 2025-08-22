@@ -1,0 +1,38 @@
+{
+  "font-size": {
+    "title": {
+      "lg": {
+        "$type": "dimension",
+        "$value": "36px",
+        "$description": "Large title size for major headings"
+      },
+      "base": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$description": "Base title size for standard headings"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$description": "Small title size for subsection headings"
+      }
+    },
+    "body": {
+      "base": {
+        "$type": "dimension",
+        "$value": "32px",
+        "$description": "Base body text size for large content"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "20px",
+        "$description": "Small body text size for standard content"
+      }
+    },
+    "sub-title": {
+      "$type": "dimension",
+      "$value": "14px",
+      "$description": "Subtitle and small text size"
+    }
+  }
+}

@@ -1,66 +1,67 @@
 import React from 'react';
 import './Text.css';
 
-const STYLES = {
-  H1: {
-    fontFamily: 'Satoshi, Helvetica, Arial, sans-serif',
-    fontSize: '64px',
-    fontWeight: 500,
-    color: 'var(--active)',
+const textStyles = {
+  title1: {
+    fontFamily: 'var(--font-family-title)',
+    fontSize: 'var(--font-size-title-1)',
+    fontWeight: 'var(--font-weight-medium)',
+    color: 'var(--color-primary)',
     lineHeight: 1.2
   },
-  H2: {
-    fontFamily: 'Satoshi, Helvetica, Arial, sans-serif',
+  titleLg: {
+    fontFamily: 'var(--font-family-title)',
+    // Keep 48px since no exact token exists; only map what we have
     fontSize: '48px',
-    fontWeight: 500,
-    color: 'var(--active)',
+    fontWeight: 'var(--font-weight-medium)',
+    color: 'var(--color-primary)',
     lineHeight: 1.2
   },
-  H3: {
-    fontFamily: 'Satoshi, Helvetica, Arial, sans-serif',
-    fontSize: '24px',
-    fontWeight: 500,
-    color: 'var(--active)',
+  titleBase: {
+    fontFamily: 'var(--font-family-title)',
+    fontSize: 'var(--font-size-title-base)',
+    fontWeight: 'var(--font-weight-medium)',
+    color: 'var(--color-primary)',
     lineHeight: 1.2
   },
-  B1: {
-    fontFamily: 'Satoshi, Helvetica, Arial, sans-serif',
-    fontSize: '32px',
-    fontWeight: 400,
-    color: 'var(--active)',
+  bodyLg: {
+    fontFamily: 'var(--font-family-body)',
+    fontSize: 'var(--font-size-body-base)',
+    fontWeight: 'var(--font-weight-regular)',
+    color: 'var(--color-primary)',
     lineHeight: 1.2
   },
-  B2: {
-    fontFamily: 'Satoshi, Helvetica, Arial, sans-serif',
-    fontSize: '20px',
-    fontWeight: 400,
-    color: 'var(--active)',
+  bodyBase: {
+    fontFamily: 'var(--font-family-body)',
+    fontSize: 'var(--font-size-body-sm)',
+    fontWeight: 'var(--font-weight-regular)',
+    color: 'var(--color-primary)',
     lineHeight: 1.2
   },
-  B3: {
-    fontFamily: 'Satoshi, Helvetica, Arial, sans-serif',
-    fontSize: '16px',
-    fontWeight: 400,
-    color: 'var(--active)',
+  bodySm: {
+    fontFamily: 'var(--font-family-body)',
+    fontSize: 'var(--font-size-body-xs)',
+    fontWeight: 'var(--font-weight-regular)',
+    color: 'var(--color-primary)',
     lineHeight: 1.2
   },
-  S1: {
-    fontFamily: 'SF Mono, monospace',
-    fontSize: '14px',
-    fontWeight: 500,
-    color: 'var(--tertiary)',
+  subtitle: {
+    fontFamily: 'var(--font-family-subtitle)',
+    fontSize: 'var(--font-size-subtitle)',
+    fontWeight: 'var(--font-weight-medium)',
+    color: 'var(--color-tertiary)',
     lineHeight: 1.2
   }
 };
 
 const Text = ({ 
   children, 
-  style = 'B1',
+  style = 'bodyLg',
   subtitle,
-  subtitleStyle = 'S1'
+  subtitleStyle = 'subtitle'
 }) => {
-  const textStyle = typeof style === 'string' ? STYLES[style] || STYLES.B1 : style;
-  const subStyle = typeof subtitleStyle === 'string' ? STYLES[subtitleStyle] || STYLES.S1 : subtitleStyle;
+  const textStyle = typeof style === 'string' ? textStyles[style] || textStyles.bodyLg : style;
+  const subStyle = typeof subtitleStyle === 'string' ? textStyles[subtitleStyle] || textStyles.subtitle : subtitleStyle;
 
   return (
     <div className="text-component-wrapper">

@@ -1,40 +1,43 @@
 import React from 'react';
 import './Head.css';
-import IconSvg from '../../../../../assets/icons/eye.svg'; // Corrected path
+import EyeIcon from '../../../../../assets/icons/EyeIcon';
 
-const S1_STYLE = {
-  fontFamily: 'SF Mono, monospace',
-  fontSize: '14px',
-  fontWeight: 500,
-  color: 'var(--tertiary)'
+const subtitleStyle = {
+  fontFamily: 'var(--font-family-subtitle)',
+  fontSize: 'var(--font-size-subtitle)',
+  fontWeight: 'var(--font-weight-medium)',
+  color: 'var(--color-tertiary)'
 };
 
-const H1_STYLE = {
-  fontFamily: 'Satoshi, Helvetica, Arial, sans-serif',
-  fontSize: '64px',
-  fontWeight: 500,
-  color: 'var(--active)'
+const titleStyle = {
+  fontFamily: 'var(--font-family-title)',
+  fontSize: 'var(--font-size-title-1)',
+  fontWeight: 'var(--font-weight-medium)',
+  color: 'var(--color-primary)'
 };
 
 const Head = ({
   index = '01',
   subtitle = 'Subtitle',
   title = 'Dummy Title',
-  icon = IconSvg,
+  icon = EyeIcon,
   period = '2024',
   style = {}
 }) => (
   <div className="head" style={style}>
     <div className="head-top">
-      <span style={S1_STYLE}>{index}</span>
-      <span style={S1_STYLE}>{subtitle}</span>
+      <span style={subtitleStyle}>{index}</span>
+      <span style={subtitleStyle}>{subtitle}</span>
     </div>
     <div className="head-title">
-      <span style={H1_STYLE}>{title}</span>
+      <span style={titleStyle}>{title}</span>
     </div>
     <div className="head-bottom">
-      <img src={icon} alt="icon" style={{ width: 24, height: 16 }} />
-      <span style={S1_STYLE}>{period}</span>
+      {icon && React.isValidElement(icon) ? 
+        React.cloneElement(icon, { style: { width: 'var(--icon-size-small)', height: 'var(--icon-height-small)' } }) : 
+        icon ? <img src={icon} alt="icon" style={{ width: 'var(--icon-size-small)', height: 'var(--icon-height-small)' }} /> : null
+      }
+      <span style={subtitleStyle}>{period}</span>
     </div>
   </div>
 );

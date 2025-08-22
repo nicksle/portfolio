@@ -1,0 +1,94 @@
+{
+  "title-1": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{font.family.title}",
+      "fontSize": "64px",
+      "fontWeight": 500,
+      "letterSpacing": "0%",
+      "lineHeight": "normal",
+      "textTransform": "none",
+      "textDecoration": "none"
+    }
+  },
+  "Typography": {
+    "Heading": {
+      "lg": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.title}",
+          "fontSize": "{font.size.title.lg}",
+          "fontWeight": "{font.weight.bold}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "base": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.title}",
+          "fontSize": "{font.size.title.base}",
+          "fontWeight": "{font.weight.medium}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "H3": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.title}",
+          "fontSize": "{font.size.title.sm}",
+          "fontWeight": "{font.weight.bold}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Body": {
+      "base": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.title}",
+          "fontSize": "{font.size.body.base}",
+          "fontWeight": "{font.weight.regular}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.body}",
+          "fontSize": "{font.size.body.sm}",
+          "fontWeight": "{font.weight.regular}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Other": {
+      "S1": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font.family.sub-title}",
+          "fontSize": "{size.sub-title}",
+          "fontWeight": "{font.weight.regular}",
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    }
+  }
+}
