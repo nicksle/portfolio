@@ -1,6 +1,5 @@
 import React from 'react';
 import './Head.css';
-import EyeIcon from '../../../../../assets/icons/EyeIcon';
 
 const subtitleStyle = {
   fontFamily: 'var(--font-family-subtitle)',
@@ -20,26 +19,82 @@ const Head = ({
   index = '01',
   subtitle = 'Subtitle',
   title = 'Dummy Title',
-  icon = EyeIcon,
+  icon = null,
+  secondIcon = null,
   period = '2024',
   style = {}
-}) => (
-  <div className="head" style={style}>
-    <div className="head-top">
-      <span style={subtitleStyle}>{index}</span>
-      <span style={subtitleStyle}>{subtitle}</span>
+}) => {
+  // Handle icon rendering
+  const renderIcon = () => {
+    if (!icon) return null;
+    
+    // If icon is a React component (function), render it
+    if (typeof icon === 'function') {
+      const IconComponent = icon;
+      return <IconComponent style={{ width: 'var(--icon-size-small)', height: 'var(--icon-height-small)' }} />;
+    }
+    
+    // If icon is already a React element, clone it with styles
+    if (React.isValidElement(icon)) {
+      return React.cloneElement(icon, { 
+        style: { 
+          width: 'var(--icon-size-small)', 
+          height: 'var(--icon-height-small)' 
+        } 
+      });
+    }
+    
+    // If icon is a string (image src), render as img
+    if (typeof icon === 'string') {
+      return <img src={icon} alt="icon" style={{ width: 'var(--icon-size-small)', height: 'var(--icon-height-small)' }} />;
+    }
+    
+    return null;
+  };
+
+  // Handle second icon rendering
+  const renderSecondIcon = () => {
+    if (!secondIcon) return null;
+    
+    // If secondIcon is a React component (function), render it
+    if (typeof secondIcon === 'function') {
+      const IconComponent = secondIcon;
+      return <IconComponent style={{ width: 'var(--icon-size-small)', height: 'var(--icon-height-small)' }} />;
+    }
+    
+    // If secondIcon is already a React element, clone it with styles
+    if (React.isValidElement(secondIcon)) {
+      return React.cloneElement(secondIcon, { 
+        style: { 
+          width: 'var(--icon-size-small)', 
+          height: 'var(--icon-height-small)' 
+        } 
+      });
+    }
+    
+    // If secondIcon is a string (image src), render as img
+    if (typeof secondIcon === 'string') {
+      return <img src={secondIcon} alt="second icon" style={{ width: 'var(--icon-size-small)', height: 'var(--icon-height-small)' }} />;
+    }
+    
+    return null;
+  };
+
+  return (
+    <div className="head" style={style}>
+      <div className="head-top">
+        <span style={subtitleStyle}>{index}</span>
+        <span style={subtitleStyle}>{subtitle}</span>
+      </div>
+      <div className="head-title">
+        <span style={titleStyle}>{title}</span>
+      </div>
+      <div className="head-bottom">
+        {renderIcon()}
+        {renderSecondIcon()}
+      </div>
     </div>
-    <div className="head-title">
-      <span style={titleStyle}>{title}</span>
-    </div>
-    <div className="head-bottom">
-      {icon && React.isValidElement(icon) ? 
-        React.cloneElement(icon, { style: { width: 'var(--icon-size-small)', height: 'var(--icon-height-small)' } }) : 
-        icon ? <img src={icon} alt="icon" style={{ width: 'var(--icon-size-small)', height: 'var(--icon-height-small)' }} /> : null
-      }
-      <span style={subtitleStyle}>{period}</span>
-    </div>
-  </div>
-);
+  );
+};
 
 export default Head;

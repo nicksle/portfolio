@@ -1,5 +1,7 @@
 import React from 'react';
 import './WorkItem.css';
+import Icon from '../../../../../../../../components/Icon';
+import { ICON_PATHS } from '../../../../../../../../utils/iconPaths';
 
 const WorkItem = ({ index, image, title, description }) => {
   return (
@@ -19,9 +21,11 @@ const WorkItem = ({ index, image, title, description }) => {
           <div className="work-item-cta">
             <span className="work-item-cta-text S1">Read More</span>
             <span className="work-item-cta-arrow">
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M13 6l6 6-6 6"/>
-              </svg>
+              <Icon 
+                svgPath={ICON_PATHS.arrowRightSimple} 
+                size="small" 
+                className="work-item-arrow-icon"
+              />
             </span>
           </div>
         </div>

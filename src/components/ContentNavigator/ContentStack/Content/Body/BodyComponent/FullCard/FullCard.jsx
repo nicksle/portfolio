@@ -13,25 +13,26 @@ const renderIcon = (icon, className) => {
   }
 };
 
-const S1_STYLE = {
-  fontFamily: 'SF Mono, monospace',
-  fontSize: '14px',
-  fontWeight: 500,
-  color: 'var(--tertiary)'
-};
-
-const H3_STYLE = {
-  fontFamily: 'Satoshi, Helvetica, Arial, sans-serif',
-  fontSize: '24px',
-  fontWeight: 500,
-  color: 'var(--active)'
-};
-
-const B2_STYLE = {
-  fontFamily: 'Satoshi, Helvetica, Arial, sans-serif',
-  fontSize: '20px',
-  fontWeight: 400,
-  color: 'var(--active)'
+// Styles using CSS custom properties - consistent with other components
+const textStyles = {
+  index: {
+    fontFamily: 'var(--font-family-subtitle, "SF Mono", Menlo, Monaco, Consolas, monospace)',
+    fontSize: 'var(--font-size-subtitle, 14px)',
+    fontWeight: 'var(--font-weight-medium, 500)',
+    color: 'var(--color-tertiary, #999988)'
+  },
+  heading: {
+    fontFamily: 'var(--font-family-title, "Satoshi", Helvetica, Arial, sans-serif)',
+    fontSize: 'var(--font-size-title-base, 24px)',
+    fontWeight: 'var(--font-weight-medium, 500)',
+    color: 'var(--color-primary, #ffffe3)'
+  },
+  body: {
+    fontFamily: 'var(--font-family-body, "Satoshi", Helvetica, Arial, sans-serif)',
+    fontSize: 'var(--font-size-body-sm, 20px)',
+    fontWeight: 'var(--font-weight-regular, 400)',
+    color: 'var(--color-primary, #ffffe3)'
+  }
 };
 
 const FullCard = ({ 
@@ -47,17 +48,17 @@ const FullCard = ({
 }) => {
   return (
     <div className={`full-card ${className}`.trim()}>
-      <span className="full-card-index" style={S1_STYLE}>{index}</span>
+      <span className="full-card-index" style={textStyles.index}>{index}</span>
       <div className="full-card-indent">
         <div className="full-card-frame">
           <div className="full-card-head">
             <div className="full-card-content">
               {renderIcon(icon, "full-card-icon")}
-              <h3 style={H3_STYLE}>{title}</h3>
-              <p style={B2_STYLE}>{description}</p>
+              <h3 style={textStyles.heading}>{title}</h3>
+              <p style={textStyles.body}>{description}</p>
             </div>
             <div className="full-card-cta">
-              <span style={S1_STYLE}>{ctaText}</span>
+              <span style={textStyles.index}>{ctaText}</span>
               {renderIcon(ctaIcon, "full-card-cta-icon")}
             </div>
           </div>

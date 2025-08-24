@@ -8,9 +8,9 @@ import Image from './Body/BodyComponent/Image/Image';
 import Card from './Body/BodyComponent/CardGroup/Card/Card';
 import CardGroup from './Body/BodyComponent/CardGroup/CardGroup';
 import FullCard from './Body/BodyComponent/FullCard/FullCard';
-import EyeIcon from '../../../../assets/icons/EyeIcon';
 
-const Content = ({ isActive = false, id, index, subtitle, title, icon, period, children, onNext }) => {
+
+const Content = ({ isActive = false, id, index, subtitle, title, icon, secondIcon, period, children, onNext }) => {
   const [headOpacity, setHeadOpacity] = useState(1);
   const contentRef = useRef(null);
   const bodyRef = useRef(null);
@@ -191,6 +191,7 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, period, c
         subtitle={subtitle}
         title={title}
         icon={icon}
+        secondIcon={secondIcon}
         period={period}
         style={{ 
           opacity: headOpacity,

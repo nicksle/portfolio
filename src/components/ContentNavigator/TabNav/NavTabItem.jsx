@@ -1,13 +1,13 @@
 import React from 'react';
 import './NavTabItem.css';
-import EyeIcon from '../../../assets/icons/eye.svg';
-import EyeClosedIcon from '../../../assets/icons/eye-closed.svg';
+import Icon from '../../../components/Icon';
+import { ICON_PATHS } from '../../../utils/iconPaths';
 
 const S1_STYLE = {
-  fontFamily: 'SF Mono, monospace',
-  fontSize: '14px',
-  fontWeight: 500,
-  color: 'var(--tertiary)'
+  fontFamily: 'var(--font-family-subtitle, "SF Mono", Menlo, Monaco, Consolas, monospace)',
+  fontSize: 'var(--font-size-subtitle, 14px)',
+  fontWeight: 'var(--font-weight-medium, 500)',
+  color: 'var(--color-tertiary, #999988)'
 };
 
 const NavTabItem = ({ 
@@ -32,11 +32,10 @@ const NavTabItem = ({
         <span>{title}</span>
       </div>
       <div className="navtab-item-bottom">
-        <img
-          src={isActive ? EyeIcon : EyeClosedIcon}
-          alt={isActive ? 'eye open' : 'eye closed'}
+        <Icon
+          svgPath={isActive ? ICON_PATHS.eye : ICON_PATHS.eyeClosed}
+          size="small"
           className={`navtab-eye-svg${isActive ? ' active' : ''}`}
-          height={12}
         />
       </div>
     </div>

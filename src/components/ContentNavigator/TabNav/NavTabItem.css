@@ -5,32 +5,31 @@
   align-items: stretch;
   justify-content: space-between;
   text-align: center;
-  padding: 16px;
-  background: var(--base);
-  color: var(--secondary);
+  padding: var(--spacing-lg, 16px);
+  background: var(--color-base, #0e0e10);
+  color: var(--color-secondary, #ccccb6);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast, all 0.3s ease);
   margin: 0 !important;
   box-sizing: border-box;
   min-width: 0;
-  border: 1px solid var(--inactive);
+  border: 1px solid var(--color-inactive, #30302a);
   z-index: 1;
   position: relative;
 }
 
-
 .nav-tab-item.active {
-  background: var(--active) !important;
-  border: 1px solid var(--active) !important;
+  background: var(--color-primary, #ffffe3) !important;
+  border: 1px solid var(--color-primary, #ffffe3) !important;
   z-index: 10;
 }
 
 .nav-tab-item.active .navtab-item-title {
-  color: var(--base) !important;
+  color: var(--color-base, #0e0e10) !important;
 }
 
 .nav-tab-item.active .navtab-item-top span {
-  color: var(--base) !important;
+  color: var(--color-base, #0e0e10) !important;
 }
 
 .nav-tab-item:hover,
@@ -39,7 +38,7 @@
 }
 
 .navtab-item-top {
-  height: 12px;
+  height: var(--icon-height-small, 16px);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -47,18 +46,18 @@
 }
 
 .navtab-item-title {
-  height: 16px;
+  height: var(--head-row-height, 16px);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  font-size: 16px;
+  font-size: var(--font-size-body-xs, 16px);
   font-family: inherit;
-  color: var(--active);
+  color: var(--color-primary, #ffffe3);
 }
 
 .navtab-item-bottom {
-  height: 12px;
+  height: var(--icon-height-small, 16px);
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -66,10 +65,17 @@
 }
 
 .navtab-eye-svg {
-  height: 12px;
+  height: var(--icon-height-small, 16px);
   width: auto;
-  transition: opacity 0.2s, filter 0.2s, fill 0.2s;
+  transition: var(--transition-fast, all 0.3s ease);
   opacity: 0.7;
+}
+
+/* Ensure the Icon component displays at the correct size */
+.navtab-eye-svg svg {
+  height: var(--icon-height-small, 16px);
+  width: var(--icon-height-small, 16px);
+  display: block;
 }
 
 .nav-tab-item.active .navtab-eye-svg {
@@ -78,21 +84,19 @@
 }
 
 .navtab-item-top span,
-.navtab-item-bottom svg,
-.navtab-item-bottom img {
-  color: var(--secondary);
-  fill: var(--secondary);
-  transition: color 0.2s, fill 0.2s;
+.navtab-item-bottom svg {
+  color: var(--color-secondary, #ccccb6);
+  fill: var(--color-secondary, #ccccb6);
+  transition: var(--transition-fast, all 0.3s ease);
 }
 
 .nav-tab-item.active .navtab-item-top span,
-.nav-tab-item.active .navtab-item-bottom svg,
-.nav-tab-item.active .navtab-item-bottom img {
-  color: var(--base);
-  fill: var(--base);
+.nav-tab-item.active .navtab-item-bottom svg {
+  color: var(--color-base, #0e0e10);
+  fill: var(--color-base, #0e0e10);
 }
 
 .nav-tab-item:hover {
-  border-color: var(--active);
-  color: var(--active);
+  border-color: var(--color-primary, #ffffe3);
+  color: var(--color-primary, #ffffe3);
 } 

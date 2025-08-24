@@ -35,3 +35,13 @@
   width: 100%;
   text-align: left;
 }
+
+/* Add specific styling for the icon in head-bottom */
+.head-bottom svg {
+  width: var(--icon-size-small, 24px);
+  height: var(--icon-height-small, 16px);
+  display: block;
+  flex-shrink: 0;
+  color: var(--color-tertiary, #999988);
+  fill: var(--color-tertiary, #999988);
+}

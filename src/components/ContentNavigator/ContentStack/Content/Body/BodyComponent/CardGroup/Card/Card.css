@@ -92,6 +92,9 @@
   width: var(--icon-size-default, 72px);
   height: var(--icon-size-default, 72px);
   padding-bottom: var(--spacing-xl, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-icon {
@@ -150,6 +153,9 @@
 .cta-icon-wrapper {
   width: var(--icon-size-small, 24px);
   height: var(--icon-size-small, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Bounce animation for CTA icon */
