@@ -87,6 +87,14 @@
   z-index: 2;
 }
 
+.nav-link.active {
+  color: var(--color-primary, #ffffe3);
+  border-color: var(--color-primary, #ffffe3);
+  background: var(--color-primary, #ffffe3);
+  color: var(--color-base, #0e0e10);
+  z-index: 2;
+}
+
 .nav-link:last-child:hover {
   border-color: var(--active);
 }

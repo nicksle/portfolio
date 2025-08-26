@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './CaseStudy.css';
 import ContentNavigator from '../../../ContentNavigator/ContentNavigator';
 import ContentStack from '../../../ContentNavigator/ContentStack/ContentStack';
@@ -16,7 +17,7 @@ import SelectedWorks from '../../../ContentNavigator/ContentStack/Content/Body/B
 import WorkItem from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/WorkItems/WorkItem';
 import Tile from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/Tile/Tile';
 import TileColumn from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TileColumn/TileColumn';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import TandaThumbnail1 from '../../../../assets/TANDA/CaseStudy1/Thumbnail/TandaThumbnail1.svg';
 import OnboardingFunnelChart from '../../../../assets/TANDA/CaseStudy1/onboarding-funnel-chart.svg';
 import Figure01 from '../../../../assets/TANDA/CaseStudy1/Figure 01.svg';
@@ -29,9 +30,40 @@ const CaseStudy = () => {
   const [activeContentId, setActiveContentId] = useState('problem');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [viewportHeight, setViewportHeight] = useState(typeof window !== 'undefined' ? window.innerHeight : 800);
+  const [shouldAnimate, setShouldAnimate] = useState(true); // Control animation state
+  const [isExiting, setIsExiting] = useState(false); // Track exit animation
   const caseStudyContentRef = useRef(null);
   const contentNavRef = useRef(null);
   const carouselScrollRef = useRef(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Debug component lifecycle
+  useEffect(() => {
+    console.log('📱 CaseStudy component MOUNTED');
+    return () => {
+      console.log('📱 CaseStudy component UNMOUNTED');
+    };
+  }, []);
+
+  // Force animation when navigating to this page
+  useEffect(() => {
+    console.log('CaseStudy location changed, triggering entrance animation');
+    setShouldAnimate(true); // Trigger animation immediately
+    setIsExiting(false); // Not exiting
+  }, [location.pathname]);
+
+  // Handle exit animation before navigation
+  const handleExitNavigation = (targetPath) => {
+    console.log('Starting exit animation to:', targetPath);
+    setIsExiting(true);
+    setShouldAnimate(false);
+    
+    // Navigate after exit animation completes
+    setTimeout(() => {
+      navigate(targetPath);
+    }, 800); // Match the transition duration
+  };
 
   const handleTabChange = (id) => {
     setActiveContentId(id);
@@ -117,7 +149,19 @@ const CaseStudy = () => {
   const scale = 1 - scrollProgress * 0.2;
 
   return (
-    <div>
+    <motion.div
+      key="casestudy-page" // Add unique key to force proper remounting
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ 
+        duration: 0.3, 
+        ease: "easeOut" // Simple, subtle easing
+      }}
+      onAnimationStart={(definition) => console.log('CaseStudy animation started:', definition)}
+      onAnimationComplete={(definition) => console.log('CaseStudy animation completed:', definition)}
+      onUpdate={(latest) => console.log('CaseStudy animation update:', latest)}
+    >
       <div className="casestudy-page">
         <motion.div
           className="casestudy-content-section"
@@ -186,7 +230,7 @@ const CaseStudy = () => {
                   <div className="casestudy-impact-metric">
                     <div className="casestudy-impact-metric-top">
                       <span className="S1">01</span>
-                      <span className="S1">Value 1</span>
+                      <Icon svgPath={ICON_PATHS.solidTrendingDown} size="small" />
                     </div>
                     <div className="casestudy-impact-metric-text">
                       <span>48%</span>
@@ -198,7 +242,7 @@ const CaseStudy = () => {
                   <div className="casestudy-impact-metric">
                     <div className="casestudy-impact-metric-top">
                       <span className="S1">02</span>
-                      <span className="S1">Value 2</span>
+                      <Icon svgPath={ICON_PATHS.solidTrendingDown} size="small" />
                     </div>
                     <div className="casestudy-impact-metric-text">
                       <span>32%</span>
@@ -210,7 +254,7 @@ const CaseStudy = () => {
                   <div className="casestudy-impact-metric">
                     <div className="casestudy-impact-metric-top">
                       <span className="S1">03</span>
-                      <span className="S1">Value 3</span>
+                      <Icon svgPath={ICON_PATHS.solidTrendingDown} size="small" />
                     </div>
                     <div className="casestudy-impact-metric-text">
                       <span>24%</span>
@@ -678,7 +722,7 @@ const CaseStudy = () => {
           </ContentNavigator>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

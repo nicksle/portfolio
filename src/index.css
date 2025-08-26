@@ -1,22 +1,14 @@
 @import './design-tokens.css';
 
 :root {
-  /* Colors */
-  --inactive: #30302A;
-  --active: #ffffe3;
-  --secondary: #CCCCB6;
-  --tertiary: #999988;
-  --base: #0E0E10;
-  --hover: #1E1E1E;
-
   /* Typography */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: var(--active);
-  background-color: var(--base);
+  color: var(--color-primary);
+  background-color: var(--color-base);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -43,45 +35,45 @@ body {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   margin-bottom: 0.5em;
-  color: var(--active);
+  color: var(--color-primary);
 }
 
 p {
   margin-bottom: 1em;
-  color: var(--secondary);
+  color: var(--color-secondary);
 }
 
 a {
   font-weight: 500;
-  color: var(--active);
+  color: var(--color-primary);
   text-decoration: inherit;
 }
 
 a:hover {
-  color: var(--secondary);
+  color: var(--color-secondary);
 }
 
 button {
   border-radius: 8px;
-  border: 1px solid var(--inactive);
+  border: 1px solid var(--color-inactive);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--base);
-  color: var(--active);
+  background-color: var(--color-base);
+  color: var(--color-primary);
   cursor: pointer;
   transition: all 0.25s;
 }
 
 button:hover {
-  border-color: var(--active);
-  background-color: var(--hover);
+  border-color: var(--color-primary);
+  background-color: var(--color-hover);
 }
 
 button:focus,
 button:focus-visible {
-  outline: 2px solid var(--active);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 

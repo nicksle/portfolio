@@ -2,19 +2,19 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--spacing-xl);
   position: relative;
 }
 
 .work-carousel-scroll {
   display: flex;
-  gap: 4px;
+  gap: var(--spacing-xs);
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 8px 0;
+  padding: var(--spacing-sm) 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: var(--inactive) transparent;
+  scrollbar-color: var(--color-inactive) transparent;
 }
 
 /* Customize scrollbar */
@@ -27,12 +27,12 @@
 }
 
 .work-carousel-scroll::-webkit-scrollbar-thumb {
-  background: var(--inactive);
+  background: var(--color-inactive);
   border-radius: 2px;
 }
 
 .work-carousel-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--active);
+  background: var(--color-primary);
 }
 
 .work-carousel-item {
@@ -41,14 +41,14 @@
   height: 400px;
   overflow: hidden;
   position: relative;
-  transition: all 0.3s ease;
-  border: 1px solid var(--inactive);
+  transition: var(--transition-fast);
+  border: 1px solid var(--color-inactive);
   border-radius: 0;
 }
 
 .work-carousel-item:hover {
   transform: translateY(-4px);
-  border-color: var(--active);
+  border-color: var(--color-primary);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 

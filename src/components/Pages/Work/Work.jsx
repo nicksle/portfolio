@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate, useScroll, useMotionTemplate } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 import ContentNavigator from "../../ContentNavigator/ContentNavigator";
 import ContentStack from "../../ContentNavigator/ContentStack/ContentStack";
 import Content from "../../ContentNavigator/ContentStack/Content/Content";
@@ -16,13 +17,88 @@ import './Work.css';
 
 const Work = () => {
   const [activeContentId, setActiveContentId] = useState('tanda');
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [viewportHeight, setViewportHeight] = useState(typeof window !== 'undefined' ? window.innerHeight : 800);
+  const [animationPhase, setAnimationPhase] = useState('idle'); // 'idle' | 'collapsing' | 'fading' | 'navigating'
   const workContentRef = useRef(null);
   const contentNavRef = useRef(null);
   const scrollLockRef = useRef(false);
   const lastScrollY = useRef(0);
-  const contentRef = useRef(null);
+  const navigate = useNavigate();
+
+  // Force proper initial state on every mount
+  const [isReady, setIsReady] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Debug component lifecycle and force reset
+  useEffect(() => {
+    console.log('🏠 Work component MOUNTED');
+    // Force component to start hidden, then animate in
+    setIsReady(false);
+    // Ensure scroll progress starts at 0
+    setScrollProgress(0);
+    
+    const timer = setTimeout(() => {
+      console.log('🏠 Work component READY - triggering animation');
+      setIsReady(true);
+    }, 50); // Small delay to ensure clean initial state
+    
+    return () => {
+      console.log('🏠 Work component UNMOUNTED');
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Handle navigation to CaseStudy1 with animation sequence
+  const handleNavigation = () => {
+    console.log('CTA clicked! Setting animation phase to collapsing');
+    setAnimationPhase('collapsing'); // Start height animation
+  };
+
+  // Debug animation phase changes
+  useEffect(() => {
+    console.log('Animation phase changed to:', animationPhase);
+  }, [animationPhase]);
+
+  // Styles using CSS custom properties - consistent with design system
+  const styles = {
+    // Typography styles
+    heroTitle: {
+      fontSize: 'var(--font-size-title-lg)',
+      fontWeight: 'var(--font-weight-regular)',
+      color: 'var(--color-primary)',
+      margin: 0,
+      textAlign: 'left'
+    },
+    
+    // Layout styles
+    contentNav: {
+      zIndex: 2,
+      position: 'relative',
+      marginTop: '100vh'
+    },
+    
+    bodyComponent: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      gap: 'var(--spacing-xl)'
+    },
+    
+    flexColumn: {
+      flex: 1
+    },
+    
+    // Image styles
+    projectImage: {
+      width: '100%',
+      height: 'auto',
+      borderRadius: 'var(--border-radius-default)'
+    },
+    
+    // Spacing styles
+    workDescription: {
+      marginBottom: 'var(--spacing-xl)'
+    }
+  };
 
   const handleTabChange = (id) => {
     setActiveContentId(id);
@@ -46,20 +122,12 @@ const Work = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!workContentRef.current || !contentNavRef.current) return;
+      if (!contentNavRef.current) return;
       
-      const headerHeight = 64;
-      const targetY = 64; // Changed to 64px to match ContentNavigator trigger point
+      const targetY = 64; // ContentNavigator trigger point
       const navRect = contentNavRef.current.getBoundingClientRect();
       const navTop = navRect.top;
       const currentScrollY = window.scrollY;
-      
-      // Calculate progress for animations
-      const workRect = workContentRef.current.getBoundingClientRect();
-      const startY = workRect.bottom;
-      const endY = targetY;
-      const progress = Math.min(Math.max((startY - navTop) / (startY - endY), 0), 1);
-      setScrollProgress(progress);
 
       // Scroll locking logic
       const activeContent = document.querySelector('.content.active');
@@ -115,61 +183,149 @@ const Work = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Framer Motion values for animations
-  const minY = 64; // Updated to match the new target Y position
-  const maxY = viewportHeight * 0.8;
-  const translateY = (1 - scrollProgress) * (maxY - minY) + minY;
+  // Framer Motion scroll system - replaces manual scroll tracking
+  const { scrollY } = useScroll();
+  
+  // Update scroll progress, but only when ready
+  useEffect(() => {
+    if (!isReady) {
+      setScrollProgress(0);
+      return;
+    }
+    
+    const unsubscribe = scrollY.on('change', (latest) => {
+      if (!workContentRef.current || !contentNavRef.current || !isReady) {
+        setScrollProgress(0);
+        return;
+      }
+      
+      const headerHeight = 64;
+      const targetY = 64;
+      const navRect = contentNavRef.current.getBoundingClientRect();
+      const navTop = navRect.top;
+      
+      const workRect = workContentRef.current.getBoundingClientRect();
+      const startY = workRect.bottom;
+      const endY = targetY;
+      const progress = Math.min(Math.max((startY - navTop) / (startY - endY), 0), 1);
+      
+      setScrollProgress(progress);
+    });
+    
+    return unsubscribe;
+  }, [scrollY, isReady]);
+
+  // Calculate scroll-based values like CaseStudy1 - direct calculation, not state
   const opacity = 1 - scrollProgress;
   const scale = 1 - scrollProgress * 0.2;
 
   return (
-    <div>
-      <div className="work-page">
-        <motion.div
-          className="work-content-section"
-          ref={workContentRef}
-          style={{
-            position: 'fixed',
-            top: '64px',
-            left: 0,
-            width: '100%',
-            height: '100vh',
-            maxWidth: '1200px',
-            margin: '0 auto',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            opacity: Math.max(opacity, 0),
-            scale: Math.max(scale, 0.8),
-            zIndex: 1,
-            right: 0,
-          }}
-          transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-        >
-          <div className="work-description" style={{ marginBottom: '24px' }}>
-            <h2 style={{ fontSize: '48px', fontWeight: 300, color: 'var(--active)', margin: 0, textAlign: 'left' }}>
-              Product designer with 5+ years experience building and growing products for startups in the fintech and influencer advertising spaces.
-            </h2>
-          </div>
-          <div className="work-carousel">
-            <div className="work-carousel-scroll">
-              <div className="work-carousel-item">
-                <img src={TandaThumbnail1} alt="Tanda App Interface 1" />
-              </div>
-              <div className="work-carousel-item">
-                <img src={TandaThumbnail2} alt="Tanda App Interface 2" />
-              </div>
-              <div className="work-carousel-item">
-                <img src="https://via.placeholder.com/300x200" alt="Work 3" />
-              </div>
-              <div className="work-carousel-item">
-                <img src="https://via.placeholder.com/300x200" alt="Work 4" />
-              </div>
+    <motion.div
+      key="work-page-unique"
+      className="work-page"
+      exit={{ 
+        opacity: 0,
+        scale: 0.8,
+        y: 50
+      }}
+      transition={{ 
+        duration: 0.8,
+        ease: "easeInOut"
+      }}
+    >
+      <motion.div
+        className="work-content-section"
+        ref={workContentRef}
+        initial={{
+          opacity: 0,
+          scale: 0.8,
+          y: 50
+        }}
+        animate={isReady ? {
+          opacity: opacity,
+          scale: scale,
+          y: 0
+        } : {
+          opacity: 0,
+          scale: 0.8,
+          y: 50
+        }}
+        transition={{
+          duration: 0.8,
+          ease: "easeInOut"
+        }}
+        style={{
+          position: 'fixed',
+          top: '64px',
+          left: 0,
+          width: '100%',
+          height: '100vh',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 1,
+          right: 0,
+        }}
+      >
+        <div className="work-description" style={styles.workDescription}>
+          <h2 style={styles.heroTitle}>
+            Product designer with 5+ years experience building and growing products for startups in the fintech and influencer advertising spaces.
+          </h2>
+        </div>
+        <div className="work-carousel">
+          <div className="work-carousel-scroll">
+            <div className="work-carousel-item">
+              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />
+            </div>
+            <div className="work-carousel-item">
+              <img src={TandaThumbnail2} alt="Tanda App Interface 2" />
+            </div>
+            <div className="work-carousel-item">
+              <img src="https://via.placeholder.com/300x200" alt="Work 3" />
+            </div>
+            <div className="work-carousel-item">
+              <img src="https://via.placeholder.com/300x200" alt="Work 4" />
             </div>
           </div>
-        </motion.div>
-        <div ref={contentNavRef} style={{ zIndex: 2, position: 'relative', marginTop: '100vh' }}>
+        </div>
+      </motion.div>
+      <div 
+        ref={contentNavRef} 
+        style={styles.contentNav}
+      >
+        <motion.div
+          initial={{ height: 'auto', opacity: 1 }}
+          animate={{
+            height: animationPhase === 'collapsing' ? '1px' : 
+                    animationPhase === 'fading' ? '1px' : 'auto',
+            opacity: animationPhase === 'fading' ? 0 : 1
+          }}
+          transition={{
+            height: { duration: 0.4, ease: "easeInOut" },
+            opacity: { duration: 0.25, ease: "easeInOut" }
+          }}
+          onAnimationComplete={(definition) => {
+            console.log('Animation completed:', definition);
+            console.log('Current animation phase:', animationPhase);
+            console.log('Height value:', definition.height);
+            console.log('Opacity value:', definition.opacity);
+            
+            // Check if height animation is complete
+            if (animationPhase === 'collapsing' && definition.height === '1px') {
+              console.log('Height animation done, starting fade out');
+              setAnimationPhase('fading');
+            }
+            // Check if fade animation is complete
+            else if (animationPhase === 'fading' && definition.opacity === 0) {
+              console.log('Fade out done, navigating to CaseStudy1');
+              setAnimationPhase('navigating');
+              navigate('/case-study-1');
+            }
+          }}
+        >
           <ContentNavigator>
             <TabNav activeId={activeContentId} onTabChange={handleTabChange}>
               <NavTabItem id="tanda" index="01" title="Tanda" />
@@ -186,19 +342,25 @@ const Work = () => {
                 period="2024"
                 onNext={handleNextContent}
               >
-                <BodyComponent style={{ display: 'flex', justifyContent: 'space-between', gap: '24px' }}>
-                  <div style={{ flex: 1 }}>
+                <BodyComponent style={styles.bodyComponent}>
+                  <div style={styles.flexColumn}>
                     <Text>
                       TANDA is a fintech startup dedicated to making financial security accessible to everyone. Through our iOS and Android mobile apps, we offer a community-driven savings service that empowers users to reach their financial goals.
                     </Text>
                   </div>
-                  <div style={{ flex: 1 }}>
-                    <img src="https://via.placeholder.com/400x300" alt="Tanda Image" style={{ width: '100%', height: 'auto', borderRadius: '8px' }} />
+                  <div style={styles.flexColumn}>
+                    <img src="https://via.placeholder.com/400/300" alt="Tanda Image" style={styles.projectImage} />
                   </div>
                 </BodyComponent>
                 <BodyComponent>
                   <SelectedWorks title="Selected Works" description="A collection of my work">
-                    <WorkItem index="01" title="Improving our NUX to Increase User Activation Rates" description="Delightful sign-up flow that increased user retention and reduced drop off" />
+                    <WorkItem 
+                      index="01" 
+                      image={TandaThumbnail1} 
+                      title="Improving our NUX to Increase User Activation Rates" 
+                      description="Delightful sign-up flow that increased user retention and reduced drop off"
+                      onCtaClick={handleNavigation}
+                    />
                     <WorkItem index="02" title="TANDA: Core Product" description="Improved core product experience to increase user activation, retention and growth" />
                   </SelectedWorks>
                 </BodyComponent>
@@ -212,14 +374,14 @@ const Work = () => {
                 period="2024"
                 onNext={handleNextContent}
               >
-                <BodyComponent style={{ display: 'flex', justifyContent: 'space-between', gap: '24px' }}>
-                  <div style={{ flex: 1 }}>
+                <BodyComponent style={styles.bodyComponent}>
+                  <div style={styles.flexColumn}>
                     <Text>
                       LiftOff Mobile's Influence team aims to transform digital advertising by leveraging user-generated content (UGC) as a powerful, authentic marketing tool for brands and mobile businesses.  We bridges relationships between influencers and advertisers, providing tools to help influencers to monetize their content, and advertisers find creators who fit their specific needs.
                     </Text>
                   </div>
-                  <div style={{ flex: 1 }}>
-                    <img src="https://via.placeholder.com/400x300" alt="Liftoff Image" style={{ width: '100%', height: 'auto' }} />
+                  <div style={styles.flexColumn}>
+                    <img src="https://via.placeholder.com/400/300" alt="Liftoff Image" style={styles.projectImage} />
                   </div>
                 </BodyComponent>
                 <BodyComponent>
@@ -238,14 +400,14 @@ const Work = () => {
                 period="2024"
                 onNext={handleNextContent}
               >
-                <BodyComponent style={{ display: 'flex', justifyContent: 'space-between', gap: '24px' }}>
-                  <div style={{ flex: 1 }}>
+                <BodyComponent style={styles.bodyComponent}>
+                  <div style={styles.flexColumn}>
                     <Text>
                       This is the Jefuel section.
                     </Text>
                   </div>
-                  <div style={{ flex: 1 }}>
-                    <img src="https://via.placeholder.com/400x300" alt="Jefuel Image" style={{ width: '100%', height: 'auto' }} />
+                  <div style={styles.flexColumn}>
+                    <img src="https://via.placeholder.com/400/300" alt="Jefuel Image" style={styles.projectImage} />
                   </div>
                 </BodyComponent>
                 <BodyComponent>
@@ -264,14 +426,14 @@ const Work = () => {
                 period="2024"
                 onNext={handleNextContent}
               >
-                <BodyComponent style={{ display: 'flex', justifyContent: 'space-between', gap: '24px' }}>
-                  <div style={{ flex: 1 }}>
+                <BodyComponent style={styles.bodyComponent}>
+                  <div style={styles.flexColumn}>
                     <Text>
                       This is the CashApp section.
                     </Text>
                   </div>
-                  <div style={{ flex: 1 }}>
-                    <img src="https://via.placeholder.com/400x300" alt="CashApp Image" style={{ width: '100%', height: 'auto' }} />
+                  <div style={styles.flexColumn}>
+                    <img src="https://via.placeholder.com/400/300" alt="CashApp Image" style={styles.projectImage} />
                   </div>
                 </BodyComponent>
                 <BodyComponent>
@@ -283,9 +445,9 @@ const Work = () => {
               </Content>
             </ContentStack>
           </ContentNavigator>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
