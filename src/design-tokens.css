@@ -50,17 +50,35 @@
   --font-family-body: "Satoshi", Helvetica, Arial, sans-serif;
   --font-family-subtitle: "SF Mono", Menlo, Monaco, Consolas, monospace;
   
-  --font-size-title-1: 64px;
-  --font-size-title-lg: 36px;
+  /* Typography - Font Sizes */
+  --font-size-title-xxl: 64px;
+  --font-size-title-xl: 48px;
+  --font-size-title-lg: 32px;
   --font-size-title-base: 24px;
   --font-size-title-sm: 20px;
-  --font-size-heading-sm: 20px;
-  --font-size-body-base: 32px;
-  --font-size-body-sm: 20px;
-  --font-size-body-xs: 16px;
   --font-size-subtitle: 14px;
+  --font-size-body: 32px;
+  --font-size-body-sm: 20px;
+  --font-size-caption: 12px;
   
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+
+  /* Text Style Tokens */
+  --text-style-title: {
+    font-family: var(--font-family-title);
+    font-size: var(--font-size-title-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    line-height: 1.2;
+  };
+  
+  --text-style-subtitle: {
+    font-family: var(--font-family-subtitle);
+    font-size: var(--font-size-subtitle);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-tertiary);
+    line-height: 1.2;
+  };
 }

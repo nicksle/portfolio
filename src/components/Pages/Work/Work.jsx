@@ -11,8 +11,14 @@ import BodyComponent from "../../ContentNavigator/ContentStack/Content/Body/Body
 import Text from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/Text/Text";
 import SelectedWorks from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/SelectedWorks";
 import WorkItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/WorkItems/WorkItem";
+import Callout from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/Callout/Callout";
+import CalloutItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/Callout/CalloutItems/CalloutItem";
 import TandaThumbnail1 from "../../../assets/TANDA/Thumbnail/Thumbnail1.svg";
 import TandaThumbnail2 from "../../../assets/TANDA/Thumbnail/Thumbnail2.svg";
+import lightbulbIcon from "../../../assets/icons/lightbulb-2.svg";
+import searchIcon from "../../../assets/icons/search.svg";
+import timelineIcon from "../../../assets/icons/timeline.svg";
+import usersIcon from "../../../assets/icons/users.svg";
 import './Work.css';
 
 const Work = () => {
@@ -63,11 +69,12 @@ const Work = () => {
   const styles = {
     // Typography styles
     heroTitle: {
-      fontSize: 'var(--font-size-title-lg)',
+      fontSize: 'var(--font-size-title-xl)',
       fontWeight: 'var(--font-weight-regular)',
       color: 'var(--color-primary)',
       margin: 0,
-      textAlign: 'left'
+      textAlign: 'center',
+      padding: '0 var(--spacing-xl)'
     },
     
     // Layout styles
@@ -340,17 +347,47 @@ const Work = () => {
                 index="01"
                 title="Tanda"
                 period="2024"
+                icon={lightbulbIcon}
+                position="Senior Product Designer"
+                topLeft="index"
+                topRight="period"
+                bottomLeft="icon"
+                bottomRight="position"
                 onNext={handleNextContent}
               >
                 <BodyComponent style={styles.bodyComponent}>
                   <div style={styles.flexColumn}>
-                    <Text>
+                    <Text style="workBody">
                       TANDA is a fintech startup dedicated to making financial security accessible to everyone. Through our iOS and Android mobile apps, we offer a community-driven savings service that empowers users to reach their financial goals.
                     </Text>
                   </div>
                   <div style={styles.flexColumn}>
                     <img src="https://via.placeholder.com/400/300" alt="Tanda Image" style={styles.projectImage} />
                   </div>
+                </BodyComponent>
+                <BodyComponent>
+                  <Callout title="Key Achievements">
+                    <CalloutItem 
+                      index="01" 
+                      title="Product Roadmap & Growth Features" 
+                      description="Collaborated with leadership to define product roadmap and designed multiple growth-focused features to drive user acquisition and engagement"
+                    />
+                    <CalloutItem 
+                      index="02" 
+                      title="New User Onboarding Redesign" 
+                      description="Led new user onboarding redesign through user research and iterative testing, achieving 50% increase in new user growth and 60% reduction in user churn"
+                    />
+                    <CalloutItem 
+                      index="03" 
+                      title="Core Product Experience Redesign" 
+                      description="Redesigned core product experience, increasing daily active users by 15% month-over-month and improving long-term user retention"
+                    />
+                    <CalloutItem 
+                      index="04" 
+                      title="Design System Implementation" 
+                      description="Established comprehensive design system with component library, tokenization and documentation, eliminating engineering confusion and streamlining the design-to-development handoff process"
+                    />
+                  </Callout>
                 </BodyComponent>
                 <BodyComponent>
                   <SelectedWorks title="Selected Works" description="A collection of my work">
@@ -372,17 +409,43 @@ const Work = () => {
                 index="02"
                 title="Liftoff"
                 period="2024"
+                icon={searchIcon}
+                position="Product Designer"
                 onNext={handleNextContent}
               >
                 <BodyComponent style={styles.bodyComponent}>
                   <div style={styles.flexColumn}>
-                    <Text>
+                    <Text style="workBody">
                       LiftOff Mobile's Influence team aims to transform digital advertising by leveraging user-generated content (UGC) as a powerful, authentic marketing tool for brands and mobile businesses.  We bridges relationships between influencers and advertisers, providing tools to help influencers to monetize their content, and advertisers find creators who fit their specific needs.
                     </Text>
                   </div>
                   <div style={styles.flexColumn}>
                     <img src="https://via.placeholder.com/400/300" alt="Liftoff Image" style={styles.projectImage} />
                   </div>
+                </BodyComponent>
+                <BodyComponent>
+                  <Callout title="Key Achievements">
+                    <CalloutItem 
+                      index="01" 
+                      title="Influence Platform Design" 
+                      description="Designed comprehensive influencer discovery and management platform connecting brands with authentic creators"
+                    />
+                    <CalloutItem 
+                      index="02" 
+                      title="UGC Campaign Tools" 
+                      description="Created intuitive campaign creation tools enabling brands to launch user-generated content campaigns at scale"
+                    />
+                    <CalloutItem 
+                      index="03" 
+                      title="Creator Monetization Features" 
+                      description="Built features allowing influencers to monetize their content through brand partnerships and sponsored campaigns"
+                    />
+                    <CalloutItem 
+                      index="04" 
+                      title="Analytics & Insights Dashboard" 
+                      description="Developed comprehensive analytics dashboard providing campaign performance insights and ROI tracking"
+                    />
+                  </Callout>
                 </BodyComponent>
                 <BodyComponent>
                   <SelectedWorks title="Selected Works" description="A collection of my work">
@@ -398,17 +461,43 @@ const Work = () => {
                 index="03"
                 title="Jefuel"
                 period="2024"
+                icon={timelineIcon}
+                position="Product Designer"
                 onNext={handleNextContent}
               >
                 <BodyComponent style={styles.bodyComponent}>
                   <div style={styles.flexColumn}>
-                    <Text>
-                      This is the Jefuel section.
+                    <Text style="workBody">
+                      Jetfuel was a premier influencer marketing platform that empowered creators to take control of their monetization. Our iOS app The Plug, provided influencers the autonomy to easily discover and connect with advertisers they wanted to work with, enabling them to launch campaigns seamlessly and build sustainable income through authentic partnerships.
                     </Text>
                   </div>
                   <div style={styles.flexColumn}>
                     <img src="https://via.placeholder.com/400/300" alt="Jefuel Image" style={styles.projectImage} />
                   </div>
+                </BodyComponent>
+                <BodyComponent>
+                  <Callout title="Key Achievements">
+                    <CalloutItem 
+                      index="01" 
+                      title="Product Strategy & Vision" 
+                      description="Collaborated with leadership to define product roadmap and designed multiple growth-focused features to drive user acquisition and engagement"
+                    />
+                    <CalloutItem 
+                      index="02" 
+                      title="User Experience Design" 
+                      description="Led comprehensive UX redesign through user research and iterative testing, improving user satisfaction and engagement metrics"
+                    />
+                    <CalloutItem 
+                      index="03" 
+                      title="Core Feature Development" 
+                      description="Designed and implemented core product features that increased user retention and daily active usage"
+                    />
+                    <CalloutItem 
+                      index="04" 
+                      title="Design System & Documentation" 
+                      description="Established comprehensive design system with component library and documentation, streamlining development workflows"
+                    />
+                  </Callout>
                 </BodyComponent>
                 <BodyComponent>
                   <SelectedWorks title="Selected Works" description="A collection of my work">
@@ -424,12 +513,14 @@ const Work = () => {
                 index="04"
                 title="CashApp"
                 period="2024"
+                icon={usersIcon}
+                position="Product Designer"
                 onNext={handleNextContent}
               >
                 <BodyComponent style={styles.bodyComponent}>
                   <div style={styles.flexColumn}>
-                    <Text>
-                      This is the CashApp section.
+                    <Text style="workBody">
+                      Cash App is a mobile payment service that makes sending, spending, saving, and investing simple and accessible. Through a single app, users can transfer money instantly, invest in stocks and bitcoin, use a customizable Cash Card for purchases, and access banking services—all designed to reimagine how people interact with money.
                     </Text>
                   </div>
                   <div style={styles.flexColumn}>
@@ -437,10 +528,28 @@ const Work = () => {
                   </div>
                 </BodyComponent>
                 <BodyComponent>
-                  <SelectedWorks title="Selected Works" description="A collection of my work">
-                    <WorkItem index="01" title="CashApp Project 1" description="Description for CashApp Project 1" />
-                    <WorkItem index="02" title="CashApp Project 2" description="Description for CashApp Project 2" />
-                  </SelectedWorks>
+                  <Callout title="Key Achievements">
+                    <CalloutItem 
+                      index="01" 
+                      title="Financial Product Design" 
+                      description="Designed innovative financial products and features that simplified money management for millions of users"
+                    />
+                    <CalloutItem 
+                      index="02" 
+                      title="Mobile-First Experience" 
+                      description="Led mobile-first design approach creating intuitive and accessible financial tools for diverse user bases"
+                    />
+                    <CalloutItem 
+                      index="03" 
+                      title="User Growth & Engagement" 
+                      description="Implemented growth-focused features and onboarding flows that significantly increased user acquisition and retention"
+                    />
+                    <CalloutItem 
+                      index="04" 
+                      title="Design Operations" 
+                      description="Established design processes and systems that improved cross-functional collaboration and product development efficiency"
+                    />
+                  </Callout>
                 </BodyComponent>
               </Content>
             </ContentStack>

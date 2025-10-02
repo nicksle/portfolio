@@ -10,7 +10,7 @@ import CardGroup from './Body/BodyComponent/CardGroup/CardGroup';
 import FullCard from './Body/BodyComponent/FullCard/FullCard';
 
 
-const Content = ({ isActive = false, id, index, subtitle, title, icon, secondIcon, period, children, onNext }) => {
+const Content = ({ isActive = false, id, index, subtitle, title, icon, secondIcon, period, position, children, onNext }) => {
   const [headOpacity, setHeadOpacity] = useState(1);
   const contentRef = useRef(null);
   const bodyRef = useRef(null);
@@ -193,6 +193,7 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, secondIco
         icon={icon}
         secondIcon={secondIcon}
         period={period}
+        position={position}
         style={{ 
           opacity: headOpacity,
           transition: 'opacity 0.1s linear'
