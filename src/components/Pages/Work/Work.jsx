@@ -9,8 +9,9 @@ import NavTabItem from "../../ContentNavigator/TabNav/NavTabItem";
 import Body from "../../ContentNavigator/ContentStack/Content/Body/Body";
 import BodyComponent from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/BodyComponent";
 import Text from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/Text/Text";
-import SelectedWorks from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/SelectedWorks";
-import WorkItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/WorkItems/WorkItem";
+import TitleSection from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/TitleSection";
+import WorkItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/WorkItems/WorkItem";
+import CalloutItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/CalloutItems/CalloutItem";
 import TandaThumbnail1 from "../../../assets/TANDA/Thumbnail/Thumbnail1.svg";
 import TandaThumbnail2 from "../../../assets/TANDA/Thumbnail/Thumbnail2.svg";
 import './Work.css';
@@ -353,7 +354,15 @@ const Work = () => {
                   </div>
                 </BodyComponent>
                 <BodyComponent>
-                  <SelectedWorks title="Selected Works" description="A collection of my work">
+                  <TitleSection title="Key Highlights">
+                    <CalloutItem index="1" content="Collaborated with leadership to define product roadmap and designed multiple growth-focused features to drive user acquisition and engagement" />
+                    <CalloutItem index="2" content="Led new user onboarding redesign through user research and iterative testing, achieving 50% increase in new user growth and 60% reduction in user churn" />
+                    <CalloutItem index="3" content="Redesigned core product experience, increasing daily active users by 15% month-over-month and improving long-term user retention" />
+                    <CalloutItem index="4" content="Established comprehensive design system with component library, tokenization and documentation, eliminating engineering confusion and streamlining the design-to-development handoff process" />
+                  </TitleSection>
+                </BodyComponent>
+                <BodyComponent>
+                  <TitleSection title="Selected Works">
                     <WorkItem 
                       index="01" 
                       image={TandaThumbnail1} 
@@ -362,7 +371,7 @@ const Work = () => {
                       onCtaClick={handleNavigation}
                     />
                     <WorkItem index="02" title="TANDA: Core Product" description="Improved core product experience to increase user activation, retention and growth" />
-                  </SelectedWorks>
+                  </TitleSection>
                 </BodyComponent>
               </Content>
 
@@ -385,10 +394,18 @@ const Work = () => {
                   </div>
                 </BodyComponent>
                 <BodyComponent>
-                  <SelectedWorks title="Selected Works" description="A collection of my work">
+                  <TitleSection title="Key Highlights">
+                    <CalloutItem index="1" content="Led end-to-end design of our desktop product Plug Marketplace, enabling advertisers to discover and match with influencers, resulting in 40% increase in successful campaign completions" />
+                    <CalloutItem index="2" content="Partnered with Liftoff Mobile designers to rebrand Jetfuel to Liftoff Influence, implementing unified design system and visual identity post-acquisition" />
+                    <CalloutItem index="3" content="Conducted user research and solution synthesis for our core product: The Plug. Created high-fidelity mock-ups for concept testing and roadmapped A/B testing for feature implementation" />
+                    <CalloutItem index="4" content="Redesigned our internal tools from Retool to custom products that allowed teams to better manage advertiser spend and influencer submissions, resulting in 35% revenue increase over a 6 month period" />
+                  </TitleSection>
+                </BodyComponent>
+                <BodyComponent>
+                  <TitleSection title="Selected Works">
                     <WorkItem index="01" title="Liftoff Project 1" description="Description for Liftoff Project 1" />
                     <WorkItem index="02" title="Liftoff Project 2" description="Description for Liftoff Project 2" />
-                  </SelectedWorks>
+                  </TitleSection>
                 </BodyComponent>
               </Content>
 
@@ -411,10 +428,17 @@ const Work = () => {
                   </div>
                 </BodyComponent>
                 <BodyComponent>
-                  <SelectedWorks title="Selected Works" description="A collection of my work">
+                  <TitleSection title="Key Highlights">
+                    <CalloutItem index="1" content="Collaborated with CEO to define product roadmap focused on user retention and profitability, identifying and prioritizing key features that drove business growth" />
+                    <CalloutItem index="2" content="Led design for the features in our open network initiative which includes introducing profiles, messaging and connections; resulted in 30% increase in DAUs" />
+                    <CalloutItem index="3" content="Led the design and research for new monetization features for influencers, increasing their earning potential by an average of 20%" />
+                  </TitleSection>
+                </BodyComponent>
+                <BodyComponent>
+                  <TitleSection title="Selected Works">
                     <WorkItem index="01" title="Jefuel Project 1" description="Description for Jefuel Project 1" />
                     <WorkItem index="02" title="Jefuel Project 2" description="Description for Jefuel Project 2" />
-                  </SelectedWorks>
+                  </TitleSection>
                 </BodyComponent>
               </Content>
 
@@ -437,10 +461,16 @@ const Work = () => {
                   </div>
                 </BodyComponent>
                 <BodyComponent>
-                  <SelectedWorks title="Selected Works" description="A collection of my work">
+                  <TitleSection title="Key Highlights">
+                    <CalloutItem index="1" content="Collaborated with designers, engineers and PMs within the Ecosystems and Boost workstreams; shipped an exclusive ice cream boost for summer 2019, resulting in a 15% increase in boosts usage" />
+                    <CalloutItem index="2" content="Participated in design critiques, where I provided and received feedback on designs within a variety of features and workstream" />
+                  </TitleSection>
+                </BodyComponent>
+                <BodyComponent>
+                  <TitleSection title="Selected Works">
                     <WorkItem index="01" title="CashApp Project 1" description="Description for CashApp Project 1" />
                     <WorkItem index="02" title="CashApp Project 2" description="Description for CashApp Project 2" />
-                  </SelectedWorks>
+                  </TitleSection>
                 </BodyComponent>
               </Content>
             </ContentStack>
