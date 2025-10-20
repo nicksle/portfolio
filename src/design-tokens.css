@@ -4,6 +4,7 @@
   --color-secondary: #ccccb6;
   --color-tertiary: #999988;
   --color-base: #0e0e10;
+  --color-body: #1D1D21;
   --color-hover: #1e1e1e;
   --color-inactive: #30302a;
 
@@ -59,6 +60,10 @@
   --font-size-body-sm: 20px;
   --font-size-body-xs: 16px;
   --font-size-subtitle: 14px;
+  
+  /* Annotation Typography */
+  --font-size-annotation-title: 14px;
+  --font-size-annotation-subtitle: 10px;
   
   --font-weight-regular: 400;
   --font-weight-medium: 500;

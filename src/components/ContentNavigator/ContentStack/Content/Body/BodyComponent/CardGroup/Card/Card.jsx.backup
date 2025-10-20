@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, Children, cloneElement } from 'react';
 import { motion } from 'framer-motion';
 import './Card.css';
 import Icon from '../../../../../../../../components/Icon';
 import { ICON_PATHS } from '../../../../../../../../utils/iconPaths';
-import CardCarousel from './CardCarousel/CardCarousel';
-import CardCTA from './CardCTA/CardCTA';
 
 // Styles using CSS custom properties - consistent with Text component
 const textStyles = {
@@ -36,32 +34,43 @@ const Card = ({
   ctaText,
   ctaIcon,
   children,
-  headItems = [], // Array of { id, index, title } for CardCarousel head stack
-  bodyItems = [], // Array of { id, children } for CardCarousel body stack
   onExpandChange, // Callback to notify parent when expand state changes
-  onExpand, // Alternative callback prop name used by CardGroup
-  isExpanded: propIsExpanded, // External control from CardGroup
   className = '',
   style = {} 
 }) => {
-  const [internalExpanded, setInternalExpanded] = useState(false);
-  
-  // Use prop if provided (from CardGroup), otherwise use internal state
-  const isExpanded = propIsExpanded !== undefined ? propIsExpanded : internalExpanded;
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleCtaClick = () => {
     const newState = !isExpanded;
-    if (propIsExpanded !== undefined) {
-      // Controlled by CardGroup
-      onExpand?.(newState);
-    } else {
-      // Internal state management
-      setInternalExpanded(newState);
-      onExpandChange?.(newState);
-    }
+    setIsExpanded(newState);
+    onExpandChange?.(newState); // Notify parent
   };
 
-  // Note: animatedChildren logic removed - only CardCarousel is used now
+  // Wrap children with Framer Motion for scroll-triggered animations
+  const animatedChildren = Children.map(children, (child, index) => {
+    if (child && child.type === 'img') {
+      return (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ 
+            once: false,
+            amount: 0.2,
+            root: null
+          }}
+          transition={{
+            duration: 0.5,
+            ease: "easeOut"
+          }}
+          style={{ display: 'flex', flexShrink: 0 }}
+        >
+          {child}
+        </motion.div>
+      );
+    }
+    return child;
+  });
 
   return (
     <div className={`card ${isExpanded ? 'expanded' : ''} ${className}`}>
@@ -99,12 +108,23 @@ const Card = ({
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             </motion.div>
-            <CardCTA 
-              ctaText={ctaText}
-              ctaIcon={ctaIcon || { svgPath: ICON_PATHS.arrowRight }}
+            <motion.div 
+              layout="position"
+              className="card-cta" 
               onClick={handleCtaClick}
-              isExpanded={isExpanded}
-            />
+              transition={{ 
+                layout: { duration: 0.4, ease: "easeInOut" }
+              }}
+            >
+              <span className="cta-text" style={textStyles.index}>{ctaText}</span>
+              <div className="cta-icon-wrapper">
+                <Icon 
+                  svgPath={ICON_PATHS.arrowRight} 
+                  size="small" 
+                  className="cta-icon"
+                />
+              </div>
+            </motion.div>
           </motion.div>
           <motion.div 
             layout 
@@ -113,8 +133,8 @@ const Card = ({
               layout: { duration: 0.4, ease: "easeInOut" }
             }}
           >
-            <div className="body-scroll carousel-mode">
-              <CardCarousel headItems={headItems} bodyItems={bodyItems} />
+            <div className="body-scroll">
+              {animatedChildren}
             </div>
           </motion.div>
         </motion.div>

@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [react()],
   base: '/portfolio/',
   server: {
-    port: 3000,
+    port: 5173,
     open: true,
-    strictPort: true,
+    strictPort: false,
     hmr: false  // Disable HMR to use full page reloads
   },
   build: {

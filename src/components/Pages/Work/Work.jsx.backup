@@ -9,8 +9,8 @@ import NavTabItem from "../../ContentNavigator/TabNav/NavTabItem";
 import Body from "../../ContentNavigator/ContentStack/Content/Body/Body";
 import BodyComponent from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/BodyComponent";
 import Text from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/Text/Text";
-import SelectedWorks from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/SelectedWorks";
-import WorkItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/WorkItems/WorkItem";
+import TitleSection from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/TitleSection";
+import WorkItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/WorkItems/WorkItem";
 import TandaThumbnail1 from "../../../assets/TANDA/Thumbnail/Thumbnail1.svg";
 import TandaThumbnail2 from "../../../assets/TANDA/Thumbnail/Thumbnail2.svg";
 import './Work.css';
@@ -271,7 +271,7 @@ const Work = () => {
                     </div>
                   </BodyComponent>
                   <BodyComponent>
-                    <SelectedWorks title="Selected Works" description="A collection of my work">
+                    <TitleSection title="Selected Works" description="A collection of my work">
                       <WorkItem 
                         index="01" 
                         image={TandaThumbnail1} 
@@ -280,7 +280,7 @@ const Work = () => {
                         onCtaClick={handleNavigation}
                       />
                       <WorkItem index="02" title="TANDA: Core Product" description="Improved core product experience to increase user activation, retention and growth" />
-                    </SelectedWorks>
+                    </TitleSection>
                   </BodyComponent>
                 </Content>
 
@@ -303,10 +303,10 @@ const Work = () => {
                     </div>
                   </BodyComponent>
                   <BodyComponent>
-                    <SelectedWorks title="Selected Works" description="A collection of my work">
+                    <TitleSection title="Selected Works" description="A collection of my work">
                       <WorkItem index="01" title="Liftoff Project 1" description="Description for Liftoff Project 1" />
                       <WorkItem index="02" title="Liftoff Project 2" description="Description for Liftoff Project 2" />
-                    </SelectedWorks>
+                    </TitleSection>
                   </BodyComponent>
                 </Content>
 
@@ -329,10 +329,10 @@ const Work = () => {
                     </div>
                   </BodyComponent>
                   <BodyComponent>
-                    <SelectedWorks title="Selected Works" description="A collection of my work">
+                    <TitleSection title="Selected Works" description="A collection of my work">
                       <WorkItem index="01" title="Jefuel Project 1" description="Description for Jefuel Project 1" />
                       <WorkItem index="02" title="Jefuel Project 2" description="Description for Jefuel Project 2" />
-                    </SelectedWorks>
+                    </TitleSection>
                   </BodyComponent>
                 </Content>
 
@@ -355,10 +355,10 @@ const Work = () => {
                     </div>
                   </BodyComponent>
                   <BodyComponent>
-                    <SelectedWorks title="Selected Works" description="A collection of my work">
+                    <TitleSection title="Selected Works" description="A collection of my work">
                       <WorkItem index="01" title="CashApp Project 1" description="Description for CashApp Project 1" />
                       <WorkItem index="02" title="CashApp Project 2" description="Description for CashApp Project 2" />
-                    </SelectedWorks>
+                    </TitleSection>
                   </BodyComponent>
                 </Content>
               </ContentStack>

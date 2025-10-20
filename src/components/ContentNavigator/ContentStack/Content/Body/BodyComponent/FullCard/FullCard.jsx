@@ -1,5 +1,6 @@
 import React from 'react';
 import './FullCard.css';
+import CardCTA from '../CardGroup/Card/CardCTA/CardCTA';
 
 // Helper function to render icons
 const renderIcon = (icon, className) => {
@@ -44,8 +45,12 @@ const FullCard = ({
   ctaIcon,
   children,
   style = {},
-  className = ''
+  className = '',
+  onCtaClick
 }) => {
+  const handleCtaClick = () => {
+    onCtaClick?.();
+  };
   return (
     <div className={`full-card ${className}`.trim()}>
       <span className="full-card-index" style={textStyles.index}>{index}</span>
@@ -57,10 +62,12 @@ const FullCard = ({
               <h3 style={textStyles.heading}>{title}</h3>
               <p style={textStyles.body}>{description}</p>
             </div>
-            <div className="full-card-cta">
-              <span style={textStyles.index}>{ctaText}</span>
-              {renderIcon(ctaIcon, "full-card-cta-icon")}
-            </div>
+            <CardCTA 
+              ctaText={ctaText}
+              ctaIcon={ctaIcon}
+              onClick={handleCtaClick}
+              variant="full-card"
+            />
           </div>
           <div className="full-card-body">
             <div className="full-card-body-scroll">

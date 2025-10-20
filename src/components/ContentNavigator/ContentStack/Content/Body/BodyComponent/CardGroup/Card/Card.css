@@ -24,7 +24,6 @@
   width: var(--card-width-default, 540px);
   padding: 0;
   margin: 0;
-  transition: var(--transition-fast, all 0.3s ease);
   border: 1px solid var(--color-inactive, #30302a);
   overflow: hidden;
 }
@@ -45,9 +44,9 @@
   width: var(--card-head-expanded, 352px);
   min-width: var(--card-head-expanded, 352px);
   border-right: 1px solid var(--color-inactive, #30302a);
-  transition: var(--transition-fast, all 0.3s ease);
 }
 
+/* Card head hover - applies when hovering over the card frame */
 .card-frame:hover .card-head {
   border-right-color: var(--color-primary, #ffffe3);
 }
@@ -67,14 +66,12 @@
   flex-shrink: 0;
   padding: 0;
   margin: 0;
-  transition: var(--transition-fast, all 0.3s ease);
 }
 
 .card-body {
   width: 0;
   height: var(--card-height-default, 540px);
   overflow: hidden;
-  transition: var(--transition-fast, all 0.3s ease);
   background: none;
   padding: 0;
   margin: 0;
@@ -123,6 +120,9 @@
 
 .card-content h3 {
   padding-bottom: var(--spacing-md, 12px);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .card-cta {
@@ -158,19 +158,6 @@
   justify-content: center;
 }
 
-/* Bounce animation for CTA icon */
-@keyframes ctaIconBounce {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-2px);
-  }
-  75% {
-    transform: translateX(2px);
-  }
-}
-
 .cta-icon {
   width: 100%;
   height: 100%;
@@ -178,7 +165,6 @@
   transition: var(--transition-fast, all 0.3s ease);
   display: block;
   flex-shrink: 0;
-  animation: ctaIconBounce 2s ease-in-out infinite;
 }
 
 .cta-icon svg {
@@ -199,11 +185,10 @@
   height: 100%;
   min-width: 100%;
   display: flex;
-  gap: var(--spacing-xl, 24px);
+  gap: 4px;
   padding: 0;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
-  transition: var(--transition-fast, all 0.3s ease);
 }
 
 .body-scroll img {
@@ -216,6 +201,9 @@
 .card-content p {
   margin: 0;
   line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .card-content p ul {
@@ -232,3 +220,10 @@
 .card-content p li:last-child {
   margin-bottom: 0;
 } 
+
+/* Carousel mode styling */
+.body-scroll.carousel-mode {
+  display: block;
+  gap: 0;
+  padding: 0;
+}

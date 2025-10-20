@@ -51,3 +51,11 @@
   background-color: var(--active);
   opacity: 1;
 }
+
+/* Card Group Layout - for direct LayoutGroup usage */
+.card-group {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-start;
+  position: relative;
+}

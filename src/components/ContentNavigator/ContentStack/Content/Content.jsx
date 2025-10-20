@@ -6,7 +6,6 @@ import BodyComponent from './Body/BodyComponent/BodyComponent';
 import Text from './Body/BodyComponent/Text/Text';
 import Image from './Body/BodyComponent/Image/Image';
 import Card from './Body/BodyComponent/CardGroup/Card/Card';
-import CardGroup from './Body/BodyComponent/CardGroup/CardGroup';
 import FullCard from './Body/BodyComponent/FullCard/FullCard';
 
 

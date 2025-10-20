@@ -13,14 +13,64 @@ import Image from '../../../ContentNavigator/ContentStack/Content/Body/BodyCompo
 import FullCard from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/FullCard/FullCard';
 import CardGroup from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/CardGroup/CardGroup';
 import Card from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/CardGroup/Card/Card';
-import SelectedWorks from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/SelectedWorks';
-import WorkItem from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/SelectedWorks/WorkItems/WorkItem';
+import TitleSection from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/TitleSection';
+import WorkItem from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/WorkItems/WorkItem';
 import Tile from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/Tile/Tile';
 import TileColumn from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TileColumn/TileColumn';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import TandaThumbnail1 from '../../../../assets/TANDA/CaseStudy1/Thumbnail/TandaThumbnail1.svg';
 import OnboardingFunnelChart from '../../../../assets/TANDA/CaseStudy1/onboarding-funnel-chart.svg';
 import Figure01 from '../../../../assets/TANDA/CaseStudy1/Figure 01.svg';
+// User Flow Audit assets
+import SignUpScreen from '../../../../assets/TANDA/CaseStudy1/Sign Up Screen.svg';
+// Onboarding assets
+// Phone Verification imports
+import PhoneVerification01 from '../../../../assets/TANDA/CaseStudy1/Phone Verification/01.svg';
+import PhoneVerification02 from '../../../../assets/TANDA/CaseStudy1/Phone Verification/02.svg';
+// Create Account imports
+import CreateAccount01 from '../../../../assets/TANDA/CaseStudy1/Create Account/01.svg';
+import CreateAccount02 from '../../../../assets/TANDA/CaseStudy1/Create Account/02.svg';
+import CreateAccount03 from '../../../../assets/TANDA/CaseStudy1/Create Account/03.svg';
+import CreateAccount04 from '../../../../assets/TANDA/CaseStudy1/Create Account/04.svg';
+// Onboarding Carousel imports
+import Carousel01 from '../../../../assets/TANDA/CaseStudy1/Onboarding/Carousel/01.svg';
+import Carousel02 from '../../../../assets/TANDA/CaseStudy1/Onboarding/Carousel/02.svg';
+import Carousel03 from '../../../../assets/TANDA/CaseStudy1/Onboarding/Carousel/03.svg';
+// Email Verification imports
+import EmailVerification01 from '../../../../assets/TANDA/CaseStudy1/Onboarding/Email Verification/01.svg';
+import EmailVerification02 from '../../../../assets/TANDA/CaseStudy1/Onboarding/Email Verification/02.svg';
+// KYC imports
+import KYC01 from '../../../../assets/TANDA/CaseStudy1/Onboarding/KYC/01.svg';
+import KYC02 from '../../../../assets/TANDA/CaseStudy1/Onboarding/KYC/02.svg';
+import KYC021 from '../../../../assets/TANDA/CaseStudy1/Onboarding/KYC/02-1.svg';
+// KYC Fail imports
+import KYCFail01 from '../../../../assets/TANDA/CaseStudy1/Onboarding/KYC Fail/01.svg';
+import KYCFail02 from '../../../../assets/TANDA/CaseStudy1/Onboarding/KYC Fail/02.svg';
+import KYCFail021 from '../../../../assets/TANDA/CaseStudy1/Onboarding/KYC Fail/02-1.svg';
+import KYCFail022 from '../../../../assets/TANDA/CaseStudy1/Onboarding/KYC Fail/02-2.svg';
+// Link Bank imports
+import LinkBank01 from '../../../../assets/TANDA/CaseStudy1/Onboarding/Link Bank/01.svg';
+import LinkBank02 from '../../../../assets/TANDA/CaseStudy1/Onboarding/Link Bank/02.svg';
+// User Activation imports
+import UserActivation01 from '../../../../assets/TANDA/CaseStudy1/User Activation/01.svg';
+import UserActivation02 from '../../../../assets/TANDA/CaseStudy1/User Activation/02.svg';
+// Research 2 imports
+import Research2KYCBottleneck01 from '../../../../assets/TANDA/CaseStudy1/Research 2/KYC Bottleneck/01.svg';
+import Research2KYCBottleneck02 from '../../../../assets/TANDA/CaseStudy1/Research 2/KYC Bottleneck/02.svg';
+import Research2KYCBottleneck03 from '../../../../assets/TANDA/CaseStudy1/Research 2/KYC Bottleneck/03.svg';
+import Research2LeaveOnboarding01 from '../../../../assets/TANDA/CaseStudy1/Research 2/Leave Onboarding/01.svg';
+import Research2LeaveOnboarding02 from '../../../../assets/TANDA/CaseStudy1/Research 2/Leave Onboarding/02.svg';
+import Research2LeaveOnboarding03 from '../../../../assets/TANDA/CaseStudy1/Research 2/Leave Onboarding/03.svg';
+import Research2MisleadingLogin01 from '../../../../assets/TANDA/CaseStudy1/Research 2/Misleading Login/01.svg';
+import Research2MisleadingLogin02 from '../../../../assets/TANDA/CaseStudy1/Research 2/Misleading Login/02.svg';
+import Research2MisleadingLogin03 from '../../../../assets/TANDA/CaseStudy1/Research 2/Misleading Login/03.svg';
+import Research2ProfilePicture01 from '../../../../assets/TANDA/CaseStudy1/Research 2/Profile Picture/01.svg';
+import Research2ProfilePicture02 from '../../../../assets/TANDA/CaseStudy1/Research 2/Profile Picture/02.svg';
+// Research 3 imports
+import Research3Logistics from '../../../../assets/TANDA/CaseStudy1/Research 3/Logistics.svg';
+import Research3Persona1 from '../../../../assets/TANDA/CaseStudy1/Research 3/Persona 1.svg';
+import Research3Persona2 from '../../../../assets/TANDA/CaseStudy1/Research 3/Persona 2.svg';
+import Research3Persona3 from '../../../../assets/TANDA/CaseStudy1/Research 3/Persona 3.svg';
 import Icon from '../../../../components/Icon';
 import { ICON_PATHS } from '../../../../utils/iconPaths';
 
@@ -416,15 +466,422 @@ const CaseStudy = () => {
                       title: "User Flow Audit",
                       description: "We conducted a comprehensive walkthrough of the existing sign-up and onboarding experience.<ul><li>Collected internal feedback from design, product, and engineering</li><li>Identified gaps in flow, inconsistent patterns, and possible pain points</li></ul>",
                       ctaText: "View Details",
-                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />
+                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />,
+                      headItems: [
+                        {
+                          id: "01",
+                          index: "01",
+                          title: "Sign Up Screen"
+                        },
+                        {
+                          id: "02", 
+                          index: "02",
+                          title: "Phone Verification"
+                        },
+                        {
+                          id: "03",
+                          index: "03", 
+                          title: "Create Account"
+                        },
+                        {
+                          id: "04",
+                          index: "04", 
+                          title: "Onboarding - Carousel"
+                        },
+                        {
+                          id: "05",
+                          index: "05", 
+                          title: "Onboarding - Email Verification"
+                        },
+                        {
+                          id: "06",
+                          index: "06", 
+                          title: "Onboarding - Know Your Customer (KYC) Flow"
+                        },
+                        {
+                          id: "07",
+                          index: "07", 
+                          title: "Onboarding - KYC Fail States"
+                        },
+                        {
+                          id: "08",
+                          index: "08", 
+                          title: "Onboarding - Link Bank"
+                        },
+                        {
+                          id: "09",
+                          index: "09", 
+                          title: "User Activation - Join Circle Flow"
+                        }
+                      ],
+                      bodyItems: [
+                        // 1. Sign Up Screen - 1 Image, 1 Annotation (2 items)
+                        {
+                          id: "01",
+                          children: [
+                            <img src={SignUpScreen} alt="Sign Up Screen showing the initial user registration process" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "Missed Value Proposition Opportunity",
+                              description: "The sign screen space is primarily branding alone. This area could showcase key product messaging or compelling onboarding expectations instead."
+                            },
+                            {
+                              id: "02",
+                              index: "02",
+                              title: "No Clear Primary CTA",
+                              description: "Sign-up and log-in buttons have equal visual weight. Prioritize sign-up with hierarchy since most visitors are new users."
+                            }
+                          ]
+                        },
+                        // 2. Phone Verification - 2 Images, 1 Annotation (1 item)
+                        {
+                          id: "02",
+                          children: [
+                            <img src={PhoneVerification01} alt="Phone Verification screen 01" />,
+                            <img src={PhoneVerification02} alt="Phone Verification screen 02" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "Removed Redundant Verification",
+                              description: "Phone verification added friction without technical necessity.<br />Since email verification is sufficient for account creation, we eliminated this step to streamline onboarding."
+                            }
+                          ]
+                        },
+                        // 3. Create Account - 1 image, annotations 1-4, images 02-04, annotation 5
+                        {
+                          id: "03",
+                          children: [
+                            <img src={CreateAccount01} alt="Create Account screen 01" />,
+                            <img src={CreateAccount02} alt="Create Account screen 02" />,
+                            <img src={CreateAccount03} alt="Create Account screen 03" />,
+                            <img src={CreateAccount04} alt="Create Account screen 04" />
+                          ],
+                          annotationSets: [
+                            {
+                              position: 1, // After first image
+                              items: [
+                                {
+                                  id: "01",
+                                  index: "01",
+                                  title: "Information Overload",
+                                  description: "Requesting many user fields simultaneously overloads users at a critical moment. Collecting only essential names and email initially would improve completion rates."
+                                },
+                                {
+                                  id: "02",
+                                  index: "02",
+                                  title: "Ambiguous Input Purpose",
+                                  description: "Essential and optional fields lack context. Users may be unclear whether they're creating an account, connecting an existing account, creating hesitation at a critical moment."
+                                },
+                                {
+                                  id: "03",
+                                  index: "03",
+                                  title: "Delayed Email Verification",
+                                  description: "Email is captured early but not verified until weeks after product and better onboarding. This creates a fragmented experience and allows invalid email addresses when stakes are lower."
+                                },
+                                {
+                                  id: "04",
+                                  index: "04",
+                                  title: "Profile Picture Upload",
+                                  description: "Requesting a profile picture during signup adds user friction, and creates delays in understanding its platform importance. Treating as incomplete profiles."
+                                }
+                              ]
+                            },
+                            {
+                              position: 4, // After all images
+                              items: [
+                                {
+                                  id: "05",
+                                  index: "05",
+                                  title: "Non-Essential Fields",
+                                  description: "Data like job title inputs aren't required for account creation. Deferring these optional fields to reach core product helps reduce friction and allows users to reach core product sooner."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        // 4. Onboarding Carousel - 3 images, 2 Annotations (4 items)
+                        {
+                          id: "04",
+                          children: [
+                            <img src={Carousel01} alt="Onboarding Carousel 01" />,
+                            <img src={Carousel02} alt="Onboarding Carousel 02" />,
+                            <img src={Carousel03} alt="Onboarding Carousel 03" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "Onboarding Carousel",
+                              description: "Placeholder annotation 1 for Onboarding Carousel"
+                            },
+                            {
+                              id: "02",
+                              index: "02",
+                              title: "Onboarding Carousel",
+                              description: "Placeholder annotation 2 for Onboarding Carousel"
+                            }
+                          ]
+                        },
+                        // 5. Email Verification - 2 Images, 1 annotations (2 items)
+                        {
+                          id: "05",
+                          children: [
+                            <img src={EmailVerification01} alt="Email Verification 01" />,
+                            <img src={EmailVerification02} alt="Email Verification 02" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "Misplaced Verification Step",
+                              description: "Email verification should occur immediately after input during account creation, not later. Moving to early verification catches invalid addresses when stakes are lower."
+                            },
+                            {
+                              id: "02",
+                              index: "02",
+                              title: "Missing Error States",
+                              description: "No clear indicators for common issues like typos or spam filtering. Users who can't easily resend codes or troubleshoot face dead ends. This creates frustration and abandonment."
+                            }
+                          ]
+                        },
+                        // 6. KYC Flow - 3 images, 2 annotations (4 items)
+                        {
+                          id: "06",
+                          children: [
+                            <img src={KYC01} alt="KYC Flow 01" />,
+                            <img src={KYC02} alt="KYC Flow 02" />,
+                            <img src={KYC021} alt="KYC Flow 02-1" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "Missing Context and Purpose",
+                              description: "Users are dropped into KYC form without explanation of what's being collected or why. Upfront context and clear benefit would reduce anxiety and improve data entry."
+                            },
+                            {
+                              id: "02",
+                              index: "02",
+                              title: "Single-Page Form Overload",
+                              description: "All KYC fields appear on one screen, creating cognitive load and errors. Breaking this into smaller, logical steps would improve completion rates."
+                            },
+                            {
+                              id: "03",
+                              index: "03",
+                              title: "Insufficient Trust for Sensitive Data",
+                              description: "Requesting SSN without demonstrated value. Users haven't experienced platform benefit to justify sharing sensitive information."
+                            },
+                            {
+                              id: "04",
+                              index: "04",
+                              title: "Unexplained Document Requests",
+                              description: "Additional document uploads lack context about why they're needed or what verification fails. Users need to understand required information and how it will be used."
+                            }
+                          ]
+                        },
+                        // 7. KYC Fail States - 4 images, 2 annotations (4 items)
+                        {
+                          id: "07",
+                          children: [
+                            <img src={KYCFail01} alt="KYC Fail States 01" />,
+                            <img src={KYCFail02} alt="KYC Fail States 02" />,
+                            <img src={KYCFail021} alt="KYC Fail States 02-1" />,
+                            <img src={KYCFail022} alt="KYC Fail States 02-2" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "Unclear State Communication",
+                              description: "Rejection and review messages use vague language. Users don't understand what went wrong, what options they can take."
+                            },
+                            {
+                              id: "02",
+                              index: "02",
+                              title: "Misleading Timeline Expectation",
+                              description: "Stating 1-3 business days for review misleads users. Issues typically complete within an hour or same day. This discourages users and increases abandonment."
+                            }
+                          ]
+                        },
+                        // 8. Link Bank - 2 images, 1 annotations (1 items)
+                        {
+                          id: "08",
+                          children: [
+                            <img src={LinkBank01} alt="Link Bank 01" />,
+                            <img src={LinkBank02} alt="Link Bank 02" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "Third-Party Integration",
+                              description: "Tanda connects to banks through Plaid, a trusted third-party provider. This outsources security and compliance but introduces friction in the user experience."
+                            }
+                          ]
+                        },
+                        // 9. User Activation - Join Circle Flow - 2 images, 1 annotations (4 items)
+                        {
+                          id: "09",
+                          children: [
+                            <img src={UserActivation01} alt="User Activation 01" />,
+                            <img src={UserActivation02} alt="User Activation 02" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "Something about the onboarding carousel",
+                              description: "The carousel is a onboarding process"
+                            },
+                            {
+                              id: "02",
+                              index: "02",
+                              title: "The carousel ticker?",
+                              description: "Redundant? not the only verification step, small if the only text/time required to scroll"
+                            }
+                          ]
+                        }
+                      ]
                     }}
                     lastCard={{
                       index: "02",
                       icon: <Icon svgPath={ICON_PATHS.eye} size="xl" />,
                       title: "UX Session Recordings",
-                      description:"We reviewed recordings of real user interactions to observe behavior patterns. <ul><li>Noted hesitation points, rage clicks, and moments of exit</li><li>Mapped common interaction breakdowns and where friction occurred</li></ul>",
+                      description: "We reviewed recordings of real user interactions to observe behavior patterns. <ul><li>Noted hesitation points, rage clicks, and moments of exit</li><li>Mapped common interaction breakdowns and where friction occurred</li></ul>",
                       ctaText: "View Details",
-                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />
+                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />,
+                      headItems: [
+                        {
+                          id: "01",
+                          index: "01",
+                          title: "Log In Button Misleading New Users"
+                        },
+                        {
+                          id: "02", 
+                          index: "02",
+                          title: "Users Continue Past Profile Picture Field"
+                        },
+                        {
+                          id: "03",
+                          index: "03", 
+                          title: "Users Leave Home Screen During Onboarding"
+                        },
+                        {
+                          id: "04",
+                          index: "04", 
+                          title: "KYC Flow Causing Onboarding Bottleneck"
+                        }
+                      ],
+                      bodyItems: [
+                        // 01. Log In Button Misleading New Users - 3 screens, 2 annotations
+                        {
+                          id: "01",
+                          children: [
+                            <img src={Research2MisleadingLogin01} alt="Misleading login flow showing user confusion" />,
+                            <img src={Research2MisleadingLogin02} alt="Login interface causing user drop-off" />,
+                            <img src={Research2MisleadingLogin03} alt="User login behavior patterns and confusion" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "New Users Defaulted to \"Log In\"",
+                              description: "Most new users arrived toward \"Log In\" rather than \"Sign Up,\" indicating unclear button hierarchy."
+                            },
+                            {
+                              id: "02",
+                              index: "02",
+                              title: "Login Page Mistaken for Sign-Up",
+                              description: "Users entered new credentials expecting to sign up from the login page, then dropped off when it failed."
+                            }
+                          ]
+                        },
+                        // 02. Users Continue Past Profile Picture Field - 2 screens, 2 annotations
+                        {
+                          id: "02",
+                          children: [
+                            <img src={Research2ProfilePicture01} alt="Profile picture field showing low engagement" />,
+                            <img src={Research2ProfilePicture02} alt="Account creation showing skipped profile picture" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "Low Engagement with Profile Picture CTA",
+                              description: "Most users ignored the profile picture prompt at the top of account creation, suggesting low visibility or unclear value proposition."
+                            },
+                            {
+                              id: "02",
+                              index: "02",
+                              title: "Rushed or Dismissive Behavior",
+                              description: "Users who did engage either selected random images or immediately skipped, indicating they didn't understand the relevance of profile pictures for community participation."
+                            }
+                          ]
+                        },
+                        // 03. Users Leave Home Screen During Onboarding - 3 screens, 3 annotations
+                        {
+                          id: "03",
+                          children: [
+                            <img src={Research2LeaveOnboarding01} alt="Users leaving during onboarding showing non-sticky behavior" />,
+                            <img src={Research2LeaveOnboarding02} alt="Onboarding abandonment patterns and navigation issues" />,
+                            <img src={Research2LeaveOnboarding03} alt="Onboarding flow exit points and blocking alerts" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "Non-Sticky Onboarding Scrolls Away",
+                              description: "The onboarding carousel lives at the top screen scrolls away with content, causing users to naturally explore the feed below."
+                            },
+                            {
+                              id: "02",
+                              index: "02",
+                              title: "Unclear Blocking Alerts",
+                              description: "When users try joining circles without verification, error messages don't explain that onboarding is incomplete, leaving them unable to understand why actions failed."
+                            },
+                            {
+                              id: "03",
+                              index: "03",
+                              title: "Unrestricted Navigation Creates False Progress",
+                              description: "Users can freely navigate to Browse Circles before completing onboarding, suggesting these features are accessible when they're actually blocked."
+                            }
+                          ]
+                        },
+                        // 04. KYC Flow Causing Onboarding Bottleneck - 3 screens, 3 annotations
+                        {
+                          id: "04",
+                          children: [
+                            <img src={Research2KYCBottleneck01} alt="KYC bottleneck causing user drop-off" />,
+                            <img src={Research2KYCBottleneck02} alt="KYC flow friction points and issues" />,
+                            <img src={Research2KYCBottleneck03} alt="Identity verification bottlenecks and barriers" />
+                          ],
+                          annotationItems: [
+                            {
+                              id: "01",
+                              index: "01",
+                              title: "SSN Request Triggers Drop-Off",
+                              description: "Users breeze through input fields, but exit the page when they encounter SSN field. Even users who reach this step leave without submitting any information."
+                            },
+                            {
+                              id: "02",
+                              index: "02",
+                              title: "Pending Status Ends Engagement",
+                              description: "When KYC enters pending state, 95% of users leave the app and don't return because they can't access other features while locked."
+                            },
+                            {
+                              id: "03",
+                              index: "03",
+                              title: "Locked Steps Create Dead End",
+                              description: "Users who skip identity verification are blocked in subsequent steps (Link Bank) blocked, forcing them back to complete entire onboarding carousel, and leave the app."
+                            }
+                          ]
+                        }
+                      ]
                     }}
                   />
                 </BodyComponent>
@@ -436,7 +893,55 @@ const CaseStudy = () => {
                       title: "User Interviews",
                       description: "We were able to conduct live on boarding sessions with users to directly view them completing our NUX.  During these sessions we just observed the users and were able to ask probing questions after.",
                       ctaText: "View Details",
-                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />
+                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />,
+                      headItems: [
+                        {
+                          id: "01",
+                          index: "01",
+                          title: "Logistics"
+                        },
+                        {
+                          id: "02", 
+                          index: "02",
+                          title: "Persona 1"
+                        },
+                        {
+                          id: "03",
+                          index: "03",
+                          title: "Persona 2"
+                        },
+                        {
+                          id: "04",
+                          index: "04",
+                          title: "Persona 3"
+                        }
+                      ],
+                      bodyItems: [
+                        {
+                          id: "01",
+                          children: [
+                            <img src={Research3Logistics} alt="Interview logistics and session setup" />
+                          ]
+                        },
+                        {
+                          id: "02",
+                          children: [
+                            <img src={Research3Persona1} alt="First user persona insights" />
+                          ]
+                        },
+                        {
+                          id: "03",
+                          children: [
+                            <img src={Research3Persona2} alt="Second user persona insights" />
+                          ]
+                        },
+                        {
+                          id: "04",
+                          children: [
+                            <img src={Research3Persona3} alt="Third user persona insights" />
+                          ]
+                        }
+                      ]
                     }}
                     lastCard={{
                       index: "04",
@@ -444,7 +949,33 @@ const CaseStudy = () => {
                       title: "Competitive Analysis",
                       description: "We benchmarked onboarding flows from successful apps in fintech and adjacent industries. <ul><li>Focused on sign-up entry points, KYC timing, trust-building, and feature education</li><li>Pulled inspiration from best practices and patterns in user-first flows</li></ul>",
                       ctaText: "View Details",
-                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />
+                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />,
+                      headItems: [
+                        {
+                          id: "01",
+                          index: "01",
+                          title: "Fintech Benchmarking"
+                        },
+                        {
+                          id: "02", 
+                          index: "02",
+                          title: "Best Practice Analysis"
+                        }
+                      ],
+                      bodyItems: [
+                        {
+                          id: "01",
+                          children: [
+                            <img src={OnboardingFunnelChart} alt="Competitive analysis of fintech onboarding flows" />
+                          ]
+                        },
+                        {
+                          id: "02",
+                          children: [
+                            <img src={Figure01} alt="Best practices and patterns comparison" />
+                          ]
+                        }
+                      ]
                     }}
                   />
                 </BodyComponent>
@@ -465,7 +996,44 @@ const CaseStudy = () => {
                       title: "Technical Friction Was Causing Early Exits",
                       description: "Session timeouts, Firebase auth failures, and confusing error states created trust-breaking moments before users could even see the product.",
                       ctaText: "View Details",
-                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />
+                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />,
+                      headItems: [
+                        {
+                          id: "01",
+                          index: "01",
+                          title: "Session Timeout Issues"
+                        },
+                        {
+                          id: "02", 
+                          index: "02",
+                          title: "Firebase Auth Failures"
+                        },
+                        {
+                          id: "03",
+                          index: "03", 
+                          title: "Error State Confusion"
+                        }
+                      ],
+                      bodyItems: [
+                        {
+                          id: "01",
+                          children: [
+                            <img src={OnboardingFunnelChart} alt="Session timeout issues during user flow" />
+                          ]
+                        },
+                        {
+                          id: "02",
+                          children: [
+                            <img src={SignUpScreen} alt="Firebase authentication failure examples" />
+                          ]
+                        },
+                        {
+                          id: "03",
+                          children: [
+                            <img src={KYCFail01} alt="Confusing error states that break user trust" />
+                          ]
+                        }
+                      ]
                     }}
                     lastCard={{
                       index: "02",
@@ -473,7 +1041,62 @@ const CaseStudy = () => {
                       title: "The Sign-Up Flow Asked Too Much, Too Soon",
                       description: "Email-only sign-up, unclear profile picture requirements, and early KYC requests created unnecessary friction. Users hadn't yet seen the product's value, so the asks felt premature.",
                       ctaText: "View Details",
-                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />
+                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />,
+                      headItems: [
+                        {
+                          id: "01",
+                          index: "01",
+                          title: "Misleading Login"
+                        },
+                        {
+                          id: "02", 
+                          index: "02",
+                          title: "KYC Bottleneck"
+                        },
+                        {
+                          id: "03",
+                          index: "03",
+                          title: "Profile Picture"
+                        },
+                        {
+                          id: "04",
+                          index: "04",
+                          title: "Leave Onboarding"
+                        }
+                      ],
+                      bodyItems: [
+                        {
+                          id: "01",
+                          children: [
+                            <img src={Research2MisleadingLogin01} alt="Misleading login flow issues" />,
+                            <img src={Research2MisleadingLogin02} alt="Login interface confusion" />,
+                            <img src={Research2MisleadingLogin03} alt="User login behavior patterns" />
+                          ]
+                        },
+                        {
+                          id: "02",
+                          children: [
+                            <img src={Research2KYCBottleneck01} alt="KYC bottleneck causing user drop-off" />,
+                            <img src={Research2KYCBottleneck02} alt="KYC flow friction points" />,
+                            <img src={Research2KYCBottleneck03} alt="Identity verification issues" />
+                          ]
+                        },
+                        {
+                          id: "03",
+                          children: [
+                            <img src={Research2ProfilePicture01} alt="Profile picture friction points" />,
+                            <img src={Research2ProfilePicture02} alt="Profile picture upload issues" />
+                          ]
+                        },
+                        {
+                          id: "04",
+                          children: [
+                            <img src={Research2LeaveOnboarding01} alt="Users leaving during onboarding" />,
+                            <img src={Research2LeaveOnboarding02} alt="Onboarding abandonment patterns" />,
+                            <img src={Research2LeaveOnboarding03} alt="Onboarding flow exit points" />
+                          ]
+                        }
+                      ]
                     }}
                   />
                 </BodyComponent>
@@ -484,26 +1107,90 @@ const CaseStudy = () => {
                       icon: <Icon svgPath={ICON_PATHS.eye} size="xl" />,
                       title: "Users Didn't Know What to Do After Signing Up",
                       description: "Once in the app, many users were unsure how to proceed. There was no clear guidance, orientation, or milestone structure to show what success looked like.",
-                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />
+                      ctaText: "View Details",
+                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />,
+                      headItems: [
+                        {
+                          id: "01",
+                          index: "01",
+                          title: "Lack of Clear Guidance"
+                        },
+                        {
+                          id: "02", 
+                          index: "02",
+                          title: "Missing Orientation"
+                        },
+                        {
+                          id: "03",
+                          index: "03",
+                          title: "No Success Milestones"
+                        }
+                      ],
+                      bodyItems: [
+                        {
+                          id: "01",
+                          children: [
+                            <img src={Carousel01} alt="Users confused about next steps after sign-up" />
+                          ]
+                        },
+                        {
+                          id: "02",
+                          children: [
+                            <img src={UserActivation01} alt="Missing user orientation and onboarding guidance" />
+                          ]
+                        },
+                        {
+                          id: "03",
+                          children: [
+                            <img src={Figure01} alt="Lack of clear success milestones and progress indicators" />
+                          ]
+                        }
+                      ]
                     }}
                     lastCard={{
                       index: "04",
                       icon: <Icon svgPath={ICON_PATHS.eye} size="xl" />,
-                      title: "Competitive Analysis",
-                      description: "We benchmarked onboarding flows from similar fintech apps. Key takeaways included how other apps sequence sensitive steps (like KYC), onboard with visual tours, and promote early product value.",
+                      title: "Research Synthesis & Key Findings",
+                      description: "Through comprehensive user research and analysis, we identified the core issues preventing successful user activation and engagement with the TANDA platform.",
                       ctaText: "View Details",
-                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />
-                    }}
-                  />
-                </BodyComponent>
-                <BodyComponent>
-                  <CardGroup
-                    firstCard={{
-                      index: "03",
-                      icon: <Icon svgPath={ICON_PATHS.eye} size="small" />,
-                      title: "Users Didn't Know What to Do After Signing Up",
-                      description: "Once in the app, many users were unsure how to proceed. There was no clear guidance, orientation, or milestone structure to show what success looked like.",
-                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />
+                      ctaIcon: <Icon svgPath={ICON_PATHS.eye} size="small" />,
+                      headItems: [
+                        {
+                          id: "01",
+                          index: "01",
+                          title: "Research Summary"
+                        },
+                        {
+                          id: "02", 
+                          index: "02",
+                          title: "Key Findings"
+                        },
+                        {
+                          id: "03",
+                          index: "03", 
+                          title: "Opportunity Areas"
+                        }
+                      ],
+                      bodyItems: [
+                        {
+                          id: "01",
+                          children: [
+                            <img src={OnboardingFunnelChart} alt="Research summary and methodology overview" />
+                          ]
+                        },
+                        {
+                          id: "02",
+                          children: [
+                            <img src={Figure01} alt="Key findings from user research and analysis" />
+                          ]
+                        },
+                        {
+                          id: "03",
+                          children: [
+                            <img src={UserActivation01} alt="Identified opportunity areas for improvement" />
+                          ]
+                        }
+                      ]
                     }}
                   />
                 </BodyComponent>
@@ -553,18 +1240,65 @@ const CaseStudy = () => {
                 </BodyComponent>
 
                 <BodyComponent rows={1}>
-                  <FullCard
+                  <Card
                     index="01"
                     icon={<Icon svgPath={ICON_PATHS.eye} size="small" />}
                     title="Remove Barriers to Entry"
                     description="Our comprehensive approach to redesigning the user onboarding experience, incorporating user research insights and business objectives."
                     ctaText="View Strategy"
                     ctaIcon={<Icon svgPath={ICON_PATHS.eye} size="small" />}
-                  >
-                    <img src="https://picsum.photos/400/540" alt="Strategy framework diagram" />
-                    <img src="https://picsum.photos/400/540" alt="User journey mapping" />
-                    <img src="https://picsum.photos/400/540" alt="Success metrics" />
-                  </FullCard>
+                    headItems={[
+                      {
+                        id: "01",
+                        index: "01",
+                        title: "Strategy Framework"
+                      },
+                      {
+                        id: "02", 
+                        index: "02",
+                        title: "User Journey Mapping"
+                      },
+                      {
+                        id: "03",
+                        index: "03", 
+                        title: "Success Metrics"
+                      }
+                    ]}
+                    bodyItems={[
+                      {
+                        id: "01",
+                        children: [
+                          <img src={OnboardingFunnelChart} alt="Strategy framework diagram" />
+                        ],
+                        annotationItems: [
+                          {
+                            id: "01",
+                            index: "01",
+                            title: "Framework Analysis",
+                            description: "Our research-informed approach to reducing onboarding friction and improving user confidence."
+                          },
+                          {
+                            id: "02",
+                            index: "02", 
+                            title: "Implementation Strategy",
+                            description: "Phased rollout approach focusing on high-impact changes first to maximize user adoption."
+                          }
+                        ]
+                      },
+                      {
+                        id: "02",
+                        children: [
+                          <img src={Figure01} alt="User journey mapping" />
+                        ]
+                      },
+                      {
+                        id: "03",
+                        children: [
+                          <img src={UserActivation01} alt="Success metrics" />
+                        ]
+                      }
+                    ]}
+                  />
                 </BodyComponent>
                 <BodyComponent rows={1}>
                   <FullCard
