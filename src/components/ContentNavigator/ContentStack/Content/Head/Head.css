@@ -36,12 +36,74 @@
   text-align: left;
 }
 
-/* Add specific styling for the icon in head-bottom */
-.head-bottom svg {
+/* Text Style Classes */
+.head-text-title {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-title-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.head-text-subtitle {
+  font-family: var(--font-family-subtitle);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-tertiary);
+  line-height: 1.2;
+}
+
+/* Icon styling - exactly like Card and Tile components */
+.head-icon-wrapper {
   width: var(--icon-size-small, 24px);
   height: var(--icon-height-small, 16px);
-  display: block;
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.head-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--color-tertiary, #999988);
-  fill: var(--color-tertiary, #999988);
+}
+
+.head-icon-svg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.head-icon-svg svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--color-tertiary, #999988) !important;
+  color: var(--color-tertiary, #999988) !important;
+}
+
+/* Ensure all SVG paths within head icons get the correct color */
+.head-icon-svg svg path {
+  fill: var(--color-tertiary, #999988) !important;
+}
+
+.head-icon-svg svg g {
+  fill: var(--color-tertiary, #999988) !important;
+}
+
+/* Reset any browser default SVG styling */
+.head-icon-svg svg * {
+  fill: var(--color-tertiary, #999988) !important;
+}
+
+/* Styling for imported SVG files - convert to tertiary color using CSS filters */
+.head-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.6) contrast(1);
 }

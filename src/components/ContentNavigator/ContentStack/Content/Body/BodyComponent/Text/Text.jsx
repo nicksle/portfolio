@@ -4,15 +4,14 @@ import './Text.css';
 const textStyles = {
   title1: {
     fontFamily: 'var(--font-family-title)',
-    fontSize: 'var(--font-size-title-1)',
+    fontSize: 'var(--font-size-title-xxl)',
     fontWeight: 'var(--font-weight-medium)',
     color: 'var(--color-primary)',
     lineHeight: 1.2
   },
   titleLg: {
     fontFamily: 'var(--font-family-title)',
-    // Keep 48px since no exact token exists; only map what we have
-    fontSize: '48px',
+    fontSize: 'var(--font-size-title-xl)',
     fontWeight: 'var(--font-weight-medium)',
     color: 'var(--color-primary)',
     lineHeight: 1.2
@@ -26,21 +25,21 @@ const textStyles = {
   },
   bodyLg: {
     fontFamily: 'var(--font-family-body)',
-    fontSize: 'var(--font-size-body-base)',
+    fontSize: 'var(--font-size-body)',
     fontWeight: 'var(--font-weight-regular)',
     color: 'var(--color-primary)',
     lineHeight: 1.2
   },
   bodyBase: {
     fontFamily: 'var(--font-family-body)',
-    fontSize: 'var(--font-size-body-sm)',
+    fontSize: 'var(--font-size-body)',
     fontWeight: 'var(--font-weight-regular)',
     color: 'var(--color-primary)',
     lineHeight: 1.2
   },
   bodySm: {
     fontFamily: 'var(--font-family-body)',
-    fontSize: 'var(--font-size-body-xs)',
+    fontSize: 'var(--font-size-body-sm)',
     fontWeight: 'var(--font-weight-regular)',
     color: 'var(--color-primary)',
     lineHeight: 1.2
