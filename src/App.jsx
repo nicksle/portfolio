@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Work from './components/Pages/Work/Work';
 import CaseStudy1 from './components/Pages/Tanda/CaseStudy1/CaseStudy';
+import CaseStudyID from './components/Pages/Tanda/CaseStudy1/CaseStudyID';
 
 // Wrapper component to handle scroll to top
 const ScrollToTop = () => {
@@ -31,6 +32,7 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Work />} />
         <Route path="/case-study-1" element={<CaseStudy1 />} />
+        <Route path="/case-study-id" element={<CaseStudyID />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AnimatePresence>
@@ -39,7 +41,7 @@ const AnimatedRoutes = () => {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/portfolio">
       <div className="App">
         <AnimatedHeader />
         <ScrollToTop />

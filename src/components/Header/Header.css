@@ -96,5 +96,5 @@
 }
 
 .nav-link:last-child:hover {
-  border-color: var(--active);
+  border-color: var(--color-active);
 }

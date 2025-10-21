@@ -44,7 +44,7 @@
 .casestudy-divider {
   width: 100%;
   height: 1px;
-  background-color: var(--inactive);
+  background-color: var(--color-inactive);
 }
 
 .casestudy-title-top {
@@ -73,7 +73,7 @@
 .casestudy-description {
   font-size: 24px;
   font-weight: 300;
-  color: var(--active);
+  color: var(--color-active);
   margin: 0;
   text-align: left;
   line-height: 1.5;
@@ -105,7 +105,7 @@
 .casestudy-impact-metric {
   width: 156px;
   aspect-ratio: 1;
-  border: 1px solid var(--inactive);
+  border: 1px solid var(--color-inactive);
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -130,7 +130,7 @@
   font-family: 'Satoshi', sans-serif;
   font-size: 48px;
   font-weight: bold;
-  color: var(--active);
+  color: var(--color-active);
   line-height: 1.2;
 }
 
@@ -181,11 +181,11 @@
 }
 
 .casestudy-image-carousel::-webkit-scrollbar-thumb {
-  background: var(--active);
+  background: var(--color-active);
 }
 
 .casestudy-image-carousel::-webkit-scrollbar-thumb:hover {
-  background: var(--tertiary);
+  background: var(--color-tertiary);
 }
 
 .carousel-scroll {

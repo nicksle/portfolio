@@ -16,6 +16,7 @@
   border: 1px solid var(--color-inactive, #30302a);
   z-index: 1;
   position: relative;
+  min-height: 60px;
 }
 
 .nav-tab-item.active {

@@ -9,7 +9,7 @@
 .break-line {
   width: 100%;
   height: 1px;
-  background-color: var(--inactive);
+  background-color: var(--color-inactive);
   margin: 24px 0;
   opacity: 0.5;
 }
@@ -25,14 +25,14 @@
 }
 
 .break-line.active {
-  background-color: var(--active);
+  background-color: var(--color-active);
   opacity: 1;
 }
 
 .body-component.break-line {
   width: 100%;
   height: 1px;
-  background-color: var(--inactive);
+  background-color: var(--color-inactive);
   margin: 24px 0;
   opacity: 0.5;
 }
@@ -48,7 +48,7 @@
 }
 
 .body-component.break-line.active {
-  background-color: var(--active);
+  background-color: var(--color-active);
   opacity: 1;
 }
 

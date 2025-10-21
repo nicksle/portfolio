@@ -1,6 +1,7 @@
 import React from 'react';
 import './FullCard.css';
 import CardCTA from '../CardGroup/Card/CardCTA/CardCTA';
+import CardCarousel from '../CardGroup/Card/CardCarousel/CardCarousel';
 
 // Helper function to render icons
 const renderIcon = (icon, className) => {
@@ -44,6 +45,8 @@ const FullCard = ({
   ctaText,
   ctaIcon,
   children,
+  headItems = [], // Array of { id, index, title } for CardCarousel head stack
+  bodyItems = [], // Array of { id, children } for CardCarousel body stack
   style = {},
   className = '',
   onCtaClick
@@ -70,8 +73,12 @@ const FullCard = ({
             />
           </div>
           <div className="full-card-body">
-            <div className="full-card-body-scroll">
-              {children}
+            <div className={`full-card-body-scroll ${headItems.length > 0 && bodyItems.length > 0 ? 'carousel-mode' : ''}`}>
+              {headItems.length > 0 && bodyItems.length > 0 ? (
+                <CardCarousel headItems={headItems} bodyItems={bodyItems} />
+              ) : (
+                children
+              )}
             </div>
           </div>
         </div>
