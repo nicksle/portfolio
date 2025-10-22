@@ -2,10 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, useMotionValue, useTransform, animate, useScroll, useMotionTemplate } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ContentNavigator from "../../ContentNavigator/ContentNavigator";
-import ContentStack from "../../ContentNavigator/ContentStack/ContentStack";
-import Content from "../../ContentNavigator/ContentStack/Content/Content";
 import TabNav from "../../ContentNavigator/TabNav/TabNav";
 import NavTabItem from "../../ContentNavigator/TabNav/NavTabItem";
+import Head from "../../ContentNavigator/ContentStack/Content/Head/Head";
 import Body from "../../ContentNavigator/ContentStack/Content/Body/Body";
 import BodyComponent from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/BodyComponent";
 import Text from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/Text/Text";
@@ -98,6 +97,153 @@ const Work = () => {
     // Spacing styles
     workDescription: {
       marginBottom: 'var(--spacing-xl)'
+    }
+  };
+
+  // Content registry - single source of truth for all project content
+  const contentRegistry = {
+    tanda: {
+      id: "tanda",
+      index: "01",
+      title: "Tanda",
+      subtitle: "Fintech Startup",
+      period: "2024",
+      icon1: null,
+      icon2: null,
+      bodyItems: [
+        <BodyComponent key="tanda-description" style={styles.bodyComponent}>
+          <div style={styles.flexColumn}>
+            <Text>
+              TANDA is a fintech startup dedicated to making financial security accessible to everyone. Through our iOS and Android mobile apps, we offer a community-driven savings service that empowers users to reach their financial goals.
+            </Text>
+          </div>
+          <div style={styles.flexColumn}>
+            <img src="https://via.placeholder.com/400/300" alt="Tanda Image" style={styles.projectImage} />
+          </div>
+        </BodyComponent>,
+        <BodyComponent key="tanda-highlights">
+          <TitleSection title="Key Highlights">
+            <CalloutItem index="1" content="Collaborated with leadership to define product roadmap and designed multiple growth-focused features to drive user acquisition and engagement" />
+            <CalloutItem index="2" content="Led new user onboarding redesign through user research and iterative testing, achieving 50% increase in new user growth and 60% reduction in user churn" />
+            <CalloutItem index="3" content="Redesigned core product experience, increasing daily active users by 15% month-over-month and improving long-term user retention" />
+            <CalloutItem index="4" content="Established comprehensive design system with component library, tokenization and documentation, eliminating engineering confusion and streamlining the design-to-development handoff process" />
+          </TitleSection>
+        </BodyComponent>,
+        <BodyComponent key="tanda-works">
+          <TitleSection title="Selected Works">
+            <WorkItem 
+              index="01" 
+              image={TandaThumbnail1} 
+              title="Improving our NUX to Increase User Activation Rates" 
+              description="Delightful sign-up flow that increased user retention and reduced drop off"
+              onCtaClick={() => navigate('/case-study-id')}
+            />
+            <WorkItem index="02" title="TANDA: Core Product" description="Improved core product experience to increase user activation, retention and growth" />
+          </TitleSection>
+        </BodyComponent>
+      ]
+    },
+    liftoff: {
+      id: "liftoff",
+      index: "02",
+      title: "Liftoff",
+      subtitle: "Influence Platform",
+      period: "2024",
+      icon1: null,
+      icon2: null,
+      bodyItems: [
+        <BodyComponent key="liftoff-description" style={styles.bodyComponent}>
+          <div style={styles.flexColumn}>
+            <Text>
+              LiftOff Mobile's Influence team aims to transform digital advertising by leveraging user-generated content (UGC) as a powerful, authentic marketing tool for brands and mobile businesses. We bridges relationships between influencers and advertisers, providing tools to help influencers to monetize their content, and advertisers find creators who fit their specific needs.
+            </Text>
+          </div>
+          <div style={styles.flexColumn}>
+            <img src="https://via.placeholder.com/400/300" alt="Liftoff Image" style={styles.projectImage} />
+          </div>
+        </BodyComponent>,
+        <BodyComponent key="liftoff-highlights">
+          <TitleSection title="Key Highlights">
+            <CalloutItem index="1" content="Led end-to-end design of our desktop product Plug Marketplace, enabling advertisers to discover and match with influencers, resulting in 40% increase in successful campaign completions" />
+            <CalloutItem index="2" content="Partnered with Liftoff Mobile designers to rebrand Jetfuel to Liftoff Influence, implementing unified design system and visual identity post-acquisition" />
+            <CalloutItem index="3" content="Conducted user research and solution synthesis for our core product: The Plug. Created high-fidelity mock-ups for concept testing and roadmapped A/B testing for feature implementation" />
+            <CalloutItem index="4" content="Redesigned our internal tools from Retool to custom products that allowed teams to better manage advertiser spend and influencer submissions, resulting in 35% revenue increase over a 6 month period" />
+          </TitleSection>
+        </BodyComponent>,
+        <BodyComponent key="liftoff-works">
+          <TitleSection title="Selected Works">
+            <WorkItem index="01" title="Liftoff Project 1" description="Description for Liftoff Project 1" />
+            <WorkItem index="02" title="Liftoff Project 2" description="Description for Liftoff Project 2" />
+          </TitleSection>
+        </BodyComponent>
+      ]
+    },
+    jefuel: {
+      id: "jefuel",
+      index: "03",
+      title: "Jefuel",
+      subtitle: "Social Platform",
+      period: "2024",
+      icon1: null,
+      icon2: null,
+      bodyItems: [
+        <BodyComponent key="jefuel-description" style={styles.bodyComponent}>
+          <div style={styles.flexColumn}>
+            <Text>
+              This is the Jefuel section.
+            </Text>
+          </div>
+          <div style={styles.flexColumn}>
+            <img src="https://via.placeholder.com/400/300" alt="Jefuel Image" style={styles.projectImage} />
+          </div>
+        </BodyComponent>,
+        <BodyComponent key="jefuel-highlights">
+          <TitleSection title="Key Highlights">
+            <CalloutItem index="1" content="Collaborated with CEO to define product roadmap focused on user retention and profitability, identifying and prioritizing key features that drove business growth" />
+            <CalloutItem index="2" content="Led design for the features in our open network initiative which includes introducing profiles, messaging and connections; resulted in 30% increase in DAUs" />
+            <CalloutItem index="3" content="Led the design and research for new monetization features for influencers, increasing their earning potential by an average of 20%" />
+          </TitleSection>
+        </BodyComponent>,
+        <BodyComponent key="jefuel-works">
+          <TitleSection title="Selected Works">
+            <WorkItem index="01" title="Jefuel Project 1" description="Description for Jefuel Project 1" />
+            <WorkItem index="02" title="Jefuel Project 2" description="Description for Jefuel Project 2" />
+          </TitleSection>
+        </BodyComponent>
+      ]
+    },
+    cashapp: {
+      id: "cashapp",
+      index: "04",
+      title: "CashApp",
+      subtitle: "Fintech Giant",
+      period: "2024",
+      icon1: null,
+      icon2: null,
+      bodyItems: [
+        <BodyComponent key="cashapp-description" style={styles.bodyComponent}>
+          <div style={styles.flexColumn}>
+            <Text>
+              This is the CashApp section.
+            </Text>
+          </div>
+          <div style={styles.flexColumn}>
+            <img src="https://via.placeholder.com/400/300" alt="CashApp Image" style={styles.projectImage} />
+          </div>
+        </BodyComponent>,
+        <BodyComponent key="cashapp-highlights">
+          <TitleSection title="Key Highlights">
+            <CalloutItem index="1" content="Collaborated with designers, engineers and PMs within the Ecosystems and Boost workstreams; shipped an exclusive ice cream boost for summer 2019, resulting in a 15% increase in boosts usage" />
+            <CalloutItem index="2" content="Participated in design critiques, where I provided and received feedback on designs within a variety of features and workstream" />
+          </TitleSection>
+        </BodyComponent>,
+        <BodyComponent key="cashapp-works">
+          <TitleSection title="Selected Works">
+            <WorkItem index="01" title="CashApp Project 1" description="Description for CashApp Project 1" />
+            <WorkItem index="02" title="CashApp Project 2" description="Description for CashApp Project 2" />
+          </TitleSection>
+        </BodyComponent>
+      ]
     }
   };
 
@@ -334,146 +480,29 @@ const Work = () => {
               <NavTabItem id="jefuel" index="03" title="Jefuel" />
               <NavTabItem id="cashapp" index="04" title="CashApp" />
             </TabNav>
-            <ContentStack activeId={activeContentId}>
-              <Content
-                id="tanda"
-                isActive={activeContentId === "tanda"}
-                index="01"
-                title="Tanda"
-                period="2024"
-                onNext={handleNextContent}
+            
+            {/* Single Content with dynamic content based on activeContentId */}
+            <motion.div 
+              className="content" 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <Head
+                index={contentRegistry[activeContentId]?.index}
+                subtitle={contentRegistry[activeContentId]?.subtitle}
+                title={contentRegistry[activeContentId]?.title}
+                icon={contentRegistry[activeContentId]?.icon1}
+                secondIcon={contentRegistry[activeContentId]?.icon2}
+                period={contentRegistry[activeContentId]?.period}
+              />
+              <Body 
+                onNextSection={handleNextContent}
+                showNextButton={activeContentId !== 'cashapp'}
               >
-                <BodyComponent style={styles.bodyComponent}>
-                  <div style={styles.flexColumn}>
-                    <Text>
-                      TANDA is a fintech startup dedicated to making financial security accessible to everyone. Through our iOS and Android mobile apps, we offer a community-driven savings service that empowers users to reach their financial goals.
-                    </Text>
-                  </div>
-                  <div style={styles.flexColumn}>
-                    <img src="https://via.placeholder.com/400/300" alt="Tanda Image" style={styles.projectImage} />
-                  </div>
-                </BodyComponent>
-                <BodyComponent>
-                  <TitleSection title="Key Highlights">
-                    <CalloutItem index="1" content="Collaborated with leadership to define product roadmap and designed multiple growth-focused features to drive user acquisition and engagement" />
-                    <CalloutItem index="2" content="Led new user onboarding redesign through user research and iterative testing, achieving 50% increase in new user growth and 60% reduction in user churn" />
-                    <CalloutItem index="3" content="Redesigned core product experience, increasing daily active users by 15% month-over-month and improving long-term user retention" />
-                    <CalloutItem index="4" content="Established comprehensive design system with component library, tokenization and documentation, eliminating engineering confusion and streamlining the design-to-development handoff process" />
-                  </TitleSection>
-                </BodyComponent>
-                <BodyComponent>
-                  <TitleSection title="Selected Works">
-                    <WorkItem 
-                      index="01" 
-                      image={TandaThumbnail1} 
-                      title="Improving our NUX to Increase User Activation Rates" 
-                      description="Delightful sign-up flow that increased user retention and reduced drop off"
-                      onCtaClick={handleNavigation}
-                    />
-                    <WorkItem index="02" title="TANDA: Core Product" description="Improved core product experience to increase user activation, retention and growth" />
-                  </TitleSection>
-                </BodyComponent>
-              </Content>
-
-              <Content
-                id="liftoff"
-                isActive={activeContentId === "liftoff"}
-                index="02"
-                title="Liftoff"
-                period="2024"
-                onNext={handleNextContent}
-              >
-                <BodyComponent style={styles.bodyComponent}>
-                  <div style={styles.flexColumn}>
-                    <Text>
-                      LiftOff Mobile's Influence team aims to transform digital advertising by leveraging user-generated content (UGC) as a powerful, authentic marketing tool for brands and mobile businesses.  We bridges relationships between influencers and advertisers, providing tools to help influencers to monetize their content, and advertisers find creators who fit their specific needs.
-                    </Text>
-                  </div>
-                  <div style={styles.flexColumn}>
-                    <img src="https://via.placeholder.com/400/300" alt="Liftoff Image" style={styles.projectImage} />
-                  </div>
-                </BodyComponent>
-                <BodyComponent>
-                  <TitleSection title="Key Highlights">
-                    <CalloutItem index="1" content="Led end-to-end design of our desktop product Plug Marketplace, enabling advertisers to discover and match with influencers, resulting in 40% increase in successful campaign completions" />
-                    <CalloutItem index="2" content="Partnered with Liftoff Mobile designers to rebrand Jetfuel to Liftoff Influence, implementing unified design system and visual identity post-acquisition" />
-                    <CalloutItem index="3" content="Conducted user research and solution synthesis for our core product: The Plug. Created high-fidelity mock-ups for concept testing and roadmapped A/B testing for feature implementation" />
-                    <CalloutItem index="4" content="Redesigned our internal tools from Retool to custom products that allowed teams to better manage advertiser spend and influencer submissions, resulting in 35% revenue increase over a 6 month period" />
-                  </TitleSection>
-                </BodyComponent>
-                <BodyComponent>
-                  <TitleSection title="Selected Works">
-                    <WorkItem index="01" title="Liftoff Project 1" description="Description for Liftoff Project 1" />
-                    <WorkItem index="02" title="Liftoff Project 2" description="Description for Liftoff Project 2" />
-                  </TitleSection>
-                </BodyComponent>
-              </Content>
-
-              <Content
-                id="jefuel"
-                isActive={activeContentId === "jefuel"}
-                index="03"
-                title="Jefuel"
-                period="2024"
-                onNext={handleNextContent}
-              >
-                <BodyComponent style={styles.bodyComponent}>
-                  <div style={styles.flexColumn}>
-                    <Text>
-                      This is the Jefuel section.
-                    </Text>
-                  </div>
-                  <div style={styles.flexColumn}>
-                    <img src="https://via.placeholder.com/400/300" alt="Jefuel Image" style={styles.projectImage} />
-                  </div>
-                </BodyComponent>
-                <BodyComponent>
-                  <TitleSection title="Key Highlights">
-                    <CalloutItem index="1" content="Collaborated with CEO to define product roadmap focused on user retention and profitability, identifying and prioritizing key features that drove business growth" />
-                    <CalloutItem index="2" content="Led design for the features in our open network initiative which includes introducing profiles, messaging and connections; resulted in 30% increase in DAUs" />
-                    <CalloutItem index="3" content="Led the design and research for new monetization features for influencers, increasing their earning potential by an average of 20%" />
-                  </TitleSection>
-                </BodyComponent>
-                <BodyComponent>
-                  <TitleSection title="Selected Works">
-                    <WorkItem index="01" title="Jefuel Project 1" description="Description for Jefuel Project 1" />
-                    <WorkItem index="02" title="Jefuel Project 2" description="Description for Jefuel Project 2" />
-                  </TitleSection>
-                </BodyComponent>
-              </Content>
-
-              <Content
-                id="cashapp"
-                isActive={activeContentId === "cashapp"}
-                index="04"
-                title="CashApp"
-                period="2024"
-                onNext={handleNextContent}
-              >
-                <BodyComponent style={styles.bodyComponent}>
-                  <div style={styles.flexColumn}>
-                    <Text>
-                      This is the CashApp section.
-                    </Text>
-                  </div>
-                  <div style={styles.flexColumn}>
-                    <img src="https://via.placeholder.com/400/300" alt="CashApp Image" style={styles.projectImage} />
-                  </div>
-                </BodyComponent>
-                <BodyComponent>
-                  <TitleSection title="Key Highlights">
-                    <CalloutItem index="1" content="Collaborated with designers, engineers and PMs within the Ecosystems and Boost workstreams; shipped an exclusive ice cream boost for summer 2019, resulting in a 15% increase in boosts usage" />
-                    <CalloutItem index="2" content="Participated in design critiques, where I provided and received feedback on designs within a variety of features and workstream" />
-                  </TitleSection>
-                </BodyComponent>
-                <BodyComponent>
-                  <TitleSection title="Selected Works">
-                    <WorkItem index="01" title="CashApp Project 1" description="Description for CashApp Project 1" />
-                    <WorkItem index="02" title="CashApp Project 2" description="Description for CashApp Project 2" />
-                  </TitleSection>
-                </BodyComponent>
-              </Content>
-            </ContentStack>
+                {contentRegistry[activeContentId]?.bodyItems || []}
+              </Body>
+            </motion.div>
           </ContentNavigator>
         </motion.div>
       </div>
