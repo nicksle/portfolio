@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import './Card.css';
 import Icon from '../../../../../../../../components/Icon';
@@ -45,12 +45,19 @@ const Card = ({
   style = {} 
 }) => {
   const [internalExpanded, setInternalExpanded] = useState(false);
+  const cardCarouselRef = useRef(null);
   
   // Use prop if provided (from CardGroup), otherwise use internal state
   const isExpanded = propIsExpanded !== undefined ? propIsExpanded : internalExpanded;
 
   const handleCtaClick = () => {
     const newState = !isExpanded;
+    
+    // If collapsing (going from expanded to collapsed), reset scroll
+    if (isExpanded && !newState) {
+      cardCarouselRef.current?.resetScrollToStart();
+    }
+    
     if (propIsExpanded !== undefined) {
       // Controlled by CardGroup
       onExpand?.(newState);
@@ -114,7 +121,12 @@ const Card = ({
             }}
           >
             <div className="body-scroll carousel-mode">
-              <CardCarousel headItems={headItems} bodyItems={bodyItems} />
+              <CardCarousel 
+                ref={cardCarouselRef}
+                headItems={headItems} 
+                bodyItems={bodyItems} 
+                onCollapse={() => handleCtaClick()}
+              />
             </div>
           </motion.div>
         </motion.div>

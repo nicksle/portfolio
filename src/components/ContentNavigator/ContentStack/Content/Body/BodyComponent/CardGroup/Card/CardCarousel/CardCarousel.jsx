@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import HeadItem from './HeadItem';
 import BodyItem from './BodyItem/BodyItem';
 import './CardCarousel.css';
 
-const CardCarousel = ({ 
+const CardCarousel = forwardRef(({ 
   headItems = [], // Array of { id, index, title }
   bodyItems = [], // Array of { id, children }
+  onCollapse, // Callback to collapse the card
   className = '' 
-}) => {
+}, ref) => {
   const [activeHeadId, setActiveHeadId] = useState(headItems.length > 0 ? headItems[0].id : null);
   const [headProgress, setHeadProgress] = useState(() => {
     // Initialize progress for the first item to be low (partially filled)
@@ -22,6 +23,35 @@ const CardCarousel = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const bodyStackRef = useRef(null);
   const headStackRef = useRef(null);
+
+  // Function to reset scroll position to the first body item
+  const resetScrollToStart = () => {
+    const bodyStack = bodyStackRef.current;
+    if (!bodyStack || bodyItems.length === 0) return;
+
+    // Reset scroll to the beginning
+    bodyStack.scrollTo({
+      left: 0,
+      behavior: 'smooth'
+    });
+
+    // Reset active head to first item
+    if (headItems.length > 0) {
+      setActiveHeadId(headItems[0].id);
+      setHeadProgress(prev => ({
+        ...prev,
+        [headItems[0].id]: 0.1 // Reset to initial progress
+      }));
+    }
+
+    // Close menu if open
+    setIsMenuOpen(false);
+  };
+
+  // Expose resetScrollToStart function through ref
+  useImperativeHandle(ref, () => ({
+    resetScrollToStart
+  }));
 
   // Track which head should be active based on scroll position
   useEffect(() => {
@@ -283,10 +313,29 @@ const CardCarousel = ({
               {item.children}
             </BodyItem>
           ))}
+          {/* Collapse Button */}
+          {onCollapse && (
+            <div className="card-carousel-collapse-button">
+              <button 
+                className="collapse-btn"
+                onClick={onCollapse}
+                aria-label="Collapse card"
+              >
+                <span className="collapse-btn-text">Collapse</span>
+                <div className="collapse-btn-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
   );
-};
+});
+
+CardCarousel.displayName = 'CardCarousel';
 
 export default CardCarousel;
