@@ -1,0 +1,25 @@
+.text-set {
+  display: flex;
+  flex-direction: column;
+  gap: var(--text-gap, 12px);
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-shrink: 0;
+  height: 100%;
+  padding-left: 12px;
+}
+
+/* Ensure text content has proper styling */
+.text-set > * {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Context text styling */
+.text-set-context {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #999);
+  margin: 0;
+  padding-bottom: 8px;
+}
