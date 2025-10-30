@@ -39,6 +39,10 @@ const IntroAnimation = () => {
     setAnimationPhase('intro2');
   };
 
+  const scrollToIntro1 = () => {
+    setAnimationPhase('intro1');
+  };
+
   const navigateToWork = () => {
     setAnimationPhase('navigating');
 
@@ -99,7 +103,7 @@ const IntroAnimation = () => {
           <Intro1 onNext={scrollToIntro2} />
 
           {/* Intro2 Section */}
-          <Intro2 />
+          <Intro2 onPrev={scrollToIntro1} />
 
           {/* Header Section */}
           <Header

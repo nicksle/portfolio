@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import Logo from '../Logo/Logo';
 import './Header.css';
 
 const Header = ({ isIntroMode = false, onWorkClick }) => {
@@ -113,8 +114,8 @@ const Header = ({ isIntroMode = false, onWorkClick }) => {
       onUpdate={(latest) => console.log('Header animation update:', latest)}
     >
       <div className="header-content">
-        <div className="header-logo">
-          <h1 className="header-title">Nicholas Le</h1>
+        <div className={`header-logo ${isIntroMode ? 'active' : ''}`}>
+          <Logo className="header-logo-svg" />
         </div>
         <nav className="header-nav">
           {isIntroMode && onWorkClick ? (

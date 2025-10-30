@@ -1,5 +1,13 @@
 @import './design-tokens.css';
 
+/* Lyno Jean Font */
+@font-face {
+  font-family: 'Lyno Jean';
+  src: url('./assets/fonts/LynoJean.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   /* Typography */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
