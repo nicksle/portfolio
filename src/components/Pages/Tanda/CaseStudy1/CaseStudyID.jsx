@@ -1422,30 +1422,30 @@ const CaseStudyID = () => {
             subtitle="Strategic Approach"
             style="B1"
           >
-            Based on our research findings, we developed a comprehensive strategy focused on reducing friction, improving user guidance, and creating a more intuitive onboarding experience.
+            From our research findings, we identified patterns in what prevented users from completing onboarding and what motivated them to engage. We distilled these insights into three guiding principles that would shape our strategic approach:
           </Text>
           <TileColumn gap="16px">
             <Tile
               index="01"
-              title="Reduce Friction"
-              bottomLeft={<span className="S1">Primary Focus</span>}
-              bottomRight={null}
-              body="Streamline the onboarding flow by removing unnecessary steps and simplifying complex processes. Focus on essential actions only."
-              icon={<Icon svgPath={ICON_PATHS.solidTrendingDown} size="small" />}
+              title="Build Motivation"
+              bottomLeft={<span className="S1">Highlight Value Props & Incentives</span>}
+              body="Demonstrate direct user benefits to motivate onboarding completion. Keep value propositions and incentives visible and accessible throughout the experience."
+              icon={<Icon svgPath={ICON_PATHS.solidSunAlt} size="small" />}
             />
             <Tile
               index="02"
-              title="Improve Guidance"
-              bottomLeft={<span className="S1">User Support</span>}
-              body="Provide clear, contextual guidance throughout the onboarding process to help users understand each step and its purpose."
+              title="Guide Users to Value"
+              bottomLeft={<span className="S1">Clear Pathways & Contextual Education</span>}
+              bottomRight={null}
+              body="Guide users toward core value (joining a circle) through clear pathways and contextual education. Make progress feel natural and purposeful, not like filling out forms."
               icon={<Icon svgPath={ICON_PATHS.lightbulb} size="small" />}
             />
             <Tile
               index="03"
               title="Build Trust"
-              bottomLeft={<span className="S1">Security Focus</span>}
+              bottomLeft={<span className="S1">Legitimacy & Data Transparency</span>}
               bottomRight={null}
-              body="Address security concerns early and transparently to build user confidence and reduce abandonment at critical decision points."
+              body="Establish user confidence through clear communication about data collection, transparent processes, and demonstrating platform legitimacy from the start."
               icon={<Icon svgPath={ICON_PATHS.solidFlag} size="small" />}
             />
           </TileColumn>
@@ -1457,7 +1457,7 @@ const CaseStudyID = () => {
           <FullCard
             index="01"
             icon={<Icon svgPath={ICON_PATHS.timeline} size="xl" />}
-            title="Understanding Value & Building Trust"
+            title="Exploring Value Propositions & Trust Signals"
             subtitle="Core Infrastructure Improvements"
             description="We conducted user testing to identify which value propositions resonated most with our target users and how we could effectively communicate trust and security throughout the onboarding experience."
             headItems={[

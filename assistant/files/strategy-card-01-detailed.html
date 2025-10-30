@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy Card 01 - Understanding Value & Building Trust</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Mono', monospace;
+            background: #0a0a0a;
+            color: #e8e8e8;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .card-meta {
+            background: #1a1a1a;
+            border: 2px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .card-meta h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .card-meta .description {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .slide {
+            background: #121212;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+        
+        .slide-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .slide-id {
+            background: #2a2a2a;
+            color: #666;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .slide-title {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .content-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .image-placeholder {
+            background: #1a1a1a;
+            border: 2px dashed #333;
+            border-radius: 8px;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .image-placeholder .label {
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .image-placeholder .filename {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .annotations-block {
+            background: #0e0e10;
+            border-left: 3px solid #4a9eff;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        
+        .annotations-block .position-label {
+            color: #4a9eff;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .annotation {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .annotation:last-child {
+            margin-bottom: 0;
+        }
+        
+        .annotation-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .annotation-id {
+            background: #2a2a2a;
+            color: #4a9eff;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .annotation-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .annotation-description {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .structure-note {
+            background: #1a1a1a;
+            border-left: 3px solid #666;
+            padding: 12px 16px;
+            margin: 24px 0;
+            color: #888;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- CARD METADATA -->
+        <div class="card-meta">
+            <h1>Card 01: Understanding Value & Building Trust</h1>
+            <p class="description">We conducted user testing to identify which value propositions resonated most with our target users and how we could effectively communicate trust and security throughout the onboarding experience.</p>
+            <div style="margin-top: 16px; color: #666; font-size: 12px;">
+                📊 4 Slides | 🎯 16 Total Annotations | 🖼️ ~8 Images Expected
+            </div>
+        </div>
+
+        <!-- SLIDE 01: The Challenge -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 01</span>
+                <span class="slide-title">The Challenge</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">kyc-trust-barrier.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Shows user hesitation at KYC screen</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After Image)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Asking Before Establishing Credibility</span>
+                        </div>
+                        <div class="annotation-description">
+                            Users abandoned during KYC because we were asking for sensitive information before establishing credibility. They had no context for why we needed their data.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">No Assurance of Data Protection</span>
+                        </div>
+                        <div class="annotation-description">
+                            No visible security indicators or privacy assurances at critical input moments left users feeling uncertain about data handling.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 02: Value Prop Brainstorming -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 02</span>
+                <span class="slide-title">Value Prop Brainstorming</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">value-prop-matrix.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Matrix of different value propositions</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After Image)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Quick Cash Access</span>
+                        </div>
+                        <div class="annotation-description">
+                            "Access emergency funds when you need them" - Emphasizes immediate financial relief and speed
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Community Savings</span>
+                        </div>
+                        <div class="annotation-description">
+                            "Save together with friends and family" - Focuses on social connection and collective wealth building
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Financial Goals</span>
+                        </div>
+                        <div class="annotation-description">
+                            "Achieve your financial goals faster" - Highlights specific outcomes like vacations, emergency funds, or down payments
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">04</span>
+                            <span class="annotation-title">No Credit Check</span>
+                        </div>
+                        <div class="annotation-description">
+                            "Get money without credit checks" - Addresses financial inclusion and removes traditional barriers
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">05</span>
+                            <span class="annotation-title">Flexible Contributions</span>
+                        </div>
+                        <div class="annotation-description">
+                            "Save at your own pace" - Emphasizes control and lack of rigid requirements
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">06</span>
+                            <span class="annotation-title">Social Accountability</span>
+                        </div>
+                        <div class="annotation-description">
+                            "Stay motivated with your circle" - Leverages peer support and commitment
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 03: Trust Signal Brainstorm -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 03</span>
+                <span class="slide-title">Trust Signal Brainstorm</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">trust-signals-inventory.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Catalog of trust-building elements</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After Image)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Encryption Indicators</span>
+                        </div>
+                        <div class="annotation-description">
+                            Bank-level encryption badge with explanation of data security measures
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Compliance Badges</span>
+                        </div>
+                        <div class="annotation-description">
+                            Display regulatory compliance (FDIC insured, SOC 2 certified) near sensitive input fields
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Privacy Policy Links</span>
+                        </div>
+                        <div class="annotation-description">
+                            Clear, accessible privacy policy with plain language explanations
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">04</span>
+                            <span class="annotation-title">Security Certifications</span>
+                        </div>
+                        <div class="annotation-description">
+                            Third-party security certifications and audit results
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 04: Testing and Implementation -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 04</span>
+                <span class="slide-title">Testing and Implementation</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">preference-test-results.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">A/B test results showing winning messages</div>
+                </div>
+                
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">trust-signal-rankings.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Card sorting results for trust signals</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After All Images)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Preference Tests</span>
+                        </div>
+                        <div class="annotation-description">
+                            A/B tested value proposition messaging with 25 users. "Quick Cash Access" showed highest engagement and conversion intent.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">User Interviews</span>
+                        </div>
+                        <div class="annotation-description">
+                            12 users discussed trust concerns. Encryption indicators and compliance badges most frequently mentioned as confidence builders.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Finding: Emergency Funds as Primary Driver</span>
+                        </div>
+                        <div class="annotation-description">
+                            "Access to emergency funds" resonated as the primary value driver. Pairing with encryption indicators increased user confidence during testing.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">04</span>
+                            <span class="annotation-title">Integration into Prototypes</span>
+                        </div>
+                        <div class="annotation-description">
+                            Validated messaging integrated into wireframes and prototypes, allowing subsequent testing to focus on flow patterns rather than re-validating messaging.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="structure-note">
+            💡 <strong>Connection Badge:</strong> "Connects to Insight 2: Trust Barriers & Unclear Value"
+        </div>
+    </div>
+</body>
+</html>

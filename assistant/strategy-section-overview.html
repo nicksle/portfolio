@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy Section - Complete Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Mono', monospace;
+            background: #0a0a0a;
+            color: #e8e8e8;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0e0e10 100%);
+            border: 2px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 48px;
+        }
+        
+        .section-header h1 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        
+        .section-header .subtitle {
+            font-size: 18px;
+            color: #999;
+            margin-bottom: 24px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+        
+        .stat {
+            background: #0e0e10;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            color: #fff;
+            font-weight: 700;
+        }
+        
+        .card-summary {
+            background: #121212;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        
+        .card-header {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .card-number {
+            background: #2a2a2a;
+            color: #fff;
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .card-info {
+            flex: 1;
+        }
+        
+        .card-title {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        
+        .card-description {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+        
+        .card-meta {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .meta-value {
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .slides-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+        
+        .slide-item {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 16px;
+        }
+        
+        .slide-header-small {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .slide-id-small {
+            background: #2a2a2a;
+            color: #666;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        
+        .slide-title-small {
+            font-size: 14px;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .slide-meta-small {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .connection-badge {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #888;
+            margin-top: 16px;
+            display: inline-block;
+        }
+        
+        .next-steps {
+            background: #1a1a1a;
+            border-left: 4px solid #4caf50;
+            padding: 24px;
+            margin-top: 48px;
+            border-radius: 4px;
+        }
+        
+        .next-steps h2 {
+            color: #4caf50;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .next-steps li {
+            padding: 8px 0;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .next-steps li:before {
+            content: "→";
+            color: #4caf50;
+            margin-right: 12px;
+        }
+
+        .context-resources {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid #4a9eff;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 48px;
+        }
+
+        .context-resources h2 {
+            color: #4a9eff;
+            font-size: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .context-resources .description {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .resource-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .resource-link {
+            background: #0e0e10;
+            border: 2px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link:hover {
+            border-color: #4a9eff;
+            transform: translateY(-2px);
+        }
+
+        .resource-link .resource-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .resource-link .resource-title {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .resource-link .resource-description {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .detail-link {
+            display: inline-block;
+            background: #4a9eff;
+            color: #0a0a0a;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .detail-link:hover {
+            background: #5db0ff;
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section-header">
+            <h1>Strategy Section</h1>
+            <p class="subtitle">Planning a Phased, Principle-Driven Approach</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-label">Total Cards</div>
+                    <div class="stat-value">4</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Total Slides</div>
+                    <div class="stat-value">15</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Total Annotations</div>
+                    <div class="stat-value">65</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Images Needed</div>
+                    <div class="stat-value">~40</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTEXT RESOURCES -->
+        <div class="context-resources">
+            <h2>📚 Detailed Context Resources</h2>
+            <p class="description">
+                Deep dive into the complete strategy content with full context, rationale, and testing methodologies. These resources provide comprehensive background for all strategy cards, slides, and annotations.
+            </p>
+            <div class="resource-links">
+                <a href="context/STRATEGY-COMPLETE-CONTEXT-INVENTORY.md" class="resource-link">
+                    <div class="resource-icon">📋</div>
+                    <div class="resource-title">Complete Context Inventory</div>
+                    <div class="resource-description">
+                        Master document containing all available context for Cards 01-04. Includes every value proposition, trust signal, onboarding pattern, and testing result with full strategic reasoning.
+                    </div>
+                </a>
+
+                <a href="context/ULTRA-DETAILED-strategy-card-01.html" class="resource-link">
+                    <div class="resource-icon">🔍</div>
+                    <div class="resource-title">Ultra-Detailed Card 01</div>
+                    <div class="resource-description">
+                        Fully expanded Card 01 with complete strategic context, rationale for every annotation, testing methodologies, and implementation details. Example of maximum-detail format.
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- CARD 01 -->
+        <div class="card-summary">
+            <div class="card-header">
+                <div class="card-number" style="background: #4a9eff;">01</div>
+                <div class="card-info">
+                    <h2 class="card-title">Understanding Value & Building Trust</h2>
+                    <p class="card-description">We conducted user testing to identify which value propositions resonated most with our target users and how we could effectively communicate trust and security throughout the onboarding experience.</p>
+                </div>
+            </div>
+            
+            <div class="card-meta">
+                <div class="meta-item">
+                    <span>📊 Slides:</span>
+                    <span class="meta-value">4</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎯 Annotations:</span>
+                    <span class="meta-value">16</span>
+                </div>
+                <div class="meta-item">
+                    <span>🖼️ Images:</span>
+                    <span class="meta-value">~8</span>
+                </div>
+            </div>
+            
+            <div class="slides-list">
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">01</span>
+                        <span class="slide-title-small">The Challenge</span>
+                    </div>
+                    <div class="slide-meta-small">1 image • 2 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">02</span>
+                        <span class="slide-title-small">Value Prop Brainstorming</span>
+                    </div>
+                    <div class="slide-meta-small">1 image • 6 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">03</span>
+                        <span class="slide-title-small">Trust Signal Brainstorm</span>
+                    </div>
+                    <div class="slide-meta-small">1 image • 4 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">04</span>
+                        <span class="slide-title-small">Testing and Implementation</span>
+                    </div>
+                    <div class="slide-meta-small">2 images • 4 annotations</div>
+                </div>
+            </div>
+
+            <span class="connection-badge">🔗 Connects to Insight 2: Trust Barriers & Unclear Value</span>
+            <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="files/strategy-card-01-detailed.html" class="detail-link">View Detailed Card 01 →</a>
+                <a href="context/ULTRA-DETAILED-strategy-card-01.html" class="detail-link">View Ultra-Detailed Version →</a>
+            </div>
+        </div>
+
+        <!-- CARD 02 -->
+        <div class="card-summary">
+            <div class="card-header">
+                <div class="card-number" style="background: #ff9800;">02</div>
+                <div class="card-info">
+                    <h2 class="card-title">Streamlining Sign-Up Flow</h2>
+                    <p class="card-description">Through competitive analysis and rapid prototyping, we established best practices for sign-up and tested new flow variations to reduce friction and improve completion rates.</p>
+                </div>
+            </div>
+            
+            <div class="card-meta">
+                <div class="meta-item">
+                    <span>📊 Slides:</span>
+                    <span class="meta-value">4</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎯 Annotations:</span>
+                    <span class="meta-value">14</span>
+                </div>
+                <div class="meta-item">
+                    <span>🖼️ Images:</span>
+                    <span class="meta-value">~10</span>
+                </div>
+            </div>
+            
+            <div class="slides-list">
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">01</span>
+                        <span class="slide-title-small">Exploring Sign Up Options</span>
+                    </div>
+                    <div class="slide-meta-small">1 image • 4 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">02</span>
+                        <span class="slide-title-small">Streamlining Email Sign Up</span>
+                    </div>
+                    <div class="slide-meta-small">2 images • 3 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">03</span>
+                        <span class="slide-title-small">Removing Redundancy</span>
+                    </div>
+                    <div class="slide-meta-small">2 images • 4 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">04</span>
+                        <span class="slide-title-small">Testing and Results</span>
+                    </div>
+                    <div class="slide-meta-small">2 images • 3 annotations</div>
+                </div>
+            </div>
+
+            <span class="connection-badge">🔗 Connects to Insight 1: Technical Friction Caused Early Exits</span>
+            <a href="files/strategy-card-02-detailed.html" class="detail-link" style="margin-top: 16px;">View Detailed Card 02 →</a>
+        </div>
+
+        <!-- CARD 03 -->
+        <div class="card-summary">
+            <div class="card-header">
+                <div class="card-number" style="background: #9c27b0;">03</div>
+                <div class="card-info">
+                    <h2 class="card-title">Redesigning Onboarding Experience</h2>
+                    <p class="card-description">We explored multiple onboarding patterns and sequences to determine which approach would best balance user motivation, value demonstration, and required actions.</p>
+                </div>
+            </div>
+            
+            <div class="card-meta">
+                <div class="meta-item">
+                    <span>📊 Slides:</span>
+                    <span class="meta-value">4</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎯 Annotations:</span>
+                    <span class="meta-value">17</span>
+                </div>
+                <div class="meta-item">
+                    <span>🖼️ Images:</span>
+                    <span class="meta-value">~12</span>
+                </div>
+            </div>
+            
+            <div class="slides-list">
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">01</span>
+                        <span class="slide-title-small">The Challenge</span>
+                    </div>
+                    <div class="slide-meta-small">1 image • 3 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">02</span>
+                        <span class="slide-title-small">Exploring Onboarding Patterns</span>
+                    </div>
+                    <div class="slide-meta-small">1 image • 3 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">03</span>
+                        <span class="slide-title-small">Onboarding Card Presentation</span>
+                    </div>
+                    <div class="slide-meta-small">1 image • 5 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">04</span>
+                        <span class="slide-title-small">Sequencing & Testing</span>
+                    </div>
+                    <div class="slide-meta-small">4 images • 6 annotations</div>
+                </div>
+            </div>
+
+            <span class="connection-badge">🔗 Connects to Insight 3: Users Felt Aimless Without Guidance</span>
+            <a href="files/strategy-card-03-detailed.html" class="detail-link" style="margin-top: 16px;">View Detailed Card 03 →</a>
+        </div>
+
+        <!-- CARD 04 -->
+        <div class="card-summary">
+            <div class="card-header">
+                <div class="card-number" style="background: #00bcd4;">04</div>
+                <div class="card-info">
+                    <h2 class="card-title">Integrating Education & Guidance</h2>
+                    <p class="card-description">We designed seamless educational moments throughout the experience—contextual tooltips, clear error states, visible incentives, and progressive feature introduction—to ensure users never feel lost in the app.</p>
+                </div>
+            </div>
+            
+            <div class="card-meta">
+                <div class="meta-item">
+                    <span>📊 Slides:</span>
+                    <span class="meta-value">3</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎯 Annotations:</span>
+                    <span class="meta-value">18</span>
+                </div>
+                <div class="meta-item">
+                    <span>🖼️ Images:</span>
+                    <span class="meta-value">~9</span>
+                </div>
+            </div>
+            
+            <div class="slides-list">
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">01</span>
+                        <span class="slide-title-small">Identifying Points of Need</span>
+                    </div>
+                    <div class="slide-meta-small">1 image • 6 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">02</span>
+                        <span class="slide-title-small">Exploring Education Options</span>
+                    </div>
+                    <div class="slide-meta-small">1 image • 6 annotations</div>
+                </div>
+                
+                <div class="slide-item">
+                    <div class="slide-header-small">
+                        <span class="slide-id-small">03</span>
+                        <span class="slide-title-small">Creating Seamless Guidance</span>
+                    </div>
+                    <div class="slide-meta-small">3 images • 6 annotations</div>
+                </div>
+            </div>
+
+            <span class="connection-badge">🔗 Connects to Insight 3 & 4: Guidance and Motivation</span>
+            <a href="files/strategy-card-04-detailed.html" class="detail-link" style="margin-top: 16px;">View Detailed Card 04 →</a>
+        </div>
+
+        <!-- NEXT STEPS -->
+        <div class="next-steps">
+            <h2>📋 Next Steps for Strategy Content Client</h2>
+            <ul>
+                <li><strong>Review HTML files:</strong> Check strategy-card-01-detailed.html through strategy-card-04-detailed.html</li>
+                <li><strong>Create/gather images:</strong> You'll need approximately 40 images across all 4 cards</li>
+                <li><strong>Prepare for CSV conversion:</strong> Once images are ready, I'll help convert to CSV format</li>
+                <li><strong>Run converter script:</strong> Generate React code from CSV files</li>
+                <li><strong>Integrate into portfolio:</strong> Paste generated code into CaseStudyID.jsx strategy section</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

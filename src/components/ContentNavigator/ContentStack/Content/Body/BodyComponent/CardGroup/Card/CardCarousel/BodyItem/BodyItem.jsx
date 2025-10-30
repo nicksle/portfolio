@@ -1,14 +1,16 @@
 import React, { Children, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import MediaSet from './MediaSet';
+import TextSet from './TextSet';
 import Annotations from './Annotations';
 import './BodyItem.css';
 
-const BodyItem = ({ 
-  id, 
+const BodyItem = ({
+  id,
   children,
-  annotationItems, // Keep for backward compatibility
-  annotationSets, // New prop for multiple annotation sets
-  className = '' 
+  annotationItems, // Keep for backward compatibility (deprecated)
+  annotationSets, // Deprecated - use MediaSet/TextSet instead
+  className = ''
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -16,17 +18,24 @@ const BodyItem = ({
     once: false // Allow animation to repeat on scroll
   });
 
-  // Helper function to render content with integrated annotations
-  const renderContentWithAnnotations = () => {
+  // Helper function to render content
+  // New approach: Simply render children as-is, expecting MediaSet/TextSet wrappers
+  const renderContent = () => {
     const childArray = Children.toArray(children);
-    const result = [];
-    let childIndex = 0;
 
-    // If annotationSets is provided, use it
+    // If using new MediaSet/TextSet approach, render directly
+    if (childArray.length > 0 && !annotationSets) {
+      return childArray;
+    }
+
+    // Legacy support: If annotationSets is provided, use old behavior
     if (annotationSets && annotationSets.length > 0) {
+      const result = [];
+      let childIndex = 0;
+
       annotationSets.forEach((annotationSet, setIndex) => {
         const { position, items } = annotationSet;
-        
+
         // Add children before this annotation position
         while (childIndex < position && childIndex < childArray.length) {
           result.push(
@@ -36,7 +45,7 @@ const BodyItem = ({
           );
           childIndex++;
         }
-        
+
         // Add the annotation set
         if (items && items.length > 0) {
           result.push(
@@ -46,7 +55,7 @@ const BodyItem = ({
           );
         }
       });
-      
+
       // Add any remaining children
       while (childIndex < childArray.length) {
         result.push(
@@ -56,32 +65,30 @@ const BodyItem = ({
         );
         childIndex++;
       }
-    } else {
-      // Fallback to original behavior
-      const processedChildren = Children.map(children, (child, index) => {
-        return (
-          <div key={index} className="body-item-child">
-            {child}
-          </div>
-        );
-      });
-      result.push(...processedChildren);
+
+      return result;
     }
 
-    return result;
+    // Fallback: Render children with default wrapper
+    return childArray.map((child, index) => (
+      <div key={index} className="body-item-child">
+        {child}
+      </div>
+    ));
   };
 
   return (
-    <motion.div 
+    <motion.div
       ref={ref}
-      className={`body-item ${className}`} 
+      className={`body-item ${className}`}
       data-id={id}
       initial={{ opacity: 0 }}
       animate={{ opacity: isInView ? 1 : 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <div className="body-item-content">
-        {renderContentWithAnnotations()}
+        {renderContent()}
+        {/* Legacy support: standalone annotationItems */}
         {!annotationSets && annotationItems && annotationItems.length > 0 && (
           <div className="body-item-annotations">
             <Annotations annotationItems={annotationItems} />

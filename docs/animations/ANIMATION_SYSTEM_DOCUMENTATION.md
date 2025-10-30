@@ -98,23 +98,60 @@ const { scrollY } = useScroll();
 
 ### Content Navigation Animations
 
-#### Content Component (`src/components/ContentNavigator/ContentStack/Content/`)
-```css
-/* CSS-based staggered animations */
-.content.active .body-component:nth-child(1) { transition-delay: 0.2s; }
-.content.active .body-component:nth-child(2) { transition-delay: 0.3s; }
-.content.active .body-component:nth-child(3) { transition-delay: 0.4s; }
+#### CaseStudyID Content Switching (`src/components/Pages/Tanda/CaseStudy1/CaseStudyID.jsx`)
 
-.content.active .body-component {
-  opacity: 1;
-  transform: translateY(0);
-}
+**Content Height Animation**:
+```javascript
+// Fixed height transitions
+const [contentHeight, setContentHeight] = useState(152); // Collapsed
+const [isTransitioning, setIsTransitioning] = useState(false);
+
+<motion.div
+  className="content"
+  animate={{ height: contentHeight }} // 152px ↔ 757px
+  transition={{
+    height: { duration: 0.4, ease: "easeInOut" },
+    opacity: { duration: 0.3, ease: "easeInOut" }
+  }}
+>
+```
+
+**Head Animation** (one at a time, no exit):
+```javascript
+<AnimatePresence mode="wait">
+  <motion.div
+    key={activeContentId}
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.4, ease: "easeOut" }}
+  >
+    <Head {...props} />
+  </motion.div>
+</AnimatePresence>
+```
+
+**Body Items** (scroll-triggered):
+```javascript
+// Body.jsx
+{React.Children.map(children, (child, index) => (
+  <motion.div
+    key={child.key || index}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: false, margin: "-100px", amount: 0.3 }}
+    transition={{ duration: 0.4, ease: "easeOut" }}
+  >
+    {child}
+  </motion.div>
+))}
 ```
 
 **Features**:
-- Staggered content reveals
-- Smooth height/opacity transitions
-- CSS-based performance optimization
+- Fixed height animation (152px ↔ 757px) for smooth collapse/expand
+- Single Head display with instant swap on tab change
+- Scroll-triggered body items that fade in/out based on viewport visibility
+- 30% visibility threshold before triggering animation
+- 100px margin for early trigger before entering viewport
 
 ## Design System Integration
 

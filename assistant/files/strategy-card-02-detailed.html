@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy Card 02 - Streamlining Sign-Up Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Mono', monospace;
+            background: #0a0a0a;
+            color: #e8e8e8;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .card-meta {
+            background: #1a1a1a;
+            border: 2px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .card-meta h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .card-meta .description {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .slide {
+            background: #121212;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+        
+        .slide-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .slide-id {
+            background: #2a2a2a;
+            color: #666;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .slide-title {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .content-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .image-placeholder {
+            background: #1a1a1a;
+            border: 2px dashed #333;
+            border-radius: 8px;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .image-placeholder .label {
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .image-placeholder .filename {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .annotations-block {
+            background: #0e0e10;
+            border-left: 3px solid #ff9800;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        
+        .annotations-block .position-label {
+            color: #ff9800;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .annotation {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .annotation:last-child {
+            margin-bottom: 0;
+        }
+        
+        .annotation-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .annotation-id {
+            background: #2a2a2a;
+            color: #ff9800;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .annotation-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .annotation-description {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .structure-note {
+            background: #1a1a1a;
+            border-left: 3px solid #666;
+            padding: 12px 16px;
+            margin: 24px 0;
+            color: #888;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- CARD METADATA -->
+        <div class="card-meta">
+            <h1>Card 02: Streamlining Sign-Up Flow</h1>
+            <p class="description">Through competitive analysis and rapid prototyping, we established best practices for sign-up and tested new flow variations to reduce friction and improve completion rates.</p>
+            <div style="margin-top: 16px; color: #666; font-size: 12px;">
+                📊 4 Slides | 🎯 14 Total Annotations | 🖼️ ~10 Images Expected
+            </div>
+        </div>
+
+        <!-- SLIDE 01: Exploring Sign Up Options -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 01</span>
+                <span class="slide-title">Exploring Sign Up Options</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">signup-methods-comparison.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Side-by-side comparison of 4 sign-up approaches</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After Image)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Email + Password (Traditional)</span>
+                        </div>
+                        <div class="annotation-description">
+                            Standard account creation with email verification. Most familiar pattern but adds extra verification step
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Phone Number First</span>
+                        </div>
+                        <div class="annotation-description">
+                            SMS-based verification with immediate access. Fast but raises privacy concerns and creates dependency on phone service
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Social Sign-In (Google/Apple)</span>
+                        </div>
+                        <div class="annotation-description">
+                            One-tap authentication using existing accounts. Fastest entry but some users distrust data sharing
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">04</span>
+                            <span class="annotation-title">Magic Link</span>
+                        </div>
+                        <div class="annotation-description">
+                            Passwordless email link authentication. Removes password friction but requires email access during each login
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 02: Streamlining Email Sign Up -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 02</span>
+                <span class="slide-title">Streamlining Email Sign Up</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">email-signup-before.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Original email sign-up flow</div>
+                </div>
+                
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">email-signup-after.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Streamlined email sign-up with clear verification</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After All Images)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Clear Verification States</span>
+                        </div>
+                        <div class="annotation-description">
+                            Email verification now shows which email is being verified with clear status indicators. Users cannot proceed until verified.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Distinction between Sign Up and Login</span>
+                        </div>
+                        <div class="annotation-description">
+                            Visual hierarchy and clear labels help users distinguish flows. Added "Don't have an account?" redirection to prevent confusion.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Implementing Best Practices</span>
+                        </div>
+                        <div class="annotation-description">
+                            Broke single-page form into logical steps. Progressive disclosure improved completion while maintaining necessary information gathering.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 03: Removing Redundancy -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 03</span>
+                <span class="slide-title">Removing Redundancy</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">redundant-steps-audit.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Flow diagram showing unnecessary steps marked for removal</div>
+                </div>
+                
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">streamlined-flow.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Final streamlined flow after removals</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After All Images)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Phone Verification Removed</span>
+                        </div>
+                        <div class="annotation-description">
+                            Not technically required and caused CloudFlare timeout bugs. Eliminated entire step and associated errors
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Profile Picture Deferred</span>
+                        </div>
+                        <div class="annotation-description">
+                            Moved from sign-up to post-onboarding. Low engagement during sign-up better suited for profile completion
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Job Title Removed</span>
+                        </div>
+                        <div class="annotation-description">
+                            Non-essential information that added friction. Can be collected later if needed for specific features
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">04</span>
+                            <span class="annotation-title">Form Field Optimization</span>
+                        </div>
+                        <div class="annotation-description">
+                            Fixed paste detection bug for email input improved validation feedback
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 04: Testing and Results -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 04</span>
+                <span class="slide-title">Testing and Results</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">completion-time-comparison.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Before/After: 4:30 → 1:45 average completion</div>
+                </div>
+                
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">user-confidence-metrics.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Post-test confidence survey results</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After All Images)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Testing Methodology</span>
+                        </div>
+                        <div class="annotation-description">
+                            Timed task completion measured drop-off points post-test confidence surveys
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">60% Improvement in Time-to-Account</span>
+                        </div>
+                        <div class="annotation-description">
+                            Reduced from 4:30 average to 1:45 average completion time
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">85% User Confidence</span>
+                        </div>
+                        <div class="annotation-description">
+                            85% of users felt confident they understood what they were signing up for with the new flow
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="structure-note">
+            💡 <strong>Connection Badge:</strong> "Connects to Insight 1: Technical Friction Caused Early Exits"
+        </div>
+    </div>
+</body>
+</html>

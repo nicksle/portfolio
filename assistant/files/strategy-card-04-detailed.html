@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy Card 04 - Integrating Education & Guidance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Mono', monospace;
+            background: #0a0a0a;
+            color: #e8e8e8;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .card-meta {
+            background: #1a1a1a;
+            border: 2px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .card-meta h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .card-meta .description {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .slide {
+            background: #121212;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+        
+        .slide-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .slide-id {
+            background: #2a2a2a;
+            color: #666;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .slide-title {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .content-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .image-placeholder {
+            background: #1a1a1a;
+            border: 2px dashed #333;
+            border-radius: 8px;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .image-placeholder .label {
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .image-placeholder .filename {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .annotations-block {
+            background: #0e0e10;
+            border-left: 3px solid #00bcd4;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        
+        .annotations-block .position-label {
+            color: #00bcd4;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .annotation {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .annotation:last-child {
+            margin-bottom: 0;
+        }
+        
+        .annotation-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .annotation-id {
+            background: #2a2a2a;
+            color: #00bcd4;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .annotation-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .annotation-description {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .structure-note {
+            background: #1a1a1a;
+            border-left: 3px solid #666;
+            padding: 12px 16px;
+            margin: 24px 0;
+            color: #888;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- CARD METADATA -->
+        <div class="card-meta">
+            <h1>Card 04: Integrating Education & Guidance</h1>
+            <p class="description">We designed seamless educational moments throughout the experience—contextual tooltips, clear error states, visible incentives, and progressive feature introduction—to ensure users never feel lost in the app.</p>
+            <div style="margin-top: 16px; color: #666; font-size: 12px;">
+                📊 3 Slides | 🎯 18 Total Annotations | 🖼️ ~9 Images Expected
+            </div>
+        </div>
+
+        <!-- SLIDE 01: Identifying Points of Need -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 01</span>
+                <span class="slide-title">Identifying Points of Need</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">user-journey-pain-points.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Journey map with highlighted confusion moments</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After Image)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Page Entry Points</span>
+                        </div>
+                        <div class="annotation-description">
+                            Users navigating to new screens couldn't immediately identify page purpose or available actions.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Feature Discovery</span>
+                        </div>
+                        <div class="annotation-description">
+                            Users didn't understand circle mechanics evaluation criteria or how to assess which circle to join.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Blocking Moments</span>
+                        </div>
+                        <div class="annotation-description">
+                            When hitting restrictions users received generic alerts without understanding why or what to do next.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">04</span>
+                            <span class="annotation-title">Critical Decision Points</span>
+                        </div>
+                        <div class="annotation-description">
+                            Before sensitive information requests users needed context about why data was required and how it would be used.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">05</span>
+                            <span class="annotation-title">Progress Uncertainty</span>
+                        </div>
+                        <div class="annotation-description">
+                            Users couldn't tell how far along they were in onboarding or what steps remained to access key features.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">06</span>
+                            <span class="annotation-title">Hidden Value</span>
+                        </div>
+                        <div class="annotation-description">
+                            Rewards achievements and incentives existed but were never surfaced missing opportunities to motivate completion.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 02: Exploring Education Options -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 02</span>
+                <span class="slide-title">Exploring Education Options</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">education-pattern-library.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">8 different education approaches compared</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After Image)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Contextual Tooltips</span>
+                        </div>
+                        <div class="annotation-description">
+                            Small info icons revealing explanations on tap. Minimal visual footprint but requires user action to discover.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">First-Time Modals</span>
+                        </div>
+                        <div class="annotation-description">
+                            Full-screen or overlay explanations on first visit. Ensures visibility but can feel interruptive.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Progressive Walkthroughs</span>
+                        </div>
+                        <div class="annotation-description">
+                            Step-by-step guided tours highlighting key features. Comprehensive but forces linear learning path.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">04</span>
+                            <span class="annotation-title">Inline Explanations</span>
+                        </div>
+                        <div class="annotation-description">
+                            Educational content embedded directly in interface. Always visible but takes up screen space.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">05</span>
+                            <span class="annotation-title">Video Tutorials</span>
+                        </div>
+                        <div class="annotation-description">
+                            Short explainer videos for complex features. Engaging but requires user commitment and data bandwidth.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">06</span>
+                            <span class="annotation-title">Coach Marks</span>
+                        </div>
+                        <div class="annotation-description">
+                            Animated pointers drawing attention to UI elements. Eye-catching but can feel gimmicky if overused.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 03: Creating Seamless Product Guidance -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 03</span>
+                <span class="slide-title">Creating Seamless Product Guidance</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">sticky-carousel-comparison.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Before/After: Dismissible vs Sticky carousel</div>
+                </div>
+                
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">integrated-task-cards.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Task cards embedded in relevant pages</div>
+                </div>
+                
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">contextual-prompts-flow.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Just-in-time guidance triggered by user actions</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After All Images)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Sticky vs Dismissible Carousel</span>
+                        </div>
+                        <div class="annotation-description">
+                            Current carousel scrolls away with content causing users to lose track. Explored sticky positioning to maintain visibility.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Integrated Task Cards</span>
+                        </div>
+                        <div class="annotation-description">
+                            Instead of separate onboarding carousel embed next steps directly within relevant pages (e.g. "Complete KYC to join circles" on circle detail).
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Progress Indicators</span>
+                        </div>
+                        <div class="annotation-description">
+                            Add persistent progress tracking showing completion status without dominating screen real estate.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">04</span>
+                            <span class="annotation-title">Contextual Prompts</span>
+                        </div>
+                        <div class="annotation-description">
+                            Trigger guidance at moment of need (e.g. explain KYC when user attempts to join circle) rather than frontloading all information.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">05</span>
+                            <span class="annotation-title">Narrative Cohesion</span>
+                        </div>
+                        <div class="annotation-description">
+                            Connect onboarding steps with clear explanations of how each unlocks next capability creating momentum rather than obligation.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">06</span>
+                            <span class="annotation-title">Reward Visibility</span>
+                        </div>
+                        <div class="annotation-description">
+                            Surface incentives and achievements throughout the journey to provide clear motivation for completing steps.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="structure-note">
+            💡 <strong>Connection Badge:</strong> "Connects to Insight 3 & 4: Guidance and Motivation"
+        </div>
+    </div>
+</body>
+</html>

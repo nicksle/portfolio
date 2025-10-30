@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy Card 03 - Redesigning Onboarding Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Mono', monospace;
+            background: #0a0a0a;
+            color: #e8e8e8;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .card-meta {
+            background: #1a1a1a;
+            border: 2px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .card-meta h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .card-meta .description {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .slide {
+            background: #121212;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+        
+        .slide-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .slide-id {
+            background: #2a2a2a;
+            color: #666;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .slide-title {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .content-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .image-placeholder {
+            background: #1a1a1a;
+            border: 2px dashed #333;
+            border-radius: 8px;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .image-placeholder .label {
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .image-placeholder .filename {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .annotations-block {
+            background: #0e0e10;
+            border-left: 3px solid #9c27b0;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        
+        .annotations-block .position-label {
+            color: #9c27b0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .annotation {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .annotation:last-child {
+            margin-bottom: 0;
+        }
+        
+        .annotation-header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .annotation-id {
+            background: #2a2a2a;
+            color: #9c27b0;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .annotation-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .annotation-description {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .structure-note {
+            background: #1a1a1a;
+            border-left: 3px solid #666;
+            padding: 12px 16px;
+            margin: 24px 0;
+            color: #888;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- CARD METADATA -->
+        <div class="card-meta">
+            <h1>Card 03: Redesigning Onboarding Experience</h1>
+            <p class="description">We explored multiple onboarding patterns and sequences to determine which approach would best balance user motivation, value demonstration, and required actions.</p>
+            <div style="margin-top: 16px; color: #666; font-size: 12px;">
+                📊 4 Slides | 🎯 17 Total Annotations | 🖼️ ~12 Images Expected
+            </div>
+        </div>
+
+        <!-- SLIDE 01: The Challenge -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 01</span>
+                <span class="slide-title">The Challenge</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">overwhelming-carousel-current.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Current 6-step carousel causing overwhelm</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After Image)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Six Tasks Shown Upfront</span>
+                        </div>
+                        <div class="annotation-description">
+                            Overwhelming users before they experienced any value. Users saw a daunting checklist rather than an exciting journey.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Blocking Alerts Without Context</span>
+                        </div>
+                        <div class="annotation-description">
+                            Users could navigate freely but hit generic blocking alerts without understanding why or what was required.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Disconnected Checklist Feel</span>
+                        </div>
+                        <div class="annotation-description">
+                            Experience felt like isolated tasks rather than a purposeful journey toward meaningful interaction.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 02: Exploring Onboarding Patterns -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 02</span>
+                <span class="slide-title">Exploring Different Onboarding Patterns</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">pattern-comparison-matrix.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">3x3 matrix comparing patterns across dimensions</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After Image)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Traditional Gated Flow</span>
+                        </div>
+                        <div class="annotation-description">
+                            Users complete all setup steps before accessing features. Ensures data completeness but delays value demonstration and increases early drop-off risk.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Progressive Onboarding</span>
+                        </div>
+                        <div class="annotation-description">
+                            Users complete essential steps first with optional tasks surfaced contextually. Balances setup with exploration but requires careful prioritization.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Late-Binding Onboarding</span>
+                        </div>
+                        <div class="annotation-description">
+                            Users explore features freely with gentle nudges to complete profile. Fastest time-to-value but risks hitting friction points without necessary information.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 03: Onboarding Card Presentation -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 03</span>
+                <span class="slide-title">Onboarding Card Presentation</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">presentation-options-wireframes.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">5 different card presentation approaches</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After Image)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Dismissible Carousel (Current)</span>
+                        </div>
+                        <div class="annotation-description">
+                            Horizontal swipeable cards. Easy to dismiss and scroll past causing users to lose track of onboarding progress.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Sticky Progress Card</span>
+                        </div>
+                        <div class="annotation-description">
+                            Persistent card at top of screen. Maintains awareness but could feel intrusive or block content if not carefully designed.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Progressive Checklist</span>
+                        </div>
+                        <div class="annotation-description">
+                            Single card showing only current next step. Reduces overwhelm but hides full journey potentially creating uncertainty.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">04</span>
+                            <span class="annotation-title">Expandable Summary Card</span>
+                        </div>
+                        <div class="annotation-description">
+                            Collapsed state shows current task with expand option. Balances visibility with content space but adds interaction complexity.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">05</span>
+                            <span class="annotation-title">Full-Screen Modal Flow</span>
+                        </div>
+                        <div class="annotation-description">
+                            Each step takes over screen until complete. Ensures focus and completion but prevents exploration and feels restrictive.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 04: Onboarding Sequencing Experiments -->
+        <div class="slide">
+            <div class="slide-header">
+                <span class="slide-id">SLIDE 04</span>
+                <span class="slide-title">Onboarding Sequencing & Testing</span>
+            </div>
+            
+            <div class="content-flow">
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">sequence-a-trust-first.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Flow: KYC → Profile → Find Circle → Join</div>
+                </div>
+                
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">sequence-b-value-first.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Flow: Browse → Join (gated) → KYC → Profile</div>
+                </div>
+                
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">sequence-c-balanced.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Flow: Survey → Basic Profile → Browse → KYC</div>
+                </div>
+                
+                <div class="image-placeholder">
+                    <div class="label">Image</div>
+                    <div class="filename">sequence-d-social-first.svg</div>
+                    <div style="color: #666; font-size: 11px; margin-top: 4px;">Flow: Friend Code → Friend's Circle → Profile → KYC</div>
+                </div>
+                
+                <div class="annotations-block">
+                    <div class="position-label">↓ Annotations (Position: After All Images)</div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">01</span>
+                            <span class="annotation-title">Sequence A - Trust First</span>
+                        </div>
+                        <div class="annotation-description">
+                            Build credibility before asking for engagement but delays value exposure. Good for risk-averse users.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">02</span>
+                            <span class="annotation-title">Sequence B - Value First</span>
+                        </div>
+                        <div class="annotation-description">
+                            Shows value immediately but creates frustration when users hit KYC gate without context.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">03</span>
+                            <span class="annotation-title">Sequence C - Balanced Approach (Winner)</span>
+                        </div>
+                        <div class="annotation-description">
+                            Quick survey primes expectations. Browse demonstrates value. KYC feels justified when users want to join. Highest completion rates in testing.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">04</span>
+                            <span class="annotation-title">Sequence D - Social First</span>
+                        </div>
+                        <div class="annotation-description">
+                            Leverages social motivation strongly but only works for referred users. Consider as alternate path.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">05</span>
+                            <span class="annotation-title">Testing with 15 Participants</span>
+                        </div>
+                        <div class="annotation-description">
+                            Measured: time to first interaction completion rates per step user confidence at decision points emotional response to blocking moments.
+                        </div>
+                    </div>
+                    
+                    <div class="annotation">
+                        <div class="annotation-header">
+                            <span class="annotation-id">06</span>
+                            <span class="annotation-title">Key Finding: Balance Wins</span>
+                        </div>
+                        <div class="annotation-description">
+                            Sequence C showed highest completion rates while maintaining user confidence. The survey + early browsing + contextual KYC created logical progression that users understood.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="structure-note">
+            💡 <strong>Connection Badge:</strong> "Connects to Insight 3: Users Felt Aimless Without Guidance"
+        </div>
+    </div>
+</body>
+</html>

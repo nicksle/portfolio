@@ -6,6 +6,6 @@
   flex-wrap: wrap;              /* Allow wrapping to new columns */
   align-content: flex-start;    /* Align columns to start */
   gap: var(--spacing-xl, 24px); /* Space between items */
-  padding: 0 32px;
+  padding: 0;
   max-height: 500px;            /* Controls when wrapping occurs */
 }

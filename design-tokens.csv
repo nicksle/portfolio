@@ -1,0 +1,63 @@
+Category,Token Name,Type,Value,Description,Font Family,Font Size,Font Weight,Line Height,Letter Spacing
+Colors,primary,color,#ffffe3,Primary text and active elements,,,,,
+Colors,secondary,color,#ccccb6,Secondary text and body content,,,,,
+Colors,tertiary,color,#999988,Tertiary text and subtle elements,,,,,
+Colors,base,color,#0e0e10,Main background color,,,,,
+Colors,hover,color,#1e1e1e,Card backgrounds and hover states,,,,,
+Colors,inactive,color,#30302a,Borders and inactive elements,,,,,
+Spacing,none,dimension,0px,No spacing,,,,,
+Spacing,xs,dimension,4px,Extra small spacing,,,,,
+Spacing,sm,dimension,8px,Small spacing,,,,,
+Spacing,md,dimension,12px,Medium spacing,,,,,
+Spacing,lg,dimension,16px,Large spacing,,,,,
+Spacing,xl,dimension,24px,Extra large spacing,,,,,
+Spacing,xxl,dimension,32px,Double extra large spacing,,,,,
+Spacing,xxxl,dimension,64px,Triple extra large spacing,,,,,
+Sizing,card-default,dimension,540px,Default card width,,,,,
+Sizing,card-expanded,dimension,1136px,Expanded card width,,,,,
+Sizing,card-head-expanded,dimension,352px,Card head expanded width,,,,,
+Sizing,card-body-expanded,dimension,784px,Card body expanded width,,,,,
+Sizing,icon-default,dimension,72px,Default icon size,,,,,
+Sizing,icon-small,dimension,24px,Small icon size,,,,,
+Sizing,button-height,dimension,64px,Button height,,,,,
+Sizing,header-height,dimension,64px,Header height,,,,,
+Sizing,header-max-width,dimension,1200px,Header maximum width,,,,,
+Sizing,nav-link-width,dimension,124px,Navigation link width,,,,,
+Sizing,head-row-height,dimension,16px,Head row height,,,,,
+Sizing,head-title-height,dimension,48px,Head title height,,,,,
+Sizing,icon-height-small,dimension,16px,Small icon height,,,,,
+Sizing,content-height-inactive,dimension,154px,Content inactive height,,,,,
+Sizing,content-height-active-min,dimension,500px,Content active minimum height,,,,,
+Sizing,content-height-active-max,dimension,800px,Content active maximum height,,,,,
+Sizing,head-animation-distance,dimension,20px,Head animation distance,,,,,
+Sizing,body-animation-distance,dimension,20px,Body animation distance,,,,,
+Sizing,border-radius-default,dimension,8px,Default border radius,,,,,
+Sizing,border-radius-large,dimension,16px,Large border radius,,,,,
+Typography,title-1,typography,Title 1,Large title style,"Satoshi, Helvetica, Arial, sans-serif",64px,500,normal,0%
+Typography,heading-lg,typography,Heading Large,Large heading style,"Satoshi, Helvetica, Arial, sans-serif",36px,700,normal,0%
+Typography,heading-base,typography,Heading Base,Base heading style,"Satoshi, Helvetica, Arial, sans-serif",24px,500,normal,0%
+Typography,heading-h3,typography,Heading H3,H3 heading style,"Satoshi, Helvetica, Arial, sans-serif",24px,700,normal,0%
+Typography,body-base,typography,Body Base,Base body text style,"Satoshi, Helvetica, Arial, sans-serif",32px,400,1.4,0%
+Typography,body-sm,typography,Body Small,Small body text style,"Satoshi, Helvetica, Arial, sans-serif",20px,400,1.5,0%
+Typography,other-s1,typography,Mono Small,Small monospace text style,"SF Mono, Menlo, Monaco, Consolas, monospace",14px,400,normal,0%
+Typography,title-xxl,typography,Title XXL,Extra extra large title,"Satoshi, Helvetica, Arial, sans-serif",64px,500,1.2,0%
+Typography,title-xl,typography,Title XL,Extra large title,"Satoshi, Helvetica, Arial, sans-serif",48px,500,1.2,0%
+Typography,title-lg,typography,Title Large,Large title,"Satoshi, Helvetica, Arial, sans-serif",32px,500,1.2,0%
+Typography,title-base,typography,Title Base,Base title,"Satoshi, Helvetica, Arial, sans-serif",24px,500,1.2,0%
+Typography,title-sm,typography,Title Small,Small title,"Satoshi, Helvetica, Arial, sans-serif",20px,500,1.2,0%
+Typography,subtitle,typography,Subtitle,Subtitle style,"SF Mono, Menlo, Monaco, Consolas, monospace",14px,500,1.2,0%
+Typography,caption,typography,Caption,Caption style,"Satoshi, Helvetica, Arial, sans-serif",12px,400,normal,0%
+Typography,annotation-title,typography,Annotation Title,Annotation title style,"Satoshi, Helvetica, Arial, sans-serif",14px,500,normal,0%
+Typography,annotation-subtitle,typography,Annotation Subtitle,Annotation subtitle style,"Satoshi, Helvetica, Arial, sans-serif",10px,400,normal,0%
+Transitions,fast,duration,0.3s ease,Fast transition timing,,,,,
+Transitions,medium,duration,0.5s ease,Medium transition timing,,,,,
+Transitions,slow,duration,0.8s ease,Slow transition timing,,,,,
+Borders,default-width,dimension,1px,Default border width,,,,,
+Borders,default-style,string,solid,Default border style,,,,,
+Borders,default-color,color,#30302a,Default border color,,,,,
+Borders,active-width,dimension,1px,Active border width,,,,,
+Borders,active-style,string,solid,Active border style,,,,,
+Borders,active-color,color,#ffffe3,Active border color,,,,,
+Font Weights,regular,number,400,Regular font weight,,,,,
+Font Weights,medium,number,500,Medium font weight,,,,,
+Font Weights,bold,number,700,Bold font weight,,,,,
