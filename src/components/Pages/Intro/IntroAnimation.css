@@ -8,18 +8,11 @@
 }
 
 .view-container {
-  width: 100%;
-  max-width: 1200px;
-  height: 600px;
   border: 2px solid var(--color-active, #ffffff);
   background: var(--color-base, #1a1a1a);
   overflow: hidden;
   position: relative;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.view-container.expanded {
-  height: 664px; /* Intro2 (600px) + Header (64px) */
 }
 
 .view-container.exiting {

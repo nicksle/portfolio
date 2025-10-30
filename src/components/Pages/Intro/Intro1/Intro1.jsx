@@ -14,7 +14,7 @@ const Intro1 = ({ onNext }) => {
 
       {/* Row 2 */}
       <div className="grid-cell text-r2">
-        <span>hello world!</span>
+        <span>Hello world!</span>
       </div>
       <div className="grid-cell blank-r2-c5"></div>
       <div className="grid-cell image-cell">
