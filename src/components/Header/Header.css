@@ -8,6 +8,17 @@
   height: var(--header-height, 64px);
   background: var(--color-base, #0e0e10);
   z-index: 100;
+  transition:
+    position 0.2s ease,
+    left 0.2s ease,
+    transform 0.2s ease;
+}
+
+.header.intro-mode {
+  position: relative;
+  left: 0;
+  transform: none;
+  z-index: 1;
 }
 
 .header-content {
@@ -30,6 +41,10 @@
   z-index: 1;
   background: var(--color-base, #0e0e10);
   flex: 1;
+}
+
+.header.intro-mode .header-logo {
+  background: var(--color-active, #ffffe3);
 }
 
 .header-logo:hover {
@@ -68,6 +83,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid var(--color-inactive, #30302a);
+  border-radius: 0;
   position: relative;
   z-index: 1;
   margin-left: -1px;

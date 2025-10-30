@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import { AnimatePresence } from 'framer-motion';
 import './App.css';
 import Header from './components/Header/Header';
+import IntroAnimation from './components/Pages/Intro/IntroAnimation';
 import Work from './components/Pages/Work/Work';
 import CaseStudy1 from './components/Pages/Tanda/CaseStudy1/CaseStudy';
 import CaseStudyID from './components/Pages/Tanda/CaseStudy1/CaseStudyID';
@@ -18,19 +19,16 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Simplified Header component
-const AnimatedHeader = () => {
-  return <Header />;
-};
-
 // Routes wrapper to access location for AnimatePresence
 const AnimatedRoutes = () => {
   const location = useLocation();
-  
+  const isIntroRoute = location.pathname === '/';
+
   return (
     <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Work />} />
+        <Route path="/" element={<IntroAnimation />} />
+        <Route path="/work" element={<Work />} />
         <Route path="/case-study-1" element={<CaseStudy1 />} />
         <Route path="/case-study-id" element={<CaseStudyID />} />
         <Route path="*" element={<Navigate to="/" replace />} />
@@ -39,11 +37,24 @@ const AnimatedRoutes = () => {
   );
 };
 
+// Conditional Header wrapper
+const ConditionalHeader = () => {
+  const location = useLocation();
+  const isIntroRoute = location.pathname === '/';
+
+  // Don't show header on intro route (it's part of IntroAnimation)
+  if (isIntroRoute) {
+    return null;
+  }
+
+  return <Header />;
+};
+
 function App() {
   return (
     <Router basename="/portfolio">
       <div className="App">
-        <AnimatedHeader />
+        <ConditionalHeader />
         <ScrollToTop />
         <AnimatedRoutes />
       </div>

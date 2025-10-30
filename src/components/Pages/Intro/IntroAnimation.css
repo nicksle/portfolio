@@ -1,0 +1,34 @@
+.intro-animation {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+
+.view-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 600px;
+  border: 2px solid var(--color-active, #ffffff);
+  background: var(--color-base, #1a1a1a);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.view-container.expanded {
+  height: 664px; /* Intro2 (600px) + Header (64px) */
+}
+
+.view-container.exiting {
+  transform: translateY(-100vh);
+}
+
+.intro-content {
+  width: 100%;
+  height: 1264px; /* Intro1 (600px) + Intro2 (600px) + Header (64px) */
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}

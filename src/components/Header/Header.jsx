@@ -3,7 +3,7 @@ import { motion, useScroll } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ isIntroMode = false, onWorkClick }) => {
   const { scrollY } = useScroll();
   const location = useLocation();
   const [headerState, setHeaderState] = useState('visible'); // 'visible' or 'hidden'
@@ -31,9 +31,15 @@ const Header = () => {
 
   // Determine header state based on conditions
   useEffect(() => {
+    // Skip all scroll-based logic during intro mode
+    if (isIntroMode) {
+      setHeaderState('visible');
+      return;
+    }
+
     const currentScroll = scrollY.get();
     const scrollThreshold = 100; // Pixels scrolled before hiding header
-    
+
     if (isPageLoading) {
       console.log('Setting header to HIDDEN (page loading)');
       setHeaderState('hidden');
@@ -44,17 +50,22 @@ const Header = () => {
       console.log('Setting header to VISIBLE');
       setHeaderState('visible');
     }
-  }, [scrollY, isPageLoading]);
+  }, [scrollY, isPageLoading, isIntroMode]);
 
   // Listen to scroll changes
   useEffect(() => {
+    // Skip scroll listeners during intro mode
+    if (isIntroMode) {
+      return;
+    }
+
     const unsubscribe = scrollY.on('change', (latest) => {
       const scrollThreshold = 100;
-      
+
       if (isPageLoading) {
         return; // Don't change state while page is loading
       }
-      
+
       if (latest > scrollThreshold && headerState === 'visible') {
         console.log('Scroll hiding header at:', latest);
         setHeaderState('hidden');
@@ -63,38 +74,39 @@ const Header = () => {
         setHeaderState('visible');
       }
     });
-    
+
     return () => unsubscribe();
-  }, [scrollY, headerState, isPageLoading]);
+  }, [scrollY, headerState, isPageLoading, isIntroMode]);
 
   const isActive = (path) => {
-    if (path === '/') {
-      return location.pathname === '/';
+    if (path === '/work') {
+      return location.pathname === '/work';
     }
     return location.pathname.startsWith(path);
   };
 
   return (
-    <motion.header 
-      className="header"
-      initial={{ y: -80, opacity: 1 }} // Start hidden above viewport
+    <motion.header
+      className={`header ${isIntroMode ? 'intro-mode' : ''}`}
+      initial={{ y: isIntroMode ? 0 : -80, opacity: 1 }} // Start at 0 in intro mode
       animate={{
-        y: headerState === 'visible' ? 0 : -80, // Visible at 0, hidden at -80px
+        y: isIntroMode ? 0 : (headerState === 'visible' ? 0 : -80), // Always visible in intro mode
         opacity: 1 // Always keep opacity at 1
       }}
       transition={{
-        y: { 
-          duration: 0.5, 
+        y: {
+          duration: 0.5,
           ease: "easeInOut"
         },
-        opacity: { 
-          duration: 0.3, 
+        opacity: {
+          duration: 0.3,
           ease: "easeInOut"
         }
       }}
-      style={{ 
-        x: '-50%',
-        left: '50%'
+      style={{
+        x: isIntroMode ? 0 : '-50%',
+        left: isIntroMode ? 0 : '50%',
+        position: isIntroMode ? 'relative' : 'fixed'
       }}
       onAnimationStart={(definition) => console.log('Header animation started:', definition)}
       onAnimationComplete={(definition) => console.log('Header animation completed:', definition)}
@@ -105,12 +117,21 @@ const Header = () => {
           <h1 className="header-title">Nicholas Le</h1>
         </div>
         <nav className="header-nav">
-          <Link 
-            to="/" 
-            className={`nav-link ${isActive('/') ? 'active' : ''}`}
-          >
-            Work
-          </Link>
+          {isIntroMode && onWorkClick ? (
+            <button
+              onClick={onWorkClick}
+              className="nav-link"
+            >
+              Work
+            </button>
+          ) : (
+            <Link
+              to="/work"
+              className={`nav-link ${isActive('/work') ? 'active' : ''}`}
+            >
+              Work
+            </Link>
+          )}
           <Link 
             to="/about" 
             className={`nav-link ${isActive('/about') ? 'active' : ''}`}
