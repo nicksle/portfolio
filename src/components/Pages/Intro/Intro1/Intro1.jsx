@@ -1,12 +1,13 @@
 import React from 'react';
 import './Intro1.css';
+import gmLogo from '../../../../assets/logo/GMLogo.svg';
 
 const Intro1 = ({ onNext }) => {
   return (
     <div className="intro1-section">
       {/* Row 1 */}
       <div className="grid-cell svg-cell">
-        <span>SVG</span>
+        <img src={gmLogo} alt="GM Logo" className="logo-svg" />
       </div>
       <div className="grid-cell text-r1">
         <span>nkle.design</span>

@@ -17,11 +17,13 @@ const Intro2 = () => {
       <div className="grid-cell blank-r2-c1"></div>
       <div className="grid-cell blank-r2-c2"></div>
       <div className="grid-cell text-r2">
-        <span>queer creative,</span>
+        <span>queer creative</span>
       </div>
 
       {/* Row 3 */}
-      <div className="grid-cell blank-r3-c1"></div>
+      <div className="grid-cell blank-r3-c1">
+        <span>&</span>
+      </div>
       <div className="grid-cell text-r3">
         <span>pop music enthusiast</span>
       </div>
