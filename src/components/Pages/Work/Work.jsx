@@ -13,6 +13,9 @@ import WorkItem from "../../ContentNavigator/ContentStack/Content/Body/BodyCompo
 import CalloutItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/CalloutItems/CalloutItem";
 import TandaThumbnail1 from "../../../assets/TANDA/Thumbnail/Thumbnail1.svg";
 import TandaThumbnail2 from "../../../assets/TANDA/Thumbnail/Thumbnail2.svg";
+import SignUpCarouselVideo from "../../../assets/TANDA/CaseStudy1/01.mov";
+import WorkItem1Left from "../../../assets/TANDA/WorkItem1/01.jpg";
+import WorkItem1Right from "../../../assets/TANDA/WorkItem1/02.jpg";
 import './Work.css';
 
 const Work = () => {
@@ -63,7 +66,7 @@ const Work = () => {
   const styles = {
     // Typography styles
     heroTitle: {
-      fontSize: 'var(--font-size-title-lg)',
+      fontSize: 'var(--font-size-title-xl)',
       fontWeight: 'var(--font-weight-regular)',
       color: 'var(--color-primary)',
       margin: 0,
@@ -131,14 +134,27 @@ const Work = () => {
         </BodyComponent>,
         <BodyComponent key="tanda-works">
           <TitleSection title="Selected Works">
-            <WorkItem 
-              index="01" 
-              image={TandaThumbnail1} 
-              title="Improving our NUX to Increase User Activation Rates" 
-              description="Delightful sign-up flow that increased user retention and reduced drop off"
+            <WorkItem
+              index="01"
+              thumbnails={[
+                { img: WorkItem1Left, scale: 0.98 },
+                { video: SignUpCarouselVideo, scale: 1.02 },
+                { img: WorkItem1Right, scale: 0.98 }
+              ]}
+              gradientBackground={{ startColor: '#667eea', endColor: '#764ba2' }}
+              title="Improving User Education and Building Trust During Onboarding to Increase User Growth"
+              description="Enhanced onboarding that helps users understand TANDA's value while building confidence through clear communication and supportive guidance"
               onCtaClick={() => navigate('/case-study-id')}
             />
-            <WorkItem index="02" title="TANDA: Core Product" description="Improved core product experience to increase user activation, retention and growth" />
+            <WorkItem
+              index="02"
+              thumbnails={[
+                { img: "https://via.placeholder.com/300x200/764ba2/ffffff?text=Core+Product" }
+              ]}
+              gradientBackground={{ startColor: '#764ba2', endColor: '#667eea' }}
+              title="TANDA: Core Product"
+              description="Improved core product experience to increase user activation, retention and growth"
+            />
           </TitleSection>
         </BodyComponent>
       ]
@@ -424,6 +440,20 @@ const Work = () => {
         </div>
         <div className="work-carousel">
           <div className="work-carousel-scroll">
+            {/* First set of items */}
+            <div className="work-carousel-item">
+              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />
+            </div>
+            <div className="work-carousel-item">
+              <img src={TandaThumbnail2} alt="Tanda App Interface 2" />
+            </div>
+            <div className="work-carousel-item">
+              <img src="https://via.placeholder.com/300x200" alt="Work 3" />
+            </div>
+            <div className="work-carousel-item">
+              <img src="https://via.placeholder.com/300x200" alt="Work 4" />
+            </div>
+            {/* Duplicate set for seamless loop */}
             <div className="work-carousel-item">
               <img src={TandaThumbnail1} alt="Tanda App Interface 1" />
             </div>
