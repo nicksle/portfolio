@@ -16,6 +16,7 @@
   font-size: 14px;
   text-align: center;
   padding: 8px;
+  overflow: hidden;
 }
 
 /* Row 1 */
@@ -95,9 +96,10 @@
 
 .intro2-section .blank-r2-c2:hover {
   background: var(--color-hover, #1e1e1e);
-  
+
   z-index: 10;
 }
+
 
 .intro2-section .text-r2 {
   grid-column: 3 / 7;
@@ -141,6 +143,10 @@
 .intro2-section .text-r2:hover::before,
 .intro2-section .text-r2:has(.char:hover)::before {
   opacity: 1;
+}
+
+.intro2-section .text-r2:hover {
+  color: var(--color-base);
 }
 
 @keyframes gradientWave {
@@ -208,8 +214,51 @@
 
 .intro2-section .text-r3:hover {
   background: var(--color-hover, #1e1e1e);
-  
+
   z-index: 10;
+}
+
+/* Music Cell - Now Playing animation */
+#Music {
+  position: relative;
+  overflow: hidden;
+}
+
+.music-default-text {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.music-default-text.hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.music-now-playing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  /* Global subtitle font style */
+  font-family: var(--font-family-subtitle);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-tertiary);
+}
+
+.music-now-playing.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .intro2-section .blank-r3-c7 {
@@ -224,8 +273,61 @@
 
 .intro2-section .blank-r3-c7:hover {
   background: var(--color-hover, #1e1e1e);
-  
+
   z-index: 10;
+}
+
+/* Album1 - Image box with no margins */
+#Album1 {
+  padding: 0;
+  position: relative;
+}
+
+#Album1 .record {
+  position: absolute;
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  background: var(--color-inactive, rgba(255, 255, 255, 0.3));
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+#Album1:hover .record {
+  transform: translateX(-50%) translateY(32px);
+  transition-delay: 0.3s;
+}
+
+#Album1 .album-image {
+  width: 100%;
+  height: 100%;
+  background: var(--color-inactive, rgba(255, 255, 255, 0.1));
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  position: relative;
+  z-index: 2;
+  transition-delay: 0.3s;
+}
+
+#Album1:hover .album-image {
+  transform: scale(0.83) translateY(-24px);
+  transition-delay: 0s;
+}
+
+#Album1 .album-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#Album1 .album-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--color-inactive, rgba(255, 255, 255, 0.1));
 }
 
 .intro2-section .blank-r3-c8 {
@@ -302,6 +404,7 @@
 
 .intro2-section .text-r4:hover {
   background: var(--color-hover, #1e1e1e);
-  
+
   z-index: 10;
 }
+
