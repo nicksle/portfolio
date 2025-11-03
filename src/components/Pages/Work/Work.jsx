@@ -20,12 +20,8 @@ import './Work.css';
 
 const Work = () => {
   const [activeContentId, setActiveContentId] = useState('tanda');
-  const [viewportHeight, setViewportHeight] = useState(typeof window !== 'undefined' ? window.innerHeight : 800);
-  const [animationPhase, setAnimationPhase] = useState('idle'); // 'idle' | 'collapsing' | 'fading' | 'navigating'
   const workContentRef = useRef(null);
   const contentNavRef = useRef(null);
-  const scrollLockRef = useRef(false);
-  const lastScrollY = useRef(0);
   const navigate = useNavigate();
 
   // Force proper initial state on every mount
@@ -39,28 +35,17 @@ const Work = () => {
     setIsReady(false);
     // Ensure scroll progress starts at 0
     setScrollProgress(0);
-    
+
     const timer = setTimeout(() => {
       console.log('🏠 Work component READY - triggering animation');
       setIsReady(true);
     }, 50); // Small delay to ensure clean initial state
-    
+
     return () => {
       console.log('🏠 Work component UNMOUNTED');
       clearTimeout(timer);
     };
   }, []);
-
-  // Handle navigation to CaseStudy1 with animation sequence
-  const handleNavigation = () => {
-    console.log('CTA clicked! Setting animation phase to collapsing');
-    setAnimationPhase('collapsing'); // Start height animation
-  };
-
-  // Debug animation phase changes
-  useEffect(() => {
-    console.log('Animation phase changed to:', animationPhase);
-  }, [animationPhase]);
 
   // Styles using CSS custom properties - consistent with design system
   const styles = {
@@ -276,107 +261,24 @@ const Work = () => {
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      setViewportHeight(window.innerHeight);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
     const handleScroll = () => {
-      if (!contentNavRef.current) return;
-      
-      const targetY = 64; // ContentNavigator trigger point
+      if (!workContentRef.current || !contentNavRef.current) return;
+
+      const targetY = 120;
       const navRect = contentNavRef.current.getBoundingClientRect();
       const navTop = navRect.top;
-      const currentScrollY = window.scrollY;
 
-      // Scroll locking logic
-      const activeContent = document.querySelector('.content.active');
-      if (activeContent) {
-        const isScrollingDown = currentScrollY > lastScrollY.current;
-        const shouldLock = navTop <= targetY;
+      const workRect = workContentRef.current.getBoundingClientRect();
+      const startY = workRect.bottom;
+      const endY = targetY;
+      const progress = Math.min(Math.max((startY - navTop) / (startY - endY), 0), 1);
 
-        if (shouldLock) {
-          if (isScrollingDown) {
-            if (!scrollLockRef.current) {
-              activeContent.classList.add('scrollable');
-              scrollLockRef.current = true;
-              // Store the scroll position when locking
-              lastScrollY.current = currentScrollY;
-            }
-            
-            // Calculate scroll delta and apply it to content
-            const scrollDelta = currentScrollY - lastScrollY.current;
-            const currentScroll = activeContent.scrollTop;
-            const maxScroll = activeContent.scrollHeight - activeContent.clientHeight;
-            
-            // Only scroll if we haven't reached the bottom
-            if (currentScroll < maxScroll) {
-              activeContent.scrollTop = Math.min(currentScroll + scrollDelta, maxScroll);
-              window.scrollTo({
-                top: lastScrollY.current,
-                behavior: 'auto'
-              });
-            } else if (currentScroll >= maxScroll && scrollDelta > 0) {
-              // If we're at the bottom and still scrolling down, unlock
-              activeContent.classList.remove('scrollable');
-              scrollLockRef.current = false;
-            }
-          } else if (!isScrollingDown && navTop > targetY) {
-            // Unlock when scrolling up and above the target position
-            if (scrollLockRef.current) {
-              activeContent.classList.remove('scrollable');
-              scrollLockRef.current = false;
-            }
-          }
-        } else {
-          if (scrollLockRef.current) {
-            activeContent.classList.remove('scrollable');
-            scrollLockRef.current = false;
-          }
-        }
-      }
-      
-      lastScrollY.current = currentScrollY;
+      setScrollProgress(progress);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: false });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Framer Motion scroll system - replaces manual scroll tracking
-  const { scrollY } = useScroll();
-  
-  // Update scroll progress, but only when ready
-  useEffect(() => {
-    if (!isReady) {
-      setScrollProgress(0);
-      return;
-    }
-    
-    const unsubscribe = scrollY.on('change', (latest) => {
-      if (!workContentRef.current || !contentNavRef.current || !isReady) {
-        setScrollProgress(0);
-        return;
-      }
-      
-      const headerHeight = 64;
-      const targetY = 64;
-      const navRect = contentNavRef.current.getBoundingClientRect();
-      const navTop = navRect.top;
-      
-      const workRect = workContentRef.current.getBoundingClientRect();
-      const startY = workRect.bottom;
-      const endY = targetY;
-      const progress = Math.min(Math.max((startY - navTop) / (startY - endY), 0), 1);
-      
-      setScrollProgress(progress);
-    });
-    
-    return unsubscribe;
-  }, [scrollY, isReady]);
 
   // Calculate scroll-based values like CaseStudy1 - direct calculation, not state
   const opacity = 1 - scrollProgress;
@@ -419,7 +321,6 @@ const Work = () => {
         }}
         style={{
           position: 'fixed',
-          top: '64px',
           left: 0,
           width: '100%',
           height: '100vh',
@@ -429,9 +330,12 @@ const Work = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
+          opacity: Math.max(opacity, 0),
+          scale: Math.max(scale, 0.8),
           zIndex: 1,
           right: 0,
         }}
+        transition={{ type: 'spring', stiffness: 120, damping: 20 }}
       >
         <div className="work-description" style={styles.workDescription}>
           <h2 style={styles.heroTitle}>
@@ -469,72 +373,32 @@ const Work = () => {
           </div>
         </div>
       </motion.div>
-      <div 
-        ref={contentNavRef} 
-        style={styles.contentNav}
-      >
-        <motion.div
-          initial={{ height: 'auto', opacity: 1 }}
-          animate={{
-            height: animationPhase === 'collapsing' ? '1px' : 
-                    animationPhase === 'fading' ? '1px' : 'auto',
-            opacity: animationPhase === 'fading' ? 0 : 1
-          }}
-          transition={{
-            height: { duration: 0.4, ease: "easeInOut" },
-            opacity: { duration: 0.25, ease: "easeInOut" }
-          }}
-          onAnimationComplete={(definition) => {
-            console.log('Animation completed:', definition);
-            console.log('Current animation phase:', animationPhase);
-            console.log('Height value:', definition.height);
-            console.log('Opacity value:', definition.opacity);
-            
-            // Check if height animation is complete
-            if (animationPhase === 'collapsing' && definition.height === '1px') {
-              console.log('Height animation done, starting fade out');
-              setAnimationPhase('fading');
-            }
-            // Check if fade animation is complete
-            else if (animationPhase === 'fading' && definition.opacity === 0) {
-              console.log('Fade out done, navigating to CaseStudy1');
-              setAnimationPhase('navigating');
-              navigate('/case-study-1');
-            }
-          }}
-        >
-          <ContentNavigator>
-            <TabNav activeId={activeContentId} onTabChange={handleTabChange}>
-              <NavTabItem id="tanda" index="01" title="Tanda" />
-              <NavTabItem id="liftoff" index="02" title="Liftoff" />
-              <NavTabItem id="jefuel" index="03" title="Jefuel" />
-              <NavTabItem id="cashapp" index="04" title="CashApp" />
-            </TabNav>
-            
-            {/* Single Content with dynamic content based on activeContentId */}
-            <motion.div 
-              className="content" 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+      <div ref={contentNavRef} style={{ zIndex: 2, position: 'relative', marginTop: '100vh' }}>
+        <ContentNavigator>
+          <TabNav activeId={activeContentId} onTabChange={handleTabChange}>
+            <NavTabItem id="tanda" index="01" title="Tanda" />
+            <NavTabItem id="liftoff" index="02" title="Liftoff" />
+            <NavTabItem id="jefuel" index="03" title="Jefuel" />
+            <NavTabItem id="cashapp" index="04" title="CashApp" />
+          </TabNav>
+
+          <div className="content">
+            <Head
+              index={contentRegistry[activeContentId]?.index}
+              subtitle={contentRegistry[activeContentId]?.subtitle}
+              title={contentRegistry[activeContentId]?.title}
+              icon={contentRegistry[activeContentId]?.icon1}
+              secondIcon={contentRegistry[activeContentId]?.icon2}
+              period={contentRegistry[activeContentId]?.period}
+            />
+            <Body
+              onNextSection={handleNextContent}
+              showNextButton={activeContentId !== 'cashapp'}
             >
-              <Head
-                index={contentRegistry[activeContentId]?.index}
-                subtitle={contentRegistry[activeContentId]?.subtitle}
-                title={contentRegistry[activeContentId]?.title}
-                icon={contentRegistry[activeContentId]?.icon1}
-                secondIcon={contentRegistry[activeContentId]?.icon2}
-                period={contentRegistry[activeContentId]?.period}
-              />
-              <Body 
-                onNextSection={handleNextContent}
-                showNextButton={activeContentId !== 'cashapp'}
-              >
-                {contentRegistry[activeContentId]?.bodyItems || []}
-              </Body>
-            </motion.div>
-          </ContentNavigator>
-        </motion.div>
+              {contentRegistry[activeContentId]?.bodyItems || []}
+            </Body>
+          </div>
+        </ContentNavigator>
       </div>
     </motion.div>
   );

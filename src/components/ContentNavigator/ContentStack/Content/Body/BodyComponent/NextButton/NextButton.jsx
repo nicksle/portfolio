@@ -3,8 +3,8 @@ import './NextButton.css';
 import Icon from '../../../../../../../components/Icon';
 import { ICON_PATHS } from '../../../../../../../utils/iconPaths';
 
-const NextButton = ({ 
-  onClick, 
+const NextButton = ({
+  onClick,
   isVisible = true,
   className = '',
   style = {}
@@ -13,14 +13,14 @@ const NextButton = ({
 
   return (
     <div className={`next-button-container ${className}`} style={style}>
-      <button 
+      <button
         className="next-button"
         onClick={onClick}
       >
         <span className="next-button-text">Next Section</span>
-        <Icon 
-          svgPath={ICON_PATHS.arrowRight} 
-          size="small" 
+        <Icon
+          svgPath={ICON_PATHS.arrowRight}
+          size="small"
           className="next-button-icon"
         />
       </button>

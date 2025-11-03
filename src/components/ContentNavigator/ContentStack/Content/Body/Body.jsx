@@ -5,39 +5,32 @@ import NextButton from './BodyComponent/NextButton/NextButton';
 
 const Body = forwardRef(({ children, onScrollProgress, onNextSection, showNextButton = true }, ref) => {
   return (
-    <motion.div
-      className="body"
-      ref={ref}
-    >
-      {React.Children.map(children, (child, index) => (
-        <motion.div
-          key={child.key || index}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-100px", amount: 0.3 }}
-          transition={{
-            duration: 0.4,
-            ease: "easeOut"
-          }}
-        >
-          {child}
-        </motion.div>
-      ))}
+    <>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, margin: "-100px", amount: 0.3 }}
-        transition={{
-          duration: 0.4,
-          ease: "easeOut"
-        }}
+        className="body"
+        ref={ref}
       >
-        <NextButton
-          onClick={onNextSection}
-          isVisible={showNextButton && onNextSection}
-        />
+        {React.Children.map(children, (child, index) => (
+          <motion.div
+            key={child.key || index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-100px", amount: 0.3 }}
+            transition={{
+              duration: 0.4,
+              ease: "easeOut"
+            }}
+          >
+            {child}
+          </motion.div>
+        ))}
       </motion.div>
-    </motion.div>
+      <NextButton
+        onClick={onNextSection}
+        isVisible={showNextButton && onNextSection}
+        contentRef={ref}
+      />
+    </>
   );
 });
 

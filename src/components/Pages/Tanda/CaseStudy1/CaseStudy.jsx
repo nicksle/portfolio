@@ -191,7 +191,7 @@ const CaseStudy = () => {
                   <span className="S1">2023</span>
                 </div>
                 <h2 className="casestudy-title-text H2">
-                  Designing a NUX to Improve User Sign Up and Activation
+                  Improving User Education and Building Trust During Onboarding to Increase User Growth
                 </h2>
                 <div className="casestudy-title-bottom">
                   <span className="S1">Case Study</span>

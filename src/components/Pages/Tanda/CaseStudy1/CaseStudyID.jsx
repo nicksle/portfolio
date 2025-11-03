@@ -23,6 +23,8 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import TandaThumbnail1 from '../../../../assets/TANDA/CaseStudy1/Thumbnail/TandaThumbnail1.svg';
 import OnboardingFunnelChart from '../../../../assets/TANDA/CaseStudy1/onboarding-funnel-chart.svg';
 import Figure01 from '../../../../assets/TANDA/CaseStudy1/Figure 01.svg';
+// Solutions video assets
+import SignUpCarouselVideo from '../../../../assets/TANDA/CaseStudy1/01.mov';
 // User Flow Audit assets
 import SignUpScreen from '../../../../assets/TANDA/CaseStudy1/Sign Up Screen.svg';
 // Phone Verification imports
@@ -55,6 +57,15 @@ import LinkBank02 from '../../../../assets/TANDA/CaseStudy1/Onboarding/Link Bank
 // User Activation imports
 import UserActivation01 from '../../../../assets/TANDA/CaseStudy1/User Activation/01.svg';
 import UserActivation02 from '../../../../assets/TANDA/CaseStudy1/User Activation/02.svg';
+// Solutions 1 imports
+import SegSurvey00 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/00.png';
+import SegSurvey01 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/01.png';
+import SegSurvey02 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/02.png';
+import SegSurvey03 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/03.png';
+import SegSurvey04 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/04.png';
+import SegSurvey05 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/05.png';
+// Solutions 2 imports
+import KYCFlow01 from '../../../../assets/TANDA/CaseStudy1/Solutions2/02/KYCFlow01.mov';
 // Research 2 imports
 import Research2KYCBottleneck01 from '../../../../assets/TANDA/CaseStudy1/Research 2/KYC Bottleneck/01.svg';
 import Research2KYCBottleneck02 from '../../../../assets/TANDA/CaseStudy1/Research 2/KYC Bottleneck/02.svg';
@@ -2397,46 +2408,106 @@ const CaseStudyID = () => {
       period: "",
       bodyItems: [
         <BodyComponent key="solutions-intro">
-          <Text 
-            subtitle="Solution Implementation"
+          <Text
+            subtitle="From Insights to Implementation"
             style="B1"
           >
-            We implemented a comprehensive set of solutions designed to address the key pain points identified in our research and strategy phases. Each solution was carefully designed and tested to ensure maximum impact on user activation.
+            Based on research findings and strategic testing, we developed five interconnected solutions that address the user journey from account creation through sustained engagement. Each solution directly responds to documented pain points while implementing validated strategic approaches to improve activation and retention.
           </Text>
         </BodyComponent>,
         <BodyComponent key="solutions-fullcard-1">
           <FullCard
             index="01"
             icon={<Icon svgPath={ICON_PATHS.solidTrendingDown} size="xl" />}
-            title="Streamlined Sign-Up Flow"
-            subtitle="Reducing Friction in Account Creation"
-            description="We redesigned the sign-up process to eliminate unnecessary steps and reduce cognitive load, making it easier for users to create accounts and get started."
+            title="Efficient Sign Up that Provides Context and Motivation"
+            description="We increased sign-up efficiency through social sign-in options, a clarified email flow, and UX improvements. An onboarding carousel and new user survey provided early context and value, boosting user motivation."
             headItems={[
               {
                 id: "01",
                 index: "01",
-                title: "Before & After"
+                title: "Sign Up Screen Carousel"
               },
               {
                 id: "02",
-                index: "02", 
-                title: "User Testing"
+                index: "02",
+                title: "Social Sign Up Options"
+              },
+              {
+                id: "03",
+                index: "03",
+                title: "Clarified Email Flow"
+              },
+              {
+                id: "04",
+                index: "04",
+                title: "New User Survey to Highlight Value Props"
               }
             ]}
             bodyItems={[
               {
                 id: "01",
                 children: [
-                  <MediaSet key="media-sol-1">
-                    <img src={Figure01} alt="Sign-up flow comparison showing before and after improvements" />
+                  <TextSet
+                    key="text-sol-1-1"
+                    text="The sign-up carousel provides educational context during account creation, explaining TANDA's core benefits and circle mechanics while users complete their registration. This transforms wait time into value communication time."
+                  />,
+                  <MediaSet key="media-sol-1-1">
+                    <video
+                      src={SignUpCarouselVideo}
+                      muted
+                      autoPlay
+                      loop
+                      style={{ borderRadius: '24px' }}
+                      alt="Video demonstration of the sign-up carousel in action showing smooth transitions between educational screens"
+                    />
+                  </MediaSet>,
+                  <TextSet
+                    key="text-sol-1-2"
+                    text="Key carousel screens"
+                    annotationItems={[
+                      {
+                        title: "How Circles Work",
+                        description: "Visual explanation of circle mechanics, contribution schedules, and payout rotation"
+                      }
+                    ]}
+                  />,
+                  <MediaSet key="media-sol-1-3">
+                    <img src={Figure01} alt="Carousel screen 1: How Circles Work - explaining contribution schedules and payout rotation" />
+                    <img src={SignUpScreen} alt="Carousel screen 2: Build Credit While Saving - highlighting dual benefits of participation" />
+                    <img src={OnboardingFunnelChart} alt="Carousel screen 3: Community Support - showcasing member success stories and social proof" />
                   </MediaSet>
                 ]
               },
               {
                 id: "02",
                 children: [
-                  <MediaSet key="media-sol-2">
-                    <img src={SignUpScreen} alt="User testing results and feedback on new sign-up flow" />
+                  <MediaSet key="media-sol-1-2">
+                    <img src={SignUpScreen} alt="Social sign-in interface with Google and Apple SSO buttons, enabling one-tap authentication that reduces account creation time significantly" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "03",
+                children: [
+                  <MediaSet key="media-sol-1-3">
+                    <img src={OnboardingFunnelChart} alt="Clarified email verification flow showing clear states, which email is being verified, resend options with timing, and contextual explanations reducing user confusion" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "04",
+                children: [
+                  <TextSet
+                    key="text-sol-1-4"
+                    text="The new user survey asks targeted questions about financial goals (emergency fund, vacation savings, debt payoff) to segment users and trigger personalized value propositions. This data powers relevant circle recommendations and customized onboarding paths."
+                  />,
+                  <MediaSet key="media-sol-1-4">
+                    <img src={SegSurvey00} alt="Segmentation survey screen 1" />
+                    <img src={SegSurvey01} alt="Segmentation survey screen 2" />
+                    <img src={SegSurvey02} alt="Segmentation survey screen 3" />
+                    <img src={SegSurvey03} alt="Segmentation survey screen 4" />
+                    <img src={SegSurvey04} alt="Segmentation survey screen 5" />
+                    <img src={SegSurvey05} alt="Segmentation survey screen 6" />
                   </MediaSet>
                 ]
               }
@@ -2446,36 +2517,157 @@ const CaseStudyID = () => {
         <BodyComponent key="solutions-fullcard-2">
           <FullCard
             index="02"
-            icon={<Icon svgPath={ICON_PATHS.lightbulb} size="xl" />}
-            title="Enhanced Onboarding Experience"
-            subtitle="Guiding Users Through Key Actions"
-            description="We created a more intuitive onboarding experience with clear guidance, progress indicators, and contextual help to ensure users understand each step."
+            icon={<Icon svgPath={ICON_PATHS.solidFlag} size="xl" />}
+            title="Earning Trust Through Context and Clarity"
+            subtitle="Addressing Sensitivity Around Data Collection"
+            description="KYC was the biggest drop-off point because users didn't understand what it was or why sensitive data was needed. We transformed the experience through upfront education, progressive disclosure, visible trust indicators, and supportive error handling."
             headItems={[
               {
                 id: "01",
                 index: "01",
-                title: "Onboarding Flow"
+                title: "Context Introduction"
               },
               {
                 id: "02",
-                index: "02", 
-                title: "Progress Tracking"
+                index: "02",
+                title: "UX Improvements"
+              },
+              {
+                id: "03",
+                index: "03",
+                title: "Trust Signals"
+              },
+              {
+                id: "04",
+                index: "04",
+                title: "Error State Redesign"
+              },
+              {
+                id: "05",
+                index: "05",
+                title: "Pending Management"
               }
             ]}
             bodyItems={[
               {
                 id: "01",
                 children: [
-                  <MediaSet key="media-sol-3">
-                    <img src={OnboardingFunnelChart} alt="Enhanced onboarding flow with improved user guidance" />
+                  <TextSet
+                    key="text-sol-2-1"
+                    text="Before asking for sensitive information, we introduce the KYC flow with educational context. This screen explains the legal requirements for financial platforms, introduces the trusted third-party verification partner (Plaid), and clearly communicates why TANDA needs to collect this information—building trust before the request."
+                  />,
+                  <MediaSet key="media-sol-2-1">
+                    <video
+                      src={KYCFlow01}
+                      muted
+                      autoPlay
+                      loop
+                      style={{ borderRadius: '24px' }}
+                      alt="Video demonstration of the KYC context introduction screen explaining regulatory requirements and building user trust"
+                    />
                   </MediaSet>
                 ]
               },
               {
                 id: "02",
                 children: [
-                  <MediaSet key="media-sol-4">
-                    <img src={Figure01} alt="Progress tracking and user journey visualization" />
+                  <TextSet
+                    key="text-sol-2-2-0"
+                    text="We implemented several UX improvements to make the KYC process smoother and less intimidating for users, reducing friction at every step of the verification flow."
+                  />,
+                  <MediaSet key="media-sol-2-2-0">
+                    <video
+                      src={KYCFlow01}
+                      muted
+                      autoPlay
+                      loop
+                      style={{ borderRadius: '24px' }}
+                      alt="Overview of UX improvements in the KYC flow"
+                    />
+                  </MediaSet>,
+                  <TextSet
+                    key="text-sol-2-2-1"
+                    annotationItems={[
+                      {
+                        index: "01",
+                        title: "Progressive Steps",
+                        description: "Breaking the overwhelming KYC form into manageable chunks—Basic Info → Address → SSN → Document Upload—reducing cognitive load per screen"
+                      }
+                    ]}
+                  />,
+                  <MediaSet key="media-sol-2-2-1">
+                    <video
+                      src={KYCFlow01}
+                      muted
+                      autoPlay
+                      loop
+                      style={{ borderRadius: '24px' }}
+                      alt="Video showing progressive form steps breaking down KYC into manageable chunks"
+                    />
+                  </MediaSet>,
+                  <TextSet
+                    key="text-sol-2-2-2"
+                    annotationItems={[
+                      {
+                        index: "02",
+                        title: "Address Autocomplete",
+                        description: "Smart search reduces friction and errors during data entry, helping users complete forms faster while maintaining accuracy"
+                      }
+                    ]}
+                  />,
+                  <MediaSet key="media-sol-2-2-2">
+                    <video
+                      src={KYCFlow01}
+                      muted
+                      autoPlay
+                      loop
+                      style={{ borderRadius: '24px' }}
+                      alt="Video demonstrating address autocomplete functionality"
+                    />
+                  </MediaSet>,
+                  <TextSet
+                    key="text-sol-2-2-3"
+                    annotationItems={[
+                      {
+                        index: "03",
+                        title: "Form Autofill",
+                        description: "Intelligent field detection pre-populates information where possible, minimizing manual input and speeding up verification"
+                      }
+                    ]}
+                  />,
+                  <MediaSet key="media-sol-2-2-3">
+                    <video
+                      src={KYCFlow01}
+                      muted
+                      autoPlay
+                      loop
+                      style={{ borderRadius: '24px' }}
+                      alt="Video showing form autofill capabilities"
+                    />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "03",
+                children: [
+                  <MediaSet key="media-sol-2-3">
+                    <img src={OnboardingFunnelChart} alt="Bank-level encryption badges, SOC 2 compliance certification, and FDIC insurance displayed at critical data collection moments" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "04",
+                children: [
+                  <MediaSet key="media-sol-2-4">
+                    <img src={Figure01} alt="Improved error messaging with encouraging language, explanation of what triggered rejection, and clear next steps for resolution" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "05",
+                children: [
+                  <MediaSet key="media-sol-2-5">
+                    <img src={SignUpScreen} alt="Pending verification state showing what users can still explore while review processes, preventing total disengagement" />
                   </MediaSet>
                 ]
               }
@@ -2485,36 +2677,75 @@ const CaseStudyID = () => {
         <BodyComponent key="solutions-fullcard-3">
           <FullCard
             index="03"
-            icon={<Icon svgPath={ICON_PATHS.solidFlag} size="xl" />}
-            title="Trust & Security Improvements"
-            subtitle="Building User Confidence Early"
-            description="We addressed security concerns proactively by implementing transparent security messaging, clear data handling policies, and trust-building elements throughout the onboarding process."
+            icon={<Icon svgPath={ICON_PATHS.lightbulb} size="xl" />}
+            title="Value-First Onboarding Sequencing"
+            subtitle="Demonstrating Purpose Before Requesting Commitment"
+            description="Research showed that delaying core value until after data collection drove early abandonment—users couldn't browse circles without completing KYC, and incentives weren't surfaced. We restructured onboarding to lead with a brief financial goals survey, demonstrate personalized value through relevant circles and success stories, surface sign-up bonuses prominently, and defer KYC until users are motivated to join—building desire before requesting sensitive information."
             headItems={[
               {
                 id: "01",
                 index: "01",
-                title: "Security Messaging"
+                title: "Goals Survey"
               },
               {
                 id: "02",
-                index: "02", 
-                title: "Trust Elements"
+                index: "02",
+                title: "Personalized Demo"
+              },
+              {
+                id: "03",
+                index: "03",
+                title: "Visible Incentives"
+              },
+              {
+                id: "04",
+                index: "04",
+                title: "Deferred KYC Flow"
+              },
+              {
+                id: "05",
+                index: "05",
+                title: "Sequencing Logic"
               }
             ]}
             bodyItems={[
               {
                 id: "01",
                 children: [
-                  <MediaSet key="media-sol-5">
-                    <img src={SignUpScreen} alt="Security messaging and transparency improvements" />
+                  <MediaSet key="media-sol-3-1">
+                    <img src={Figure01} alt="3-4 question survey about financial objectives: emergency fund, vacation savings, down payment, debt payoff" />
                   </MediaSet>
                 ]
               },
               {
                 id: "02",
                 children: [
-                  <MediaSet key="media-sol-6">
-                    <img src={OnboardingFunnelChart} alt="Trust-building elements and user confidence indicators" />
+                  <MediaSet key="media-sol-3-2">
+                    <img src={SignUpScreen} alt="Personalized circle recommendations based on survey with member success stories showing real users who achieved similar goals" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "03",
+                children: [
+                  <MediaSet key="media-sol-3-3">
+                    <img src={OnboardingFunnelChart} alt="Sign-up bonus and referral rewards surfaced prominently throughout journey, not hidden until completion" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "04",
+                children: [
+                  <MediaSet key="media-sol-3-4">
+                    <img src={Figure01} alt="Browse circles now, verify later messaging allowing exploration before requiring KYC to join and contribute" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "05",
+                children: [
+                  <MediaSet key="media-sol-3-5">
+                    <img src={SignUpScreen} alt="New onboarding sequence: Value Proposition → Survey → Personalized Demo → Profile Setup → Deferred KYC when ready to join" />
                   </MediaSet>
                 ]
               }
@@ -2524,36 +2755,75 @@ const CaseStudyID = () => {
         <BodyComponent key="solutions-fullcard-4">
           <FullCard
             index="04"
-            icon={<Icon svgPath={ICON_PATHS.users} size="xl" />}
-            title="Personalized User Experience"
-            subtitle="Tailoring the Journey to User Needs"
-            description="We implemented personalization features that adapt the onboarding experience based on user behavior, preferences, and goals to create a more relevant and engaging journey."
+            icon={<Icon svgPath={ICON_PATHS.compass} size="xl" />}
+            title="Contextual Guidance System"
+            subtitle="Replacing Lost Carousels with Moment-of-Need Education"
+            description="Users felt aimless because the onboarding carousel scrolled away, blocking alerts lacked explanation, and navigation appeared open when features were actually restricted. Instead of passive guidance that disappears, we implemented contextual prompts at decision points—transforming blocking moments into educational opportunities. When users try joining a circle without KYC, we explain requirements and provide direct paths forward, integrating guidance within the natural journey rather than separating it."
             headItems={[
               {
                 id: "01",
                 index: "01",
-                title: "User Segmentation"
+                title: "Sticky Progress"
               },
               {
                 id: "02",
-                index: "02", 
-                title: "Adaptive Content"
+                index: "02",
+                title: "Contextual Blocks"
+              },
+              {
+                id: "03",
+                index: "03",
+                title: "Entry Education"
+              },
+              {
+                id: "04",
+                index: "04",
+                title: "Task Integration"
+              },
+              {
+                id: "05",
+                index: "05",
+                title: "Feature Unlocking"
               }
             ]}
             bodyItems={[
               {
                 id: "01",
                 children: [
-                  <MediaSet key="media-sol-7">
-                    <img src={Figure01} alt="User segmentation and personalized onboarding paths" />
+                  <MediaSet key="media-sol-4-1">
+                    <img src={Figure01} alt="Persistent minimal progress indicator showing onboarding completion percentage without taking up significant screen space" />
                   </MediaSet>
                 ]
               },
               {
                 id: "02",
                 children: [
-                  <MediaSet key="media-sol-8">
-                    <img src={SignUpScreen} alt="Adaptive content and dynamic user experience" />
+                  <MediaSet key="media-sol-4-2">
+                    <img src={SignUpScreen} alt="When user attempts to join circle without KYC, educational modal explains requirement with direct CTA to start verification" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "03",
+                children: [
+                  <MediaSet key="media-sol-4-3">
+                    <img src={OnboardingFunnelChart} alt="First-time page modals explaining circle mechanics, evaluation criteria, and how contributions work" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "04",
+                children: [
+                  <MediaSet key="media-sol-4-4">
+                    <img src={Figure01} alt="Integrated task prompts embedded in relevant pages: Complete your profile to unlock personalized recommendations shown on circles page" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "05",
+                children: [
+                  <MediaSet key="media-sol-4-5">
+                    <img src={SignUpScreen} alt="Progressive feature visibility showing what actions are available now versus what unlocks after profile completion and verification" />
                   </MediaSet>
                 ]
               }
@@ -2563,36 +2833,75 @@ const CaseStudyID = () => {
         <BodyComponent key="solutions-fullcard-5">
           <FullCard
             index="05"
-            icon={<Icon svgPath={ICON_PATHS.solidSunAlt} size="xl" />}
-            title="Analytics & Optimization"
-            subtitle="Data-Driven Continuous Improvement"
-            description="We implemented comprehensive analytics and A/B testing capabilities to continuously monitor user behavior and optimize the onboarding experience based on real user data."
+            icon={<Icon svgPath={ICON_PATHS.users} size="xl" />}
+            title="Social Onboarding Amplification"
+            subtitle="Replicating Friend Success Digitally"
+            description="Research revealed that friend-referred users completed onboarding at dramatically higher rates because they received context, trust-building, and step-by-step guidance—but only when done in-person. Digital invites with passive friend codes couldn't replicate this connection. We designed an enhanced invite system where friends can include personalized video messages explaining TANDA's value, create social accountability through visible shared progress, and enable guided onboarding where inviters receive notifications to send encouragement—transforming referrals from data fields into active relationships."
             headItems={[
               {
                 id: "01",
                 index: "01",
-                title: "Analytics Dashboard"
+                title: "Enhanced Invites"
               },
               {
                 id: "02",
-                index: "02", 
-                title: "A/B Testing Results"
+                index: "02",
+                title: "Social Dashboard"
+              },
+              {
+                id: "03",
+                index: "03",
+                title: "Guided Connection"
+              },
+              {
+                id: "04",
+                index: "04",
+                title: "Video Messages"
+              },
+              {
+                id: "05",
+                index: "05",
+                title: "Completion Bonuses"
               }
             ]}
             bodyItems={[
               {
                 id: "01",
                 children: [
-                  <MediaSet key="media-sol-9">
-                    <img src={OnboardingFunnelChart} alt="Analytics dashboard and user behavior tracking" />
+                  <MediaSet key="media-sol-5-1">
+                    <img src={Figure01} alt="Enhanced invite experience showing friend's profile, personalized message, and shared circle context when invite is received" />
                   </MediaSet>
                 ]
               },
               {
                 id: "02",
                 children: [
-                  <MediaSet key="media-sol-10">
-                    <img src={Figure01} alt="A/B testing results and optimization insights" />
+                  <MediaSet key="media-sol-5-2">
+                    <img src={SignUpScreen} alt="Social accountability dashboard displaying friend's onboarding progress, mutual circles, and shared financial goals" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "03",
+                children: [
+                  <MediaSet key="media-sol-5-3">
+                    <img src={OnboardingFunnelChart} alt="In-app guided onboarding where friend receives notification when invitee starts and can send encouraging messages at key moments" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "04",
+                children: [
+                  <MediaSet key="media-sol-5-4">
+                    <img src={Figure01} alt="Video and voice message feature allowing friends to record 15-30 second explanations of TANDA's value from personal experience" />
+                  </MediaSet>
+                ]
+              },
+              {
+                id: "05",
+                children: [
+                  <MediaSet key="media-sol-5-5">
+                    <img src={SignUpScreen} alt="Completion incentive structure unlocking bonuses when both inviter and invitee finish onboarding, creating mutual motivation" />
                   </MediaSet>
                 ]
               }
@@ -2689,7 +2998,7 @@ const CaseStudyID = () => {
                   <span className="S1">2023</span>
                 </div>
                 <h2 className="casestudy-title-text H2">
-                  Designing a NUX to Improve User Sign Up and Activation
+                  Improving User Education and Building Trust During Onboarding to Increase User Growth
                 </h2>
                 <div className="casestudy-title-bottom">
                   <span className="S1">Case Study</span>
@@ -2698,7 +3007,7 @@ const CaseStudyID = () => {
               </div>
               <div className="casestudy-divider"></div>
               <p className="casestudy-description">
-                Through this project, we streamlined the sign-up and onboarding experience to reduce drop-off and improve user activation. By simplifying the account creation flow and clearly highlighting our product's value propositions, we lowered barriers to entry and encouraged more users to complete the process. Updating our new user experience with a late-binding onboarding approach allowed us to guide users more effectively, educate them on key features, and build trust from the start.
+                We redesigned the sign-up and onboarding flow to reduce drop-off and improve activation. A late-binding approach provides context at key moments, educates users on features, and builds trust—lowering barriers and guiding users effectively from the start.
               </p>
             </div>
             <div className="casestudy-image">

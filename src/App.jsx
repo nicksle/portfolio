@@ -5,6 +5,9 @@ import './App.css';
 import Header from './components/Header/Header';
 import IntroAnimation from './components/Pages/Intro/IntroAnimation';
 import Work from './components/Pages/Work/Work';
+import About from './components/Pages/About/About';
+import Contact from './components/Pages/Contact/Contact';
+import Resume from './components/Pages/Resume/Resume';
 import CaseStudy1 from './components/Pages/Tanda/CaseStudy1/CaseStudy';
 import CaseStudyID from './components/Pages/Tanda/CaseStudy1/CaseStudyID';
 
@@ -29,6 +32,9 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<IntroAnimation />} />
         <Route path="/work" element={<Work />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/resume" element={<Resume />} />
         <Route path="/case-study-1" element={<CaseStudy1 />} />
         <Route path="/case-study-id" element={<CaseStudyID />} />
         <Route path="*" element={<Navigate to="/" replace />} />

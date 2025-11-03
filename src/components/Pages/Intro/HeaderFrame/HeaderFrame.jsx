@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './HeaderFrame.css';
 import Intro1 from './Intro1/Intro1';
-import Intro2 from './Intro2/Intro2';
+import Intro2 from '../../../Intro2/Intro2';
 
 const HeaderFrame = () => {
   const [isExpanded, setIsExpanded] = useState(false);
