@@ -4,6 +4,7 @@
   background: var(--color-base);
   color: var(--color-primary);
   position: relative;
+  overflow: hidden;
 }
 
 .work-content-section {
