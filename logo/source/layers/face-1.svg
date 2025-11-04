@@ -1,0 +1,11 @@
+<svg width="88" height="56" viewBox="0 0 88 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Face 1: White face (left side) with features -->
+  <circle cx="28" cy="28" r="16" fill="white"/>
+
+  <!-- Eyes - can be replaced with feature SVGs -->
+  <circle cx="22" cy="22" r="2" fill="black"/>
+  <circle cx="34" cy="22" r="2" fill="black"/>
+
+  <!-- Mouth - can be replaced with feature SVGs -->
+  <path d="M22 36C22 32.6863 24.6863 30 28 30C31.3137 30 34 32.6863 34 36" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

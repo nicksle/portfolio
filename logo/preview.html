@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Feature Combinations Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        .controls {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        select:hover {
+            border-color: #999;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .preview-area {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .preview-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .logo-preview {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .layer-stack {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .layer img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .placeholder {
+            color: #999;
+            font-size: 1rem;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .info strong {
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .logo-preview {
+                width: 100%;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Logo Feature Combinations</h1>
+        <p class="subtitle">Mix and match eyes and mouths to create different logo variations</p>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="eye-select">Eye Style</label>
+                <select id="eye-select">
+                    <option value="">Select eye style...</option>
+                    <option value="eye1">Eye 1</option>
+                    <option value="eye2">Eye 2</option>
+                    <!-- Add more eye options as you create them -->
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="mouth-select">Mouth Style</label>
+                <select id="mouth-select">
+                    <option value="">Select mouth style...</option>
+                    <option value="mouth1">Mouth 1</option>
+                    <option value="mouth2">Mouth 2</option>
+                    <!-- Add more mouth options as you create them -->
+                </select>
+            </div>
+        </div>
+
+        <div class="preview-area">
+            <div class="preview-title">Preview</div>
+            <div class="logo-preview">
+                <div class="layer-stack" id="layer-stack">
+                    <!-- Layers will be stacked here -->
+                    <div class="layer" id="base-layer"></div>
+                    <div class="layer" id="outline-layer"></div>
+                    <div class="layer" id="face-layer"></div>
+                    <div class="layer" id="features-layer"></div>
+                </div>
+                <div class="placeholder" id="placeholder">
+                    Select features to preview your logo
+                </div>
+            </div>
+            <div class="info">
+                <strong>Instructions:</strong> This preview tool helps you visualize different feature combinations.
+                To use it, add your SVG files to the appropriate folders and update the file paths in the JavaScript section below.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration - Update these paths to match your actual SVG files
+        const config = {
+            layers: {
+                base: 'source/layers/base.svg',
+                outline: 'source/layers/outline.svg',
+                face1: 'source/layers/face-1.svg',
+                face2: 'source/layers/face-2.svg'
+            },
+            features: {
+                eyes: {
+                    eye1: 'source/features/eyes/eye1.svg',
+                    eye2: 'source/features/eyes/eye2.svg'
+                },
+                mouths: {
+                    mouth1: 'source/features/mouths/mouth1.svg',
+                    mouth2: 'source/features/mouths/mouth2.svg'
+                }
+            }
+        };
+
+        // DOM elements
+        const eyeSelect = document.getElementById('eye-select');
+        const mouthSelect = document.getElementById('mouth-select');
+        const placeholder = document.getElementById('placeholder');
+        const baseLayer = document.getElementById('base-layer');
+        const outlineLayer = document.getElementById('outline-layer');
+        const faceLayer = document.getElementById('face-layer');
+        const featuresLayer = document.getElementById('features-layer');
+
+        // Update preview when selections change
+        eyeSelect.addEventListener('change', updatePreview);
+        mouthSelect.addEventListener('change', updatePreview);
+
+        function updatePreview() {
+            const selectedEye = eyeSelect.value;
+            const selectedMouth = mouthSelect.value;
+
+            // Clear previous preview
+            baseLayer.innerHTML = '';
+            outlineLayer.innerHTML = '';
+            faceLayer.innerHTML = '';
+            featuresLayer.innerHTML = '';
+
+            if (!selectedEye && !selectedMouth) {
+                placeholder.style.display = 'block';
+                return;
+            }
+
+            placeholder.style.display = 'none';
+
+            // Load base layers
+            loadLayer(baseLayer, config.layers.base);
+            loadLayer(outlineLayer, config.layers.outline);
+            loadLayer(faceLayer, config.layers.face1); // or face2 based on selection
+
+            // Load selected features
+            if (selectedEye && config.features.eyes[selectedEye]) {
+                loadLayer(featuresLayer, config.features.eyes[selectedEye], 'eye');
+            }
+
+            if (selectedMouth && config.features.mouths[selectedMouth]) {
+                loadLayer(featuresLayer, config.features.mouths[selectedMouth], 'mouth');
+            }
+        }
+
+        function loadLayer(container, path, type = '') {
+            const img = document.createElement('img');
+            img.src = path;
+            img.alt = type || 'layer';
+            img.style.width = '100%';
+            img.style.height = '100%';
+
+            // Handle loading errors gracefully
+            img.onerror = function() {
+                console.warn(`Could not load: ${path}`);
+            };
+
+            container.appendChild(img);
+        }
+
+        // Optional: Dynamically populate selects based on available files
+        // This would require a backend or file system API
+    </script>
+</body>
+</html>

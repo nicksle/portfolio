@@ -1,0 +1,15 @@
+.about-page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-base);
+  color: var(--color-primary);
+}
+
+.about-intro2-container {
+  border: 1px solid var(--color-inactive);
+}
+
+.about-content-section {
+  width: 100%;
+  margin-top: 64px;
+}

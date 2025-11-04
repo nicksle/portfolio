@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './IntroAnimation.css';
 import Header from '../../Header/Header';
 import Intro1 from './Intro1/Intro1';
-import Intro2 from './Intro2/Intro2';
+import Intro2 from '../../Intro2/Intro2';
 
 const IntroAnimation = () => {
   const navigate = useNavigate();

@@ -1,0 +1,29 @@
+.resume-page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-base);
+  color: var(--color-primary);
+}
+
+.resume-content-section {
+  width: 100%;
+  padding-top: var(--header-height);
+}
+
+.resume-item {
+  margin-bottom: var(--spacing-xl);
+}
+
+.resume-item h3 {
+  margin-bottom: var(--spacing-xs);
+}
+
+.resume-item .S1 {
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-sm);
+  display: block;
+}
+
+.resume-item .B1 {
+  color: var(--color-secondary);
+}
