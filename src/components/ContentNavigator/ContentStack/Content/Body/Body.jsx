@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import './Body.css';
-import NextButton from './BodyComponent/NextButton/NextButton';
+import { ContentNavigatorButton } from '../../../ContentNavigator';
 
 const Body = forwardRef(({ children, onScrollProgress, onNextSection, showNextButton = true }, ref) => {
   return (
@@ -25,10 +25,10 @@ const Body = forwardRef(({ children, onScrollProgress, onNextSection, showNextBu
           </motion.div>
         ))}
       </motion.div>
-      <NextButton
+      <ContentNavigatorButton
+        type="next"
         onClick={onNextSection}
         isVisible={showNextButton && onNextSection}
-        contentRef={ref}
       />
     </>
   );

@@ -3,8 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 var(--spacing-xl);
-  margin-top: var(--spacing-xl);
+  padding: 0;
+  margin: 0;
 }
 
 .next-button {

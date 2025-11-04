@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useMotionValue, useTransform, animate, useScroll, useMotionTemplate } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate, useScroll, useMotionTemplate, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ContentNavigator from "../../ContentNavigator/ContentNavigator";
 import TabNav from "../../ContentNavigator/TabNav/TabNav";
@@ -22,11 +22,18 @@ const Work = () => {
   const [activeContentId, setActiveContentId] = useState('tanda');
   const workContentRef = useRef(null);
   const contentNavRef = useRef(null);
+  const contentScrollRef = useRef(null);
   const navigate = useNavigate();
 
   // Force proper initial state on every mount
   const [isReady, setIsReady] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Animation states from CaseStudyID
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [nextContentId, setNextContentId] = useState(null);
+  const [contentHeight, setContentHeight] = useState(152); // Start at collapsed height for initial animation
+  const [isInitialLoad, setIsInitialLoad] = useState(true); // Track initial load animation
 
   // Debug component lifecycle and force reset
   useEffect(() => {
@@ -46,6 +53,56 @@ const Work = () => {
       clearTimeout(timer);
     };
   }, []);
+
+  // Handle initial load expansion animation (from CaseStudyID)
+  useEffect(() => {
+    // Trigger expansion after a short delay
+    const timer = setTimeout(() => {
+      console.log(`🔼 Content expansion started at ${Date.now()}`);
+      setContentHeight(757);
+      // Mark initial load complete after animation finishes
+      setTimeout(() => {
+        console.log(`✅ Content expansion completed at ${Date.now()}`);
+        setIsInitialLoad(false);
+      }, 400); // Match animation duration
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []); // Only run once on mount
+
+  // Handle content transition with animation (from CaseStudyID)
+  const transitionToContent = (newId) => {
+    if (newId === activeContentId || isTransitioning) return;
+
+    setIsTransitioning(true);
+    setNextContentId(newId);
+    setContentHeight(152); // Collapse to 152px
+
+    // After collapse animation completes, switch content
+    setTimeout(() => {
+      setActiveContentId(newId);
+      setNextContentId(null);
+
+      console.log(`🔄 Content switched to: ${newId}`);
+
+      // Reset scroll position to top when changing content
+      if (contentScrollRef.current) {
+        contentScrollRef.current.scrollTop = 0;
+      }
+
+      // Wait for pause (150ms) + head animation (400ms) before expanding
+      setTimeout(() => {
+        console.log(`🔼 Starting expansion after head animation`);
+        // Expand to full height
+        setContentHeight(757);
+
+        // End transition after expand animation
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 400); // Match expand animation duration
+      }, 550); // Pause (150ms) + head fade-in (400ms)
+    }, 400); // Collapse animation duration
+  };
 
   // Styles using CSS custom properties - consistent with design system
   const styles = {
@@ -249,14 +306,15 @@ const Work = () => {
   };
 
   const handleTabChange = (id) => {
-    setActiveContentId(id);
+    console.log('Tab changed to:', id);
+    transitionToContent(id);
   };
 
   const handleNextContent = () => {
     const contentIds = ['tanda', 'liftoff', 'jefuel', 'cashapp'];
     const currentIndex = contentIds.indexOf(activeContentId);
     if (currentIndex < contentIds.length - 1) {
-      setActiveContentId(contentIds[currentIndex + 1]);
+      transitionToContent(contentIds[currentIndex + 1]);
     }
   };
 
@@ -374,7 +432,7 @@ const Work = () => {
         </div>
       </motion.div>
       <div ref={contentNavRef} style={{ zIndex: 2, position: 'relative', marginTop: '100vh' }}>
-        <ContentNavigator>
+        <ContentNavigator activeId={activeContentId}>
           <TabNav activeId={activeContentId} onTabChange={handleTabChange}>
             <NavTabItem id="tanda" index="01" title="Tanda" />
             <NavTabItem id="liftoff" index="02" title="Liftoff" />
@@ -382,22 +440,47 @@ const Work = () => {
             <NavTabItem id="cashapp" index="04" title="CashApp" />
           </TabNav>
 
-          <div className="content">
-            <Head
-              index={contentRegistry[activeContentId]?.index}
-              subtitle={contentRegistry[activeContentId]?.subtitle}
-              title={contentRegistry[activeContentId]?.title}
-              icon={contentRegistry[activeContentId]?.icon1}
-              secondIcon={contentRegistry[activeContentId]?.icon2}
-              period={contentRegistry[activeContentId]?.period}
-            />
+          <motion.div
+            ref={contentScrollRef}
+            className="content"
+            initial={{ height: 152, opacity: 0.3 }} // Start collapsed on initial load
+            style={{
+              flex: (isInitialLoad || isTransitioning) ? 'none' : '1' // Keep flex none during initial load and transitions
+            }}
+            animate={{
+              height: contentHeight, // Always animate to contentHeight (152 or 757)
+              opacity: isTransitioning ? 0.3 : 1
+            }}
+            transition={{
+              height: { duration: 0.4, ease: "easeInOut" },
+              opacity: { duration: 0.3, ease: "easeInOut" }
+            }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeContentId}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <Head
+                  index={contentRegistry[activeContentId]?.index}
+                  subtitle={contentRegistry[activeContentId]?.subtitle}
+                  title={contentRegistry[activeContentId]?.title}
+                  icon={contentRegistry[activeContentId]?.icon1}
+                  secondIcon={contentRegistry[activeContentId]?.icon2}
+                  period={contentRegistry[activeContentId]?.period}
+                />
+              </motion.div>
+            </AnimatePresence>
             <Body
+              key={activeContentId} // Force remount on tab switch to replay animations
               onNextSection={handleNextContent}
               showNextButton={activeContentId !== 'cashapp'}
             >
               {contentRegistry[activeContentId]?.bodyItems || []}
             </Body>
-          </div>
+          </motion.div>
         </ContentNavigator>
       </div>
     </motion.div>
