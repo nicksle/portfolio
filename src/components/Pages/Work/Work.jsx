@@ -403,7 +403,7 @@ const Work = () => {
   const scale = 1 - scrollProgress * 0.2;
   const backgroundColor = isNavigatingToCaseStudy
     ? 'hsl(240, 7%, 6%)'
-    : `hsl(240, 7%, ${6 + (8 * scrollProgress)}%)`;
+    : `hsl(240, 7%, ${6 + (4 * scrollProgress)}%)`;
 
   return (
     <motion.div
@@ -522,7 +522,7 @@ const Work = () => {
               <motion.div
                 key={activeContentId}
                 initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: isNavigatingToCaseStudy ? 0 : 1, y: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
                 <Head

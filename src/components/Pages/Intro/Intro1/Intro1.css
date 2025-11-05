@@ -86,11 +86,166 @@
   border-bottom: 1px solid var(--color-inactive, rgba(255, 255, 255, 0.2));
   transition: var(--transition-fast, all 0.3s ease);
   cursor: pointer;
+  position: relative;
 }
 
 .blank-r2-c5:hover {
-  background: var(--color-hover, #1e1e1e);
+  background: #E97451;
   z-index: 10;
+}
+
+/* Circles styling */
+#Circles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#Circles .circle {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--color-inactive);
+  background: transparent;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  transition: border-color 0.3s ease;
+  animation-fill-mode: forwards;
+}
+
+.blank-r2-c5:hover .circle {
+  border-color: var(--color-active);
+}
+
+#Circles .circle-tl {
+  top: 17px;
+  left: 17px;
+}
+
+.blank-r2-c5:hover .circle-tl {
+  animation: circle1Rotate 3.2s infinite ease-in-out;
+}
+
+#Circles .circle-tr {
+  top: 17px;
+  left: 69px;
+}
+
+.blank-r2-c5:hover .circle-tr {
+  animation: circle2Rotate 3.2s infinite ease-in-out;
+}
+
+#Circles .circle-br {
+  top: 69px;
+  left: 69px;
+}
+
+.blank-r2-c5:hover .circle-br {
+  animation: circle3Rotate 3.2s infinite ease-in-out;
+}
+
+#Circles .circle-bl {
+  top: 69px;
+  left: 17px;
+}
+
+.blank-r2-c5:hover .circle-bl {
+  animation: circle4Rotate 3.2s infinite ease-in-out;
+}
+
+/* Keyframe animations for circle rotation */
+@keyframes circle1Rotate {
+  0%, 6.25% {
+    top: 17px;
+    left: 17px;
+  }
+  25%, 31.25% {
+    top: 17px;
+    left: 69px;
+  }
+  50%, 56.25% {
+    top: 69px;
+    left: 69px;
+  }
+  75%, 81.25% {
+    top: 69px;
+    left: 17px;
+  }
+  100% {
+    top: 17px;
+    left: 17px;
+  }
+}
+
+@keyframes circle2Rotate {
+  0%, 6.25% {
+    top: 17px;
+    left: 69px;
+  }
+  25%, 31.25% {
+    top: 69px;
+    left: 69px;
+  }
+  50%, 56.25% {
+    top: 69px;
+    left: 17px;
+  }
+  75%, 81.25% {
+    top: 17px;
+    left: 17px;
+  }
+  100% {
+    top: 17px;
+    left: 69px;
+  }
+}
+
+@keyframes circle3Rotate {
+  0%, 6.25% {
+    top: 69px;
+    left: 69px;
+  }
+  25%, 31.25% {
+    top: 69px;
+    left: 17px;
+  }
+  50%, 56.25% {
+    top: 17px;
+    left: 17px;
+  }
+  75%, 81.25% {
+    top: 17px;
+    left: 69px;
+  }
+  100% {
+    top: 69px;
+    left: 69px;
+  }
+}
+
+@keyframes circle4Rotate {
+  0%, 6.25% {
+    top: 69px;
+    left: 17px;
+  }
+  25%, 31.25% {
+    top: 17px;
+    left: 17px;
+  }
+  50%, 56.25% {
+    top: 17px;
+    left: 69px;
+  }
+  75%, 81.25% {
+    top: 69px;
+    left: 69px;
+  }
+  100% {
+    top: 69px;
+    left: 17px;
+  }
 }
 
 .image-cell {
@@ -138,6 +293,36 @@
 .text-r3:hover {
   background: var(--color-hover, #1e1e1e);
   z-index: 10;
+}
+
+.text-r3 .asterisk {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+}
+
+.text-r3:hover .asterisk {
+  transform: rotate(360deg);
+}
+
+.text-r3-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.text-r3 .subtitle-text {
+  font-family: var(--font-family-subtitle);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-secondary);
+  line-height: 1.2;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.2s;
+}
+
+.text-r3:hover .subtitle-text {
+  opacity: 1;
 }
 
 /* Row 4 */

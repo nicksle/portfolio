@@ -4,21 +4,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
   padding: 0 var(--spacing-xl, 24px);
   border-top: 1px solid var(--color-inactive, #30302a);
   transition: var(--transition-fast, all 0.3s ease);
   position: relative;
   overflow: hidden;
-}
-
-/* Remove duplicate hover states since we're using Framer Motion now */
-.card-cta:hover span {
-  color: var(--color-primary, #ffffe3) !important;
-}
-
-.card-cta:hover .cta-text {
-  color: var(--color-primary, #ffffe3) !important;
+  pointer-events: none;
 }
 
 .cta-icon-wrapper {
@@ -50,14 +41,6 @@
   width: 100%;
   height: 100%;
   display: block;
-}
-
-.card-cta:hover .cta-icon {
-  color: var(--color-primary, #ffffe3);
-}
-
-.card-cta:hover .cta-icon svg {
-  fill: var(--color-primary, #ffffe3);
 }
 
 /* FullCard variant styles */

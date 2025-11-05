@@ -42,55 +42,33 @@ const CardCTA = ({
   const wrapperClass = variant === 'full-card' ? 'cta-icon-wrapper' : 'cta-icon-wrapper';
   
   return (
-    <motion.div 
+    <div
       className={`${baseClass} ${className}`}
       onClick={onClick}
-      whileHover={{ 
-        backgroundColor: "var(--color-hover, #1e1e1e)",
-        borderTopColor: "var(--color-primary, #ffffe3)"
-      }}
-      whileTap={{ 
-        scale: 0.98,
-        transition: { duration: 0.1 }
-      }}
-      transition={{ 
-        duration: 0.3,
-        ease: "easeOut"
-      }}
     >
-      <motion.span 
-        className="cta-text" 
+      <span
+        className="cta-text"
         style={textStyles.index}
-        whileHover={{ 
-          color: "var(--color-primary, #ffffe3)" 
-        }}
-        transition={{ duration: 0.3 }}
       >
         {ctaText}
-      </motion.span>
+      </span>
       
       {variant === 'full-card' ? (
         // FullCard style: direct icon rendering (matches FullCard.jsx structure)
         renderIcon(ctaIcon, iconClass)
       ) : (
-        // Card style: icon with wrapper and animation
+        // Card style: icon with wrapper
         <div className={wrapperClass}>
-          <motion.div
-            className="cta-icon-container"
-            whileHover={{ 
-              x: 4, // Subtle slide right on hover
-              transition: { duration: 0.3, ease: "easeOut" }
-            }}
-          >
-            <Icon 
-              svgPath={ctaIcon?.svgPath || ICON_PATHS.arrowRight} 
-              size="small" 
+          <div className="cta-icon-container">
+            <Icon
+              svgPath={ctaIcon?.svgPath || ICON_PATHS.arrowRight}
+              size="small"
               className={iconClass}
             />
-          </motion.div>
+          </div>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 };
 

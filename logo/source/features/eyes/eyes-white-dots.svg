@@ -1,5 +1,5 @@
-<svg width="88" height="56" viewBox="0 0 88 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- White eye dots (for black face - Face 2) -->
-  <circle cx="54" cy="22" r="2" fill="white"/>
-  <circle cx="66" cy="22" r="2" fill="white"/>
+  <circle cx="10" cy="10" r="2" fill="white"/>
+  <circle cx="22" cy="10" r="2" fill="white"/>
 </svg>

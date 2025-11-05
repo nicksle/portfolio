@@ -172,16 +172,6 @@
   font-family: 'Lyno Jean', var(--font-family-title);
 }
 
-#QRCR .char:hover {
-  padding-left: 12px;
-  padding-right: 12px;
-  text-shadow:
-    0 0 10px var(--color-base),
-    0 0 20px var(--color-base),
-    0 0 30px var(--color-base),
-    0 0 40px var(--color-base);
-}
-
 .intro2-section .text-r2 .space {
   display: inline;
   pointer-events: none;

@@ -3003,7 +3003,7 @@ const CaseStudyID = () => {
   const translateY = (1 - scrollProgress) * (maxY - minY) + minY;
   const opacity = 1 - scrollProgress;
   const scale = 1 - scrollProgress * 0.2;
-  const backgroundColor = `hsl(240, 7%, ${6 + (8 * scrollProgress)}%)`;
+  const backgroundColor = `hsl(240, 7%, ${6 + (4 * scrollProgress)}%)`;
 
   return (
     <motion.div

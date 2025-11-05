@@ -79,37 +79,37 @@ const Card = ({
           className={`card-frame ${isExpanded ? 'expanded' : ''}`}
           transition={{ layout: { duration: 0.4, ease: "easeInOut" } }}
         >
-          <motion.div 
-            layout 
+          <motion.div
+            layout
             className="card-head"
-            transition={{ 
+            onClick={handleCtaClick}
+            transition={{
               layout: { duration: 0.4, ease: "easeInOut" }
             }}
           >
-            <motion.div 
+            <motion.div
               layout="position"
               className="card-content"
-              transition={{ 
+              transition={{
                 layout: { duration: 0.4, ease: "easeInOut" }
               }}
             >
               <div className="card-icon-wrapper">
-                {icon || <Icon 
-                  svgPath={ICON_PATHS.arrowRight} 
-                  size="xl" 
+                {icon || <Icon
+                  svgPath={ICON_PATHS.arrowRight}
+                  size="xl"
                   className="card-icon"
                 />}
               </div>
               <h3 style={textStyles.heading}>{title}</h3>
-              <p 
+              <p
                 style={textStyles.body}
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             </motion.div>
-            <CardCTA 
+            <CardCTA
               ctaText={ctaText}
               ctaIcon={ctaIcon || { svgPath: ICON_PATHS.arrowRight }}
-              onClick={handleCtaClick}
               isExpanded={isExpanded}
             />
           </motion.div>

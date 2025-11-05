@@ -10,11 +10,18 @@ import Brat from '../../assets/Intro2/Albums/brat.png';
 import Evermore from '../../assets/Intro2/Albums/evermore.png';
 import CowboyCarter from '../../assets/Intro2/Albums/cowboy-carter.jpg';
 import QR01 from '../../assets/Intro2/QR01.jpg';
-import CatPhoto from '../../assets/Intro2/Cat/CAT01.jpg';
+import CAT01 from '../../assets/Intro2/Cat/CAT01.jpg';
+import CAT02 from '../../assets/Intro2/Cat/CAT02.jpg';
+import CAT03 from '../../assets/Intro2/Cat/CAT03.jpg';
+import CAT04 from '../../assets/Intro2/Cat/CAT04.jpg';
+import CAT05 from '../../assets/Intro2/Cat/CAT05.jpg';
 
 const Intro2 = () => {
   const sfImages = [SF01, SF02, SF03];
   const [currentSFImage, setCurrentSFImage] = useState(sfImages[Math.floor(Math.random() * sfImages.length)]);
+
+  const catImages = [CAT01, CAT02, CAT03, CAT04, CAT05];
+  const [currentCatImage, setCurrentCatImage] = useState(catImages[Math.floor(Math.random() * catImages.length)]);
 
   const handleSFHover = () => {
     // Get a random image that's different from the current one
@@ -24,6 +31,16 @@ const Intro2 = () => {
     } while (newImage === currentSFImage && sfImages.length > 1);
 
     setCurrentSFImage(newImage);
+  };
+
+  const handleCatHover = () => {
+    // Get a random image that's different from the current one
+    let newImage;
+    do {
+      newImage = catImages[Math.floor(Math.random() * catImages.length)];
+    } while (newImage === currentCatImage && catImages.length > 1);
+
+    setCurrentCatImage(newImage);
   };
 
   // Music cell state and songs
@@ -146,8 +163,9 @@ const Intro2 = () => {
               <line x1="50" y1="34" x2="42" y2="33" stroke="currentColor" strokeWidth="1"/>
             </svg>
           }
-          image={CatPhoto}
+          image={currentCatImage}
           imageAlt="Cat photo"
+          onHover={handleCatHover}
         />
       </div>
       <div className="grid-cell blank-r4-c2"></div>
