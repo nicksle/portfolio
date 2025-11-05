@@ -146,7 +146,7 @@ const CaseStudyID = () => {
         console.log(`✅ Content expansion completed at ${Date.now()}`);
         setIsInitialLoad(false);
       }, 400); // Match animation duration
-    }, 100); // Small delay before starting expansion
+    }, 200); // Delay before starting expansion
 
     return () => clearTimeout(timer);
   }, []); // Only run once on mount
@@ -197,11 +197,58 @@ const CaseStudyID = () => {
     }
   };
 
+  const handleBackContent = () => {
+    const contentIds = ['problem', 'research', 'strategy', 'solutions', 'retrospective'];
+    const currentIndex = contentIds.indexOf(activeContentId);
+    if (currentIndex > 0) {
+      transitionToContent(contentIds[currentIndex - 1]);
+    }
+  };
+
+  const handleScrollToTop = () => {
+    if (contentScrollRef.current) {
+      contentScrollRef.current.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   // Check if we're at the last section to hide the next button
   const isLastSection = () => {
     const contentIds = ['problem', 'research', 'strategy', 'solutions', 'retrospective'];
     const currentIndex = contentIds.indexOf(activeContentId);
     return currentIndex >= contentIds.length - 1;
+  };
+
+  // Check if we're at the first section to hide the back button
+  const isFirstSection = () => {
+    return activeContentId === 'problem';
+  };
+
+  // Get current and next content indices for button display
+  const getCurrentContentIndex = () => {
+    return contentRegistry[activeContentId]?.index || null;
+  };
+
+  const getNextContentIndex = () => {
+    const contentIds = ['problem', 'research', 'strategy', 'solutions', 'retrospective'];
+    const currentIndex = contentIds.indexOf(activeContentId);
+    if (currentIndex < contentIds.length - 1) {
+      const nextId = contentIds[currentIndex + 1];
+      return contentRegistry[nextId]?.index || null;
+    }
+    return null;
+  };
+
+  const getPreviousContentIndex = () => {
+    const contentIds = ['problem', 'research', 'strategy', 'solutions', 'retrospective'];
+    const currentIndex = contentIds.indexOf(activeContentId);
+    if (currentIndex > 0) {
+      const previousId = contentIds[currentIndex - 1];
+      return contentRegistry[previousId]?.index || null;
+    }
+    return null;
   };
 
   // Content Registry - ID-based system that replaces ContentStack
@@ -2956,6 +3003,7 @@ const CaseStudyID = () => {
   const translateY = (1 - scrollProgress) * (maxY - minY) + minY;
   const opacity = 1 - scrollProgress;
   const scale = 1 - scrollProgress * 0.2;
+  const backgroundColor = `hsl(240, 7%, ${6 + (8 * scrollProgress)}%)`;
 
   return (
     <motion.div
@@ -2963,12 +3011,12 @@ const CaseStudyID = () => {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ 
-        duration: 0.3, 
+      transition={{
+        duration: 0.3,
         ease: "easeOut"
       }}
     >
-      <div className="casestudy-page">
+      <div className="casestudy-page" style={{ backgroundColor: backgroundColor }}>
         <motion.div
           className="casestudy-content-section"
           ref={caseStudyContentRef}
@@ -3089,7 +3137,7 @@ const CaseStudyID = () => {
             <motion.div
               className="content"
               ref={contentScrollRef}
-              initial={{ height: 152, opacity: 0.3 }} // Start collapsed on initial load
+              initial={{ height: 1, opacity: 0.3 }} // Start collapsed at 1px to match Work exit
               style={{
                 flex: (isInitialLoad || isTransitioning) ? 'none' : '1' // Keep flex none during initial load and transitions
               }}
@@ -3122,7 +3170,13 @@ const CaseStudyID = () => {
               <Body
                 key={activeContentId} // Force remount on tab switch to replay animations
                 onNextSection={handleNextContent}
+                onBackSection={handleBackContent}
+                onScrollToTop={handleScrollToTop}
                 showNextButton={!isLastSection()}
+                showBackButton={!isFirstSection()}
+                currentIndex={getCurrentContentIndex()}
+                nextIndex={getNextContentIndex()}
+                previousIndex={getPreviousContentIndex()}
               >
                 {contentRegistry[activeContentId]?.bodyItems || []}
               </Body>

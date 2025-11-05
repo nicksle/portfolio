@@ -27,6 +27,7 @@
   background: var(--color-base);
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .work-item-card-head {
@@ -36,6 +37,11 @@
   flex-direction: column;
   padding: var(--spacing-lg);
   gap: var(--spacing-lg);
+  transition: var(--transition-fast, all 0.3s ease);
+}
+
+.work-item-card-frame:hover .work-item-card-head {
+  border-color: var(--color-active);
 }
 
 .work-item-image {
@@ -102,21 +108,21 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--spacing-xl);
-  cursor: pointer;
   transition: var(--transition-fast, all 0.3s ease);
   user-select: none;
+  pointer-events: none;
 }
 
-.work-item-cta:hover {
+.work-item-card-frame:hover .work-item-cta {
   background-color: var(--color-hover, #1e1e1e);
-  border-color: var(--color-primary, #ffffe3);
+  border-color: var(--color-active);
 }
 
-.work-item-cta:hover .work-item-cta-text {
+.work-item-card-frame:hover .work-item-cta-text {
   color: var(--color-primary, #ffffe3) !important;
 }
 
-.work-item-cta:hover .work-item-cta-arrow {
+.work-item-card-frame:hover .work-item-cta-arrow {
   color: var(--color-primary, #ffffe3);
 }
 
@@ -162,19 +168,4 @@
   justify-content: center;
 }
 
-.work-item-cta.clickable {
-  cursor: pointer;
-}
-
-.work-item-cta.clickable:hover {
-  background-color: var(--color-hover, #1e1e1e);
-  border-color: var(--color-primary, #ffffe3);
-}
-
-.work-item-cta.clickable:hover .work-item-cta-text {
-  color: var(--color-primary, #ffffe3) !important;
-}
-
-.work-item-cta.clickable:hover .work-item-cta-arrow {
-  color: var(--color-primary, #ffffe3);
-} 
+/* Removed .work-item-cta.clickable styles - hover now handled by parent .work-item-card-frame */ 

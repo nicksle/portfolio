@@ -58,11 +58,17 @@ const WorkItem = ({ index, image, video, gradientBackground, leftImage, rightIma
   const navigate = useNavigate();
 
   const handleCtaClick = () => {
+    console.log('🖱️ WorkItem handleCtaClick called');
+    console.log('onCtaClick exists?', !!onCtaClick);
+    console.log('navigateTo exists?', !!navigateTo);
+
     if (onCtaClick) {
       // Use custom click handler if provided
+      console.log('Calling onCtaClick...');
       onCtaClick();
     } else if (navigateTo) {
       // Fall back to default navigation behavior
+      console.log('Calling navigate with:', navigateTo);
       navigate(navigateTo);
     }
   };
@@ -108,7 +114,7 @@ const WorkItem = ({ index, image, video, gradientBackground, leftImage, rightIma
     <div className="work-item-root">
       <div className="work-item-index S1">{index}</div>
       <div className="work-item-indent">
-        <div className="work-item-card-frame">
+        <div className="work-item-card-frame" onClick={handleCtaClick}>
           <div className="work-item-card-head">
             <div className="work-item-image">
               {renderMedia()}
@@ -118,7 +124,7 @@ const WorkItem = ({ index, image, video, gradientBackground, leftImage, rightIma
               <div className="work-item-description B2">{description}</div>
             </div>
           </div>
-          <div className={`work-item-cta ${(navigateTo || onCtaClick) ? 'clickable' : ''}`} onClick={handleCtaClick}>
+          <div className="work-item-cta">
             <span className="work-item-cta-text S1">Read More</span>
             <span className="work-item-arrow">
               <Icon

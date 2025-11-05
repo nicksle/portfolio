@@ -48,7 +48,9 @@
   width: 100%;
   height: 64px;
   background: var(--color-base);
-  border: 1px solid var(--color-inactive);
+  border: 1px solid var(--color-active);
+  border-left-width: 0; /* Remove left border to eliminate gaps between buttons */
+  border-radius: 0; /* Remove corner radius */
   color: var(--color-primary);
   display: flex;
   align-items: center;
@@ -63,6 +65,11 @@
   margin: 0;
 }
 
+/* First button in container should have left border */
+.content-navigator-button-container:first-child .content-navigator-button {
+  border-left-width: 1px;
+}
+
 .content-navigator-button:hover {
   background: var(--color-hover);
   border-color: var(--color-active);
@@ -71,6 +78,16 @@
 
 .content-navigator-button:hover .content-navigator-button-icon {
   color: var(--color-active);
+}
+
+.content-navigator-button-index {
+  font-family: var(--font-family-subtitle);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-tertiary);
+  margin: 0;
+  padding: 0;
+  margin-right: var(--spacing-md);
 }
 
 .content-navigator-button-text {
@@ -86,6 +103,12 @@
 /* Icon rotations for different button types */
 .content-navigator-button-back .content-navigator-button-icon {
   transform: rotate(180deg);
+}
+
+.content-navigator-button-up {
+  width: 64px;
+  min-width: 64px;
+  flex: none;
 }
 
 .content-navigator-button-up .content-navigator-button-icon {

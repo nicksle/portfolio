@@ -3,7 +3,18 @@ import { motion } from 'framer-motion';
 import './Body.css';
 import { ContentNavigatorButton } from '../../../ContentNavigator';
 
-const Body = forwardRef(({ children, onScrollProgress, onNextSection, showNextButton = true }, ref) => {
+const Body = forwardRef(({
+  children,
+  onScrollProgress,
+  onNextSection,
+  onBackSection,
+  onScrollToTop,
+  showNextButton = true,
+  showBackButton = false,
+  currentIndex = null,
+  nextIndex = null,
+  previousIndex = null
+}, ref) => {
   return (
     <>
       <motion.div
@@ -26,9 +37,14 @@ const Body = forwardRef(({ children, onScrollProgress, onNextSection, showNextBu
         ))}
       </motion.div>
       <ContentNavigatorButton
-        type="next"
-        onClick={onNextSection}
-        isVisible={showNextButton && onNextSection}
+        onScrollToTop={onScrollToTop}
+        onBackSection={onBackSection}
+        onNextSection={onNextSection}
+        showBackButton={showBackButton}
+        showNextButton={showNextButton}
+        currentIndex={currentIndex}
+        previousIndex={previousIndex}
+        nextIndex={nextIndex}
       />
     </>
   );

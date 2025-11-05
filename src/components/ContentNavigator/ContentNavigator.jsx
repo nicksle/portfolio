@@ -4,46 +4,59 @@ import './ContentNavigator.css';
 import Icon from '../Icon/Icon';
 import { ICON_PATHS } from '../../utils/iconPaths';
 
-// ContentNavigatorButton component - supports different button types
+// ContentNavigatorButton component - contains all navigation buttons (up, back, next)
 export const ContentNavigatorButton = ({
-  type = 'next', // 'next', 'back', 'up'
-  onClick,
-  isVisible = true,
-  className = '',
-  style = {}
+  onScrollToTop,
+  onBackSection,
+  onNextSection,
+  showBackButton = false,
+  showNextButton = true,
+  currentIndex = null,
+  previousIndex = null,
+  nextIndex = null
 }) => {
-  if (!isVisible) return null;
-
-  const buttonConfig = {
-    next: {
-      text: 'Next Section',
-      icon: ICON_PATHS.arrowRight
-    },
-    back: {
-      text: 'Previous Section',
-      icon: ICON_PATHS.arrowRight // Will be rotated via CSS
-    },
-    up: {
-      text: 'Back to Top',
-      icon: ICON_PATHS.arrowDown // Will be rotated via CSS
-    }
-  };
-
-  const config = buttonConfig[type] || buttonConfig.next;
-
   return (
-    <div className={`content-navigator-button-container ${className}`} style={style}>
-      <button
-        className={`content-navigator-button content-navigator-button-${type}`}
-        onClick={onClick}
-      >
-        <span className="content-navigator-button-text">{config.text}</span>
-        <Icon
-          svgPath={config.icon}
-          size="small"
-          className="content-navigator-button-icon"
-        />
-      </button>
+    <div className="content-navigator-button-container" style={{ display: 'flex', width: '100%', gap: 0 }}>
+      {/* Up/Back to Top Button */}
+      {onScrollToTop && (
+        <button
+          className="content-navigator-button content-navigator-button-up"
+          onClick={onScrollToTop}
+        >
+        </button>
+      )}
+
+      {/* Back/Previous Section Button */}
+      {showBackButton && onBackSection && (
+        <button
+          className="content-navigator-button content-navigator-button-back"
+          onClick={onBackSection}
+          style={{ flex: 1 }}
+        >
+          <span style={{
+            fontFamily: 'var(--font-family-subtitle)',
+            fontSize: 'var(--font-size-subtitle)',
+            fontWeight: 'var(--font-weight-medium)',
+            color: 'var(--color-primary)'
+          }}>Back</span>
+        </button>
+      )}
+
+      {/* Next Section Button */}
+      {showNextButton && onNextSection && (
+        <button
+          className="content-navigator-button content-navigator-button-next"
+          onClick={onNextSection}
+          style={{ flex: 1 }}
+        >
+          <span style={{
+            fontFamily: 'var(--font-family-subtitle)',
+            fontSize: 'var(--font-size-subtitle)',
+            fontWeight: 'var(--font-weight-medium)',
+            color: 'var(--color-primary)'
+          }}>Next</span>
+        </button>
+      )}
     </div>
   );
 };

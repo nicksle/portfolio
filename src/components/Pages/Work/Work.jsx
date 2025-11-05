@@ -24,6 +24,7 @@ const Work = () => {
   const contentNavRef = useRef(null);
   const contentScrollRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Force proper initial state on every mount
   const [isReady, setIsReady] = useState(false);
@@ -34,6 +35,7 @@ const Work = () => {
   const [nextContentId, setNextContentId] = useState(null);
   const [contentHeight, setContentHeight] = useState(152); // Start at collapsed height for initial animation
   const [isInitialLoad, setIsInitialLoad] = useState(true); // Track initial load animation
+  const [isNavigatingToCaseStudy, setIsNavigatingToCaseStudy] = useState(false);
 
   // Debug component lifecycle and force reset
   useEffect(() => {
@@ -186,7 +188,19 @@ const Work = () => {
               gradientBackground={{ startColor: '#667eea', endColor: '#764ba2' }}
               title="Improving User Education and Building Trust During Onboarding to Increase User Growth"
               description="Enhanced onboarding that helps users understand TANDA's value while building confidence through clear communication and supportive guidance"
-              onCtaClick={() => navigate('/case-study-id')}
+              onCtaClick={() => {
+                console.log('🎯 WorkItem clicked - starting collapse');
+                console.log('Current contentHeight:', contentHeight);
+                setIsNavigatingToCaseStudy(true);
+                setContentHeight(1);
+                setIsTransitioning(true);
+                console.log('Set contentHeight to 1, waiting 800ms before navigation...');
+
+                setTimeout(() => {
+                  console.log('⏰ Timeout complete - navigating to case-study-id');
+                  navigate('/case-study-id');
+                }, 800);
+              }}
             />
             <WorkItem
               index="02"
@@ -318,6 +332,52 @@ const Work = () => {
     }
   };
 
+  const handleBackContent = () => {
+    const contentIds = ['tanda', 'liftoff', 'jefuel', 'cashapp'];
+    const currentIndex = contentIds.indexOf(activeContentId);
+    if (currentIndex > 0) {
+      transitionToContent(contentIds[currentIndex - 1]);
+    }
+  };
+
+  // Get current and next content indices for button display
+  const getCurrentContentIndex = () => {
+    return contentRegistry[activeContentId]?.index || null;
+  };
+
+  const getNextContentIndex = () => {
+    const contentIds = ['tanda', 'liftoff', 'jefuel', 'cashapp'];
+    const currentIndex = contentIds.indexOf(activeContentId);
+    if (currentIndex < contentIds.length - 1) {
+      const nextId = contentIds[currentIndex + 1];
+      return contentRegistry[nextId]?.index || null;
+    }
+    return null;
+  };
+
+  const getPreviousContentIndex = () => {
+    const contentIds = ['tanda', 'liftoff', 'jefuel', 'cashapp'];
+    const currentIndex = contentIds.indexOf(activeContentId);
+    if (currentIndex > 0) {
+      const previousId = contentIds[currentIndex - 1];
+      return contentRegistry[previousId]?.index || null;
+    }
+    return null;
+  };
+
+  const showBackButton = () => {
+    return activeContentId !== 'tanda'; // Don't show back button on first section
+  };
+
+  const handleScrollToTop = () => {
+    if (contentScrollRef.current) {
+      contentScrollRef.current.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (!workContentRef.current || !contentNavRef.current) return;
@@ -341,19 +401,19 @@ const Work = () => {
   // Calculate scroll-based values like CaseStudy1 - direct calculation, not state
   const opacity = 1 - scrollProgress;
   const scale = 1 - scrollProgress * 0.2;
+  const backgroundColor = isNavigatingToCaseStudy
+    ? 'hsl(240, 7%, 6%)'
+    : `hsl(240, 7%, ${6 + (8 * scrollProgress)}%)`;
 
   return (
     <motion.div
       key="work-page-unique"
       className="work-page"
-      exit={{ 
-        opacity: 0,
-        scale: 0.8,
-        y: 50
+      animate={{
+        backgroundColor: backgroundColor
       }}
-      transition={{ 
-        duration: 0.8,
-        ease: "easeInOut"
+      transition={{
+        backgroundColor: { duration: 0.8, ease: "easeInOut" }
       }}
     >
       <motion.div
@@ -372,6 +432,9 @@ const Work = () => {
           opacity: 0,
           scale: 0.8,
           y: 50
+        }}
+        exit={{
+          opacity: 0
         }}
         transition={{
           duration: 0.8,
@@ -393,7 +456,6 @@ const Work = () => {
           zIndex: 1,
           right: 0,
         }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20 }}
       >
         <div className="work-description" style={styles.workDescription}>
           <h2 style={styles.heroTitle}>
@@ -445,15 +507,15 @@ const Work = () => {
             className="content"
             initial={{ height: 152, opacity: 0.3 }} // Start collapsed on initial load
             style={{
-              flex: (isInitialLoad || isTransitioning) ? 'none' : '1' // Keep flex none during initial load and transitions
+              flex: 'none'
             }}
             animate={{
               height: contentHeight, // Always animate to contentHeight (152 or 757)
               opacity: isTransitioning ? 0.3 : 1
             }}
             transition={{
-              height: { duration: 0.4, ease: "easeInOut" },
-              opacity: { duration: 0.3, ease: "easeInOut" }
+              height: { duration: 0.8, ease: "easeInOut" },
+              opacity: { duration: 0.8, ease: "easeInOut" }
             }}
           >
             <AnimatePresence mode="wait">
@@ -476,7 +538,13 @@ const Work = () => {
             <Body
               key={activeContentId} // Force remount on tab switch to replay animations
               onNextSection={handleNextContent}
+              onBackSection={handleBackContent}
+              onScrollToTop={handleScrollToTop}
               showNextButton={activeContentId !== 'cashapp'}
+              showBackButton={showBackButton()}
+              currentIndex={getCurrentContentIndex()}
+              nextIndex={getNextContentIndex()}
+              previousIndex={getPreviousContentIndex()}
             >
               {contentRegistry[activeContentId]?.bodyItems || []}
             </Body>
