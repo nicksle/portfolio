@@ -15,6 +15,11 @@ import CAT02 from '../../assets/Intro2/Cat/CAT02.jpg';
 import CAT03 from '../../assets/Intro2/Cat/CAT03.jpg';
 import CAT04 from '../../assets/Intro2/Cat/CAT04.jpg';
 import CAT05 from '../../assets/Intro2/Cat/CAT05.jpg';
+import Cloud1 from '../../assets/Intro2/Clouds/Front/Cloud1.svg';
+import Cloud2 from '../../assets/Intro2/Clouds/Front/Cloud2.svg';
+import Cloud3 from '../../assets/Intro2/Clouds/Front/Cloud3.svg';
+import Cloud1Back from '../../assets/Intro2/Clouds/Back/Cloud1.svg';
+import Cloud2Back from '../../assets/Intro2/Clouds/Back/Cloud2.svg';
 
 const Intro2 = () => {
   const sfImages = [SF01, SF02, SF03];
@@ -201,9 +206,20 @@ const Intro2 = () => {
           onHover={handleSFHover}
         />
       </div>
-      <div className="grid-cell text-r4">
-        <span className="text-prefix">based in </span>
-        <span className="text-location">San Francisco</span>
+      <div className="grid-cell text-r4" id="Location">
+        <div className="clouds-back">
+          <img src={Cloud2Back} alt="" className="cloud cloud-2" />
+          <img src={Cloud1Back} alt="" className="cloud cloud-1" />
+        </div>
+        <div className="text">
+          <span className="text-prefix">based in </span>
+          <span className="text-location">San Francisco</span>
+        </div>
+        <div className="clouds-front">
+          <img src={Cloud1} alt="" className="cloud cloud-1" />
+          <img src={Cloud2} alt="" className="cloud cloud-2" />
+          <img src={Cloud3} alt="" className="cloud cloud-3" />
+        </div>
       </div>
     </div>
     </>

@@ -402,19 +402,107 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   white-space: nowrap;
+  padding-left: 40px;
+  position: relative;
+}
+
+#Location .clouds-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#Location .clouds-back .cloud {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#Location:hover .clouds-back .cloud {
+  opacity: 0.8;
+  transform: translateY(0);
+}
+
+#Location .clouds-back .cloud-1 {
+  top: 18.55px;
+  left: 535.53px;
+  width: 171.4px;
+  height: 68.204px;
+}
+
+#Location .clouds-back .cloud-2 {
+  top: 30px;
+  left: 140px;
+  width: 141.46px;
+  height: 55.68px;
+}
+
+#Location .clouds-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+#Location .clouds-front .cloud {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#Location:hover .clouds-front .cloud {
+  opacity: 0.8;
+  transform: translateY(0);
+}
+
+#Location .clouds-front .cloud-1 {
+  top: 76px;
+  left: 45px;
+  width: 89.022px;
+  height: 35.04px;
+}
+
+#Location .clouds-front .cloud-2 {
+  top: 78.67px;
+  left: 262px;
+  width: 116.805px;
+  height: 46.29px;
+}
+
+#Location .clouds-front .cloud-3 {
+  top: 80px;
+  left: 436px;
+  width: 89.022px;
+  height: 35.04px;
+}
+
+.intro2-section .text-r4 .text {
+  display: flex;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .intro2-section .text-r4 .text-prefix {
   opacity: 1;
-  width: auto;
+  width: fit-content;
   flex-shrink: 0;
   transition: opacity 0.3s ease, width 0.3s ease;
 }
 
 .intro2-section .text-r4 .text-location {
-  flex: 1;
-  text-align: center;
+  width: fit-content;
   transition: all 0.3s ease;
 }
 
