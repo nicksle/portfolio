@@ -29,13 +29,144 @@
   font-size: var(--font-size-title-xxl);
   font-weight: var(--font-weight-medium);
   color: var(--color-active, #ffffff);
-  transition: var(--transition-fast, all 0.3s ease);
+  transition: background 0.3s ease;
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
 }
 
 .intro2-section .text-r1:hover {
   background: var(--color-hover, #1e1e1e);
   z-index: 10;
+}
+
+.intro2-section .text-r1 .text-r1-text {
+  margin: 0;
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-title-xxl);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-active, #ffffff);
+  line-height: normal;
+  position: relative;
+  z-index: 1;
+}
+
+.intro2-section .text-r1 .artboard-frame {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  width: 20px;
+  height: 16px;
+  opacity: 0;
+  transition: width 0.5s ease, height 0.5s ease, opacity 0s ease 0.5s;
+}
+
+.intro2-section .text-r1:hover .artboard-frame {
+  width: 694px;
+  height: 111px;
+  opacity: 1;
+  transition: width 0.5s ease, height 0.5s ease, opacity 0s ease;
+}
+
+.intro2-section .text-r1 .artboard-border {
+  position: absolute;
+  left: 8px;
+  top: 1px;
+  width: 4px;
+  height: 4px;
+  border: 1px solid #0c8ce9;
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.intro2-section .text-r1:hover .artboard-border {
+  width: 686px;
+  height: 100px;
+}
+
+.intro2-section .text-r1 .corner-point {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  transition: left 0.5s ease, right 0.5s ease, top 0.5s ease, bottom 0.5s ease;
+}
+
+.intro2-section .text-r1 .artboard-frame .point-tl {
+  left: 7px;
+  top: 0;
+}
+
+.intro2-section .text-r1 .artboard-frame .point-tr {
+  left: 11px;
+  top: 0;
+}
+
+.intro2-section .text-r1:hover .artboard-frame .point-tr {
+  left: auto;
+  right: -1px;
+}
+
+.intro2-section .text-r1 .artboard-frame .point-bl {
+  left: 7px;
+  top: 4px;
+}
+
+.intro2-section .text-r1:hover .artboard-frame .point-bl {
+  top: 100px;
+}
+
+.intro2-section .text-r1 .artboard-frame .point-br {
+  left: 11px;
+  top: 4px;
+}
+
+.intro2-section .text-r1:hover .artboard-frame .point-br {
+  left: auto;
+  right: -1px;
+  top: 100px;
+}
+
+.intro2-section .text-r1 .dimension-label {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+  background: #0c8ce9;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: top 0.5s ease;
+}
+
+.intro2-section .text-r1:hover .dimension-label {
+  top: 104px;
+}
+
+.intro2-section .text-r1 .dimension-text,
+.intro2-section .text-r1 .dimension-text-hover {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 6px;
+  color: white;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.intro2-section .text-r1 .dimension-text {
+  display: block;
+}
+
+.intro2-section .text-r1 .dimension-text-hover {
+  display: none;
+}
+
+.intro2-section .text-r1:hover .dimension-text {
+  display: none;
+}
+
+.intro2-section .text-r1:hover .dimension-text-hover {
+  display: block;
 }
 
 .intro2-section .blank-r1-c6 {
@@ -210,55 +341,47 @@
   color: var(--color-active, #ffffff);
   transition: var(--transition-fast, all 0.3s ease);
   cursor: pointer;
+  overflow: hidden;
 }
 
 .intro2-section .text-r3:hover {
   background: var(--color-hover, #1e1e1e);
-
   z-index: 10;
 }
 
-/* Music Cell - Now Playing animation */
-#Music {
-  position: relative;
-  overflow: hidden;
-}
-
-.music-default-text {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.music-default-text.hidden {
-  opacity: 0;
-  transform: translateY(-20px);
-  pointer-events: none;
-}
-
-.music-now-playing {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.intro2-section .text-r3 .text-r3-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
-  /* Global subtitle font style */
+.intro2-section .text-r3 .music-default-text {
+  transition: transform 0.3s ease;
+}
+
+.intro2-section .text-r3:hover .music-default-text {
+  transform: translateY(-16px);
+}
+
+.intro2-section .text-r3 .music-now-playing {
+  position: absolute;
+  bottom: -50px;
+  opacity: 0;
+  transition: bottom 0.3s ease, opacity 0.3s ease;
+  text-align: center;
   font-family: var(--font-family-subtitle);
   font-size: var(--font-size-subtitle);
   font-weight: var(--font-weight-medium);
   color: var(--color-tertiary);
 }
 
-.music-now-playing.visible {
+.intro2-section .text-r3:hover .music-now-playing {
+  bottom: 6px;
   opacity: 1;
-  transform: translateY(0);
 }
 
 .intro2-section .blank-r3-c7 {
@@ -492,6 +615,11 @@
   gap: 24px;
   position: relative;
   z-index: 1;
+  transition: gap 0.3s ease;
+}
+
+.intro2-section .text-r4:hover .text {
+  gap: 0;
 }
 
 .intro2-section .text-r4 .text-prefix {

@@ -48,8 +48,7 @@ const Intro2 = () => {
     setCurrentCatImage(newImage);
   };
 
-  // Music cell state and songs
-  const [hoveredMusic, setHoveredMusic] = useState(false);
+  // Music cell songs
   const songs = [
     { title: "party 4 u", artist: "Charli XCX", albumArt: HowImFeelingNow },
     { title: "hope is a dangerous thing for a woman like me to have - but i have it", artist: "Lana Del Rey", albumArt: NFR },
@@ -59,9 +58,6 @@ const Intro2 = () => {
   ];
   const [currentSong] = useState(songs[Math.floor(Math.random() * songs.length)]);
 
-  const handleMusicHover = () => {
-    setHoveredMusic(true);
-  };
   return (
     <>
       <svg style={{ position: 'absolute', width: 0, height: 0 }}>
@@ -76,7 +72,18 @@ const Intro2 = () => {
       <div className="intro2-section">
       {/* Row 1 */}
       <div className="grid-cell text-r1">
-        <span>I'm a product designer</span>
+        <p className="text-r1-text">I'm a product designer</p>
+        <div className="artboard-frame">
+          <div className="artboard-border"></div>
+          <div className="corner-point point-tl"></div>
+          <div className="corner-point point-tr"></div>
+          <div className="corner-point point-bl"></div>
+          <div className="corner-point point-br"></div>
+          <div className="dimension-label">
+            <span className="dimension-text">2 x 2</span>
+            <span className="dimension-text-hover">686 x 100</span>
+          </div>
+        </div>
       </div>
       <div className="grid-cell blank-r1-c6"></div>
       <div className="grid-cell image-r1r2">
@@ -115,18 +122,15 @@ const Intro2 = () => {
       <div className="grid-cell blank-r3-c1">
         <span>&</span>
       </div>
-      <div
-        className="grid-cell text-r3"
-        id="Music"
-        onMouseEnter={handleMusicHover}
-        onMouseLeave={() => setHoveredMusic(false)}
-      >
-        <span className={`music-default-text ${hoveredMusic ? 'hidden' : ''}`}>
-          pop music enthusiast
-        </span>
-        <span className={`music-now-playing ${hoveredMusic ? 'visible' : ''}`}>
-          Now Playing: {currentSong.title}·{currentSong.artist}
-        </span>
+      <div className="grid-cell text-r3" id="Music">
+        <div className="text-r3-content">
+          <span className="music-default-text">
+            pop music enthusiast
+          </span>
+          <span className="music-now-playing">
+            Now Playing: {currentSong.title}·{currentSong.artist}
+          </span>
+        </div>
       </div>
       <div className="grid-cell blank-r3-c7" id="Album1">
         <div className="record"></div>
