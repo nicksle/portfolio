@@ -28,7 +28,15 @@ const Intro1 = ({ onNext }) => {
       </div>
 
       {/* Row 3 */}
-      <div className="grid-cell blank-r3-c1"></div>
+      <div className="grid-cell blank-r3-c1">
+        <div className="rectangle rect-0"></div>
+        <div className="rectangle rect-1"></div>
+        <div className="rectangle rect-2"></div>
+        <div className="rectangle rect-3"></div>
+        <div className="rectangle rect-4"></div>
+        <div className="rectangle rect-5"></div>
+        <div className="rectangle rect-6"></div>
+      </div>
       <div className="grid-cell text-r3">
         <div className="text-r3-content">
           <span>My names Nick<span className="asterisk">*</span></span>
@@ -38,7 +46,18 @@ const Intro1 = ({ onNext }) => {
 
       {/* Row 4 */}
       <div className="grid-cell text-r4">
-        <span>Welcome to my website</span>
+        <div className="text-r4-content">
+          <div className="text-r4-main">
+            <div className="text-prefix">
+              <p>Welcome to my </p>
+            </div>
+            <div className="text-island-container">
+              <span className="text-island">website</span>
+              <span className="text-island">island</span>
+            </div>
+          </div>
+          <p className="text-r4-subtitle">Hope you like it. You ain't leaving</p>
+        </div>
       </div>
       <div className="grid-cell blank-r4-c7"></div>
       <div className="grid-cell blank-r4-c8 clickable" onClick={onNext}>
