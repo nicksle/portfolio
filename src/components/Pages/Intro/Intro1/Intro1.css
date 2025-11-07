@@ -115,8 +115,8 @@
   animation-fill-mode: forwards;
 }
 
-.blank-r2-c5:hover .circle {
-  border-color: var(--color-active);
+.blank-r2-c5:hover #Circles .circle {
+  border-color: #FFF8E7;
 }
 
 #Circles .circle-tl {
@@ -254,11 +254,20 @@
   border-bottom: 1px solid var(--color-inactive, rgba(255, 255, 255, 0.2));
   transition: var(--transition-fast, all 0.3s ease);
   cursor: pointer;
+  padding: 0;
+  overflow: hidden;
 }
 
 .image-cell:hover {
   background: var(--color-hover, #1e1e1e);
   z-index: 10;
+}
+
+.image-cell .nick-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Row 3 */
@@ -275,12 +284,12 @@
 }
 
 .blank-r3-c1:hover {
-  background: hsl(0, 0%, 96%);
+  background: #0080FF;
   z-index: 10;
 }
 
 .blank-r3-c1:hover .rectangle {
-  border-color: #708090;
+  border-color: #FFD700;
 }
 
 /* Rectangles styling */
@@ -331,110 +340,71 @@
 
 /* Animations trigger on hover */
 .blank-r3-c1:hover .rect-0 {
-  animation: rectAnim0 5s infinite ease-in-out;
+  animation: rectAnim0 3.33s infinite linear;
 }
 
 .blank-r3-c1:hover .rect-1 {
-  animation: rectAnim1 5s infinite ease-in-out;
+  animation: rectAnim1 3.33s infinite linear;
 }
 
 .blank-r3-c1:hover .rect-2 {
-  animation: rectAnim2 5s infinite ease-in-out;
+  animation: rectAnim2 3.33s infinite linear;
 }
 
 .blank-r3-c1:hover .rect-3 {
-  animation: rectAnim3 5s infinite ease-in-out;
+  animation: rectAnim3 3.33s infinite linear;
 }
 
 .blank-r3-c1:hover .rect-4 {
-  animation: rectAnim4 5s infinite ease-in-out;
+  animation: rectAnim4 3.33s infinite linear;
 }
 
 .blank-r3-c1:hover .rect-5 {
-  animation: rectAnim5 5s infinite ease-in-out;
+  animation: rectAnim5 3.33s infinite linear;
 }
 
 .blank-r3-c1:hover .rect-6 {
-  animation: rectAnim6 5s infinite ease-in-out;
+  animation: rectAnim6 3.33s infinite linear;
 }
 
-/* Keyframe animations - each rectangle cycles through all 7 sizes */
+/* Keyframe animations - synchronized linear shrinking */
 @keyframes rectAnim0 {
-  0%, 100% { width: 284.8px; height: 178px; opacity: 1; }
-  14% { width: 189.867px; height: 118.667px; opacity: 1; }
-  28% { width: 126.578px; height: 79.111px; opacity: 1; }
-  42% { width: 84.385px; height: 52.741px; opacity: 1; }
-  56% { width: 56.257px; height: 35.16px; opacity: 1; }
-  70% { width: 28.128px; height: 17.58px; opacity: 1; }
-  84% { width: 6.4px; height: 4px; opacity: 1; }
-  92% { width: 0; height: 0; opacity: 0; }
-  96% { width: 284.8px; height: 178px; opacity: 0; }
+  0% { width: 6.4px; height: 4px; opacity: 1; }
+  85% { width: 6.4px; height: 4px; opacity: 1; }
+  90% { width: 6.4px; height: 4px; opacity: 0; }
+  90.01% { width: 284.8px; height: 178px; opacity: 0; }
+  95% { width: 284.8px; height: 178px; opacity: 1; }
+  100% { width: 189.867px; height: 118.667px; opacity: 1; }
 }
 
 @keyframes rectAnim1 {
-  0%, 8% { width: 284.8px; height: 178px; opacity: 0; }
-  12%, 100% { width: 284.8px; height: 178px; opacity: 1; }
-  26% { width: 189.867px; height: 118.667px; opacity: 1; }
-  40% { width: 126.578px; height: 79.111px; opacity: 1; }
-  54% { width: 84.385px; height: 52.741px; opacity: 1; }
-  68% { width: 56.257px; height: 35.16px; opacity: 1; }
-  82% { width: 28.128px; height: 17.58px; opacity: 1; }
-  96% { width: 6.4px; height: 4px; opacity: 1; }
+  0% { width: 28.128px; height: 17.58px; opacity: 1; }
+  100% { width: 6.4px; height: 4px; opacity: 1; }
 }
 
 @keyframes rectAnim2 {
-  0%, 16% { width: 284.8px; height: 178px; opacity: 0; }
-  20%, 100% { width: 284.8px; height: 178px; opacity: 1; }
-  34% { width: 189.867px; height: 118.667px; opacity: 1; }
-  48% { width: 126.578px; height: 79.111px; opacity: 1; }
-  62% { width: 84.385px; height: 52.741px; opacity: 1; }
-  76% { width: 56.257px; height: 35.16px; opacity: 1; }
-  90% { width: 28.128px; height: 17.58px; opacity: 1; }
+  0% { width: 56.257px; height: 35.16px; opacity: 1; }
+  100% { width: 28.128px; height: 17.58px; opacity: 1; }
 }
 
 @keyframes rectAnim3 {
-  0% { width: 6.4px; height: 4px; opacity: 1; }
-  8% { width: 0; height: 0; opacity: 0; }
-  12% { width: 284.8px; height: 178px; opacity: 0; }
-  16%, 100% { width: 284.8px; height: 178px; opacity: 1; }
-  30% { width: 189.867px; height: 118.667px; opacity: 1; }
-  44% { width: 126.578px; height: 79.111px; opacity: 1; }
-  58% { width: 84.385px; height: 52.741px; opacity: 1; }
-  72% { width: 56.257px; height: 35.16px; opacity: 1; }
-  86% { width: 28.128px; height: 17.58px; opacity: 1; }
+  0% { width: 84.385px; height: 52.741px; opacity: 1; }
+  100% { width: 56.257px; height: 35.16px; opacity: 1; }
 }
 
 @keyframes rectAnim4 {
-  0%, 14% { width: 28.128px; height: 17.58px; opacity: 1; }
-  22% { width: 6.4px; height: 4px; opacity: 1; }
-  30% { width: 0; height: 0; opacity: 0; }
-  34% { width: 284.8px; height: 178px; opacity: 0; }
-  38%, 100% { width: 284.8px; height: 178px; opacity: 1; }
-  52% { width: 189.867px; height: 118.667px; opacity: 1; }
-  66% { width: 126.578px; height: 79.111px; opacity: 1; }
-  80% { width: 84.385px; height: 52.741px; opacity: 1; }
-  94% { width: 56.257px; height: 35.16px; opacity: 1; }
+  0% { width: 126.578px; height: 79.111px; opacity: 1; }
+  100% { width: 84.385px; height: 52.741px; opacity: 1; }
 }
 
 @keyframes rectAnim5 {
-  0%, 22% { width: 56.257px; height: 35.16px; opacity: 1; }
-  36% { width: 28.128px; height: 17.58px; opacity: 1; }
-  50% { width: 6.4px; height: 4px; opacity: 1; }
-  58% { width: 0; height: 0; opacity: 0; }
-  62% { width: 284.8px; height: 178px; opacity: 0; }
-  66%, 100% { width: 284.8px; height: 178px; opacity: 1; }
-  80% { width: 189.867px; height: 118.667px; opacity: 1; }
-  94% { width: 126.578px; height: 79.111px; opacity: 1; }
+  0% { width: 189.867px; height: 118.667px; opacity: 1; }
+  100% { width: 126.578px; height: 79.111px; opacity: 1; }
 }
 
 @keyframes rectAnim6 {
-  0%, 30% { width: 84.385px; height: 52.741px; opacity: 1; }
-  44% { width: 56.257px; height: 35.16px; opacity: 1; }
-  58% { width: 28.128px; height: 17.58px; opacity: 1; }
-  72% { width: 6.4px; height: 4px; opacity: 1; }
-  80% { width: 0; height: 0; opacity: 0; }
-  84% { width: 284.8px; height: 178px; opacity: 0; }
-  88%, 100% { width: 284.8px; height: 178px; opacity: 1; }
+  0% { width: 284.8px; height: 178px; opacity: 1; }
+  100% { width: 189.867px; height: 118.667px; opacity: 1; }
 }
 
 .text-r3 {

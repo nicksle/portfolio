@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Intro1.css';
 import gmLogo from '../../../../assets/logo/GMLogo.svg';
+import Nick01 from '../../../../assets/Intro2/Nick/Nick01.jpg';
+import Nick02 from '../../../../assets/Intro2/Nick/Nick02.jpg';
 
 const Intro1 = ({ onNext }) => {
+  const [isImageHovered, setIsImageHovered] = useState(false);
+
   return (
     <div className="intro1-section">
       {/* Row 1 */}
@@ -23,8 +27,16 @@ const Intro1 = ({ onNext }) => {
         <div className="circle circle-bl"></div>
         <div className="circle circle-br"></div>
       </div>
-      <div className="grid-cell image-cell">
-        <span>Image</span>
+      <div
+        className="grid-cell image-cell"
+        onMouseEnter={() => setIsImageHovered(true)}
+        onMouseLeave={() => setIsImageHovered(false)}
+      >
+        <img
+          src={isImageHovered ? Nick02 : Nick01}
+          alt="Nick"
+          className="nick-image"
+        />
       </div>
 
       {/* Row 3 */}
