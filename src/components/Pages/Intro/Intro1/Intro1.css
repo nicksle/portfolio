@@ -71,11 +71,66 @@
   color: var(--color-active, #ffffff);
   transition: var(--transition-fast, all 0.3s ease);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro1-section .text-r2 > span {
+  display: block;
+  transition: transform 0.3s ease;
 }
 
 .text-r2:hover {
   background: var(--color-hover, #1e1e1e);
   z-index: 10;
+}
+
+.intro1-section .text-r2:hover > span {
+  transform: translateY(-24px);
+}
+
+.text-r2 .carousel {
+  position: absolute;
+  bottom: -48px;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: var(--color-base, #0e0e10);
+  border-top: 1px solid var(--color-inactive, rgba(255, 255, 255, 0.2));
+  font-family: var(--font-family-subtitle);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-secondary, #ccccb6);
+  line-height: 1.2;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+
+.text-r2:hover .carousel {
+  transform: translateY(-48px);
+}
+
+.text-r2 .carousel-content {
+  display: flex;
+  gap: 80px;
+  animation: scroll-left 40s linear infinite;
+  white-space: nowrap;
+}
+
+.text-r2 .carousel-content span {
+  flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .blank-r2-c5 {
@@ -599,15 +654,55 @@
 .blank-r4-c7 {
   grid-column: 7 / 8;
   grid-row: 4;
-  background: var(--color-base, #1a1a1a);
+  background: var(--color-base, #0e0e10);
   border-right: 1px solid var(--color-inactive, rgba(255, 255, 255, 0.2));
   transition: var(--transition-fast, all 0.3s ease);
   cursor: pointer;
+  position: relative;
 }
 
 .blank-r4-c7:hover {
-  background: var(--color-hover, #1e1e1e);
+  background: var(--color-base, #0e0e10);
   z-index: 10;
+}
+
+.laptop-icon {
+  position: absolute;
+  left: 21px;
+  top: 17px;
+  width: 108px;
+  height: 115px;
+}
+
+.laptop-screen {
+  fill: var(--color-base, #0e0e10);
+  transition: fill 0.3s ease;
+}
+
+.blank-r4-c7:hover .laptop-screen {
+  fill: #86D5FF;
+}
+
+.laptop-screen-island,
+.laptop-screen-sun {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.blank-r4-c7:hover .laptop-screen-island,
+.blank-r4-c7:hover .laptop-screen-sun {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.laptop-path {
+  fill: var(--color-inactive, #30302a);
+  transition: fill 0.3s ease;
+}
+
+.blank-r4-c7:hover .laptop-path {
+  fill: var(--color-active, #ffffe3);
 }
 
 .blank-r4-c8 {
