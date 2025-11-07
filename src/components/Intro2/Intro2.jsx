@@ -202,7 +202,8 @@ const Intro2 = () => {
         />
       </div>
       <div className="grid-cell text-r4">
-        <span>based in San Francisco</span>
+        <span className="text-prefix">based in </span>
+        <span className="text-location">San Francisco</span>
       </div>
     </div>
     </>

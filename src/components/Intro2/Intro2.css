@@ -297,7 +297,7 @@
 }
 
 #Album1:hover .record {
-  transform: translateX(-50%) translateY(32px);
+  transform: translateX(-50%) translateY(24px);
   transition-delay: 0.3s;
 }
 
@@ -400,11 +400,39 @@
   color: var(--color-active, #ffffff);
   transition: var(--transition-fast, all 0.3s ease);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.intro2-section .text-r4 .text-prefix {
+  opacity: 1;
+  width: auto;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.intro2-section .text-r4 .text-location {
+  flex: 1;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
 .intro2-section .text-r4:hover {
-  background: var(--color-hover, #1e1e1e);
-
+  background: #0077FF;
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
   z-index: 10;
+}
+
+.intro2-section .text-r4:hover .text-prefix {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.intro2-section .text-r4:hover .text-location {
+  font-weight: 900;
+  font-stretch: expanded;
 }
 
