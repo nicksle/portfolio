@@ -10,6 +10,7 @@
   max-height: calc(100vh - 120px);
   z-index: 2;
   margin-bottom: 64px;
+  overflow: hidden;
 }
 
 .tab-nav {

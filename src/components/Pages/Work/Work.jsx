@@ -507,7 +507,7 @@ const Work = () => {
             className="content"
             initial={{ height: 152, opacity: 0.3 }} // Start collapsed on initial load
             style={{
-              flex: 'none'
+              flex: (isInitialLoad || isTransitioning) ? 'none' : '1'
             }}
             animate={{
               height: contentHeight, // Always animate to contentHeight (152 or 757)

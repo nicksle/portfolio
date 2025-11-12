@@ -2673,11 +2673,6 @@ const CaseStudyID = () => {
                 id: "04",
                 index: "04",
                 title: "Error State Redesign"
-              },
-              {
-                id: "05",
-                index: "05",
-                title: "Pending Management"
               }
             ]}
             bodyItems={[
@@ -2697,6 +2692,23 @@ const CaseStudyID = () => {
                       style={{ borderRadius: '24px' }}
                       alt="Video demonstration of the KYC context introduction screen explaining regulatory requirements and building user trust"
                     />
+                  </MediaSet>,
+                  <TextSet key="text-sol-2-1-annotations" annotationItems={[
+                    {
+                      id: "01",
+                      index: "01",
+                      title: "Annotation Title 1",
+                      description: "Description for annotation 1 explaining the context"
+                    },
+                    {
+                      id: "02",
+                      index: "02",
+                      title: "Annotation Title 2",
+                      description: "Description for annotation 2 providing additional details"
+                    }
+                  ]} />,
+                  <MediaSet key="media-sol-2-1-context">
+                    <img src={SignUpScreen} alt="Context introduction supporting image" />
                   </MediaSet>
                 ]
               },
@@ -2782,8 +2794,37 @@ const CaseStudyID = () => {
               {
                 id: "03",
                 children: [
-                  <MediaSet key="media-sol-2-3">
-                    <img src={OnboardingFunnelChart} alt="Bank-level encryption badges, SOC 2 compliance certification, and FDIC insurance displayed at critical data collection moments" />
+                  <TextSet
+                    key="text-sol-2-3"
+                    text="Trust signals placeholder text explaining security measures and compliance standards"
+                  />,
+                  <MediaSet key="media-sol-2-3-video">
+                    <video
+                      src={KYCFlow01}
+                      muted
+                      autoPlay
+                      loop
+                      style={{ borderRadius: '24px' }}
+                      alt="Video demonstrating trust signals and security features"
+                    />
+                  </MediaSet>,
+                  <TextSet key="text-sol-2-3-annotations" annotationItems={[
+                    {
+                      id: "01",
+                      index: "01",
+                      title: "Trust Signal Annotation 1",
+                      description: "Description for first trust signal annotation"
+                    },
+                    {
+                      id: "02",
+                      index: "02",
+                      title: "Trust Signal Annotation 2",
+                      description: "Description for second trust signal annotation"
+                    }
+                  ]} />,
+                  <MediaSet key="media-sol-2-3-images">
+                    <img src={OnboardingFunnelChart} alt="First trust signal image" />
+                    <img src={Figure01} alt="Second trust signal image" />
                   </MediaSet>
                 ]
               },
@@ -2794,14 +2835,6 @@ const CaseStudyID = () => {
                     <img src={Figure01} alt="Improved error messaging with encouraging language, explanation of what triggered rejection, and clear next steps for resolution" />
                   </MediaSet>
                 ]
-              },
-              {
-                id: "05",
-                children: [
-                  <MediaSet key="media-sol-2-5">
-                    <img src={SignUpScreen} alt="Pending verification state showing what users can still explore while review processes, preventing total disengagement" />
-                  </MediaSet>
-                ]
               }
             ]}
           />
@@ -2810,74 +2843,153 @@ const CaseStudyID = () => {
           <FullCard
             index="03"
             icon={<Icon svgPath={ICON_PATHS.lightbulb} size="xl" />}
-            title="Value-First Onboarding Sequencing"
-            subtitle="Demonstrating Purpose Before Requesting Commitment"
-            description="Research showed that delaying core value until after data collection drove early abandonment—users couldn't browse circles without completing KYC, and incentives weren't surfaced. We restructured onboarding to lead with a brief financial goals survey, demonstrate personalized value through relevant circles and success stories, surface sign-up bonuses prominently, and defer KYC until users are motivated to join—building desire before requesting sensitive information."
+            title="Intuitive Onboarding to Guide Users to Value"
+            subtitle="Progressive Disclosure Through Contextual Action"
+            description="Joining a circle is where users receive TANDA's value. Instead of front-loading barriers, we guide users to this goal through instant personalized recommendations, just-in-time education, onboarding embedded in the join flow, and strategic retention that keeps them motivated."
             headItems={[
               {
                 id: "01",
                 index: "01",
-                title: "Goals Survey"
+                title: "New User Survey as a Bridge"
               },
               {
                 id: "02",
                 index: "02",
-                title: "Personalized Demo"
+                title: "Improving In-App Education"
               },
               {
                 id: "03",
                 index: "03",
-                title: "Visible Incentives"
+                title: "Onboarding Integrated into Join Circle Flow"
               },
               {
                 id: "04",
                 index: "04",
-                title: "Deferred KYC Flow"
-              },
-              {
-                id: "05",
-                index: "05",
-                title: "Sequencing Logic"
+                title: "Late Bind Strategy"
               }
             ]}
             bodyItems={[
               {
                 id: "01",
                 children: [
-                  <MediaSet key="media-sol-3-1">
-                    <img src={Figure01} alt="3-4 question survey about financial objectives: emergency fund, vacation savings, down payment, debt payoff" />
+                  <TextSet
+                    key="text-sol-3-1"
+                    text="Previously, users were dropped at the home screen after account creation, left to figure out navigation on their own. Our survey bridges this gap by instantly producing personalized circle recommendations, transforming signup into the first step of engagement rather than a dead end."
+                  />,
+                  <MediaSet key="media-sol-3-1-images-1">
+                    <img src={Figure01} alt="Survey questions asking about financial goals: emergency fund, vacation savings, down payment options" />
+                    <img src={SignUpScreen} alt="Personalized circle recommendations immediately displayed after survey completion with prominent join prompts" />
+                  </MediaSet>,
+                  <TextSet key="text-sol-3-1-annotations" annotationItems={[
+                    {
+                      id: "01",
+                      index: "01",
+                      title: "Seamless Transition",
+                      description: "No dead end between account creation and engagement—survey immediately follows signup and flows directly into recommendations"
+                    },
+                    {
+                      id: "02",
+                      index: "02",
+                      title: "Instant Personalization",
+                      description: "Recommendations appear within seconds, showing users that the product already has relevant circles for their specific goals"
+                    }
+                  ]} />,
+                  <MediaSet key="media-sol-3-1-images-2">
+                    <img src={OnboardingFunnelChart} alt="Flow diagram showing account creation flowing into survey, then recommendations, then join CTA" />
+                    <img src={Figure01} alt="Close-up of join circle prompt showing clear call-to-action and next steps" />
                   </MediaSet>
                 ]
               },
               {
                 id: "02",
                 children: [
-                  <MediaSet key="media-sol-3-2">
-                    <img src={SignUpScreen} alt="Personalized circle recommendations based on survey with member success stories showing real users who achieved similar goals" />
+                  <TextSet
+                    key="text-sol-3-2"
+                    text="In-app education reduces user anxiety by answering questions the moment they arise through contextual tooltips, full-screen instructionals, and explanatory videos, transforming confusion into confidence."
+                  />,
+                  <MediaSet key="media-sol-3-2-images-1">
+                    <img src={Figure01} alt="Tooltip appearing on hover showing quick definition of circle terminology in context" />
+                    <img src={SignUpScreen} alt="Full-screen instructional overlay guiding users through multi-step circle join process" />
+                  </MediaSet>,
+                  <TextSet key="text-sol-3-2-annotations" annotationItems={[
+                    {
+                      id: "01",
+                      index: "01",
+                      title: "Just-in-Time Learning",
+                      description: "Education appears contextually when users encounter new concepts, not as a front-loaded tutorial they'll forget"
+                    },
+                    {
+                      id: "02",
+                      index: "02",
+                      title: "Optional but Accessible",
+                      description: "Help is always available through tooltips and help icons, but users can proceed without watching every tutorial"
+                    }
+                  ]} />,
+                  <MediaSet key="media-sol-3-2-images-2">
+                    <img src={OnboardingFunnelChart} alt="Short video player demonstrating how circles work, accessible from navigation and key decision points" />
+                    <img src={Figure01} alt="Before/after comparison: old front-loaded carousel vs new contextual education approach" />
                   </MediaSet>
                 ]
               },
               {
                 id: "03",
                 children: [
-                  <MediaSet key="media-sol-3-3">
-                    <img src={OnboardingFunnelChart} alt="Sign-up bonus and referral rewards surfaced prominently throughout journey, not hidden until completion" />
+                  <TextSet
+                    key="text-sol-3-3"
+                    text="When onboarding steps interrupt the join circle flow, users question the relevance. By integrating requirements into the flow itself, each ask arrives with innate context—users provide bank details when they're ready to contribute, verify identity when they're about to join. Friction drops because intent is clear."
+                  />,
+                  <MediaSet key="media-sol-3-3-images-1">
+                    <img src={OnboardingFunnelChart} alt="Circle discovery as the default landing screen with prominent browse, search, and filter options" />
+                    <img src={Figure01} alt="User clicking Join Circle button triggering the onboarding flow contextually" />
+                  </MediaSet>,
+                  <TextSet key="text-sol-3-3-annotations" annotationItems={[
+                    {
+                      id: "01",
+                      index: "01",
+                      title: "Progressive Requirements",
+                      description: "Bank linking surfaces during contribution setup, KYC appears at join checkout—each requirement has clear context of why it's needed at this specific moment"
+                    },
+                    {
+                      id: "02",
+                      index: "02",
+                      title: "Carousel Fallback",
+                      description: "Users who exit the join flow are redirected to home screen with redesigned carousel, providing re-engagement guidance and preventing abandonment"
+                    }
+                  ]} />,
+                  <MediaSet key="media-sol-3-3-images-2">
+                    <img src={SignUpScreen} alt="Contextual requirement screen showing bank linking request with explanation during circle join flow" />
+                    <img src={OnboardingFunnelChart} alt="Carousel fallback experience on home screen showing re-engagement prompts and next steps" />
                   </MediaSet>
                 ]
               },
               {
                 id: "04",
                 children: [
-                  <MediaSet key="media-sol-3-4">
-                    <img src={Figure01} alt="Browse circles now, verify later messaging allowing exploration before requiring KYC to join and contribute" />
-                  </MediaSet>
-                ]
-              },
-              {
-                id: "05",
-                children: [
-                  <MediaSet key="media-sol-3-5">
-                    <img src={SignUpScreen} alt="New onboarding sequence: Value Proposition → Survey → Personalized Demo → Profile Setup → Deferred KYC when ready to join" />
+                  <TextSet
+                    key="text-sol-3-4"
+                    text="Late-bind demonstrates value before requesting data. When we finally ask for bank details or verification, users have found their circle and are steps from joining. Proximity to their goal reduces hesitancy."
+                  />,
+                  <MediaSet key="media-sol-3-4-images-1">
+                    <img src={Figure01} alt="Progress indicator showing 'You're 1 step away from joining Emergency Fund Circle' with visual completion bar" />
+                    <img src={SignUpScreen} alt="Push notification example: 'Complete your circle join—your savings goal is waiting'" />
+                  </MediaSet>,
+                  <TextSet key="text-sol-3-4-annotations" annotationItems={[
+                    {
+                      id: "01",
+                      index: "01",
+                      title: "Motivation Through Proximity",
+                      description: "Progress indicators show users they're close to completion, making the remaining steps feel achievable rather than abandoned"
+                    },
+                    {
+                      id: "02",
+                      index: "02",
+                      title: "Strategic Timing",
+                      description: "Notifications are sent at optimal intervals—not immediately (annoying) and not too late (forgotten)—to bring users back when they're most likely to complete"
+                    }
+                  ]} />,
+                  <MediaSet key="media-sol-3-4-images-2">
+                    <img src={OnboardingFunnelChart} alt="Carousel fallback screen showing user's incomplete join with clear next steps and re-engagement prompt" />
+                    <img src={SignUpScreen} alt="Complete late-bind flow diagram showing survey, discovery, join flow, progress indicators, notifications, and fallback paths" />
                   </MediaSet>
                 ]
               }
@@ -2887,84 +2999,6 @@ const CaseStudyID = () => {
         <BodyComponent key="solutions-fullcard-4">
           <FullCard
             index="04"
-            icon={<Icon svgPath={ICON_PATHS.compass} size="xl" />}
-            title="Contextual Guidance System"
-            subtitle="Replacing Lost Carousels with Moment-of-Need Education"
-            description="Users felt aimless because the onboarding carousel scrolled away, blocking alerts lacked explanation, and navigation appeared open when features were actually restricted. Instead of passive guidance that disappears, we implemented contextual prompts at decision points—transforming blocking moments into educational opportunities. When users try joining a circle without KYC, we explain requirements and provide direct paths forward, integrating guidance within the natural journey rather than separating it."
-            headItems={[
-              {
-                id: "01",
-                index: "01",
-                title: "Sticky Progress"
-              },
-              {
-                id: "02",
-                index: "02",
-                title: "Contextual Blocks"
-              },
-              {
-                id: "03",
-                index: "03",
-                title: "Entry Education"
-              },
-              {
-                id: "04",
-                index: "04",
-                title: "Task Integration"
-              },
-              {
-                id: "05",
-                index: "05",
-                title: "Feature Unlocking"
-              }
-            ]}
-            bodyItems={[
-              {
-                id: "01",
-                children: [
-                  <MediaSet key="media-sol-4-1">
-                    <img src={Figure01} alt="Persistent minimal progress indicator showing onboarding completion percentage without taking up significant screen space" />
-                  </MediaSet>
-                ]
-              },
-              {
-                id: "02",
-                children: [
-                  <MediaSet key="media-sol-4-2">
-                    <img src={SignUpScreen} alt="When user attempts to join circle without KYC, educational modal explains requirement with direct CTA to start verification" />
-                  </MediaSet>
-                ]
-              },
-              {
-                id: "03",
-                children: [
-                  <MediaSet key="media-sol-4-3">
-                    <img src={OnboardingFunnelChart} alt="First-time page modals explaining circle mechanics, evaluation criteria, and how contributions work" />
-                  </MediaSet>
-                ]
-              },
-              {
-                id: "04",
-                children: [
-                  <MediaSet key="media-sol-4-4">
-                    <img src={Figure01} alt="Integrated task prompts embedded in relevant pages: Complete your profile to unlock personalized recommendations shown on circles page" />
-                  </MediaSet>
-                ]
-              },
-              {
-                id: "05",
-                children: [
-                  <MediaSet key="media-sol-4-5">
-                    <img src={SignUpScreen} alt="Progressive feature visibility showing what actions are available now versus what unlocks after profile completion and verification" />
-                  </MediaSet>
-                ]
-              }
-            ]}
-          />
-        </BodyComponent>,
-        <BodyComponent key="solutions-fullcard-5">
-          <FullCard
-            index="05"
             icon={<Icon svgPath={ICON_PATHS.users} size="xl" />}
             title="Social Onboarding Amplification"
             subtitle="Replicating Friend Success Digitally"
