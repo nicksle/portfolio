@@ -58,6 +58,9 @@ import LinkBank02 from '../../../../assets/TANDA/CaseStudy1/Onboarding/Link Bank
 import UserActivation01 from '../../../../assets/TANDA/CaseStudy1/User Activation/01.svg';
 import UserActivation02 from '../../../../assets/TANDA/CaseStudy1/User Activation/02.svg';
 // Solutions 1 imports
+import Solutions1_01_01 from '../../../../assets/TANDA/CaseStudy1/Solutions1/01/01.png';
+import Solutions1_01_02 from '../../../../assets/TANDA/CaseStudy1/Solutions1/01/02.png';
+import Solutions1_01_03 from '../../../../assets/TANDA/CaseStudy1/Solutions1/01/03.png';
 import SegSurvey00 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/00.png';
 import SegSurvey01 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/01.png';
 import SegSurvey02 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/02.png';
@@ -2442,6 +2445,87 @@ const CaseStudyID = () => {
               }
             ]}
           />
+        </BodyComponent>,
+        <BodyComponent key="strategy-fullcard-5">
+          <FullCard
+            index="05"
+            icon={<Icon svgPath={ICON_PATHS.solidFlag} size="xl" />}
+            title="Exploring Social Proof Aspects"
+            subtitle="Leveraging Community and Peer Influence"
+            description="We explored how friend invitations, visual identity, and peer accountability could strengthen community connections and increase onboarding completion, designing integrated touchpoints that leverage social proof throughout the user journey."
+            headItems={[
+              {
+                id: "01",
+                index: "01",
+                title: "Exploring Social Connection Opportunity"
+              },
+              {
+                id: "02",
+                index: "02",
+                title: "Designing the Invite Flow"
+              },
+              {
+                id: "03",
+                index: "03",
+                title: "Improving the Profile Picture Upload Flow"
+              },
+              {
+                id: "04",
+                index: "04",
+                title: "Social Pushing for Onboarding"
+              }
+            ]}
+            bodyItems={[
+              {
+                id: "01",
+                children: [
+                  <TextSet
+                    key="text-strategy-5-social-connection"
+                    text="Placeholder content for exploring social connection opportunities. This section will analyze where and how users can invite their friends throughout the experience."
+                    annotationItems={[
+                      {
+                        id: "01",
+                        index: "01",
+                        title: "Identifying Touchpoints",
+                        description: "Add your analysis of invitation touchpoints here"
+                      }
+                    ]}
+                  />
+                ],
+                annotationItems: []
+              },
+              {
+                id: "02",
+                children: [
+                  <TextSet
+                    key="text-strategy-5-invite-flow"
+                    text="Placeholder content for designing the invite flow. This section will cover the interface and mechanism for friend invitations."
+                  />
+                ],
+                annotationItems: []
+              },
+              {
+                id: "03",
+                children: [
+                  <TextSet
+                    key="text-strategy-5-profile-picture"
+                    text="Placeholder content for improving profile picture upload flow. This section will explore how profile pictures build social presence and identity in the community."
+                  />
+                ],
+                annotationItems: []
+              },
+              {
+                id: "04",
+                children: [
+                  <TextSet
+                    key="text-strategy-5-social-pushing"
+                    text="Placeholder content for social pushing in onboarding. This section will examine how peer influence and accountability drive completion."
+                  />
+                ],
+                annotationItems: []
+              }
+            ]}
+          />
         </BodyComponent>
       ]
     },
@@ -2510,18 +2594,19 @@ const CaseStudyID = () => {
                   </MediaSet>,
                   <TextSet
                     key="text-sol-1-2"
-                    text="Key carousel screens"
                     annotationItems={[
                       {
+                        id: "01",
+                        index: "01",
                         title: "How Circles Work",
                         description: "Visual explanation of circle mechanics, contribution schedules, and payout rotation"
                       }
                     ]}
                   />,
                   <MediaSet key="media-sol-1-3">
-                    <img src={Figure01} alt="Carousel screen 1: How Circles Work - explaining contribution schedules and payout rotation" />
-                    <img src={SignUpScreen} alt="Carousel screen 2: Build Credit While Saving - highlighting dual benefits of participation" />
-                    <img src={OnboardingFunnelChart} alt="Carousel screen 3: Community Support - showcasing member success stories and social proof" />
+                    <img src={Solutions1_01_01} alt="Carousel screen 1: How Circles Work - explaining contribution schedules and payout rotation" />
+                    <img src={Solutions1_01_02} alt="Carousel screen 2: Build Credit While Saving - highlighting dual benefits of participation" />
+                    <img src={Solutions1_01_03} alt="Carousel screen 3: Community Support - showcasing member success stories and social proof" />
                   </MediaSet>
                 ]
               },
