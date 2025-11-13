@@ -2613,6 +2613,10 @@ const CaseStudyID = () => {
               {
                 id: "02",
                 children: [
+                  <TextSet
+                    key="text-sol-1-2"
+                    text="We integrated Google and Apple single sign-on (SSO) options to reduce friction during account creation. Social sign-up eliminates the need for users to create and remember new credentials, significantly decreasing time-to-activation and reducing drop-off during the critical first step of onboarding."
+                  />,
                   <MediaSet key="media-sol-1-2">
                     <img src={SignUpScreen} alt="Social sign-in interface with Google and Apple SSO buttons, enabling one-tap authentication that reduces account creation time significantly" />
                   </MediaSet>
