@@ -61,6 +61,8 @@ import UserActivation02 from '../../../../assets/TANDA/CaseStudy1/User Activatio
 import Solutions1_01_01 from '../../../../assets/TANDA/CaseStudy1/Solutions1/01/01.png';
 import Solutions1_01_02 from '../../../../assets/TANDA/CaseStudy1/Solutions1/01/02.png';
 import Solutions1_01_03 from '../../../../assets/TANDA/CaseStudy1/Solutions1/01/03.png';
+import Solutions1_03_01 from '../../../../assets/TANDA/CaseStudy1/Solutions1/03/01.mov';
+import Solutions1_03_02 from '../../../../assets/TANDA/CaseStudy1/Solutions1/03/02.mov';
 import SegSurvey00 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/00.png';
 import SegSurvey01 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/01.png';
 import SegSurvey02 from '../../../../assets/TANDA/CaseStudy1/Solutions1/04/Segmentation Survery/02.png';
@@ -2619,14 +2621,92 @@ const CaseStudyID = () => {
                   />,
                   <MediaSet key="media-sol-1-2">
                     <img src={SignUpScreen} alt="Social sign-in interface with Google and Apple SSO buttons, enabling one-tap authentication that reduces account creation time significantly" />
+                  </MediaSet>,
+                  <TextSet
+                    key="text-sol-1-2-1"
+                    annotationItems={[
+                      {
+                        id: "01",
+                        index: "01",
+                        title: "Social Sign Up Options",
+                        description: "SSO integration enables users to authenticate quickly through trusted third-party providers, reducing sign-up friction and improving conversion rates."
+                      }
+                    ]}
+                  />,
+                  <MediaSet key="media-sol-1-2-1">
+                    <img src={SignUpScreen} alt="Social sign-in interface with Google and Apple SSO buttons" />
+                  </MediaSet>,
+                  <TextSet
+                    key="text-sol-1-2-2"
+                    annotationItems={[
+                      {
+                        id: "02",
+                        index: "02",
+                        title: "Log In vs Sign Up Distinction",
+                        description: "Log-in is visually de-emphasized to prioritize new user acquisition while maintaining clear pathways for returning users to access their accounts."
+                      }
+                    ]}
+                  />,
+                  <MediaSet key="media-sol-1-2-2">
+                    <img src={SignUpScreen} alt="Sign-up screen showing visual hierarchy between sign-up and log-in options" />
                   </MediaSet>
                 ]
               },
               {
                 id: "03",
                 children: [
-                  <MediaSet key="media-sol-1-3">
-                    <img src={OnboardingFunnelChart} alt="Clarified email verification flow showing clear states, which email is being verified, resend options with timing, and contextual explanations reducing user confusion" />
+                  <TextSet
+                    key="text-sol-1-3-1"
+                    text="We streamlined the email sign-up flow to be more fluid and intuitive, addressing user confusion around verification states and account creation steps. UX improvements throughout the create account flow reduced friction and provided clearer feedback at each stage."
+                  />,
+                  <TextSet
+                    key="text-sol-1-3-2"
+                    annotationItems={[
+                      {
+                        id: "01",
+                        index: "01",
+                        title: "Email Verification During Sign Up, Not Onboarding",
+                        description: "Moving email verification earlier into the sign-up phase ensures account validity before users enter the onboarding flow, reducing downstream friction and preventing incomplete profiles."
+                      },
+                      {
+                        id: "02",
+                        index: "02",
+                        title: "Troubleshooting Options",
+                        description: "Clear pathways for common issues like resending emails, changing addresses, or accessing support help users self-serve when verification problems occur, reducing abandonment rates."
+                      }
+                    ]}
+                  />,
+                  <MediaSet key="media-sol-1-3-1">
+                    <video
+                      src={Solutions1_03_01}
+                      muted
+                      autoPlay
+                      loop
+                      style={{ borderRadius: '24px' }}
+                      alt="Email verification flow showing clear states and status indicators"
+                    />
+                    <video
+                      src={Solutions1_03_02}
+                      muted
+                      autoPlay
+                      loop
+                      style={{ borderRadius: '24px' }}
+                      alt="Resend verification email with timing feedback"
+                    />
+                  </MediaSet>,
+                  <TextSet
+                    key="text-sol-1-3-3"
+                    annotationItems={[
+                      {
+                        id: "03",
+                        index: "03",
+                        title: "Unified Create Account Flow",
+                        description: "Consolidated fields and progressive disclosure reduce cognitive load, allowing users to complete sign-up in focused steps rather than overwhelming them with a single long form."
+                      }
+                    ]}
+                  />,
+                  <MediaSet key="media-sol-1-3-2">
+                    <img src={CreateAccount01} alt="Streamlined create account flow with progressive disclosure" />
                   </MediaSet>
                 ]
               },
