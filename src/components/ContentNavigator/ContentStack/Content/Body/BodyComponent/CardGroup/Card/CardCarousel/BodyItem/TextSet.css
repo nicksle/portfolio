@@ -15,11 +15,14 @@
   max-width: 320px;
 }
 
-/* Context text styling */
+/* Context text styling - Body Small (B2) */
 .text-set-context {
-  font-size: 14px;
+  font-family: 'Satoshi', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
   line-height: 1.5;
-  color: var(--color-text-secondary, #999);
+  letter-spacing: 0;
+  color: var(--secondary);
   margin: 0;
   padding-bottom: 8px;
 }

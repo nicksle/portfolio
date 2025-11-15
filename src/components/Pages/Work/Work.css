@@ -27,79 +27,44 @@
   pointer-events: auto;
 }
 
-.work-carousel {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-xl);
-  position: relative;
-  overflow: hidden;
-}
-
-.work-carousel-scroll {
+.work-hero-container {
   display: flex;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-sm) 0;
-  animation: carouselScroll 40s linear infinite;
-  will-change: transform;
-}
-
-.work-carousel-scroll:hover {
-  animation-play-state: paused;
-}
-
-@keyframes carouselScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Customize scrollbar */
-.work-carousel-scroll::-webkit-scrollbar {
-  height: 2px;
-}
-
-.work-carousel-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.work-carousel-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-inactive);
-  border-radius: 2px;
-}
-
-.work-carousel-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
-}
-
-.work-carousel-item {
-  flex: 0 0 auto;
-  width: 600px;
-  height: 320px;
-  overflow: hidden;
-  position: relative;
-  transition: var(--transition-fast);
-  border: 1px solid var(--color-inactive);
-  border-radius: 0;
-}
-
-.work-carousel-item:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.work-carousel-item img {
+  flex-direction: row;
+  gap: 24px;
+  max-width: 1200px;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  border-radius: 0;
+  align-items: center;
 }
 
-.work-carousel-item:hover img {
-  transform: scale(1.05);
+.work-description {
+  flex: 1;
+}
+
+.down-cta {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-top: var(--spacing-lg);
+}
+
+.down-arrow {
+  color: var(--color-active);
+  transition: transform 0.3s ease;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.down-cta:hover .down-arrow {
+  transform: scale(1.2);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }

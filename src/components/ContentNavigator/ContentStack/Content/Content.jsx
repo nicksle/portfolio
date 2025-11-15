@@ -122,9 +122,10 @@ const Content = ({ isActive = false, id, index, subtitle, title, icon, secondIco
         secondIcon={secondIcon}
         period={period}
         position={position}
-        style={{ 
+        style={{
           opacity: headOpacity,
-          transition: 'opacity 0.1s linear'
+          transition: 'opacity 0.1s linear',
+          pointerEvents: headOpacity < 0.1 ? 'none' : 'auto'
         }}
       />
       <Body ref={bodyRef} onScrollProgress={scrollProgress}>

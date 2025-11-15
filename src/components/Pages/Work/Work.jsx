@@ -12,10 +12,18 @@ import TitleSection from "../../ContentNavigator/ContentStack/Content/Body/BodyC
 import WorkItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/WorkItems/WorkItem";
 import CalloutItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/CalloutItems/CalloutItem";
 import TandaThumbnail1 from "../../../assets/TANDA/Thumbnail/Thumbnail1.svg";
-import TandaThumbnail2 from "../../../assets/TANDA/Thumbnail/Thumbnail2.svg";
+import TandaThumbnail2PNG from "../../../assets/TANDA/Thumbnail/Thumbnail2.png";
 import SignUpCarouselVideo from "../../../assets/TANDA/CaseStudy1/01.mov";
 import WorkItem1Left from "../../../assets/TANDA/WorkItem1/01.jpg";
 import WorkItem1Right from "../../../assets/TANDA/WorkItem1/02.jpg";
+import WorkItem1LeftSVG from "../../../assets/TANDA/WorkItem1/01.svg";
+import WorkItem1RightSVG from "../../../assets/TANDA/WorkItem1/02.svg";
+import SharedImage1 from "../../../assets/TANDA/Shared/01.png";
+import SharedImage2 from "../../../assets/TANDA/Shared/02.png";
+import Icon from "../../Icon/Icon";
+import { ICON_PATHS } from "../../../utils/iconPaths";
+import TemplateMedia from "../../shared/TemplateMedia/TemplateMedia";
+import Carousel from "../../Carousel/Carousel";
 import './Work.css';
 
 const Work = () => {
@@ -36,6 +44,7 @@ const Work = () => {
   const [contentHeight, setContentHeight] = useState(152); // Start at collapsed height for initial animation
   const [isInitialLoad, setIsInitialLoad] = useState(true); // Track initial load animation
   const [isNavigatingToCaseStudy, setIsNavigatingToCaseStudy] = useState(false);
+  const [headOpacity, setHeadOpacity] = useState(1);
 
   // Debug component lifecycle and force reset
   useEffect(() => {
@@ -92,6 +101,9 @@ const Work = () => {
         contentScrollRef.current.scrollTop = 0;
       }
 
+      // Reset head opacity
+      setHeadOpacity(1);
+
       // Wait for pause (150ms) + head animation (400ms) before expanding
       setTimeout(() => {
         console.log(`🔼 Starting expansion after head animation`);
@@ -104,6 +116,19 @@ const Work = () => {
         }, 400); // Match expand animation duration
       }, 550); // Pause (150ms) + head fade-in (400ms)
     }, 400); // Collapse animation duration
+  };
+
+  // Handle content scroll for head fade effect
+  const handleContentScroll = (e) => {
+    if (!contentScrollRef.current) return;
+
+    const scrollTop = e.target.scrollTop;
+    // Calculate opacity based on scroll position
+    // Stay at full opacity for first 24px, then start fading from 24-98px
+    const opacity = scrollTop <= 24
+      ? 1
+      : Math.max(0, Math.min(1, 1 - ((scrollTop - 24) / 74)));
+    setHeadOpacity(opacity);
   };
 
   // Styles using CSS custom properties - consistent with design system
@@ -143,7 +168,7 @@ const Work = () => {
     
     // Spacing styles
     workDescription: {
-      marginBottom: 'var(--spacing-xl)'
+      marginBottom: '0'
     }
   };
 
@@ -212,6 +237,33 @@ const Work = () => {
               description="Improved core product experience to increase user activation, retention and growth"
             />
           </TitleSection>
+        </BodyComponent>,
+        <BodyComponent key="tanda-carousel">
+          <Carousel
+            items={[
+              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />,
+              <img src={TandaThumbnail2PNG} alt="Tanda App Interface 2" />,
+              <TemplateMedia
+                variant="var3"
+                sources={[SharedImage1, SignUpCarouselVideo, SharedImage2]}
+                alt="TANDA App Screens"
+                style={{ height: '100%', width: 'auto' }}
+              />,
+              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />,
+              <img src={TandaThumbnail2PNG} alt="Tanda App Interface 2" />,
+              <TemplateMedia
+                variant="var3"
+                sources={[SharedImage1, SignUpCarouselVideo, SharedImage2]}
+                alt="TANDA App Screens"
+                style={{ height: '100%', width: 'auto' }}
+              />,
+              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />,
+              <img src={TandaThumbnail2PNG} alt="Tanda App Interface 2" />
+            ]}
+            height="300px"
+            scrollSpeed={1}
+            gap={8}
+          />
         </BodyComponent>
       ]
     },
@@ -378,6 +430,15 @@ const Work = () => {
     }
   };
 
+  const handleScrollToContent = () => {
+    if (contentNavRef.current) {
+      contentNavRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (!workContentRef.current || !contentNavRef.current) return;
@@ -457,40 +518,31 @@ const Work = () => {
           right: 0,
         }}
       >
-        <div className="work-description" style={styles.workDescription}>
-          <h2 style={styles.heroTitle}>
-            Product designer with 5+ years experience building and growing products for startups in the fintech and influencer advertising spaces.
-          </h2>
-        </div>
-        <div className="work-carousel">
-          <div className="work-carousel-scroll">
-            {/* First set of items */}
-            <div className="work-carousel-item">
-              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />
-            </div>
-            <div className="work-carousel-item">
-              <img src={TandaThumbnail2} alt="Tanda App Interface 2" />
-            </div>
-            <div className="work-carousel-item">
-              <img src="https://via.placeholder.com/300x200" alt="Work 3" />
-            </div>
-            <div className="work-carousel-item">
-              <img src="https://via.placeholder.com/300x200" alt="Work 4" />
-            </div>
-            {/* Duplicate set for seamless loop */}
-            <div className="work-carousel-item">
-              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />
-            </div>
-            <div className="work-carousel-item">
-              <img src={TandaThumbnail2} alt="Tanda App Interface 2" />
-            </div>
-            <div className="work-carousel-item">
-              <img src="https://via.placeholder.com/300x200" alt="Work 3" />
-            </div>
-            <div className="work-carousel-item">
-              <img src="https://via.placeholder.com/300x200" alt="Work 4" />
-            </div>
+        <div className="work-hero-container">
+          <div className="work-description" style={styles.workDescription}>
+            <h2 style={styles.heroTitle}>
+              Product designer with 5+ years experience building and growing products for startups in the fintech and influencer advertising spaces.
+            </h2>
           </div>
+          <Carousel
+            items={[
+              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />,
+              <img src={TandaThumbnail2PNG} alt="Tanda App Interface 2" />,
+              <TemplateMedia
+                variant="var3"
+                sources={[SharedImage1, SignUpCarouselVideo, SharedImage2]}
+                alt="TANDA App Screens"
+                style={{ height: '100%', width: 'auto' }}
+              />,
+              <img src="https://via.placeholder.com/300x200" alt="Work 4" />
+            ]}
+            height="400px"
+            scrollSpeed={1}
+            gap={4}
+          />
+        </div>
+        <div className="down-cta" onClick={handleScrollToContent}>
+          <Icon svgPath={ICON_PATHS.arrowDown} size="medium" className="down-arrow" />
         </div>
       </motion.div>
       <div ref={contentNavRef} style={{ zIndex: 2, position: 'relative', marginTop: '100vh' }}>
@@ -517,13 +569,22 @@ const Work = () => {
               height: { duration: 0.8, ease: "easeInOut" },
               opacity: { duration: 0.8, ease: "easeInOut" }
             }}
+            onScroll={handleContentScroll}
           >
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeContentId}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: isNavigatingToCaseStudy ? 0 : 1, y: 0 }}
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
+                style={{
+                  position: 'sticky',
+                  top: 0,
+                  zIndex: 10,
+                  opacity: isNavigatingToCaseStudy ? 0 : headOpacity,
+                  transition: 'opacity 0.1s linear',
+                  pointerEvents: headOpacity < 0.1 ? 'none' : 'auto'
+                }}
               >
                 <Head
                   index={contentRegistry[activeContentId]?.index}

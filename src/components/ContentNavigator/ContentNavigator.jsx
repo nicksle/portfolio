@@ -23,6 +23,7 @@ export const ContentNavigatorButton = ({
           className="content-navigator-button content-navigator-button-up"
           onClick={onScrollToTop}
         >
+          <Icon svgPath={ICON_PATHS.arrowDown} size="medium" className="content-navigator-button-icon" />
         </button>
       )}
 
@@ -33,6 +34,11 @@ export const ContentNavigatorButton = ({
           onClick={onBackSection}
           style={{ flex: 1 }}
         >
+          <Icon
+            svgPath={ICON_PATHS.arrowRight}
+            size="small"
+            style={{ color: 'var(--color-primary)', transform: 'rotate(180deg)' }}
+          />
           <span style={{
             fontFamily: 'var(--font-family-subtitle)',
             fontSize: 'var(--font-size-subtitle)',
@@ -55,6 +61,11 @@ export const ContentNavigatorButton = ({
             fontWeight: 'var(--font-weight-medium)',
             color: 'var(--color-primary)'
           }}>Next</span>
+          <Icon
+            svgPath={ICON_PATHS.arrowRight}
+            size="small"
+            style={{ color: 'var(--color-primary)' }}
+          />
         </button>
       )}
     </div>

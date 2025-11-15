@@ -17,8 +17,12 @@ import TitleSection from '../../../ContentNavigator/ContentStack/Content/Body/Bo
 import WorkItem from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/WorkItems/WorkItem';
 import Tile from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/Tile/Tile';
 import TileColumn from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TileColumn/TileColumn';
+import TileRow from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TileRow/TileRow';
 import MediaSet from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/CardGroup/Card/CardCarousel/BodyItem/MediaSet';
 import TextSet from '../../../ContentNavigator/ContentStack/Content/Body/BodyComponent/CardGroup/Card/CardCarousel/BodyItem/TextSet';
+import TemplateMedia from '../../../shared/TemplateMedia/TemplateMedia';
+import Carousel from '../../../Carousel/Carousel';
+import Impact from '../../../shared/Impact';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import TandaThumbnail1 from '../../../../assets/TANDA/CaseStudy1/Thumbnail/TandaThumbnail1.svg';
 import OnboardingFunnelChart from '../../../../assets/TANDA/CaseStudy1/onboarding-funnel-chart.svg';
@@ -88,6 +92,11 @@ import Research3Logistics from '../../../../assets/TANDA/CaseStudy1/Research 3/L
 import Research3Persona1 from '../../../../assets/TANDA/CaseStudy1/Research 3/Persona 1.svg';
 import Research3Persona2 from '../../../../assets/TANDA/CaseStudy1/Research 3/Persona 2.svg';
 import Research3Persona3 from '../../../../assets/TANDA/CaseStudy1/Research 3/Persona 3.svg';
+// Shared media assets for TemplateMedia examples
+import SharedVideo from '../../../../assets/TANDA/Shared/01.mov';
+import SharedImage01 from '../../../../assets/TANDA/Shared/01.png';
+import SharedImage02 from '../../../../assets/TANDA/Shared/02.png';
+import SharedImage03 from '../../../../assets/TANDA/Shared/03.png';
 import Icon from '../../../../components/Icon';
 import { ICON_PATHS } from '../../../../utils/iconPaths';
 
@@ -125,12 +134,22 @@ const CaseStudyID = () => {
   const [nextContentId, setNextContentId] = useState(null);
   const [contentHeight, setContentHeight] = useState(152); // Start at collapsed height for initial animation
   const [isInitialLoad, setIsInitialLoad] = useState(true); // Track initial load animation
+  const [headOpacity, setHeadOpacity] = useState(1);
   const caseStudyContentRef = useRef(null);
   const contentNavRef = useRef(null);
-  const carouselScrollRef = useRef(null);
   const contentScrollRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Scroll to content navigator
+  const handleScrollToContent = () => {
+    if (contentNavRef.current) {
+      contentNavRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   // Log when component mounts for debugging
   useEffect(() => {
@@ -174,6 +193,9 @@ const CaseStudyID = () => {
         contentScrollRef.current.scrollTop = 0;
       }
 
+      // Reset head opacity
+      setHeadOpacity(1);
+
       // Wait for pause (150ms) + head animation (400ms) before expanding
       setTimeout(() => {
         console.log(`🔼 Starting expansion after head animation`);
@@ -186,6 +208,19 @@ const CaseStudyID = () => {
         }, 400); // Match expand animation duration
       }, 550); // 150ms pause + 400ms head animation
     }, 400); // Match collapse animation duration
+  };
+
+  // Handle content scroll for head fade effect
+  const handleContentScroll = (e) => {
+    if (!contentScrollRef.current) return;
+
+    const scrollTop = e.target.scrollTop;
+    // Calculate opacity based on scroll position
+    // Stay at full opacity for first 24px, then start fading from 24-98px
+    const opacity = scrollTop <= 24
+      ? 1
+      : Math.max(0, Math.min(1, 1 - ((scrollTop - 24) / 74)));
+    setHeadOpacity(opacity);
   };
 
   // Handle tab changes
@@ -311,8 +346,8 @@ const CaseStudyID = () => {
             Our primary goal was to improve the NUX so we could grow our active user base and learn from their behavior. By increasing activation, we'd not only retain more users, but also gather richer insights to guide product decisions and drive long-term growth.  <br /><br />  In order to reach this goal, we mapped out our KPIs as business goals, and also laid out what our perceived user goals were:
           </Text>
         </BodyComponent>,
-        <BodyComponent key="problem-goals-tiles" style={{ gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-          <TileColumn gap="16px" subtitle="Business Goals">
+        <BodyComponent key="problem-goals-business">
+          <TileRow gap="24px" subtitle="Business Goals">
             <Tile
               index="01"
               title="Increase Sign Up Conversion"
@@ -337,9 +372,10 @@ const CaseStudyID = () => {
               body="Target: -50% Decrease <br /><br />We want to lower the volume of onboarding-related support requests as an indicator of increased product understanding."
               icon={<Icon svgPath={ICON_PATHS.eyeClosed} size="small" />}
             />
-          </TileColumn>
-          
-          <TileColumn gap="16px" subtitle="User Goals">
+          </TileRow>
+        </BodyComponent>,
+        <BodyComponent key="problem-goals-user">
+          <TileRow gap="24px" subtitle="User Goals">
             <Tile
               index="01"
               title="Understand Product Value"
@@ -364,7 +400,7 @@ const CaseStudyID = () => {
               body="As a financial platform, users want to be sure they can trust TANDA with their sensitive information"
               icon={<Icon svgPath={ICON_PATHS.eye} size="small" />}
             />
-          </TileColumn>
+          </TileRow>
         </BodyComponent>
       ]
     },
@@ -460,9 +496,12 @@ const CaseStudyID = () => {
                         description: "Sign-up and log-in buttons have equal visual weight. Prioritize signing up with visual hierarchy since most visitors are new users."
                       }
                     ]} />,
-                    <MediaSet key="media-1">
-                      <img src={SignUpScreen} alt="Sign Up Screen showing the initial user registration process" />
-                    </MediaSet>
+                    <TemplateMedia
+                      key="media-1"
+                      variant="single"
+                      src={SharedVideo}
+                      alt="Sign Up Screen showing the initial user registration process"
+                    />
                   ]
                 },
                 // 2. Phone Verification - 2 Annotations, 2 Images
@@ -483,10 +522,12 @@ const CaseStudyID = () => {
                         description: "One verification prompt is sufficient for account creation; we eliminated this step to streamline onboarding."
                       }
                     ]} />,
-                    <MediaSet key="media-2">
-                      <img src={PhoneVerification01} alt="Phone Verification screen 01" />
-                      <img src={PhoneVerification02} alt="Phone Verification screen 02" />
-                    </MediaSet>
+                    <TemplateMedia
+                      key="media-2"
+                      variant="double"
+                      sources={[SharedImage01, SharedImage02]}
+                      alt="Phone Verification screens"
+                    />
                   ]
                 },
                 // 3. Create Account - Reordered: 2 textsets, 1 media, 1 textset, 3 images
@@ -532,11 +573,12 @@ const CaseStudyID = () => {
                         description: "Legal agreement and job title inputs aren't required for account creation. Deferring these optional fields to post-signup would reduce friction and allows users to reach core functionality faster."
                       }
                     ]} />,
-                    <MediaSet key="media-3b">
-                      <img src={CreateAccount02} alt="Create Account screen 02" />
-                      <img src={CreateAccount03} alt="Create Account screen 03" />
-                      <img src={CreateAccount04} alt="Create Account screen 04" />
-                    </MediaSet>
+                    <TemplateMedia
+                      key="media-3b"
+                      variant="triple-horizontal"
+                      sources={[SharedImage01, SharedImage02, SharedImage03]}
+                      alt="Create Account screens"
+                    />
                   ]
                 },
                 // 4. Onboarding Carousel - T, T, M
@@ -3260,68 +3302,75 @@ const CaseStudyID = () => {
               <p className="casestudy-description">
                 We redesigned the sign-up and onboarding flow to reduce drop-off and improve activation. A late-binding approach provides context at key moments, educates users on features, and builds trust—lowering barriers and guiding users effectively from the start.
               </p>
+              <div className="casestudy-read-more" onClick={handleScrollToContent}>
+                <Icon svgPath={ICON_PATHS.arrowDown} size="medium" />
+              </div>
             </div>
             <div className="casestudy-image">
-              <div className="casestudy-image-carousel">
-                <div className="carousel-scroll" ref={carouselScrollRef}>
-                  <img 
-                    src={TandaThumbnail1} 
-                    alt="Tanda Mobile App Preview 1" 
+              <Carousel
+                items={[
+                  <TemplateMedia
+                    variant="centered"
+                    sources={[SharedVideo]}
+                    alt="Centered phone with video"
+                  />,
+                  <TemplateMedia
+                    variant="var2"
+                    sources={[SharedImage01, SharedImage02]}
+                    alt="Two phones side-by-side"
+                  />,
+                  <TemplateMedia
+                    variant="var3"
+                    sources={[SharedImage01, SharedImage02, SharedImage03]}
+                    alt="Three phones with center larger"
+                  />,
+                  <TemplateMedia
+                    variant="centered"
+                    sources={[SharedImage03]}
+                    alt="Centered phone layout"
+                  />,
+                  <TemplateMedia
+                    variant="centered"
+                    sources={[SharedImage01]}
+                    alt="Centered phone layout"
                   />
-                  <img 
-                    src={TandaThumbnail1} 
-                    alt="Tanda Mobile App Preview 2" 
-                  />
-                  <img 
-                    src={TandaThumbnail1} 
-                    alt="Tanda Mobile App Preview 3" 
-                  />
-                </div>
-              </div>
+                ]}
+                height="300px"
+                scrollSpeed={1}
+                gap={8}
+              />
               <div className="casestudy-divider"></div>
-              <div className="casestudy-impact">
-                <div className="casestudy-impact-top">
-                  <h3 className="S1">Impact</h3>
-                </div>
-                <div className="casestudy-impact-content">
-                  <div className="casestudy-impact-metric">
-                    <div className="casestudy-impact-metric-top">
-                      <span className="S1">01</span>
-                      <Icon svgPath={ICON_PATHS.solidTrendingDown} size="small" />
-                    </div>
-                    <div className="casestudy-impact-metric-text">
-                      <span>48%</span>
-                    </div>
-                    <div className="casestudy-impact-metric-bottom">
-                      <span className="S1">User Sign Up</span>
-                    </div>
-                  </div>
-                  <div className="casestudy-impact-metric">
-                    <div className="casestudy-impact-metric-top">
-                      <span className="S1">02</span>
-                      <Icon svgPath={ICON_PATHS.solidTrendingDown} size="small" />
-                    </div>
-                    <div className="casestudy-impact-metric-text">
-                      <span>32%</span>
-                    </div>
-                    <div className="casestudy-impact-metric-bottom">
-                      <span className="S1">Activation Rate</span>
-                    </div>
-                  </div>
-                  <div className="casestudy-impact-metric">
-                    <div className="casestudy-impact-metric-top">
-                      <span className="S1">03</span>
-                      <Icon svgPath={ICON_PATHS.solidTrendingDown} size="small" />
-                    </div>
-                    <div className="casestudy-impact-metric-text">
-                      <span>24%</span>
-                    </div>
-                    <div className="casestudy-impact-metric-bottom">
-                      <span className="S1">Support Inquiries</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Impact
+                metrics={[
+                  {
+                    index: "01",
+                    prefix: "+",
+                    value: "48",
+                    unit: "%",
+                    label: "User Sign Up",
+                    description: "More users are completing the sign-up process with streamlined onboarding",
+                    icon: ICON_PATHS.solidTrendingDown
+                  },
+                  {
+                    index: "02",
+                    prefix: "+",
+                    value: "32",
+                    unit: "%",
+                    label: "Activation Rate",
+                    description: "Higher conversion rate from sign-up to fully activated users",
+                    icon: ICON_PATHS.solidTrendingDown
+                  },
+                  {
+                    index: "03",
+                    prefix: "-",
+                    value: "24",
+                    unit: "%",
+                    label: "Support Inquiries",
+                    description: "Reduced confusion and support requests through clearer UX patterns",
+                    icon: ICON_PATHS.solidTrendingDown
+                  }
+                ]}
+              />
             </div>
           </div>
         </motion.div>
@@ -3352,13 +3401,22 @@ const CaseStudyID = () => {
                 height: { duration: 0.4, ease: "easeInOut" },
                 opacity: { duration: 0.3, ease: "easeInOut" }
               }}
+              onScroll={handleContentScroll}
             >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeContentId}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ y: -20 }}
+                  animate={{ y: 0 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
+                  style={{
+                    position: 'sticky',
+                    top: 0,
+                    zIndex: 10,
+                    opacity: headOpacity,
+                    transition: 'opacity 0.1s linear',
+                    pointerEvents: headOpacity < 0.1 ? 'none' : 'auto'
+                  }}
                 >
                   <Head
                     index={contentRegistry[activeContentId]?.index}

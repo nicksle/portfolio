@@ -81,6 +81,21 @@
   white-space: pre-line;
 }
 
+.casestudy-read-more {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.casestudy-read-more span {
+  font-size: 16px;
+  color: var(--color-active);
+}
+
 .casestudy-impact {
   display: flex;
   flex-direction: column;
@@ -106,10 +121,42 @@
   width: 156px;
   aspect-ratio: 1;
   border: 1px solid var(--color-inactive);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.casestudy-impact-metric-inner {
+  transition: transform 0.3s ease;
+}
+
+.casestudy-impact-metric:hover .casestudy-impact-metric-inner {
+  transform: translateY(-156px);
+}
+
+.casestudy-impact-metric-content {
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 156px;
+  box-sizing: border-box;
+}
+
+.casestudy-impact-metric-description {
+  width: 156px;
+  height: 156px;
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.casestudy-impact-metric-description .subtitle {
+  text-align: left;
+  color: var(--color-base);
 }
 
 .casestudy-impact-metric-top {
@@ -123,7 +170,8 @@
   height: 32px;
   display: flex;
   align-items: center;
-  padding-left: 12px;
+  justify-content: center;
+  gap: 8px;
 }
 
 .casestudy-impact-metric-text span {
@@ -132,6 +180,11 @@
   font-weight: bold;
   color: var(--color-active);
   line-height: 1.2;
+}
+
+.casestudy-impact-metric-prefix,
+.casestudy-impact-metric-unit {
+  font-size: 24px !important;
 }
 
 .casestudy-impact-metric-bottom {
