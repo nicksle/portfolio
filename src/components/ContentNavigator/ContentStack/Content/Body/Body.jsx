@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { motion } from 'framer-motion';
 import './Body.css';
 import { ContentNavigatorButton } from '../../../ContentNavigator';
 
@@ -21,20 +20,7 @@ const Body = forwardRef(({
         className="body"
         ref={ref}
       >
-        {React.Children.map(children, (child, index) => (
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-100px", amount: 0.3 }}
-            transition={{
-              duration: 0.5,
-              delay: index * 0.1,
-              ease: "easeOut"
-            }}
-          >
-            {child}
-          </motion.div>
-        ))}
+        {children}
       </div>
       <ContentNavigatorButton
         onScrollToTop={onScrollToTop}

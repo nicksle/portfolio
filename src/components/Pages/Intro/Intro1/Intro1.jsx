@@ -7,13 +7,13 @@ import Nick02 from '../../../../assets/Intro2/Nick/Nick02.jpg';
 import Island from '../../../../assets/Intro2/MacScreen/Island.svg';
 import Sun from '../../../../assets/Intro2/MacScreen/Sun.svg';
 
-const Intro1 = ({ onNext }) => {
+const Intro1 = ({ onNext, onLogoHover }) => {
   const [isImageHovered, setIsImageHovered] = useState(false);
 
   return (
     <div className="intro1-section">
       {/* Row 1 */}
-      <div className="grid-cell svg-cell">
+      <div className="grid-cell svg-cell" onMouseEnter={onLogoHover}>
         <LayeredLogo size="large" />
       </div>
       <div className="grid-cell text-r1">

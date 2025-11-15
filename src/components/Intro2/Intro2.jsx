@@ -15,6 +15,7 @@ import CAT02 from '../../assets/Intro2/Cat/CAT02.jpg';
 import CAT03 from '../../assets/Intro2/Cat/CAT03.jpg';
 import CAT04 from '../../assets/Intro2/Cat/CAT04.jpg';
 import CAT05 from '../../assets/Intro2/Cat/CAT05.jpg';
+import Art01 from '../../assets/Intro2/SF/Art/3AM.png';
 import Cloud1 from '../../assets/Intro2/Clouds/Front/Cloud1.svg';
 import Cloud2 from '../../assets/Intro2/Clouds/Front/Cloud2.svg';
 import Cloud3 from '../../assets/Intro2/Clouds/Front/Cloud3.svg';
@@ -109,7 +110,32 @@ const Intro2 = () => {
           imageAlt="QR Code"
         />
       </div>
-      <div className="grid-cell blank-r2-c2"></div>
+      <div className="grid-cell blank-r2-c2">
+        <IconImgSwapCell
+          cellId="Art"
+          icon={
+            <svg
+              width="70"
+              height="70"
+              viewBox="0 0 80 80"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Artist palette shape */}
+              <ellipse cx="35" cy="40" rx="28" ry="24" fill="currentColor"/>
+              {/* Thumb hole */}
+              <ellipse cx="56" cy="48" rx="8" ry="7" fill="#0e0e10"/>
+              {/* Paint blobs */}
+              <circle cx="28" cy="32" r="4" fill="#0e0e10"/>
+              <circle cx="40" cy="28" r="4" fill="#0e0e10"/>
+              <circle cx="24" cy="44" r="4" fill="#0e0e10"/>
+              <circle cx="38" cy="48" r="4" fill="#0e0e10"/>
+            </svg>
+          }
+          image={Art01}
+          imageAlt="Art"
+        />
+      </div>
       <div className="grid-cell text-r2" id="QRCR">
         {"queer creative".split('').map((char, index) =>
           char === ' '

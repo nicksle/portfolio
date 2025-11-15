@@ -9,31 +9,40 @@ import Intro2 from '../../Intro2/Intro2';
 const IntroAnimation = () => {
   const navigate = useNavigate();
   const [animationPhase, setAnimationPhase] = useState('initial');
+  const [hasExpandedX, setHasExpandedX] = useState(false);
   // Phases: 'initial' | 'expandX' | 'expandY' | 'intro1' | 'intro2' | 'navigating'
 
-  // Auto-trigger animation sequence on mount
-  useEffect(() => {
-    // Initial delay before starting expansion
-    const timer1 = setTimeout(() => {
+  // Handle logo cell hover - triggers horizontal expansion
+  const handleLogoHover = () => {
+    if (!hasExpandedX && animationPhase === 'initial') {
+      setHasExpandedX(true);
       setAnimationPhase('expandX');
-    }, 500);
+    }
+  };
 
-    // After horizontal expansion, trigger vertical
-    const timer2 = setTimeout(() => {
-      setAnimationPhase('expandY');
-    }, 1400); // 500ms initial + 600ms expandX + 300ms delay
+  // Auto-trigger vertical expansion after horizontal expansion
+  useEffect(() => {
+    if (animationPhase === 'expandX') {
+      // After horizontal expansion completes, trigger vertical
+      const timer = setTimeout(() => {
+        setAnimationPhase('expandY');
+      }, 900); // 600ms expandX animation + 300ms delay
 
-    // After vertical expansion, set to intro1 (user can interact)
-    const timer3 = setTimeout(() => {
-      setAnimationPhase('intro1');
-    }, 2000); // 1400ms + 600ms expandY
+      return () => clearTimeout(timer);
+    }
+  }, [animationPhase]);
 
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-    };
-  }, []);
+  // Auto-trigger intro1 phase after vertical expansion
+  useEffect(() => {
+    if (animationPhase === 'expandY') {
+      // After vertical expansion completes, set to intro1
+      const timer = setTimeout(() => {
+        setAnimationPhase('intro1');
+      }, 600); // 600ms expandY animation
+
+      return () => clearTimeout(timer);
+    }
+  }, [animationPhase]);
 
   const scrollToIntro2 = () => {
     setAnimationPhase('intro2');
@@ -100,7 +109,7 @@ const IntroAnimation = () => {
           }}
         >
           {/* Intro1 Section */}
-          <Intro1 onNext={scrollToIntro2} />
+          <Intro1 onNext={scrollToIntro2} onLogoHover={handleLogoHover} />
 
           {/* Intro2 Section */}
           <Intro2 onPrev={scrollToIntro1} />
