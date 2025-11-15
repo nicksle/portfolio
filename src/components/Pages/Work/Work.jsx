@@ -20,6 +20,10 @@ import WorkItem1LeftSVG from "../../../assets/TANDA/WorkItem1/01.svg";
 import WorkItem1RightSVG from "../../../assets/TANDA/WorkItem1/02.svg";
 import SharedImage1 from "../../../assets/TANDA/Shared/01.png";
 import SharedImage2 from "../../../assets/TANDA/Shared/02.png";
+import TandaLogo from "../../../assets/company logo/TANDA.svg";
+import LiftOffLogo from "../../../assets/company logo/LiftOff.svg";
+import JetfuelLogo from "../../../assets/company logo/Jetfuel.svg";
+import CashAppLogo from "../../../assets/company logo/CashApp.svg";
 import Icon from "../../Icon/Icon";
 import { ICON_PATHS } from "../../../utils/iconPaths";
 import TemplateMedia from "../../shared/TemplateMedia/TemplateMedia";
@@ -179,8 +183,9 @@ const Work = () => {
       index: "01",
       title: "Tanda",
       subtitle: "Fintech Startup",
-      period: "2024",
-      icon1: null,
+      period: "2023-2024",
+      position: "Senior Product Designer",
+      icon1: TandaLogo,
       icon2: null,
       bodyItems: [
         <BodyComponent key="tanda-description" style={styles.bodyComponent}>
@@ -190,15 +195,15 @@ const Work = () => {
             </Text>
           </div>
           <div style={styles.flexColumn}>
-            <img src="https://via.placeholder.com/400/300" alt="Tanda Image" style={styles.projectImage} />
+            <img src={TandaThumbnail1} alt="Tanda Image" style={styles.projectImage} />
           </div>
         </BodyComponent>,
         <BodyComponent key="tanda-highlights">
           <TitleSection title="Key Highlights">
-            <CalloutItem index="1" content="Collaborated with leadership to define product roadmap and designed multiple growth-focused features to drive user acquisition and engagement" />
-            <CalloutItem index="2" content="Led new user onboarding redesign through user research and iterative testing, achieving 50% increase in new user growth and 60% reduction in user churn" />
-            <CalloutItem index="3" content="Redesigned core product experience, increasing daily active users by 15% month-over-month and improving long-term user retention" />
-            <CalloutItem index="4" content="Established comprehensive design system with component library, tokenization and documentation, eliminating engineering confusion and streamlining the design-to-development handoff process" />
+            <CalloutItem index="01" content="Collaborated with leadership to define product roadmap and designed multiple growth-focused features to drive user acquisition and engagement" />
+            <CalloutItem index="02" content="Led new user onboarding redesign through user research and iterative testing, achieving 50% increase in new user growth and 60% reduction in user churn" />
+            <CalloutItem index="03" content="Redesigned core product experience, increasing daily active users by 15% month-over-month and improving long-term user retention" />
+            <CalloutItem index="04" content="Established comprehensive design system with component library, tokenization and documentation, eliminating engineering confusion and streamlining the design-to-development handoff process" />
           </TitleSection>
         </BodyComponent>,
         <BodyComponent key="tanda-works">
@@ -272,8 +277,9 @@ const Work = () => {
       index: "02",
       title: "Liftoff",
       subtitle: "Influence Platform",
-      period: "2024",
-      icon1: null,
+      period: "2022-2023",
+      position: "Senior Product Designer",
+      icon1: LiftOffLogo,
       icon2: null,
       bodyItems: [
         <BodyComponent key="liftoff-description" style={styles.bodyComponent}>
@@ -288,10 +294,10 @@ const Work = () => {
         </BodyComponent>,
         <BodyComponent key="liftoff-highlights">
           <TitleSection title="Key Highlights">
-            <CalloutItem index="1" content="Led end-to-end design of our desktop product Plug Marketplace, enabling advertisers to discover and match with influencers, resulting in 40% increase in successful campaign completions" />
-            <CalloutItem index="2" content="Partnered with Liftoff Mobile designers to rebrand Jetfuel to Liftoff Influence, implementing unified design system and visual identity post-acquisition" />
-            <CalloutItem index="3" content="Conducted user research and solution synthesis for our core product: The Plug. Created high-fidelity mock-ups for concept testing and roadmapped A/B testing for feature implementation" />
-            <CalloutItem index="4" content="Redesigned our internal tools from Retool to custom products that allowed teams to better manage advertiser spend and influencer submissions, resulting in 35% revenue increase over a 6 month period" />
+            <CalloutItem index="01" content="Led end-to-end design of our desktop product Plug Marketplace, enabling advertisers to discover and match with influencers, resulting in 40% increase in successful campaign completions" />
+            <CalloutItem index="02" content="Partnered with Liftoff Mobile designers to rebrand Jetfuel to Liftoff Influence, implementing unified design system and visual identity post-acquisition" />
+            <CalloutItem index="03" content="Conducted user research and solution synthesis for our core product: The Plug. Created high-fidelity mock-ups for concept testing and roadmapped A/B testing for feature implementation" />
+            <CalloutItem index="04" content="Redesigned our internal tools from Retool to custom products that allowed teams to better manage advertiser spend and influencer submissions, resulting in 35% revenue increase over a 6 month period" />
           </TitleSection>
         </BodyComponent>,
         <BodyComponent key="liftoff-works">
@@ -307,8 +313,9 @@ const Work = () => {
       index: "03",
       title: "Jefuel",
       subtitle: "Social Platform",
-      period: "2024",
-      icon1: null,
+      period: "2020-2022",
+      position: "Product Designer",
+      icon1: JetfuelLogo,
       icon2: null,
       bodyItems: [
         <BodyComponent key="jefuel-description" style={styles.bodyComponent}>
@@ -323,9 +330,9 @@ const Work = () => {
         </BodyComponent>,
         <BodyComponent key="jefuel-highlights">
           <TitleSection title="Key Highlights">
-            <CalloutItem index="1" content="Collaborated with CEO to define product roadmap focused on user retention and profitability, identifying and prioritizing key features that drove business growth" />
-            <CalloutItem index="2" content="Led design for the features in our open network initiative which includes introducing profiles, messaging and connections; resulted in 30% increase in DAUs" />
-            <CalloutItem index="3" content="Led the design and research for new monetization features for influencers, increasing their earning potential by an average of 20%" />
+            <CalloutItem index="01" content="Collaborated with CEO to define product roadmap focused on user retention and profitability, identifying and prioritizing key features that drove business growth" />
+            <CalloutItem index="02" content="Led design for the features in our open network initiative which includes introducing profiles, messaging and connections; resulted in 30% increase in DAUs" />
+            <CalloutItem index="03" content="Led the design and research for new monetization features for influencers, increasing their earning potential by an average of 20%" />
           </TitleSection>
         </BodyComponent>,
         <BodyComponent key="jefuel-works">
@@ -341,8 +348,9 @@ const Work = () => {
       index: "04",
       title: "CashApp",
       subtitle: "Fintech Giant",
-      period: "2024",
-      icon1: null,
+      period: "2019",
+      position: "Product Design Intern",
+      icon1: CashAppLogo,
       icon2: null,
       bodyItems: [
         <BodyComponent key="cashapp-description" style={styles.bodyComponent}>
@@ -357,8 +365,8 @@ const Work = () => {
         </BodyComponent>,
         <BodyComponent key="cashapp-highlights">
           <TitleSection title="Key Highlights">
-            <CalloutItem index="1" content="Collaborated with designers, engineers and PMs within the Ecosystems and Boost workstreams; shipped an exclusive ice cream boost for summer 2019, resulting in a 15% increase in boosts usage" />
-            <CalloutItem index="2" content="Participated in design critiques, where I provided and received feedback on designs within a variety of features and workstream" />
+            <CalloutItem index="01" content="Collaborated with designers, engineers and PMs within the Ecosystems and Boost workstreams; shipped an exclusive ice cream boost for summer 2019, resulting in a 15% increase in boosts usage" />
+            <CalloutItem index="02" content="Participated in design critiques, where I provided and received feedback on designs within a variety of features and workstream" />
           </TitleSection>
         </BodyComponent>,
         <BodyComponent key="cashapp-works">
@@ -523,6 +531,9 @@ const Work = () => {
             <h2 style={styles.heroTitle}>
               Product designer with 5+ years experience building and growing products for startups in the fintech and influencer advertising spaces.
             </h2>
+            <div className="down-cta" onClick={handleScrollToContent}>
+              <Icon svgPath={ICON_PATHS.arrowDown} size="large" className="down-arrow" />
+            </div>
           </div>
           <Carousel
             items={[
@@ -540,9 +551,6 @@ const Work = () => {
             scrollSpeed={1}
             gap={4}
           />
-        </div>
-        <div className="down-cta" onClick={handleScrollToContent}>
-          <Icon svgPath={ICON_PATHS.arrowDown} size="medium" className="down-arrow" />
         </div>
       </motion.div>
       <div ref={contentNavRef} style={{ zIndex: 2, position: 'relative', marginTop: '100vh' }}>
@@ -593,6 +601,11 @@ const Work = () => {
                   icon={contentRegistry[activeContentId]?.icon1}
                   secondIcon={contentRegistry[activeContentId]?.icon2}
                   period={contentRegistry[activeContentId]?.period}
+                  position={contentRegistry[activeContentId]?.position}
+                  topLeft="index"
+                  topRight="period"
+                  bottomLeft="icon"
+                  bottomRight="position"
                 />
               </motion.div>
             </AnimatePresence>

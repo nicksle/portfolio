@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import './Intro1.css';
-import gmLogo from '../../../../assets/logo/GMLogo.svg';
+import { LayeredLogo } from '../../../Logo';
 import Nick01 from '../../../../assets/Intro2/Nick/Nick01.jpg';
 import Nick02 from '../../../../assets/Intro2/Nick/Nick02.jpg';
 import Island from '../../../../assets/Intro2/MacScreen/Island.svg';
@@ -13,7 +14,7 @@ const Intro1 = ({ onNext }) => {
     <div className="intro1-section">
       {/* Row 1 */}
       <div className="grid-cell svg-cell">
-        <img src={gmLogo} alt="GM Logo" className="logo-svg" />
+        <LayeredLogo size="large" />
       </div>
       <div className="grid-cell text-r1">
         <span>nkle.design</span>

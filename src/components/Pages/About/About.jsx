@@ -136,6 +136,7 @@ const About = () => {
           opacity: Math.max(opacity, 0),
           scale: Math.max(scale, 0.8),
           zIndex: 1,
+          overflow: 'hidden',
         }}
         transition={{ type: 'spring', stiffness: 120, damping: 20 }}
       >

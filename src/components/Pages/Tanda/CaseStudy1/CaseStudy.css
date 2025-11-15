@@ -100,12 +100,14 @@
 }
 
 .casestudy-read-more svg {
+  color: var(--color-tertiary);
   animation: bounce 2s ease-in-out infinite;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .casestudy-read-more:hover svg {
   transform: scale(1.2);
+  color: var(--color-primary);
 }
 
 .casestudy-read-more span {

@@ -36,11 +36,12 @@
   z-index: 10;
 }
 
-.logo-svg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+/* Logo hover animation */
+.svg-cell:hover .layer-face-2 {
+  transform: rotate(180deg);
 }
+
+/* Logo is now handled by LayeredLogo component */
 
 .text-r1 {
   grid-column: 4 / 9;

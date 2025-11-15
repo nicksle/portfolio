@@ -3303,7 +3303,7 @@ const CaseStudyID = () => {
                 We redesigned the sign-up and onboarding flow to reduce drop-off and improve activation. A late-binding approach provides context at key moments, educates users on features, and builds trust—lowering barriers and guiding users effectively from the start.
               </p>
               <div className="casestudy-read-more" onClick={handleScrollToContent}>
-                <Icon svgPath={ICON_PATHS.arrowDown} size="medium" />
+                <Icon svgPath={ICON_PATHS.arrowDown} size="large" />
               </div>
             </div>
             <div className="casestudy-image">

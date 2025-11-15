@@ -79,28 +79,11 @@
 .head-icon-svg svg {
   width: 100%;
   height: 100%;
-  fill: var(--color-tertiary, #999988) !important;
-  color: var(--color-tertiary, #999988) !important;
 }
 
-/* Ensure all SVG paths within head icons get the correct color */
-.head-icon-svg svg path {
-  fill: var(--color-tertiary, #999988) !important;
-}
-
-.head-icon-svg svg g {
-  fill: var(--color-tertiary, #999988) !important;
-}
-
-/* Reset any browser default SVG styling */
-.head-icon-svg svg * {
-  fill: var(--color-tertiary, #999988) !important;
-}
-
-/* Styling for imported SVG files - convert to tertiary color using CSS filters */
+/* Styling for imported SVG files */
 .head-icon-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0.6) contrast(1);
 }
