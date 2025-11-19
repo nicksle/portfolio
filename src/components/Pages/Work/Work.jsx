@@ -28,6 +28,8 @@ import Icon from "../../Icon/Icon";
 import { ICON_PATHS } from "../../../utils/iconPaths";
 import TemplateMedia from "../../shared/TemplateMedia/TemplateMedia";
 import Carousel from "../../Carousel/Carousel";
+import Dither from "../../Dither/Dither";
+import PixelBlast from "../../PixelBlast/PixelBlast";
 import './Work.css';
 
 const Work = () => {
@@ -215,7 +217,21 @@ const Work = () => {
                 { video: SignUpCarouselVideo, scale: 1.02 },
                 { img: WorkItem1Right, scale: 0.98 }
               ]}
-              gradientBackground={{ startColor: '#667eea', endColor: '#764ba2' }}
+              background={{
+                component: (
+                  <Dither
+                    waveColor={[0.51, 0.35, 0.94]}
+                    waveSpeed={0.035}
+                    waveFrequency={1.7}
+                    waveAmplitude={0.35}
+                    colorNum={8}
+                    pixelSize={2}
+                    mouseRadius={0.1}
+                    enableMouseInteraction={false}
+                    disableAnimation={false}
+                  />
+                )
+              }}
               title="Improving User Education and Building Trust During Onboarding to Increase User Growth"
               description="Enhanced onboarding that helps users understand TANDA's value while building confidence through clear communication and supportive guidance"
               onCtaClick={() => {
@@ -235,11 +251,35 @@ const Work = () => {
             <WorkItem
               index="02"
               thumbnails={[
-                { img: "https://via.placeholder.com/300x200/764ba2/ffffff?text=Core+Product" }
+                { img: WorkItem1Left, scale: 0.98 },
+                { video: SignUpCarouselVideo, scale: 1.02 },
+                { img: WorkItem1Right, scale: 0.98 }
               ]}
-              gradientBackground={{ startColor: '#764ba2', endColor: '#667eea' }}
-              title="TANDA: Core Product"
-              description="Improved core product experience to increase user activation, retention and growth"
+              background={{
+                component: (
+                  <PixelBlast
+                    variant="square"
+                    pixelSize={2}
+                    color="#8d1cd9"
+                    patternScale={2.9}
+                    patternDensity={1.5}
+                    pixelSizeJitter={0.38}
+                    enableRipples
+                    rippleSpeed={0.4}
+                    rippleThickness={0.12}
+                    rippleIntensityScale={1.5}
+                    liquid={false}
+                    liquidStrength={0.12}
+                    liquidRadius={1.2}
+                    liquidWobbleSpeed={5}
+                    speed={0.6}
+                    edgeFade={0}
+                    transparent
+                  />
+                )
+              }}
+              title="Redesigning the Circles and Social Experiences to Increase Daily Active Users"
+              description="Reimagined the circles experience and social features to foster community connections, drive engagement, and create compelling reasons for users to return daily"
             />
           </TitleSection>
         </BodyComponent>,

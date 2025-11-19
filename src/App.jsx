@@ -10,6 +10,10 @@ import Contact from './components/Pages/Contact/Contact';
 import Resume from './components/Pages/Resume/Resume';
 import CaseStudy1 from './components/Pages/Tanda/CaseStudy1/CaseStudy';
 import CaseStudyID from './components/Pages/Tanda/CaseStudy1/CaseStudyID';
+import DitherPlayground from './components/DitherPlayground/DitherPlayground';
+import PixelBlastPlayground from './components/PixelBlastPlayground/PixelBlastPlayground';
+import AuroraPlayground from './components/AuroraPlayground/AuroraPlayground';
+import GradualBlurPlayground from './components/GradualBlurPlayground/GradualBlurPlayground';
 
 // Wrapper component to handle scroll to top
 const ScrollToTop = () => {
@@ -37,6 +41,10 @@ const AnimatedRoutes = () => {
         <Route path="/resume" element={<Resume />} />
         <Route path="/case-study-1" element={<CaseStudy1 />} />
         <Route path="/case-study-id" element={<CaseStudyID />} />
+        <Route path="/dither-playground" element={<DitherPlayground />} />
+        <Route path="/pixelblast-playground" element={<PixelBlastPlayground />} />
+        <Route path="/aurora-playground" element={<AuroraPlayground />} />
+        <Route path="/gradualblur-playground" element={<GradualBlurPlayground />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AnimatePresence>

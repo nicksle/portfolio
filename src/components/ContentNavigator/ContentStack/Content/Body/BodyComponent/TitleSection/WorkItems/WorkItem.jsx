@@ -28,17 +28,25 @@ const MediaItem = ({ img, video, alt, scale = 1 }) => {
   return null;
 };
 
-// WorkItemThumbnail component - arranges multiple MediaItems with gradient background
-const WorkItemThumbnail = ({ thumbnails, gradientBackground, index }) => {
+// WorkItemThumbnail component - arranges multiple MediaItems with gradient or custom background
+const WorkItemThumbnail = ({ thumbnails, background, index }) => {
+  console.log('🎨 WorkItemThumbnail background:', background);
   return (
     <>
-      {gradientBackground && (
+      {background && background.component && (
+        // Render custom background component with wrapper for proper positioning
+        <div className="work-item-gradient-background">
+          {background.component}
+        </div>
+      )}
+      {background && !background.component && (
+        // Render traditional SVG gradient with wrapper
         <div className="work-item-gradient-background">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: gradientBackground.startColor || '#667eea', stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: gradientBackground.endColor || '#764ba2', stopOpacity: 1 }} />
+                <stop offset="0%" style={{ stopColor: background.startColor || '#667eea', stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: background.endColor || '#764ba2', stopOpacity: 1 }} />
               </linearGradient>
             </defs>
             <rect width="100%" height="100%" fill={`url(#gradient-${index})`} />
@@ -54,7 +62,7 @@ const WorkItemThumbnail = ({ thumbnails, gradientBackground, index }) => {
   );
 };
 
-const WorkItem = ({ index, image, video, gradientBackground, leftImage, rightImage, thumbnails, title, description, navigateTo, onCtaClick }) => {
+const WorkItem = ({ index, image, video, background, leftImage, rightImage, thumbnails, title, description, navigateTo, onCtaClick }) => {
   const navigate = useNavigate();
 
   const handleCtaClick = () => {
@@ -80,7 +88,7 @@ const WorkItem = ({ index, image, video, gradientBackground, leftImage, rightIma
       return (
         <WorkItemThumbnail
           thumbnails={thumbnails}
-          gradientBackground={gradientBackground}
+          background={background}
           index={index}
         />
       );
@@ -96,7 +104,7 @@ const WorkItem = ({ index, image, video, gradientBackground, leftImage, rightIma
       return (
         <WorkItemThumbnail
           thumbnails={legacyThumbnails}
-          gradientBackground={gradientBackground}
+          background={background}
           index={index}
         />
       );
