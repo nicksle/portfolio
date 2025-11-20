@@ -20,6 +20,7 @@ const PixelBlastPlayground = () => {
   const [speed, setSpeed] = useState(0.6);
   const [edgeFade, setEdgeFade] = useState(0.3);
   const [transparent, setTransparent] = useState(true);
+  const [backgroundColor, setBackgroundColor] = useState('#0a0a0a');
   const [previewWidth, setPreviewWidth] = useState(800);
   const [previewHeight, setPreviewHeight] = useState(600);
 
@@ -41,6 +42,7 @@ const PixelBlastPlayground = () => {
     setSpeed(0.6);
     setEdgeFade(0.3);
     setTransparent(true);
+    setBackgroundColor('#0a0a0a');
     setPreviewWidth(800);
     setPreviewHeight(600);
   };
@@ -81,7 +83,7 @@ const PixelBlastPlayground = () => {
       </div>
 
       <div className="playground-content">
-        <div className="pixelblast-preview" style={{ width: `${previewWidth}px`, height: `${previewHeight}px` }}>
+        <div className="pixelblast-preview" style={{ width: `${previewWidth}px`, height: `${previewHeight}px`, backgroundColor }}>
           <PixelBlast
             variant={variant}
             pixelSize={pixelSize}
@@ -129,6 +131,16 @@ const PixelBlastPlayground = () => {
                   step="10"
                   value={previewHeight}
                   onChange={(e) => setPreviewHeight(parseInt(e.target.value))}
+                />
+              </label>
+            </div>
+            <div className="control-group">
+              <label>
+                Background Color: {backgroundColor}
+                <input
+                  type="color"
+                  value={backgroundColor}
+                  onChange={(e) => setBackgroundColor(e.target.value)}
                 />
               </label>
             </div>

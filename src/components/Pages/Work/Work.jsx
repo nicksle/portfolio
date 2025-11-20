@@ -29,7 +29,6 @@ import { ICON_PATHS } from "../../../utils/iconPaths";
 import TemplateMedia from "../../shared/TemplateMedia/TemplateMedia";
 import Carousel from "../../Carousel/Carousel";
 import Dither from "../../Dither/Dither";
-import PixelBlast from "../../PixelBlast/PixelBlast";
 import './Work.css';
 
 const Work = () => {
@@ -220,13 +219,13 @@ const Work = () => {
               background={{
                 component: (
                   <Dither
-                    waveColor={[0.51, 0.35, 0.94]}
-                    waveSpeed={0.035}
-                    waveFrequency={1.7}
-                    waveAmplitude={0.35}
-                    colorNum={8}
+                    waveColor={[0.64, 0.4, 1]}
+                    waveSpeed={0.05}
+                    waveFrequency={1.4}
+                    waveAmplitude={0.14}
+                    colorNum={7}
                     pixelSize={2}
-                    mouseRadius={0.1}
+                    mouseRadius={0.3}
                     enableMouseInteraction={false}
                     disableAnimation={false}
                   />
@@ -257,24 +256,16 @@ const Work = () => {
               ]}
               background={{
                 component: (
-                  <PixelBlast
-                    variant="square"
+                  <Dither
+                    waveColor={[0.64, 0.4, 1]}
+                    waveSpeed={0.05}
+                    waveFrequency={1.42}
+                    waveAmplitude={0.16}
+                    colorNum={7}
                     pixelSize={2}
-                    color="#8d1cd9"
-                    patternScale={2.9}
-                    patternDensity={1.5}
-                    pixelSizeJitter={0.38}
-                    enableRipples
-                    rippleSpeed={0.4}
-                    rippleThickness={0.12}
-                    rippleIntensityScale={1.5}
-                    liquid={false}
-                    liquidStrength={0.12}
-                    liquidRadius={1.2}
-                    liquidWobbleSpeed={5}
-                    speed={0.6}
-                    edgeFade={0}
-                    transparent
+                    mouseRadius={0.3}
+                    enableMouseInteraction={false}
+                    disableAnimation={false}
                   />
                 )
               }}
