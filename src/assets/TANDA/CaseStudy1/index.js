@@ -3,7 +3,6 @@
 
 // Thumbnails and main images
 import TandaThumbnail1 from './Thumbnail/TandaThumbnail1.svg';
-import OnboardingFunnelChart from './onboarding-funnel-chart.svg';
 import Figure01 from './Figure 01.svg';
 import SignUpScreen from './Sign Up Screen.svg';
 
@@ -74,7 +73,6 @@ import Research3Persona3 from './Research 3/Persona 3.svg';
 export {
   // Thumbnails and main images
   TandaThumbnail1,
-  OnboardingFunnelChart,
   Figure01,
   SignUpScreen,
 

@@ -11,6 +11,8 @@ import Text from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent
 import TitleSection from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/TitleSection";
 import WorkItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/WorkItems/WorkItem";
 import CalloutItem from "../../ContentNavigator/ContentStack/Content/Body/BodyComponent/TitleSection/CalloutItems/CalloutItem";
+import TandaThumbnail1 from "../../../assets/TANDA/Thumbnail/Thumbnail1.svg";
+import TandaThumbnail2PNG from "../../../assets/TANDA/Thumbnail/Thumbnail2.png";
 import SignUpCarouselVideo from "../../../assets/TANDA/CaseStudy1/01.mov";
 import WorkItem1Left from "../../../assets/TANDA/WorkItem1/01.jpg";
 import WorkItem1Right from "../../../assets/TANDA/WorkItem1/02.jpg";
@@ -18,10 +20,6 @@ import WorkItem1LeftSVG from "../../../assets/TANDA/WorkItem1/01.svg";
 import WorkItem1RightSVG from "../../../assets/TANDA/WorkItem1/02.svg";
 import SharedImage1 from "../../../assets/TANDA/Shared/01.png";
 import SharedImage2 from "../../../assets/TANDA/Shared/02.png";
-import Thumbnail00 from "../../../assets/Thumbnail/Thumbnail00.svg";
-import Thumbnail01 from "../../../assets/Thumbnail/Thumbnail01.png";
-import Thumbnail02 from "../../../assets/Thumbnail/Thumbnail02.png";
-import Thumbnail03 from "../../../assets/Thumbnail/Thumbnail03.png";
 import TandaLogo from "../../../assets/company logo/TANDA.svg";
 import LiftOffLogo from "../../../assets/company logo/LiftOff.svg";
 import JetfuelLogo from "../../../assets/company logo/Jetfuel.svg";
@@ -30,7 +28,6 @@ import Icon from "../../Icon/Icon";
 import { ICON_PATHS } from "../../../utils/iconPaths";
 import TemplateMedia from "../../shared/TemplateMedia/TemplateMedia";
 import Carousel from "../../Carousel/Carousel";
-import Dither from "../../Dither/Dither";
 import './Work.css';
 
 const Work = () => {
@@ -198,7 +195,7 @@ const Work = () => {
             </Text>
           </div>
           <div style={styles.flexColumn}>
-            <img src={Thumbnail00} alt="Tanda Image" style={styles.projectImage} />
+            <img src={TandaThumbnail1} alt="Tanda Image" style={styles.projectImage} />
           </div>
         </BodyComponent>,
         <BodyComponent key="tanda-highlights">
@@ -218,21 +215,7 @@ const Work = () => {
                 { video: SignUpCarouselVideo, scale: 1.02 },
                 { img: WorkItem1Right, scale: 0.98 }
               ]}
-              background={{
-                component: (
-                  <Dither
-                    waveColor={[0.64, 0.4, 1]}
-                    waveSpeed={0.05}
-                    waveFrequency={1.4}
-                    waveAmplitude={0.14}
-                    colorNum={7}
-                    pixelSize={2}
-                    mouseRadius={0.3}
-                    enableMouseInteraction={false}
-                    disableAnimation={false}
-                  />
-                )
-              }}
+              gradientBackground={{ startColor: '#667eea', endColor: '#764ba2' }}
               title="Improving User Education and Building Trust During Onboarding to Increase User Growth"
               description="Enhanced onboarding that helps users understand TANDA's value while building confidence through clear communication and supportive guidance"
               onCtaClick={() => {
@@ -252,25 +235,9 @@ const Work = () => {
             <WorkItem
               index="02"
               thumbnails={[
-                { img: WorkItem1Left, scale: 0.98 },
-                { video: SignUpCarouselVideo, scale: 1.02 },
-                { img: WorkItem1Right, scale: 0.98 }
+                { img: "https://via.placeholder.com/300x200/764ba2/ffffff?text=Core+Product" }
               ]}
-              background={{
-                component: (
-                  <Dither
-                    waveColor={[0.64, 0.4, 1]}
-                    waveSpeed={0.05}
-                    waveFrequency={1.42}
-                    waveAmplitude={0.16}
-                    colorNum={7}
-                    pixelSize={2}
-                    mouseRadius={0.3}
-                    enableMouseInteraction={false}
-                    disableAnimation={false}
-                  />
-                )
-              }}
+              gradientBackground={{ startColor: '#764ba2', endColor: '#667eea' }}
               title="Redesigning the Circles and Social Experiences to Increase Daily Active Users"
               description="Reimagined the circles experience and social features to foster community connections, drive engagement, and create compelling reasons for users to return daily"
             />
@@ -279,24 +246,24 @@ const Work = () => {
         <BodyComponent key="tanda-carousel">
           <Carousel
             items={[
-              <img src={Thumbnail00} alt="Tanda App Interface 1" />,
-              <img src={Thumbnail01} alt="Tanda App Interface 2" />,
+              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />,
+              <img src={TandaThumbnail2PNG} alt="Tanda App Interface 2" />,
               <TemplateMedia
                 variant="var3"
                 sources={[SharedImage1, SignUpCarouselVideo, SharedImage2]}
                 alt="TANDA App Screens"
                 style={{ height: '100%', width: 'auto' }}
               />,
-              <img src={Thumbnail02} alt="Tanda App Interface 3" />,
-              <img src={Thumbnail03} alt="Tanda App Interface 4" />,
+              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />,
+              <img src={TandaThumbnail2PNG} alt="Tanda App Interface 2" />,
               <TemplateMedia
                 variant="var3"
                 sources={[SharedImage1, SignUpCarouselVideo, SharedImage2]}
                 alt="TANDA App Screens"
                 style={{ height: '100%', width: 'auto' }}
               />,
-              <img src={Thumbnail00} alt="Tanda App Interface 1" />,
-              <img src={Thumbnail01} alt="Tanda App Interface 2" />
+              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />,
+              <img src={TandaThumbnail2PNG} alt="Tanda App Interface 2" />
             ]}
             height="300px"
             scrollSpeed={1}
@@ -308,7 +275,7 @@ const Work = () => {
     liftoff: {
       id: "liftoff",
       index: "02",
-      title: "LiftOff",
+      title: "Liftoff",
       subtitle: "Influence Platform",
       period: "2022-2023",
       position: "Senior Product Designer",
@@ -322,29 +289,29 @@ const Work = () => {
             </Text>
           </div>
           <div style={styles.flexColumn}>
-            <img src="https://via.placeholder.com/400/300" alt="LiftOff Image" style={styles.projectImage} />
+            <img src="https://via.placeholder.com/400/300" alt="Liftoff Image" style={styles.projectImage} />
           </div>
         </BodyComponent>,
         <BodyComponent key="liftoff-highlights">
           <TitleSection title="Key Highlights">
             <CalloutItem index="01" content="Led end-to-end design of our desktop product Plug Marketplace, enabling advertisers to discover and match with influencers, resulting in 40% increase in successful campaign completions" />
-            <CalloutItem index="02" content="Partnered with LiftOff Mobile designers to rebrand Jetfuel to LiftOff Influence, implementing unified design system and visual identity post-acquisition" />
+            <CalloutItem index="02" content="Partnered with Liftoff Mobile designers to rebrand Jetfuel to Liftoff Influence, implementing unified design system and visual identity post-acquisition" />
             <CalloutItem index="03" content="Conducted user research and solution synthesis for our core product: The Plug. Created high-fidelity mock-ups for concept testing and roadmapped A/B testing for feature implementation" />
             <CalloutItem index="04" content="Redesigned our internal tools from Retool to custom products that allowed teams to better manage advertiser spend and influencer submissions, resulting in 35% revenue increase over a 6 month period" />
           </TitleSection>
         </BodyComponent>,
         <BodyComponent key="liftoff-works">
           <TitleSection title="Selected Works">
-            <WorkItem index="01" title="LiftOff Project 1" description="Description for LiftOff Project 1" />
-            <WorkItem index="02" title="LiftOff Project 2" description="Description for LiftOff Project 2" />
+            <WorkItem index="01" title="Liftoff Project 1" description="Description for Liftoff Project 1" />
+            <WorkItem index="02" title="Liftoff Project 2" description="Description for Liftoff Project 2" />
           </TitleSection>
         </BodyComponent>
       ]
     },
-    jetfuel: {
-      id: "jetfuel",
+    jefuel: {
+      id: "jefuel",
       index: "03",
-      title: "Jetfuel",
+      title: "Jefuel",
       subtitle: "Social Platform",
       period: "2020-2022",
       position: "Product Designer",
@@ -354,11 +321,11 @@ const Work = () => {
         <BodyComponent key="jefuel-description" style={styles.bodyComponent}>
           <div style={styles.flexColumn}>
             <Text>
-              Jetfuel aims to usher in the new age of Influencer Advertising by providing our content creators a platform to find Advertisers to work with in self service ad campaigns. Through our iOS and mobile web app, we provide a platform for Influencers to easily monetize their social media followings and foster relationships with Advertisers.
+              This is the Jefuel section.
             </Text>
           </div>
           <div style={styles.flexColumn}>
-            <img src="https://via.placeholder.com/400/300" alt="Jetfuel Image" style={styles.projectImage} />
+            <img src="https://via.placeholder.com/400/300" alt="Jefuel Image" style={styles.projectImage} />
           </div>
         </BodyComponent>,
         <BodyComponent key="jefuel-highlights">
@@ -370,8 +337,8 @@ const Work = () => {
         </BodyComponent>,
         <BodyComponent key="jefuel-works">
           <TitleSection title="Selected Works">
-            <WorkItem index="01" title="Jetfuel Project 1" description="Description for Jetfuel Project 1" />
-            <WorkItem index="02" title="Jetfuel Project 2" description="Description for Jetfuel Project 2" />
+            <WorkItem index="01" title="Jefuel Project 1" description="Description for Jefuel Project 1" />
+            <WorkItem index="02" title="Jefuel Project 2" description="Description for Jefuel Project 2" />
           </TitleSection>
         </BodyComponent>
       ]
@@ -418,7 +385,7 @@ const Work = () => {
   };
 
   const handleNextContent = () => {
-    const contentIds = ['tanda', 'liftoff', 'jetfuel', 'cashapp'];
+    const contentIds = ['tanda', 'liftoff', 'jefuel', 'cashapp'];
     const currentIndex = contentIds.indexOf(activeContentId);
     if (currentIndex < contentIds.length - 1) {
       transitionToContent(contentIds[currentIndex + 1]);
@@ -426,7 +393,7 @@ const Work = () => {
   };
 
   const handleBackContent = () => {
-    const contentIds = ['tanda', 'liftoff', 'jetfuel', 'cashapp'];
+    const contentIds = ['tanda', 'liftoff', 'jefuel', 'cashapp'];
     const currentIndex = contentIds.indexOf(activeContentId);
     if (currentIndex > 0) {
       transitionToContent(contentIds[currentIndex - 1]);
@@ -439,7 +406,7 @@ const Work = () => {
   };
 
   const getNextContentIndex = () => {
-    const contentIds = ['tanda', 'liftoff', 'jetfuel', 'cashapp'];
+    const contentIds = ['tanda', 'liftoff', 'jefuel', 'cashapp'];
     const currentIndex = contentIds.indexOf(activeContentId);
     if (currentIndex < contentIds.length - 1) {
       const nextId = contentIds[currentIndex + 1];
@@ -449,7 +416,7 @@ const Work = () => {
   };
 
   const getPreviousContentIndex = () => {
-    const contentIds = ['tanda', 'liftoff', 'jetfuel', 'cashapp'];
+    const contentIds = ['tanda', 'liftoff', 'jefuel', 'cashapp'];
     const currentIndex = contentIds.indexOf(activeContentId);
     if (currentIndex > 0) {
       const previousId = contentIds[currentIndex - 1];
@@ -570,10 +537,15 @@ const Work = () => {
           </div>
           <Carousel
             items={[
-              <img src={Thumbnail00} alt="Work Thumbnail 1" />,
-              <img src={Thumbnail01} alt="Work Thumbnail 2" />,
-              <img src={Thumbnail02} alt="Work Thumbnail 3" />,
-              <img src={Thumbnail03} alt="Work Thumbnail 4" />
+              <img src={TandaThumbnail1} alt="Tanda App Interface 1" />,
+              <img src={TandaThumbnail2PNG} alt="Tanda App Interface 2" />,
+              <TemplateMedia
+                variant="var3"
+                sources={[SharedImage1, SignUpCarouselVideo, SharedImage2]}
+                alt="TANDA App Screens"
+                style={{ height: '100%', width: 'auto' }}
+              />,
+              <img src="https://via.placeholder.com/300x200" alt="Work 4" />
             ]}
             height="400px"
             scrollSpeed={1}
@@ -585,8 +557,8 @@ const Work = () => {
         <ContentNavigator activeId={activeContentId}>
           <TabNav activeId={activeContentId} onTabChange={handleTabChange}>
             <NavTabItem id="tanda" index="01" title="Tanda" />
-            <NavTabItem id="liftoff" index="02" title="LiftOff" />
-            <NavTabItem id="jetfuel" index="03" title="Jetfuel" />
+            <NavTabItem id="liftoff" index="02" title="Liftoff" />
+            <NavTabItem id="jefuel" index="03" title="Jefuel" />
             <NavTabItem id="cashapp" index="04" title="CashApp" />
           </TabNav>
 

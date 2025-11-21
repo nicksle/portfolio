@@ -936,7 +936,6 @@ const CaseStudy = () => {
                         {
                           id: "01",
                           children: [
-                            <img src={CaseStudy1Images.OnboardingFunnelChart} alt="Competitive analysis of fintech onboarding flows" />
                           ]
                         },
                         {
@@ -988,7 +987,6 @@ const CaseStudy = () => {
                         {
                           id: "01",
                           children: [
-                            <img src={CaseStudy1Images.OnboardingFunnelChart} alt="Session timeout issues during user flow" />
                           ]
                         },
                         {
@@ -1145,7 +1143,6 @@ const CaseStudy = () => {
                         {
                           id: "01",
                           children: [
-                            <img src={CaseStudy1Images.OnboardingFunnelChart} alt="Research summary and methodology overview" />
                           ]
                         },
                         {
@@ -1237,9 +1234,7 @@ const CaseStudy = () => {
                     bodyItems={[
                       {
                         id: "01",
-                        children: [
-                          <img src={CaseStudy1Images.OnboardingFunnelChart} alt="Strategy framework diagram" />
-                        ],
+                        children: [],
                         annotationItems: [
                           {
                             id: "01",

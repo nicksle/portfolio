@@ -25,7 +25,6 @@ import Carousel from '../../../Carousel/Carousel';
 import Impact from '../../../shared/Impact';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import TandaThumbnail1 from '../../../../assets/TANDA/CaseStudy1/Thumbnail/TandaThumbnail1.svg';
-import OnboardingFunnelChart from '../../../../assets/TANDA/CaseStudy1/onboarding-funnel-chart.svg';
 import Figure01 from '../../../../assets/TANDA/CaseStudy1/Figure 01.svg';
 // Solutions video assets
 import SignUpCarouselVideo from '../../../../assets/TANDA/CaseStudy1/01.mov';
@@ -938,8 +937,7 @@ const CaseStudyID = () => {
                   id: "01",
                   children: [
                     <MediaSet key="media-interview-1">
-                      <img src={OnboardingFunnelChart} alt="Interview logistics and methodology" />
-                    </MediaSet>
+                      </MediaSet>
                   ]
                 },
                 {
@@ -2949,7 +2947,6 @@ const CaseStudyID = () => {
                     }
                   ]} />,
                   <MediaSet key="media-sol-2-3-images">
-                    <img src={OnboardingFunnelChart} alt="First trust signal image" />
                     <img src={Figure01} alt="Second trust signal image" />
                   </MediaSet>
                 ]
@@ -3021,7 +3018,6 @@ const CaseStudyID = () => {
                     }
                   ]} />,
                   <MediaSet key="media-sol-3-1-images-2">
-                    <img src={OnboardingFunnelChart} alt="Flow diagram showing account creation flowing into survey, then recommendations, then join CTA" />
                     <img src={Figure01} alt="Close-up of join circle prompt showing clear call-to-action and next steps" />
                   </MediaSet>
                 ]
@@ -3052,7 +3048,6 @@ const CaseStudyID = () => {
                     }
                   ]} />,
                   <MediaSet key="media-sol-3-2-images-2">
-                    <img src={OnboardingFunnelChart} alt="Short video player demonstrating how circles work, accessible from navigation and key decision points" />
                     <img src={Figure01} alt="Before/after comparison: old front-loaded carousel vs new contextual education approach" />
                   </MediaSet>
                 ]
@@ -3065,7 +3060,6 @@ const CaseStudyID = () => {
                     text="When onboarding steps interrupt the join circle flow, users question the relevance. By integrating requirements into the flow itself, each ask arrives with innate context—users provide bank details when they're ready to contribute, verify identity when they're about to join. Friction drops because intent is clear."
                   />,
                   <MediaSet key="media-sol-3-3-images-1">
-                    <img src={OnboardingFunnelChart} alt="Circle discovery as the default landing screen with prominent browse, search, and filter options" />
                     <img src={Figure01} alt="User clicking Join Circle button triggering the onboarding flow contextually" />
                   </MediaSet>,
                   <TextSet key="text-sol-3-3-annotations" annotationItems={[
@@ -3084,7 +3078,6 @@ const CaseStudyID = () => {
                   ]} />,
                   <MediaSet key="media-sol-3-3-images-2">
                     <img src={SignUpScreen} alt="Contextual requirement screen showing bank linking request with explanation during circle join flow" />
-                    <img src={OnboardingFunnelChart} alt="Carousel fallback experience on home screen showing re-engagement prompts and next steps" />
                   </MediaSet>
                 ]
               },
@@ -3114,7 +3107,6 @@ const CaseStudyID = () => {
                     }
                   ]} />,
                   <MediaSet key="media-sol-3-4-images-2">
-                    <img src={OnboardingFunnelChart} alt="Carousel fallback screen showing user's incomplete join with clear next steps and re-engagement prompt" />
                     <img src={SignUpScreen} alt="Complete late-bind flow diagram showing survey, discovery, join flow, progress indicators, notifications, and fallback paths" />
                   </MediaSet>
                 ]
@@ -3177,7 +3169,6 @@ const CaseStudyID = () => {
                 id: "03",
                 children: [
                   <MediaSet key="media-sol-5-3">
-                    <img src={OnboardingFunnelChart} alt="In-app guided onboarding where friend receives notification when invitee starts and can send encouraging messages at key moments" />
                   </MediaSet>
                 ]
               },
